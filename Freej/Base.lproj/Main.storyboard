@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--First-->
+        <!--AnouncementsView-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="AnnouncementsView" customModule="Freej" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9pv-A4-QxB" userLabel="AnouncementsView" customClass="AnnouncementsView" customModule="Freej" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -42,10 +42,10 @@
             </objects>
             <point key="canvasLocation" x="-914" y="834"/>
         </scene>
-        <!--Second-->
+        <!--ActivitiesView-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" customClass="ActivitiesView" customModule="Freej" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8rJ-Kc-sve" userLabel="ActivitiesView" customClass="ActivitiesView" customModule="Freej" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -77,10 +77,10 @@
             </objects>
             <point key="canvasLocation" x="0.0" y="834"/>
         </scene>
-        <!--Item-->
+        <!--SettingsView-->
         <scene sceneID="HTn-az-LCe">
             <objects>
-                <viewController id="6v6-HH-jOa" customClass="SettingsView" customModule="Freej" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="6v6-HH-jOa" userLabel="SettingsView" customClass="SettingsView" customModule="Freej" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ie4-ed-8WW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -103,9 +103,9 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
-                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
-                        <segue destination="6v6-HH-jOa" kind="relationship" relationship="viewControllers" id="r8R-XY-Cyq"/>
+                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="hj8-iT-Uvh"/>
+                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="0Ju-T0-Xf7"/>
+                        <segue destination="6v6-HH-jOa" kind="relationship" relationship="viewControllers" id="3Nv-gw-37c"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
