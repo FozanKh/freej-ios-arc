@@ -1,5 +1,5 @@
 //
-//  SecondViewController.swift
+//  ActivitiesView.swift
 //  Freej
 //
 //  Created by Abdulelah Hajjar on 10/03/2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
+class ActivitiesView: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
