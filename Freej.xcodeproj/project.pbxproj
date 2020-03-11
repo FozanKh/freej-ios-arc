@@ -21,6 +21,10 @@
 		EB4B5E3A2417F75D00EB7EB9 /* Advertisement.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4B5E392417F75D00EB7EB9 /* Advertisement.swift */; };
 		EB4B5E3C2417F76F00EB7EB9 /* Announcement.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4B5E3B2417F76F00EB7EB9 /* Announcement.swift */; };
 		EB6FC6C22418F96000CBA10B /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6FC6C12418F96000CBA10B /* Activity.swift */; };
+		EB6FC6C82418FE3E00CBA10B /* ERModel.pdf in Resources */ = {isa = PBXBuildFile; fileRef = EB6FC6C42418FE3E00CBA10B /* ERModel.pdf */; };
+		EB6FC6C92418FE3E00CBA10B /* LogicalDiagram.pdf in Resources */ = {isa = PBXBuildFile; fileRef = EB6FC6C52418FE3E00CBA10B /* LogicalDiagram.pdf */; };
+		EB6FC6CA2418FE3E00CBA10B /* UseCaseDiagram.pdf in Resources */ = {isa = PBXBuildFile; fileRef = EB6FC6C62418FE3E00CBA10B /* UseCaseDiagram.pdf */; };
+		EB6FC6CB2418FE3E00CBA10B /* UserRequirements.docx in Resources */ = {isa = PBXBuildFile; fileRef = EB6FC6C72418FE3E00CBA10B /* UserRequirements.docx */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +65,10 @@
 		EB4B5E392417F75D00EB7EB9 /* Advertisement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Advertisement.swift; sourceTree = "<group>"; };
 		EB4B5E3B2417F76F00EB7EB9 /* Announcement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Announcement.swift; sourceTree = "<group>"; };
 		EB6FC6C12418F96000CBA10B /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		EB6FC6C42418FE3E00CBA10B /* ERModel.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ERModel.pdf; sourceTree = "<group>"; };
+		EB6FC6C52418FE3E00CBA10B /* LogicalDiagram.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = LogicalDiagram.pdf; sourceTree = "<group>"; };
+		EB6FC6C62418FE3E00CBA10B /* UseCaseDiagram.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = UseCaseDiagram.pdf; sourceTree = "<group>"; };
+		EB6FC6C72418FE3E00CBA10B /* UserRequirements.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = UserRequirements.docx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +99,7 @@
 		EB3641302417E89300F81D6A = {
 			isa = PBXGroup;
 			children = (
+				EB6FC6C32418FE0E00CBA10B /* Diagrams */,
 				EB36413B2417E89300F81D6A /* Freej */,
 				EB3641542417E89600F81D6A /* FreejTests */,
 				EB36415F2417E89600F81D6A /* FreejUITests */,
@@ -168,6 +177,17 @@
 			children = (
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		EB6FC6C32418FE0E00CBA10B /* Diagrams */ = {
+			isa = PBXGroup;
+			children = (
+				EB6FC6C42418FE3E00CBA10B /* ERModel.pdf */,
+				EB6FC6C52418FE3E00CBA10B /* LogicalDiagram.pdf */,
+				EB6FC6C62418FE3E00CBA10B /* UseCaseDiagram.pdf */,
+				EB6FC6C72418FE3E00CBA10B /* UserRequirements.docx */,
+			);
+			path = Diagrams;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,9 +294,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB6FC6CB2418FE3E00CBA10B /* UserRequirements.docx in Resources */,
+				EB6FC6CA2418FE3E00CBA10B /* UseCaseDiagram.pdf in Resources */,
 				EB36414B2417E89600F81D6A /* LaunchScreen.storyboard in Resources */,
 				EB3641482417E89600F81D6A /* Assets.xcassets in Resources */,
 				EB3641462417E89300F81D6A /* Main.storyboard in Resources */,
+				EB6FC6C82418FE3E00CBA10B /* ERModel.pdf in Resources */,
+				EB6FC6C92418FE3E00CBA10B /* LogicalDiagram.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
