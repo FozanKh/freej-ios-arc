@@ -1,0 +1,6 @@
+framework module Pods_Freej {
+  umbrella header "Pods-Freej-umbrella.h"
+
+  export *
+  module * { export * }
+}

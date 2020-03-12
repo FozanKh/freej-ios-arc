@@ -1,0 +1,6 @@
+framework module Pods_Freej_FreejUITests {
+  umbrella header "Pods-Freej-FreejUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
