@@ -22,7 +22,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="kat-hS-cBv" secondAttribute="trailing" constant="16" id="Xu0-6W-Ho1"/>
                             <constraint firstItem="kat-hS-cBv" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="56" id="rSd-6c-v0L"/>
@@ -50,7 +50,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="oxl-hT-8Zf" secondAttribute="trailing" constant="16" id="c3m-pP-aQh"/>
                             <constraint firstItem="oxl-hT-8Zf" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" constant="56" id="ffn-27-R2Y"/>
