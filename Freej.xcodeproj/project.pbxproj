@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A64875FA3DB40BED70B60DE /* Pods_Freej.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57BEDCB9C7BF77C08BADB881 /* Pods_Freej.framework */; };
+		86EEB1FBE9E1D14FAFE944AF /* Pods_FreejTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90D42A89E1EEA7CE780BBDED /* Pods_FreejTests.framework */; };
+		E3CACB3BE0C7DB36F70B7DFD /* Pods_Freej_FreejUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2A66BFDCB59CE87E809D6D0 /* Pods_Freej_FreejUITests.framework */; };
 		EB36413D2417E89300F81D6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB36413C2417E89300F81D6A /* AppDelegate.swift */; };
 		EB36413F2417E89300F81D6A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB36413E2417E89300F81D6A /* SceneDelegate.swift */; };
 		EB3641412417E89300F81D6A /* AnnouncementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3641402417E89300F81D6A /* AnnouncementsView.swift */; };
@@ -48,6 +51,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4020848BDCD64D089A5D5B34 /* Pods-Freej.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Freej.release.xcconfig"; path = "Target Support Files/Pods-Freej/Pods-Freej.release.xcconfig"; sourceTree = "<group>"; };
+		57BEDCB9C7BF77C08BADB881 /* Pods_Freej.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Freej.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		778648B65607D18A168FAB30 /* Pods-FreejTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreejTests.release.xcconfig"; path = "Target Support Files/Pods-FreejTests/Pods-FreejTests.release.xcconfig"; sourceTree = "<group>"; };
+		7F63EF5E6AF3D00E609FF357 /* Pods-Freej-FreejUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Freej-FreejUITests.release.xcconfig"; path = "Target Support Files/Pods-Freej-FreejUITests/Pods-Freej-FreejUITests.release.xcconfig"; sourceTree = "<group>"; };
+		90D42A89E1EEA7CE780BBDED /* Pods_FreejTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FreejTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		93695000B220FEADDD20C473 /* Pods-FreejTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreejTests.debug.xcconfig"; path = "Target Support Files/Pods-FreejTests/Pods-FreejTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AC83FDCADD2D94240D34537A /* Pods-Freej-FreejUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Freej-FreejUITests.debug.xcconfig"; path = "Target Support Files/Pods-Freej-FreejUITests/Pods-Freej-FreejUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		B97E63841FA88A67ADB9B49A /* Pods-Freej.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Freej.debug.xcconfig"; path = "Target Support Files/Pods-Freej/Pods-Freej.debug.xcconfig"; sourceTree = "<group>"; };
 		EB3641392417E89300F81D6A /* Freej.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Freej.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB36413C2417E89300F81D6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB36413E2417E89300F81D6A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +86,7 @@
 		EB945A58241ABC4F005D2BAD /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = text; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
 		EB945A59241ABC4F005D2BAD /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = text; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
 		EBFC5A83241AF202000EB7D0 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		F2A66BFDCB59CE87E809D6D0 /* Pods_Freej_FreejUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Freej_FreejUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A64875FA3DB40BED70B60DE /* Pods_Freej.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86EEB1FBE9E1D14FAFE944AF /* Pods_FreejTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,12 +110,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3CACB3BE0C7DB36F70B7DFD /* Pods_Freej_FreejUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C0B2DF5270111098E834E26 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B97E63841FA88A67ADB9B49A /* Pods-Freej.debug.xcconfig */,
+				4020848BDCD64D089A5D5B34 /* Pods-Freej.release.xcconfig */,
+				AC83FDCADD2D94240D34537A /* Pods-Freej-FreejUITests.debug.xcconfig */,
+				7F63EF5E6AF3D00E609FF357 /* Pods-Freej-FreejUITests.release.xcconfig */,
+				93695000B220FEADDD20C473 /* Pods-FreejTests.debug.xcconfig */,
+				778648B65607D18A168FAB30 /* Pods-FreejTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		B6F67B2DBD545F34777EEE53 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				57BEDCB9C7BF77C08BADB881 /* Pods_Freej.framework */,
+				F2A66BFDCB59CE87E809D6D0 /* Pods_Freej_FreejUITests.framework */,
+				90D42A89E1EEA7CE780BBDED /* Pods_FreejTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EB3641302417E89300F81D6A = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +150,8 @@
 				EB3641542417E89600F81D6A /* FreejTests */,
 				EB36415F2417E89600F81D6A /* FreejUITests */,
 				EB36413A2417E89300F81D6A /* Products */,
+				5C0B2DF5270111098E834E26 /* Pods */,
+				B6F67B2DBD545F34777EEE53 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -214,9 +255,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EB3641652417E89600F81D6A /* Build configuration list for PBXNativeTarget "Freej" */;
 			buildPhases = (
+				62BBD8AB694D8BA662FB00BD /* [CP] Check Pods Manifest.lock */,
 				EB3641352417E89300F81D6A /* Sources */,
 				EB3641362417E89300F81D6A /* Frameworks */,
 				EB3641372417E89300F81D6A /* Resources */,
+				1B0D1C2A7DE390EE3308C58E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -231,6 +274,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EB3641682417E89600F81D6A /* Build configuration list for PBXNativeTarget "FreejTests" */;
 			buildPhases = (
+				3375FFC58003FB3666EAEC3D /* [CP] Check Pods Manifest.lock */,
 				EB36414D2417E89600F81D6A /* Sources */,
 				EB36414E2417E89600F81D6A /* Frameworks */,
 				EB36414F2417E89600F81D6A /* Resources */,
@@ -249,9 +293,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EB36416B2417E89600F81D6A /* Build configuration list for PBXNativeTarget "FreejUITests" */;
 			buildPhases = (
+				318A6693438EDBBD59E35113 /* [CP] Check Pods Manifest.lock */,
 				EB3641582417E89600F81D6A /* Sources */,
 				EB3641592417E89600F81D6A /* Frameworks */,
 				EB36415A2417E89600F81D6A /* Resources */,
+				83D63F0D38621563B6F46339 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -338,6 +384,109 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1B0D1C2A7DE390EE3308C58E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Freej/Pods-Freej-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Freej/Pods-Freej-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Freej/Pods-Freej-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		318A6693438EDBBD59E35113 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Freej-FreejUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3375FFC58003FB3666EAEC3D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FreejTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		62BBD8AB694D8BA662FB00BD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Freej-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		83D63F0D38621563B6F46339 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Freej-FreejUITests/Pods-Freej-FreejUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Freej-FreejUITests/Pods-Freej-FreejUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Freej-FreejUITests/Pods-Freej-FreejUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EB3641352417E89300F81D6A /* Sources */ = {
@@ -524,6 +673,7 @@
 		};
 		EB3641662417E89600F81D6A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B97E63841FA88A67ADB9B49A /* Pods-Freej.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -542,6 +692,7 @@
 		};
 		EB3641672417E89600F81D6A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4020848BDCD64D089A5D5B34 /* Pods-Freej.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -560,6 +711,7 @@
 		};
 		EB3641692417E89600F81D6A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 93695000B220FEADDD20C473 /* Pods-FreejTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -582,6 +734,7 @@
 		};
 		EB36416A2417E89600F81D6A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 778648B65607D18A168FAB30 /* Pods-FreejTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -604,6 +757,7 @@
 		};
 		EB36416C2417E89600F81D6A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AC83FDCADD2D94240D34537A /* Pods-Freej-FreejUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -624,6 +778,7 @@
 		};
 		EB36416D2417E89600F81D6A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F63EF5E6AF3D00E609FF357 /* Pods-Freej-FreejUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
