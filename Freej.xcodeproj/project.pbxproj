@@ -125,7 +125,6 @@
 				EB4B5E312417F64B00EB7EB9 /* Model */,
 				EB4B5E302417F64300EB7EB9 /* View */,
 				EB4B5E322417F65300EB7EB9 /* Controller */,
-				EB3641442417E89300F81D6A /* Main.storyboard */,
 				EB3641472417E89600F81D6A /* Assets.xcassets */,
 				EB3641492417E89600F81D6A /* LaunchScreen.storyboard */,
 				EB36414C2417E89600F81D6A /* Info.plist */,
@@ -154,6 +153,7 @@
 		EB4B5E302417F64300EB7EB9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				EB3641442417E89300F81D6A /* Main.storyboard */,
 				EB3641402417E89300F81D6A /* AnnouncementsView.swift */,
 				EB3641422417E89300F81D6A /* ActivitiesView.swift */,
 				EB4B5E2E2417ECD600EB7EB9 /* SettingsView.swift */,
