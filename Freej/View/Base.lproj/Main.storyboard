@@ -146,7 +146,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Sign Up"/>
                                 <connections>
-                                    <action selector="signUpB:" destination="JYp-xv-ePl" eventType="touchUpInside" id="CUZ-7G-6xC"/>
+                                    <action selector="signUpBtn:" destination="JYp-xv-ePl" eventType="touchUpInside" id="p6F-rH-bOV"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="KFUPM ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6tc-aC-apr">

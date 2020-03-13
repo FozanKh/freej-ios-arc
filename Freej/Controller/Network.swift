@@ -18,14 +18,26 @@ class Network {
         return host?.isReachable ?? false
     }
     
+    
+    
+    
+    
+    
     static func signUpUser(_ kfupmID: String, _ firstName: String, _ lastName: String, _ bno: String) -> Bool {
-//        Alamofire.request("https://crural-spare.000webhostapp.com/WelcomeScreenRequestBuildings.php", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
-//                if(response.result.isSuccess) {
-//                    print(JSON(response.result.value!))
-//            }
-//        }
+        let params =   ["UserID" : "3",
+                        "BNo" : bno,
+                        "FName" : firstName,
+                        "LName" : lastName,
+                        "KFUPMID" : kfupmID,
+                        "Gender" : "M",
+                        "Status" : "Valid"]
+        let url = "http://crural-spare.000webhostapp.com/PostStudent.php"
+        Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: ["Content-Type":"application/x-www-form-urlencoded"])
         return true
     }
+    
+    
+    
+    
 }
-
 
