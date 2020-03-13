@@ -12,11 +12,14 @@ import Alamofire
 
 
 class Network {
-    let manager = NetworkReachabilityManager(host: "https://crural-spare.000webhostapp.com/")
+    let host = NetworkReachabilityManager(host: "https://crural-spare.000webhostapp.com/")
     
     func hasInternet() -> Bool {
-        return manager?.isReachable ?? false
+        return host?.isReachable ?? false
     }
+    
+    
+    
 }
 
 //Alamofire.request("https://crural-spare.000webhostapp.com/WelcomeScreenRequestBuildings.php", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
