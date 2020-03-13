@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -28,6 +28,7 @@
 		EB6FC6C92418FE3E00CBA10B /* LogicalDiagram.pdf in Resources */ = {isa = PBXBuildFile; fileRef = EB6FC6C52418FE3E00CBA10B /* LogicalDiagram.pdf */; };
 		EB6FC6CA2418FE3E00CBA10B /* UseCaseDiagram.pdf in Resources */ = {isa = PBXBuildFile; fileRef = EB6FC6C62418FE3E00CBA10B /* UseCaseDiagram.pdf */; };
 		EB6FC6CB2418FE3E00CBA10B /* UserRequirements.docx in Resources */ = {isa = PBXBuildFile; fileRef = EB6FC6C72418FE3E00CBA10B /* UserRequirements.docx */; };
+		EB8A2C4E241B03D2005ED1A2 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8A2C4D241B03D2005ED1A2 /* Network.swift */; };
 		EB945A5C241ABC8E005D2BAD /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EB945A58241ABC4F005D2BAD /* SF-Pro-Display-Bold.otf */; };
 		EB945A5D241ABC93005D2BAD /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = EB945A59241ABC4F005D2BAD /* SF-Pro-Display-Regular.otf */; };
 		EBFC5A84241AF202000EB7D0 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFC5A83241AF202000EB7D0 /* WelcomeView.swift */; };
@@ -83,6 +84,7 @@
 		EB6FC6C52418FE3E00CBA10B /* LogicalDiagram.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = LogicalDiagram.pdf; sourceTree = "<group>"; };
 		EB6FC6C62418FE3E00CBA10B /* UseCaseDiagram.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = UseCaseDiagram.pdf; sourceTree = "<group>"; };
 		EB6FC6C72418FE3E00CBA10B /* UserRequirements.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = UserRequirements.docx; sourceTree = "<group>"; };
+		EB8A2C4D241B03D2005ED1A2 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		EB945A58241ABC4F005D2BAD /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = text; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
 		EB945A59241ABC4F005D2BAD /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = text; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
 		EBFC5A83241AF202000EB7D0 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
@@ -127,7 +129,6 @@
 				93695000B220FEADDD20C473 /* Pods-FreejTests.debug.xcconfig */,
 				778648B65607D18A168FAB30 /* Pods-FreejTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -224,6 +225,7 @@
 		EB4B5E322417F65300EB7EB9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				EB8A2C4D241B03D2005ED1A2 /* Network.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -498,6 +500,7 @@
 				EB3641412417E89300F81D6A /* AnnouncementsView.swift in Sources */,
 				EB36413D2417E89300F81D6A /* AppDelegate.swift in Sources */,
 				EB36413F2417E89300F81D6A /* SceneDelegate.swift in Sources */,
+				EB8A2C4E241B03D2005ED1A2 /* Network.swift in Sources */,
 				EBFC5A84241AF202000EB7D0 /* WelcomeView.swift in Sources */,
 				EB4B5E382417F74100EB7EB9 /* MaintenanceRequest.swift in Sources */,
 				EB6FC6C22418F96000CBA10B /* Activity.swift in Sources */,
