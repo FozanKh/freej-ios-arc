@@ -15,6 +15,12 @@ class SignUpView: UIViewController {
     @IBOutlet weak var bno: UITextField!
     
     @IBAction func signUpB(_ sender: Any) {
-        
+        let result = Network.signUpUser(kfupmID.text!,firstName.text!, lastName.text!, bno.text!)
+        if(result == true) {
+            print("Success")
+        }
+        else {
+            print("Failed to add student")
+        }
     }
 }
