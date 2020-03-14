@@ -19,21 +19,19 @@ class Network {
     }
     
     static func signUpUser(_ kfupmID: String, _ firstName: String, _ lastName: String, _ bno: String) -> Bool {
-        let params =   ["UserID" : "3",
-                        "BNo" : bno,
+        var signUpStatus: Bool = true
+        let params =   ["BNo" : bno,
                         "FName" : firstName,
                         "LName" : lastName,
                         "KFUPMID" : kfupmID,
                         "Gender" : "M",
-                        "Status" : "Valid"]
+                        "Status" : "Unactivated"]
         let url = "http://crural-spare.000webhostapp.com/PostStudent.php"
         
         Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
-            print(response.result.isSuccess)
+            signUpStatus = response.result.isSuccess
         }
-        
-        return true
+        return signUpStatus
     }
-
 }
 
