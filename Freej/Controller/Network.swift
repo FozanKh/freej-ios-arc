@@ -18,11 +18,6 @@ class Network {
         return host?.isReachable ?? false
     }
     
-    
-    
-    
-    
-    
     static func signUpUser(_ kfupmID: String, _ firstName: String, _ lastName: String, _ bno: String) -> Bool {
         let params =   ["UserID" : "3",
                         "BNo" : bno,
@@ -32,12 +27,13 @@ class Network {
                         "Gender" : "M",
                         "Status" : "Valid"]
         let url = "http://crural-spare.000webhostapp.com/PostStudent.php"
-        Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: ["Content-Type":"application/x-www-form-urlencoded"])
+        
+        Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
+            print(response.result.isSuccess)
+        }
+        
         return true
     }
-    
-    
-    
-    
+
 }
 
