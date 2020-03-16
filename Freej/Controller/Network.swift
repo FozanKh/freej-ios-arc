@@ -12,9 +12,10 @@ import Alamofire
 
 
 class Network {
+    static let host = NetworkReachabilityManager(host: "https://crural-spare.000webhostapp.com/")
+
     static let checkUserSignUpURL = "https://crural-spare.000webhostapp.com/CheckUserSignUpStatus.php"
     static let singUpURL = "http://crural-spare.000webhostapp.com/PostStudent.php"
-    static let host = NetworkReachabilityManager(host: "https://crural-spare.000webhostapp.com/")
     
     static func checkInternet() -> Bool {
         return host?.isReachable ?? false
