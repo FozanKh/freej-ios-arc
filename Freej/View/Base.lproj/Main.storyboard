@@ -102,18 +102,41 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ycV-is-Gt4">
                                 <rect key="frame" x="180" y="660" width="54" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Sign Up"/>
                                 <connections>
                                     <segue destination="JYp-xv-ePl" kind="show" id="JKd-Qd-ayy"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dpW-G3-s6V">
-                                <rect key="frame" x="186" y="696" width="42" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Freej" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GnM-go-gbE">
+                                <rect key="frame" x="142" y="174" width="130" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="7Yx-NN-xg2"/>
+                                    <constraint firstAttribute="height" constant="65" id="g0C-cJ-WQn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="56"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZQj-7n-CTA">
+                                <rect key="frame" x="79" y="519" width="256" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Log In"/>
-                            </button>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="KFUPM ID:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g7I-34-4OG">
+                                <rect key="frame" x="79" y="498" width="83" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="GnM-go-gbE" firstAttribute="centerX" secondItem="eWE-8x-ezR" secondAttribute="centerX" id="ALm-Lv-Hpa"/>
+                            <constraint firstItem="GnM-go-gbE" firstAttribute="top" secondItem="g86-x9-qlH" secondAttribute="top" constant="130" id="jvA-Sb-gCc"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="g86-x9-qlH"/>
                     </view>
                 </viewController>
