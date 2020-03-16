@@ -9,6 +9,8 @@
 import UIKit
 
 class WelcomeView: UIViewController {
+    @IBOutlet weak var enterFreejBtn: UIButton!
+    
     override func loadView() {
         super.loadView()
     }
