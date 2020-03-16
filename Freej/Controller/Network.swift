@@ -36,12 +36,12 @@ class Network {
         return signUpStatus
     }
     
-    static func isSignedUp(kfupmID: String, completion: (Bool) -> ()) {
+    static func isSignedUp(kfupmID: String, completion: @escaping (Bool) -> ()) {
         var result: Bool = false
         Alamofire.request(checkUserSignUpURL, method: .post, parameters: ["KFUPMID" : kfupmID], encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
             response.response?.statusCode ?? 404 == 404 ? (result = false) : (result = true)
+            print("isSignedUp \(kfupmID): \(result)")
+            completion(result)
         }
-        print("isSignedUp \(kfupmID): \(result)")
-        completion(result)
     }
 }

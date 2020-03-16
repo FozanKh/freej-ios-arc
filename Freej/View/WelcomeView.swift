@@ -7,17 +7,23 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 class WelcomeView: UIViewController {
-    
+    let progressManager = JGProgressHUD()
     @IBOutlet weak var kfupmIDTF: UITextField!
     
     @IBAction func enterFreejBtn(_ sender: Any) {
-        Network.isSignedUp(kfupmID: kfupmIDTF.text ?? "?") { (Bool) in
-            //get if already a user or not
-            //dismiss svprogresshud
-            //if user login
-            //if not sign up
+        progressManager.show(in: self.view)
+        Network.isSignedUp(kfupmID: kfupmIDTF.text ?? "?") { (isSignedUp) in
+            
+            self.progressManager.dismiss(animated: true)
+            if(isSignedUp) {
+                //Login Comes Here
+            }
+            else {
+                //Signup Comes Here
+            }
         }
         
     }
