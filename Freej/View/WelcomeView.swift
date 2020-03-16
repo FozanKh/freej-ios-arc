@@ -14,15 +14,15 @@ class WelcomeView: UIViewController {
     @IBOutlet weak var kfupmIDTF: UITextField!
     
     @IBAction func enterFreejBtn(_ sender: Any) {
-//        SVProgressHUD.show()
-        print(kfupmIDTF.text!)
+        SVProgressHUD.show()
         Network.isSignedUp(kfupmID: kfupmIDTF.text!) { (Bool) in
-            
+            SVProgressHUD.dismiss()
+            //get if already a user or not
+            //dismiss svprogresshud
+            //if user login
+            //if not sign up
         }
-        //get if already a user or not
-        //dismiss svprogresshud
-        //if user login
-        //if not sign up
+        
     }
     
     

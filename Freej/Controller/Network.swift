@@ -13,6 +13,7 @@ import Alamofire
 
 class Network {
     static let checkUserSignUpURL = "https://crural-spare.000webhostapp.com/CheckUserSignUpStatus.php"
+    static let singUpURL = "http://crural-spare.000webhostapp.com/PostStudent.php"
     static let host = NetworkReachabilityManager(host: "https://crural-spare.000webhostapp.com/")
     
     static func checkInternet() -> Bool {
@@ -27,9 +28,8 @@ class Network {
                         "KFUPMID" : kfupmID,
                         "Gender" : "M",
                         "Status" : "Unactivated"]
-        let url = "http://crural-spare.000webhostapp.com/PostStudent.php"
         
-        Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
+        Alamofire.request(singUpURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
             signUpStatus = response.result.isSuccess
         }
         return signUpStatus
@@ -40,6 +40,7 @@ class Network {
         Alamofire.request(checkUserSignUpURL, method: .post, parameters: ["KFUPMID" : kfupmID], encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
             response.response?.statusCode ?? 404 == 404 ? (result = false) : (result = true)
         }
+        print("isSignedUp \(kfupmID): \(result)")
         completion(result)
     }
 }
