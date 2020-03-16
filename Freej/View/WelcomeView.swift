@@ -7,9 +7,18 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class WelcomeView: UIViewController {
-    @IBOutlet weak var enterFreejBtn: UIButton!
+    
+    @IBAction func enterFreejBtn(_ sender: Any) {
+        SVProgressHUD.show()
+        //get if already a user or not
+        //dismiss svprogresshud
+        //if user login
+        //if not sign up
+    }
+    
     
     override func loadView() {
         super.loadView()

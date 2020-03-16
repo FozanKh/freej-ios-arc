@@ -7,6 +7,7 @@ target 'Freej' do
   # Pods for Freej
   pod 'SwiftyJSON'
   pod 'Alamofire'
+  pod 'SVProgressHUD'
   target 'FreejTests' do
     inherit! :search_paths
     # Pods for testing

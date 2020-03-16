@@ -130,6 +130,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="enterFreejBtn:" destination="w8f-yv-Qgc" eventType="touchUpInside" id="5Px-rE-pyp"/>
                                     <segue destination="JYp-xv-ePl" kind="show" id="JKd-Qd-ayy"/>
                                 </connections>
                             </button>
@@ -141,9 +142,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="g86-x9-qlH"/>
                     </view>
-                    <connections>
-                        <outlet property="enterFreejBtn" destination="ycV-is-Gt4" id="7Dl-7H-RPI"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1yy-ay-mKx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

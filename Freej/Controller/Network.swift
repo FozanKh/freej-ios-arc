@@ -33,5 +33,10 @@ class Network {
         }
         return signUpStatus
     }
+    
+    static func isSignedUp(kfupmID: String, completion: (Bool) -> ()) {
+        
+        
+    }
 }
 
