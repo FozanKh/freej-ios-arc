@@ -11,8 +11,14 @@ import SVProgressHUD
 
 class WelcomeView: UIViewController {
     
+    @IBOutlet weak var kfupmIDTF: UITextField!
+    
     @IBAction func enterFreejBtn(_ sender: Any) {
-        SVProgressHUD.show()
+//        SVProgressHUD.show()
+        print(kfupmIDTF.text!)
+        Network.isSignedUp(kfupmID: kfupmIDTF.text!) { (Bool) in
+            
+        }
         //get if already a user or not
         //dismiss svprogresshud
         //if user login

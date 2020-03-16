@@ -12,9 +12,10 @@ import Alamofire
 
 
 class Network {
-    let host = NetworkReachabilityManager(host: "https://crural-spare.000webhostapp.com/")
+    static let checkUserSignUpURL = "https://crural-spare.000webhostapp.com/CheckUserSignUpStatus.php"
+    static let host = NetworkReachabilityManager(host: "https://crural-spare.000webhostapp.com/")
     
-    func checkInternet() -> Bool {
+    static func checkInternet() -> Bool {
         return host?.isReachable ?? false
     }
     
@@ -35,8 +36,10 @@ class Network {
     }
     
     static func isSignedUp(kfupmID: String, completion: (Bool) -> ()) {
-        
-        
+        var result: Bool = false
+        Alamofire.request(checkUserSignUpURL, method: .post, parameters: ["KFUPMID" : kfupmID], encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
+            response.response?.statusCode ?? 404 == 404 ? (result = false) : (result = true)
+        }
+        completion(result)
     }
 }
-
