@@ -11,7 +11,7 @@ import SwiftyJSON
 import Alamofire
 
 
-class Network {
+class NetworkManager {
     static let host = NetworkReachabilityManager(host: "https://crural-spare.000webhostapp.com/")
 
     static let checkUserSignUpURL = "https://crural-spare.000webhostapp.com/CheckUserSignUpStatus.php"

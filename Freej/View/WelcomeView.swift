@@ -24,7 +24,7 @@ class WelcomeView: UIViewController {
     
     @IBAction func enterFreejBtn(_ sender: Any) {
         progressManager.show(in: self.view)
-        Network.isSignedUp(kfupmID: kfupmIDTF.text!) { (isSignedUp) in
+        NetworkManager.isSignedUp(kfupmID: kfupmIDTF.text!) { (isSignedUp) in
             
             self.progressManager.dismiss(animated: true)
             if(isSignedUp) {
