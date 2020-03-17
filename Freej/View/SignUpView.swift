@@ -17,7 +17,7 @@ class SignUpView: UIViewController {
     
     @IBAction func signUpBtn(_ sender: Any) {
         Network.signUpUser(kfupmID!, firstName.text!, lastName.text!, bno.text!) { (response) in
-            //
+            //This gets executed after their signup
         }
     }
 }
