@@ -30,13 +30,15 @@ class Network {
                         "Status" : "Unactivated"]
         
         Alamofire.request(singUpURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
+            
             completion(response.result.isSuccess)
         }
     }
     
     static func isSignedUp(kfupmID: String, completion: @escaping (Bool) -> ()) {
         Alamofire.request(checkUserSignUpURL, method: .post, parameters: ["KFUPMID" : kfupmID], encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
-            response.response?.statusCode ?? 404 == 404 ? completion(false) : completion(true)
+            
+            completion(response.result.isSuccess)
         }
     }
 }

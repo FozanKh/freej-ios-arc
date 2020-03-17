@@ -9,12 +9,17 @@
 import UIKit
 
 class SignUpView: UIViewController {
-    @IBOutlet weak var kfupmID: UITextField!
+    
+    var kfupmID: String?
     @IBOutlet weak var firstName: UITextField!
     @IBOutlet weak var lastName: UITextField!
     @IBOutlet weak var bno: UITextField!
     
+    override func viewDidLoad() {
+        
+    }
+    
     @IBAction func signUpBtn(_ sender: Any) {
-        let _ = Network.signUpUser(kfupmID.text!,firstName.text!, lastName.text!, bno.text!)
+
     }
 }

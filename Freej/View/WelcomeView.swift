@@ -15,7 +15,7 @@ class WelcomeView: UIViewController {
     
     @IBAction func enterFreejBtn(_ sender: Any) {
         progressManager.show(in: self.view)
-        Network.isSignedUp(kfupmID: kfupmIDTF.text ?? "?") { (isSignedUp) in
+        Network.isSignedUp(kfupmID: kfupmIDTF.text!) { (isSignedUp) in
             
             self.progressManager.dismiss(animated: true)
             if(isSignedUp) {
@@ -28,6 +28,12 @@ class WelcomeView: UIViewController {
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.destination is SignUpView) {
+            let vc = segue.destination as? SignUpView
+            vc?.kfupmID = kfupmIDTF.text!
+        }
+    }
     
     override func loadView() {
         super.loadView()
