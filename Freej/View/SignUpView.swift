@@ -9,12 +9,15 @@
 import UIKit
 
 class SignUpView: UIViewController {
-    @IBOutlet weak var kfupmID: UITextField!
+    
+    var kfupmID: String?
     @IBOutlet weak var firstName: UITextField!
     @IBOutlet weak var lastName: UITextField!
     @IBOutlet weak var bno: UITextField!
     
     @IBAction func signUpBtn(_ sender: Any) {
-        let _ = Network.signUpUser(kfupmID.text!,firstName.text!, lastName.text!, bno.text!)
+        Network.signUpUser(kfupmID!, firstName.text!, lastName.text!, bno.text!) { (response) in
+            //This gets executed after their signup
+        }
     }
 }

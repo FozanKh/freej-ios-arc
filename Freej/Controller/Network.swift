@@ -12,26 +12,33 @@ import Alamofire
 
 
 class Network {
-    let host = NetworkReachabilityManager(host: "https://crural-spare.000webhostapp.com/")
+    static let host = NetworkReachabilityManager(host: "https://crural-spare.000webhostapp.com/")
+
+    static let checkUserSignUpURL = "https://crural-spare.000webhostapp.com/CheckUserSignUpStatus.php"
+    static let singUpURL = "http://crural-spare.000webhostapp.com/PostStudent.php"
     
-    func checkInternet() -> Bool {
+    static func checkInternet() -> Bool {
         return host?.isReachable ?? false
     }
     
-    static func signUpUser(_ kfupmID: String, _ firstName: String, _ lastName: String, _ bno: String) -> Bool {
-        var signUpStatus: Bool = true
+    static func signUpUser(_ kfupmID: String, _ firstName: String, _ lastName: String, _ bno: String, completion: @escaping (Bool) -> ()) {
         let params =   ["BNo" : bno,
                         "FName" : firstName,
                         "LName" : lastName,
                         "KFUPMID" : kfupmID,
                         "Gender" : "M",
                         "Status" : "Unactivated"]
-        let url = "http://crural-spare.000webhostapp.com/PostStudent.php"
         
-        Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
-            signUpStatus = response.result.isSuccess
+        Alamofire.request(singUpURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
+            
+            completion(response.result.isSuccess)
         }
-        return signUpStatus
+    }
+    
+    static func isSignedUp(kfupmID: String, completion: @escaping (Bool) -> ()) {
+        Alamofire.request(checkUserSignUpURL, method: .post, parameters: ["KFUPMID" : kfupmID], encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
+            
+            completion(response.result.isSuccess)
+        }
     }
 }
-
