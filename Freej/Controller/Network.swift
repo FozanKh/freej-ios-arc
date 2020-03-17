@@ -21,8 +21,7 @@ class Network {
         return host?.isReachable ?? false
     }
     
-    static func signUpUser(_ kfupmID: String, _ firstName: String, _ lastName: String, _ bno: String) -> Bool {
-        var signUpStatus: Bool = true
+    static func signUpUser(_ kfupmID: String, _ firstName: String, _ lastName: String, _ bno: String, completion: @escaping (Bool) -> ()) {
         let params =   ["BNo" : bno,
                         "FName" : firstName,
                         "LName" : lastName,
@@ -31,17 +30,13 @@ class Network {
                         "Status" : "Unactivated"]
         
         Alamofire.request(singUpURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
-            signUpStatus = response.result.isSuccess
+            completion(response.result.isSuccess)
         }
-        return signUpStatus
     }
     
     static func isSignedUp(kfupmID: String, completion: @escaping (Bool) -> ()) {
-        var result: Bool = false
         Alamofire.request(checkUserSignUpURL, method: .post, parameters: ["KFUPMID" : kfupmID], encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
-            response.response?.statusCode ?? 404 == 404 ? (result = false) : (result = true)
-            print("isSignedUp \(kfupmID): \(result)")
-            completion(result)
+            response.response?.statusCode ?? 404 == 404 ? completion(false) : completion(true)
         }
     }
 }

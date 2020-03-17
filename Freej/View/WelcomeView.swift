@@ -22,7 +22,7 @@ class WelcomeView: UIViewController {
                 //Login Comes Here
             }
             else {
-                //Signup Comes Here
+                self.performSegue(withIdentifier: "signUpSegue", sender: self)
             }
         }
         
