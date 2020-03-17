@@ -11,7 +11,16 @@ import JGProgressHUD
 
 class WelcomeView: UIViewController {
     let progressManager = JGProgressHUD()
+    
     @IBOutlet weak var kfupmIDTF: UITextField!
+    
+    override func loadView() {
+        super.loadView()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
     
     @IBAction func enterFreejBtn(_ sender: Any) {
         progressManager.show(in: self.view)
@@ -33,13 +42,5 @@ class WelcomeView: UIViewController {
             let vc = segue.destination as? SignUpView
             vc?.kfupmID = kfupmIDTF.text!
         }
-    }
-    
-    override func loadView() {
-        super.loadView()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
     }
 }

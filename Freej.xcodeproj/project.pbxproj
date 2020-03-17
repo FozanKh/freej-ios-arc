@@ -205,10 +205,10 @@
 			isa = PBXGroup;
 			children = (
 				EB3641442417E89300F81D6A /* Main.storyboard */,
-				EBFC5A83241AF202000EB7D0 /* WelcomeView.swift */,
 				EB3641402417E89300F81D6A /* AnnouncementsView.swift */,
 				EB3641422417E89300F81D6A /* ActivitiesView.swift */,
 				EB4B5E2E2417ECD600EB7EB9 /* SettingsView.swift */,
+				EBFC5A83241AF202000EB7D0 /* WelcomeView.swift */,
 				EB5473B3241BC84F0086A4F5 /* SignUpView.swift */,
 			);
 			path = View;

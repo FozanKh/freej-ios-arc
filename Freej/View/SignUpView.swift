@@ -15,11 +15,9 @@ class SignUpView: UIViewController {
     @IBOutlet weak var lastName: UITextField!
     @IBOutlet weak var bno: UITextField!
     
-    override func viewDidLoad() {
-        
-    }
-    
     @IBAction func signUpBtn(_ sender: Any) {
-
+        Network.signUpUser(kfupmID!, firstName.text!, lastName.text!, bno.text!) { (response) in
+            //
+        }
     }
 }
