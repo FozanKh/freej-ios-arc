@@ -221,6 +221,7 @@
 				EB4B5E392417F75D00EB7EB9 /* Advertisement.swift */,
 				EB4B5E3B2417F76F00EB7EB9 /* Announcement.swift */,
 				EB6FC6C12418F96000CBA10B /* Activity.swift */,
+				EB8A2C4D241B03D2005ED1A2 /* NetworkManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -228,7 +229,6 @@
 		EB4B5E322417F65300EB7EB9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				EB8A2C4D241B03D2005ED1A2 /* NetworkManager.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

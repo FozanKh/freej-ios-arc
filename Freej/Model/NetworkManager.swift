@@ -9,16 +9,29 @@
 import Foundation
 import SwiftyJSON
 import Alamofire
+import Network
 
+protocol NetworkManagerProtocol {
+    func reachabilityStatusDidChange(currentStatus: Bool)
+}
 
 class NetworkManager {
-    static let host = NetworkReachabilityManager(host: "https://crural-spare.000webhostapp.com/")
-
     static let checkUserSignUpURL = "https://crural-spare.000webhostapp.com/CheckUserSignUpStatus.php"
     static let singUpURL = "http://crural-spare.000webhostapp.com/PostStudent.php"
     
-    static func checkInternet() -> Bool {
-        return host?.isReachable ?? false
+    static var networkDelegate: NetworkManagerProtocol?
+    
+    static func setupFirstRun() {
+        let monitor = NWPathMonitor()
+        monitor.pathUpdateHandler = { path in
+            if path.status == .satisfied {
+                self.networkDelegate?.reachabilityStatusDidChange(currentStatus: true)
+            } else {
+                self.networkDelegate?.reachabilityStatusDidChange(currentStatus: true)
+            }
+        }
+        let queue = DispatchQueue(label: "Monitor")
+        monitor.start(queue: queue)
     }
     
     static func signUpUser(_ kfupmID: String, _ firstName: String, _ lastName: String, _ bno: String, completion: @escaping (Bool) -> ()) {
