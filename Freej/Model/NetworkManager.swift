@@ -14,9 +14,16 @@ import Network
 class NetworkManager {
     static let checkUserSignUpURL = "https://crural-spare.000webhostapp.com/CheckUserSignUpStatus.php"
     static let singUpURL = "http://crural-spare.000webhostapp.com/PostStudent.php"
-        
-    static func setupFirstRun() {
-
+    
+    static var monitor: NetworkReachabilityManager?
+    static let name = Notification.Name("didChangeInternetStatus")
+    
+    static func setUpInternetStatusNotification() {
+        monitor = NetworkReachabilityManager()
+        monitor?.startListening()
+        monitor?.listener = { status in
+            NotificationCenter.default.post(name: Notification.Name("didChangeInternetStatus"), object: nil, userInfo: ["Status" : "\(status)"])
+        }
     }
     
     static func signUpUser(_ kfupmID: String, _ firstName: String, _ lastName: String, _ bno: String, completion: @escaping (Bool) -> ()) {
