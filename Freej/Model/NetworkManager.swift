@@ -11,27 +11,12 @@ import SwiftyJSON
 import Alamofire
 import Network
 
-protocol NetworkManagerProtocol {
-    func reachabilityStatusDidChange(currentStatus: Bool)
-}
-
 class NetworkManager {
     static let checkUserSignUpURL = "https://crural-spare.000webhostapp.com/CheckUserSignUpStatus.php"
     static let singUpURL = "http://crural-spare.000webhostapp.com/PostStudent.php"
-    
-    static var networkDelegate: NetworkManagerProtocol?
-    
+        
     static func setupFirstRun() {
-        let monitor = NWPathMonitor()
-        monitor.pathUpdateHandler = { path in
-            if path.status == .satisfied {
-                self.networkDelegate?.reachabilityStatusDidChange(currentStatus: true)
-            } else {
-                self.networkDelegate?.reachabilityStatusDidChange(currentStatus: true)
-            }
-        }
-        let queue = DispatchQueue(label: "Monitor")
-        monitor.start(queue: queue)
+
     }
     
     static func signUpUser(_ kfupmID: String, _ firstName: String, _ lastName: String, _ bno: String, completion: @escaping (Bool) -> ()) {
