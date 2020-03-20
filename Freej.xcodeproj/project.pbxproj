@@ -12,7 +12,6 @@
 		E3CACB3BE0C7DB36F70B7DFD /* Pods_Freej_FreejUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2A66BFDCB59CE87E809D6D0 /* Pods_Freej_FreejUITests.framework */; };
 		EB0453702424F690009BAE59 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB04536F2424F690009BAE59 /* SignUpViewController.swift */; };
 		EB0453722424F6BB009BAE59 /* ValidateCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0453712424F6BB009BAE59 /* ValidateCodeViewController.swift */; };
-		EB0453742424FFEC009BAE59 /* EnterFreejNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0453732424FFEC009BAE59 /* EnterFreejNavController.swift */; };
 		EB36413D2417E89300F81D6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB36413C2417E89300F81D6A /* AppDelegate.swift */; };
 		EB36413F2417E89300F81D6A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB36413E2417E89300F81D6A /* SceneDelegate.swift */; };
 		EB3641412417E89300F81D6A /* AnnouncementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3641402417E89300F81D6A /* AnnouncementsViewController.swift */; };
@@ -65,7 +64,6 @@
 		B97E63841FA88A67ADB9B49A /* Pods-Freej.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Freej.debug.xcconfig"; path = "Target Support Files/Pods-Freej/Pods-Freej.debug.xcconfig"; sourceTree = "<group>"; };
 		EB04536F2424F690009BAE59 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		EB0453712424F6BB009BAE59 /* ValidateCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateCodeViewController.swift; sourceTree = "<group>"; };
-		EB0453732424FFEC009BAE59 /* EnterFreejNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterFreejNavController.swift; sourceTree = "<group>"; };
 		EB3641392417E89300F81D6A /* Freej.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Freej.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB36413C2417E89300F81D6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB36413E2417E89300F81D6A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -234,7 +232,6 @@
 				EBFC5A83241AF202000EB7D0 /* WelcomeViewController.swift */,
 				EB04536F2424F690009BAE59 /* SignUpViewController.swift */,
 				EB0453712424F6BB009BAE59 /* ValidateCodeViewController.swift */,
-				EB0453732424FFEC009BAE59 /* EnterFreejNavController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -505,7 +502,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB4B5E2F2417ECD600EB7EB9 /* SettingsViewController.swift in Sources */,
-				EB0453742424FFEC009BAE59 /* EnterFreejNavController.swift in Sources */,
 				EB3641432417E89300F81D6A /* ActivitiesViewController.swift in Sources */,
 				EB3641412417E89300F81D6A /* AnnouncementsViewController.swift in Sources */,
 				EB36413D2417E89300F81D6A /* AppDelegate.swift in Sources */,
