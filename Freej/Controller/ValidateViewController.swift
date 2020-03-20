@@ -16,6 +16,10 @@ class ValidateViewController: UIViewController {
     @IBOutlet weak var kfupmIDLabel: UILabel!
     var kfupmID: String!
     
+    var loginDelegate: LoginDelegate?
+    
+    var loginStatus = true
+    
     override func loadView() {
         super.loadView()
         kfupmIDLabel.text = kfupmID

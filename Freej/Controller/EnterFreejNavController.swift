@@ -17,6 +17,10 @@ class EnterFreejNavController: UINavigationController {
         isSignedUp ? showValidationScreen() : showSignUpScreen()
     }
     
+    func dismiss(status: Bool) {
+        
+    }
+    
     func showValidationScreen() {
         let vc = storyboard?.instantiateViewController(withIdentifier: "ValidateViewController") as! ValidateViewController
         vc.kfupmID = self.kfupmID
