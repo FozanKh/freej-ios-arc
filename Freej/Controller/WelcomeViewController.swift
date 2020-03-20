@@ -24,12 +24,12 @@ class WelcomeViewController: UIViewController {
         switch notification.userInfo?["Status"] as? Bool {
         case true:
             noInternetLabel.alpha = 0
-            enterFreejBtn.isEnabled = false
+            enterFreejBtn.isEnabled = true
             enterFreejBtn.backgroundColor = .green
             break
         default:
             noInternetLabel.alpha = 1
-            enterFreejBtn.isEnabled = true
+            enterFreejBtn.isEnabled = false
             enterFreejBtn.backgroundColor = .darkGray
             break
         }
@@ -48,16 +48,13 @@ class WelcomeViewController: UIViewController {
                 //Login Comes Here
             }
             else {
-                self.performSegue(withIdentifier: "signUpSegue", sender: self)
+                
             }
         }
         
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.destination is SignUpView) {
-            let vc = segue.destination as? SignUpView
-            vc?.kfupmID = kfupmIDTF.text!
-        }
+
     }
 }
