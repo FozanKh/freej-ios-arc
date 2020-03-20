@@ -10,7 +10,7 @@
         <!--AnouncementsView-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController title="AnouncementsView" id="9pv-A4-QxB" userLabel="AnouncementsView" customClass="AnnouncementsView" customModule="Freej" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="AnouncementsView" id="9pv-A4-QxB" userLabel="AnouncementsView" customClass="AnnouncementsViewController" customModule="Freej" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -38,7 +38,7 @@
         <!--ActivitiesView-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController title="ActivitiesView" id="8rJ-Kc-sve" userLabel="ActivitiesView" customClass="ActivitiesView" customModule="Freej" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="ActivitiesView" id="8rJ-Kc-sve" userLabel="ActivitiesView" customClass="ActivitiesViewController" customModule="Freej" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -66,7 +66,7 @@
         <!--SettingsView-->
         <scene sceneID="HTn-az-LCe">
             <objects>
-                <viewController title="SettingsView" id="6v6-HH-jOa" userLabel="SettingsView" customClass="SettingsView" customModule="Freej" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="SettingsView" id="6v6-HH-jOa" userLabel="SettingsView" customClass="SettingsViewController" customModule="Freej" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ie4-ed-8WW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -91,10 +91,10 @@
             </objects>
             <point key="canvasLocation" x="794" y="801"/>
         </scene>
-        <!--Welcome View-->
+        <!--Welcome View Controller-->
         <scene sceneID="2bP-si-6Af">
             <objects>
-                <viewController id="w8f-yv-Qgc" customClass="WelcomeView" customModule="Freej" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="w8f-yv-Qgc" customClass="WelcomeViewController" customModule="Freej" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eWE-8x-ezR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -158,10 +158,10 @@
             </objects>
             <point key="canvasLocation" x="-2317" y="0.0"/>
         </scene>
-        <!--Sign Up View-->
+        <!--Sign Up View Controller-->
         <scene sceneID="cyQ-Vi-T4z">
             <objects>
-                <viewController id="JYp-xv-ePl" customClass="SignUpView" customModule="Freej" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="JYp-xv-ePl" customClass="SignUpViewController" customModule="Freej" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mDb-A3-x5d">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

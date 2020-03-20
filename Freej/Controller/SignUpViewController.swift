@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SignUpView: UIViewController {
+class SignUpViewController: UIViewController {
     
     var kfupmID: String?
     @IBOutlet weak var firstName: UITextField!

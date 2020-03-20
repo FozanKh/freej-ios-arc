@@ -9,7 +9,7 @@
 import UIKit
 import JGProgressHUD
 
-class WelcomeView: UIViewController {
+class WelcomeViewController: UIViewController {
     let progressManager = JGProgressHUD()
     @IBOutlet weak var noInternetLabel: UILabel!
     @IBOutlet weak var kfupmIDTF: UITextField!
