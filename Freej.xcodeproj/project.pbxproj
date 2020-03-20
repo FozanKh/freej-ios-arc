@@ -10,6 +10,8 @@
 		2A64875FA3DB40BED70B60DE /* Pods_Freej.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57BEDCB9C7BF77C08BADB881 /* Pods_Freej.framework */; };
 		86EEB1FBE9E1D14FAFE944AF /* Pods_FreejTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90D42A89E1EEA7CE780BBDED /* Pods_FreejTests.framework */; };
 		E3CACB3BE0C7DB36F70B7DFD /* Pods_Freej_FreejUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2A66BFDCB59CE87E809D6D0 /* Pods_Freej_FreejUITests.framework */; };
+		EB0453702424F690009BAE59 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB04536F2424F690009BAE59 /* SignUpViewController.swift */; };
+		EB0453722424F6BB009BAE59 /* ValidateCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0453712424F6BB009BAE59 /* ValidateCodeViewController.swift */; };
 		EB36413D2417E89300F81D6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB36413C2417E89300F81D6A /* AppDelegate.swift */; };
 		EB36413F2417E89300F81D6A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB36413E2417E89300F81D6A /* SceneDelegate.swift */; };
 		EB3641412417E89300F81D6A /* AnnouncementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3641402417E89300F81D6A /* AnnouncementsViewController.swift */; };
@@ -60,6 +62,8 @@
 		93695000B220FEADDD20C473 /* Pods-FreejTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreejTests.debug.xcconfig"; path = "Target Support Files/Pods-FreejTests/Pods-FreejTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AC83FDCADD2D94240D34537A /* Pods-Freej-FreejUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Freej-FreejUITests.debug.xcconfig"; path = "Target Support Files/Pods-Freej-FreejUITests/Pods-Freej-FreejUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B97E63841FA88A67ADB9B49A /* Pods-Freej.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Freej.debug.xcconfig"; path = "Target Support Files/Pods-Freej/Pods-Freej.debug.xcconfig"; sourceTree = "<group>"; };
+		EB04536F2424F690009BAE59 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		EB0453712424F6BB009BAE59 /* ValidateCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateCodeViewController.swift; sourceTree = "<group>"; };
 		EB3641392417E89300F81D6A /* Freej.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Freej.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB36413C2417E89300F81D6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB36413E2417E89300F81D6A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -226,6 +230,8 @@
 				EB3641422417E89300F81D6A /* ActivitiesViewController.swift */,
 				EB4B5E2E2417ECD600EB7EB9 /* SettingsViewController.swift */,
 				EBFC5A83241AF202000EB7D0 /* WelcomeViewController.swift */,
+				EB04536F2424F690009BAE59 /* SignUpViewController.swift */,
+				EB0453712424F6BB009BAE59 /* ValidateCodeViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -500,7 +506,9 @@
 				EB3641412417E89300F81D6A /* AnnouncementsViewController.swift in Sources */,
 				EB36413D2417E89300F81D6A /* AppDelegate.swift in Sources */,
 				EB36413F2417E89300F81D6A /* SceneDelegate.swift in Sources */,
+				EB0453722424F6BB009BAE59 /* ValidateCodeViewController.swift in Sources */,
 				EB8A2C4E241B03D2005ED1A2 /* NetworkManager.swift in Sources */,
+				EB0453702424F690009BAE59 /* SignUpViewController.swift in Sources */,
 				EBFC5A84241AF202000EB7D0 /* WelcomeViewController.swift in Sources */,
 				EB4B5E382417F74100EB7EB9 /* MaintenanceRequest.swift in Sources */,
 				EB6FC6C22418F96000CBA10B /* Activity.swift in Sources */,
