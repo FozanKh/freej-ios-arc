@@ -17,15 +17,15 @@ class EnterFreejNavController: UINavigationController {
         isSignedUp ? showValidationScreen() : showSignUpScreen()
     }
     
-    func showSignUpScreen() {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "SignUpViewController") as! SignUpViewController
+    func showValidationScreen() {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "ValidateViewController") as! ValidateViewController
         vc.kfupmID = self.kfupmID
         pushViewController(vc, animated: false)
     }
     
-    func showValidationScreen() {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "ValidateViewController") as! ValidateViewController
-        vc.kfupmID = self.kfupmID
+    func showSignUpScreen() {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "SignUpViewController") as! SignUpViewController
+        vc.kfupmIDTF.text = self.kfupmID
         pushViewController(vc, animated: false)
     }
 }

@@ -9,11 +9,10 @@
 import UIKit
 
 class SignUpViewController: UIViewController {
-    var kfupmID: String!
     @IBOutlet weak var kfupmIDTF: UITextField!
     
     override func loadView() {
         super.loadView()
-        kfupmIDTF.text = kfupmID
+        
     }
 }
