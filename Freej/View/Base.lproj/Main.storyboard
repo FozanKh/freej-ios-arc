@@ -152,7 +152,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="GnM-go-gbE" firstAttribute="centerX" secondItem="eWE-8x-ezR" secondAttribute="centerX" id="ALm-Lv-Hpa"/>
                             <constraint firstItem="hbe-rE-X1R" firstAttribute="leading" secondItem="g86-x9-qlH" secondAttribute="leading" constant="20" id="GCV-Wp-M8f"/>
@@ -168,7 +168,7 @@
                         <outlet property="kfupmIDTF" destination="ZQj-7n-CTA" id="Zgi-FM-Frr"/>
                         <outlet property="noInternetLabel" destination="wQ8-oN-Pgd" id="JHD-tc-bfK"/>
                         <segue destination="y2b-Kb-gxC" kind="presentation" identifier="toEnterFreej" id="zNv-en-hV1"/>
-                        <segue destination="49e-Tb-3d3" kind="show" identifier="toMainScreen" id="uIH-qJ-jZH"/>
+                        <segue destination="49e-Tb-3d3" kind="show" identifier="toMainVC" id="uIH-qJ-jZH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1yy-ay-mKx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -238,7 +238,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="iku-o1-g1T" firstAttribute="trailing" secondItem="Zdf-uI-Ewf" secondAttribute="trailing" constant="20" id="Hf9-TC-uWI"/>
                             <constraint firstItem="Zdf-uI-Ewf" firstAttribute="leading" secondItem="iku-o1-g1T" secondAttribute="leading" constant="20" id="Khf-2h-CpF"/>
@@ -304,6 +304,9 @@
                                         <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Log in"/>
+                                        <connections>
+                                            <action selector="loginBtn:" destination="jc6-uM-H8G" eventType="touchUpInside" id="TXE-Kp-zZP"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -315,7 +318,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="3mB-rH-ArA" firstAttribute="leading" secondItem="KqI-rn-4cq" secondAttribute="leading" constant="20" id="BAN-rW-fje"/>
                             <constraint firstItem="KqI-rn-4cq" firstAttribute="bottom" secondItem="3mB-rH-ArA" secondAttribute="bottom" constant="300" id="f7U-2Q-qi4"/>
@@ -325,6 +328,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="WPq-dI-kZu"/>
                     <connections>
+                        <outlet property="codeTF" destination="30a-Vn-Vuo" id="O3S-Rf-jsn"/>
                         <outlet property="kfupmIDLabel" destination="Jy5-eO-C3c" id="n9M-al-VHH"/>
                     </connections>
                 </viewController>

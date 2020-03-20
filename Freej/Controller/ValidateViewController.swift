@@ -8,18 +8,18 @@
 
 import UIKit
 
-
-
 class ValidateViewController: UIViewController {
     @IBOutlet weak var kfupmIDLabel: UILabel!
     var kfupmID: String!
-    
-    var loginDelegate: LoginDelegate?
-    
     var loginStatus = true
     
     override func loadView() {
         super.loadView()
         kfupmIDLabel.text = kfupmID
+    }
+    
+    @IBAction func loginBtn(_ sender: Any) {
+//        let parentNavController = self.parent as! EnterFreejNavController
+//        parentNavController.dismiss(loginStatus: self.loginStatus)
     }
 }
