@@ -245,6 +245,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="lzc-f9-d4d"/>
                     <connections>
+                        <outlet property="kfupmIDTF" destination="G5Y-Ar-hQf" id="Pj4-Bv-ELa"/>
                         <segue destination="jc6-uM-H8G" kind="show" identifier="toValidateCodeFromSignUp" id="C8S-Mx-Ibt"/>
                     </connections>
                 </viewController>
@@ -300,6 +301,13 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$kfupmID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jy5-eO-C3c">
+                                <rect key="frame" x="149" y="283" width="76" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -310,6 +318,9 @@
                         <viewLayoutGuide key="safeArea" id="KqI-rn-4cq"/>
                     </view>
                     <navigationItem key="navigationItem" id="WPq-dI-kZu"/>
+                    <connections>
+                        <outlet property="kfupmIDLabel" destination="Jy5-eO-C3c" id="n9M-al-VHH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oKv-hm-TdN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

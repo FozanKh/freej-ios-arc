@@ -9,5 +9,11 @@
 import UIKit
 
 class ValidateViewController: UIViewController {
+    @IBOutlet weak var kfupmIDLabel: UILabel!
+    var kfupmID: String!
     
+    override func loadView() {
+        super.loadView()
+        kfupmIDLabel.text = kfupmID
+    }
 }

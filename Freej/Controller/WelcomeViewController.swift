@@ -45,6 +45,7 @@ class WelcomeViewController: UIViewController {
         NetworkManager.isSignedUp(kfupmID: kfupmIDTF.text!) { (signUpStatus) in
             self.isSignedUp = signUpStatus
             self.progressManager.dismiss(animated: true)
+            
             self.performSegue(withIdentifier: "toEnterFreej", sender: self)
         }
     }
@@ -53,6 +54,7 @@ class WelcomeViewController: UIViewController {
         if(segue.destination is EnterFreejNavController) {
             let destinationVC = segue.destination as! EnterFreejNavController
             destinationVC.isSignedUp = isSignedUp
+            destinationVC.kfupmID = kfupmIDTF.text!
         }
     }
 }
