@@ -16,14 +16,20 @@ class NetworkManager {
     static let singUpURL = "http://crural-spare.000webhostapp.com/PostStudent.php"
     
     static var monitor: NetworkReachabilityManager?
-    static let name = Notification.Name("didChangeInternetStatus")
+    static let internetStatusNName = Notification.Name("didChangeInternetStatus")
     
     static func setUpInternetStatusNotification() {
         monitor = NetworkReachabilityManager()
         monitor?.startListening()
         monitor?.listener = { status in
-            NotificationCenter.default.post(name: Notification.Name("didChangeInternetStatus"), object: nil, userInfo: ["Status" : "\(status)"])
+            NotificationCenter.default.post(name: Notification.Name("didChangeInternetStatus"), object: nil, userInfo: ["Status" : parseInternetStatus("\(status)")])
         }
+    }
+    
+    static func parseInternetStatus(_ status: String) -> Bool {
+        var boolStatus: Bool
+        "\(status)".contains("not") ? (boolStatus = false) : (boolStatus = true)
+        return boolStatus
     }
     
     static func signUpUser(_ kfupmID: String, _ firstName: String, _ lastName: String, _ bno: String, completion: @escaping (Bool) -> ()) {

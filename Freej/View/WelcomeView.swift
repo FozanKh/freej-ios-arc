@@ -11,16 +11,28 @@ import JGProgressHUD
 
 class WelcomeView: UIViewController {
     let progressManager = JGProgressHUD()
-    
+    @IBOutlet weak var noInternetLabel: UILabel!
     @IBOutlet weak var kfupmIDTF: UITextField!
+    @IBOutlet weak var enterFreejBtn: UIButton!
     
     override func loadView() {
         super.loadView()
-        NotificationCenter.default.addObserver(self, selector: #selector(didChangeInternetStatus(_:)), name: Notification.Name("didChangeInternetStatus"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onDidChangeInternetStatus(_:)), name: NetworkManager.internetStatusNName, object: nil)
     }
     
-    @objc func didChangeInternetStatus(_ notification: Notification) {
-        kfupmIDTF.text = notification.userInfo!["Status"] as! String
+    @objc func onDidChangeInternetStatus(_ notification: Notification) {
+        switch notification.userInfo?["Status"] as? Bool {
+        case true:
+            noInternetLabel.alpha = 0
+            enterFreejBtn.isEnabled = false
+            enterFreejBtn.backgroundColor = .green
+            break
+        default:
+            noInternetLabel.alpha = 1
+            enterFreejBtn.isEnabled = true
+            enterFreejBtn.backgroundColor = .darkGray
+            break
+        }
     }
     
     override func viewDidLoad() {
