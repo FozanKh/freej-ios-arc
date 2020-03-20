@@ -1,5 +1,5 @@
 //
-//  ValidateCodeViewController.swift
+//  ValidateViewController.swift
 //  Freej
 //
 //  Created by Abdulelah Hajjar on 20/03/2020.
@@ -8,6 +8,6 @@
 
 import UIKit
 
-class ValidateCodeViewController: UIViewController {
+class ValidateViewController: UIViewController {
     
 }

@@ -14,6 +14,7 @@ class WelcomeViewController: UIViewController {
     @IBOutlet weak var noInternetLabel: UILabel!
     @IBOutlet weak var kfupmIDTF: UITextField!
     @IBOutlet weak var enterFreejBtn: UIButton!
+    var isSignedUp: Bool?
     
     override func loadView() {
         super.loadView()
@@ -41,21 +42,17 @@ class WelcomeViewController: UIViewController {
     
     @IBAction func enterFreejBtn(_ sender: Any) {
         progressManager.show(in: self.view)
-        NetworkManager.isSignedUp(kfupmID: kfupmIDTF.text!) { (isSignedUp) in
-            
+        NetworkManager.isSignedUp(kfupmID: kfupmIDTF.text!) { (signUpStatus) in
+            self.isSignedUp = signUpStatus
             self.progressManager.dismiss(animated: true)
-            if(isSignedUp) {
-                //Login Comes Here
-            }
-            else {
-                
-            }
+            self.performSegue(withIdentifier: "toEnterFreej", sender: self)
         }
-        
-        performSegue(withIdentifier: "toEnterFreeNavController", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
+        if(segue.destination is EnterFreejNavController) {
+            let destinationVC = segue.destination as! EnterFreejNavController
+            destinationVC.isSignedUp = isSignedUp
+        }
     }
 }
