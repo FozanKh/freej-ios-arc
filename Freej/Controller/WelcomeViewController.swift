@@ -25,7 +25,7 @@ class WelcomeViewController: UIViewController {
         case true:
             noInternetLabel.alpha = 0
             enterFreejBtn.isEnabled = true
-            enterFreejBtn.backgroundColor = .green
+            enterFreejBtn.backgroundColor = .systemIndigo
             break
         default:
             noInternetLabel.alpha = 1
