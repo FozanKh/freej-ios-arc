@@ -133,6 +133,13 @@
                                     <action selector="enterFreejBtn:" destination="w8f-yv-Qgc" eventType="touchUpInside" id="5Px-rE-pyp"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No Internet, you cannot use Freej service" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wQ8-oN-Pgd">
+                                <rect key="frame" x="51" y="67" width="313" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -142,7 +149,9 @@
                         <viewLayoutGuide key="safeArea" id="g86-x9-qlH"/>
                     </view>
                     <connections>
+                        <outlet property="enterFreejBtn" destination="ycV-is-Gt4" id="yav-a4-Brs"/>
                         <outlet property="kfupmIDTF" destination="ZQj-7n-CTA" id="Zgi-FM-Frr"/>
+                        <outlet property="noInternetLabel" destination="wQ8-oN-Pgd" id="JHD-tc-bfK"/>
                         <segue destination="JYp-xv-ePl" kind="show" identifier="signUpSegue" id="sNT-YZ-wfr"/>
                     </connections>
                 </viewController>

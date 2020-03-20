@@ -9,16 +9,27 @@
 import Foundation
 import SwiftyJSON
 import Alamofire
+import Network
 
-
-class Network {
-    static let host = NetworkReachabilityManager(host: "https://crural-spare.000webhostapp.com/")
-
+class NetworkManager {
     static let checkUserSignUpURL = "https://crural-spare.000webhostapp.com/CheckUserSignUpStatus.php"
     static let singUpURL = "http://crural-spare.000webhostapp.com/PostStudent.php"
     
-    static func checkInternet() -> Bool {
-        return host?.isReachable ?? false
+    static var monitor: NetworkReachabilityManager?
+    static let internetStatusNName = Notification.Name("didChangeInternetStatus")
+    
+    static func setUpInternetStatusNotification() {
+        monitor = NetworkReachabilityManager()
+        monitor?.startListening()
+        monitor?.listener = { status in
+            NotificationCenter.default.post(name: Notification.Name("didChangeInternetStatus"), object: nil, userInfo: ["Status" : parseInternetStatus("\(status)")])
+        }
+    }
+    
+    static func parseInternetStatus(_ status: String) -> Bool {
+        var boolStatus: Bool
+        "\(status)".contains("not") ? (boolStatus = false) : (boolStatus = true)
+        return boolStatus
     }
     
     static func signUpUser(_ kfupmID: String, _ firstName: String, _ lastName: String, _ bno: String, completion: @escaping (Bool) -> ()) {
