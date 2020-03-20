@@ -25,7 +25,7 @@ class EnterFreejNavController: UINavigationController {
     
     func showSignUpScreen() {
         let vc = storyboard?.instantiateViewController(withIdentifier: "SignUpViewController") as! SignUpViewController
-        vc.kfupmIDTF.text = self.kfupmID
+        vc.kfupmID = self.kfupmID
         pushViewController(vc, animated: false)
     }
 }

@@ -217,6 +217,9 @@
                                         <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Sign Up"/>
+                                        <connections>
+                                            <action selector="signUpBtn:" destination="qwO-c7-bNi" eventType="touchUpInside" id="gEo-xX-cgf"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -245,7 +248,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="lzc-f9-d4d"/>
                     <connections>
-                        <outlet property="kfupmIDTF" destination="G5Y-Ar-hQf" id="Pj4-Bv-ELa"/>
+                        <outlet property="buildingNumTF" destination="eRm-Cy-hLu" id="goR-lV-Bh2"/>
+                        <outlet property="firstNameTF" destination="zxA-W7-kXE" id="CYj-N5-4gf"/>
+                        <outlet property="kfupmIDTF" destination="G5Y-Ar-hQf" id="vSE-rJ-kAG"/>
+                        <outlet property="lastNameTF" destination="v2V-po-SJK" id="zA4-so-9qw"/>
                         <segue destination="jc6-uM-H8G" kind="show" identifier="toValidateCodeFromSignUp" id="C8S-Mx-Ibt"/>
                     </connections>
                 </viewController>
