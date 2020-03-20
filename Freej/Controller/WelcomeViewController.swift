@@ -14,6 +14,7 @@ class WelcomeViewController: UIViewController {
     @IBOutlet weak var noInternetLabel: UILabel!
     @IBOutlet weak var kfupmIDTF: UITextField!
     @IBOutlet weak var enterFreejBtn: UIButton!
+    var isSignedUp: Bool?
     
     override func loadView() {
         super.loadView()
@@ -24,12 +25,12 @@ class WelcomeViewController: UIViewController {
         switch notification.userInfo?["Status"] as? Bool {
         case true:
             noInternetLabel.alpha = 0
-            enterFreejBtn.isEnabled = false
-            enterFreejBtn.backgroundColor = .green
+            enterFreejBtn.isEnabled = true
+            enterFreejBtn.backgroundColor = .systemIndigo
             break
         default:
             noInternetLabel.alpha = 1
-            enterFreejBtn.isEnabled = true
+            enterFreejBtn.isEnabled = false
             enterFreejBtn.backgroundColor = .darkGray
             break
         }
@@ -41,23 +42,19 @@ class WelcomeViewController: UIViewController {
     
     @IBAction func enterFreejBtn(_ sender: Any) {
         progressManager.show(in: self.view)
-        NetworkManager.isSignedUp(kfupmID: kfupmIDTF.text!) { (isSignedUp) in
-            
+        NetworkManager.isSignedUp(kfupmID: kfupmIDTF.text!) { (signUpStatus) in
+            self.isSignedUp = signUpStatus
             self.progressManager.dismiss(animated: true)
-            if(isSignedUp) {
-                //Login Comes Here
-            }
-            else {
-                self.performSegue(withIdentifier: "signUpSegue", sender: self)
-            }
+            
+            self.performSegue(withIdentifier: "toEnterFreej", sender: self)
         }
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.destination is SignUpView) {
-            let vc = segue.destination as? SignUpView
-            vc?.kfupmID = kfupmIDTF.text!
+        if(segue.destination is EnterFreejNavController) {
+            let destinationVC = segue.destination as! EnterFreejNavController
+            destinationVC.isSignedUp = isSignedUp
+            destinationVC.kfupmID = kfupmIDTF.text!
         }
     }
 }
