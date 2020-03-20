@@ -26,12 +26,6 @@ class NetworkManager {
         }
     }
     
-    static func parseInternetStatus(_ status: String) -> Bool {
-        var boolStatus: Bool
-        "\(status)".contains("not") ? (boolStatus = false) : (boolStatus = true)
-        return boolStatus
-    }
-    
     static func signUpUser(_ kfupmID: String, _ firstName: String, _ lastName: String, _ bno: String, completion: @escaping (Bool) -> ()) {
         let params =   ["BNo" : bno,
                         "FName" : firstName,
@@ -51,5 +45,11 @@ class NetworkManager {
             
             completion(response.result.isSuccess)
         }
+    }
+    
+    static func parseInternetStatus(_ status: String) -> Bool {
+        var boolStatus: Bool
+        "\(status)".contains("not") ? (boolStatus = false) : (boolStatus = true)
+        return boolStatus
     }
 }
