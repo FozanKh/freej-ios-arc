@@ -52,6 +52,7 @@ class WelcomeViewController: UIViewController {
             }
         }
         
+        performSegue(withIdentifier: "toEnterFreeNavController", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

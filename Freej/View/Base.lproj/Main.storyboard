@@ -12,11 +12,11 @@
             <objects>
                 <viewController title="AnouncementsView" id="9pv-A4-QxB" userLabel="AnouncementsView" customClass="AnnouncementsViewController" customModule="Freej" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الإشعارات" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kat-hS-cBv">
-                                <rect key="frame" x="224" y="100" width="135" height="40"/>
+                                <rect key="frame" x="224" y="56" width="135" height="40"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="33"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -33,18 +33,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-804" y="801"/>
+            <point key="canvasLocation" x="-1052" y="1094"/>
         </scene>
         <!--ActivitiesView-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
                 <viewController title="ActivitiesView" id="8rJ-Kc-sve" userLabel="ActivitiesView" customClass="ActivitiesViewController" customModule="Freej" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الأنشطة" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oxl-hT-8Zf">
-                                <rect key="frame" x="252.66666666666666" y="100" width="106.33333333333334" height="40"/>
+                                <rect key="frame" x="252.66666666666666" y="56" width="106.33333333333334" height="40"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="33"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -61,18 +61,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1" y="801"/>
+            <point key="canvasLocation" x="-247" y="1094"/>
         </scene>
         <!--SettingsView-->
         <scene sceneID="HTn-az-LCe">
             <objects>
                 <viewController title="SettingsView" id="6v6-HH-jOa" userLabel="SettingsView" customClass="SettingsViewController" customModule="Freej" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ie4-ed-8WW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الإعدادات" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DVa-hU-Fwt">
-                                <rect key="frame" x="226.66666666666663" y="100" width="132.33333333333337" height="39.666666666666657"/>
+                                <rect key="frame" x="226.66666666666663" y="56" width="132.33333333333337" height="39.666666666666657"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="33"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -89,7 +89,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VEq-tk-dD4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="794" y="801"/>
+            <point key="canvasLocation" x="545" y="1094"/>
         </scene>
         <!--Welcome View Controller-->
         <scene sceneID="2bP-si-6Af">
@@ -109,13 +109,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No Internet, you cannot use Freej service" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wQ8-oN-Pgd">
-                                <rect key="frame" x="31" y="70" width="313" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="hbe-rE-X1R">
                                 <rect key="frame" x="20" y="548" width="335" height="70"/>
                                 <subviews>
@@ -132,11 +125,17 @@
                                         </state>
                                         <connections>
                                             <action selector="enterFreejBtn:" destination="w8f-yv-Qgc" eventType="touchUpInside" id="5Px-rE-pyp"/>
-                                            <segue destination="y2b-Kb-gxC" kind="show" id="jH7-jv-7VV"/>
                                         </connections>
                                     </button>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No Internet, you cannot use Freej service" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wQ8-oN-Pgd">
+                                <rect key="frame" x="31" y="75" width="313" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -152,11 +151,13 @@
                         <outlet property="enterFreejBtn" destination="ycV-is-Gt4" id="yav-a4-Brs"/>
                         <outlet property="kfupmIDTF" destination="ZQj-7n-CTA" id="Zgi-FM-Frr"/>
                         <outlet property="noInternetLabel" destination="wQ8-oN-Pgd" id="JHD-tc-bfK"/>
+                        <segue destination="y2b-Kb-gxC" kind="show" identifier="toSignUp" id="Qua-gu-CWc"/>
+                        <segue destination="jc6-uM-H8G" kind="show" identifier="toValidateCodeFromWelcome" id="CKB-nw-yZK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1yy-ay-mKx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2738" y="4"/>
+            <point key="canvasLocation" x="-2719" y="0.0"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="yck-Vf-hvu">
@@ -228,12 +229,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="lzc-f9-d4d"/>
                     <connections>
-                        <segue destination="jc6-uM-H8G" kind="show" id="C8S-Mx-Ibt"/>
+                        <segue destination="jc6-uM-H8G" kind="show" identifier="toValidateCodeFromSignUp" id="C8S-Mx-Ibt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KA8-FF-Mlz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1762.4000000000001" y="3.6945812807881775"/>
+            <point key="canvasLocation" x="-1930" y="-389"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="FgD-tY-1PK">
@@ -250,7 +251,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fGF-xF-15f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1350" y="-839"/>
+            <point key="canvasLocation" x="-1930" y="-1082"/>
         </scene>
         <!--Validate Code View Controller-->
         <scene sceneID="xgc-p3-GQX">
@@ -293,15 +294,19 @@
                         <viewLayoutGuide key="safeArea" id="KqI-rn-4cq"/>
                     </view>
                     <navigationItem key="navigationItem" id="WPq-dI-kZu"/>
+                    <connections>
+                        <segue destination="49e-Tb-3d3" kind="show" id="vpq-Nd-r9j"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oKv-hm-TdN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-911.20000000000005" y="3.6945812807881775"/>
+            <point key="canvasLocation" x="-1930" y="293"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
                 <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="9gT-Ww-vE3"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -315,11 +320,14 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="0.0"/>
+            <point key="canvasLocation" x="-247" y="293"/>
         </scene>
     </scenes>
     <resources>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="CKB-nw-yZK"/>
+    </inferredMetricsTieBreakers>
 </document>
