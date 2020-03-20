@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol LoginDelegate {
+    func didFinishLogInProcess(loginStatus: Bool)
+}
+
 class EnterFreejNavController: UINavigationController {
     var isSignedUp: Bool!
     var kfupmID: String!

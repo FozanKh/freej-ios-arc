@@ -8,9 +8,7 @@
 
 import UIKit
 
-protocol LoginDelegate {
-    func didFinishLogInProcess(loginStatus: Bool)
-}
+
 
 class ValidateViewController: UIViewController {
     @IBOutlet weak var kfupmIDLabel: UILabel!
