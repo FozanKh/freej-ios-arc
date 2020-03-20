@@ -10,6 +10,7 @@ import UIKit
 
 class EnterFreejNavController: UINavigationController {
     var isSignedUp: Bool!
+    var kfupmID: String!
     
     override func loadView() {
         super.loadView()
