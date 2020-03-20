@@ -1,5 +1,5 @@
 //
-//  WelcomeView.swift
+//  WelcomeViewController.swift
 //  Freej
 //
 //  Created by Abdulelah Hajjar on 13/03/2020.

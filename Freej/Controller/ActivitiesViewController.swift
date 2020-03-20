@@ -1,5 +1,5 @@
 //
-//  AnnouncementsView.swift
+//  ActivitiesViewController.swift
 //  Freej
 //
 //  Created by Abdulelah Hajjar on 10/03/2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AnnouncementsView: UIViewController {
+class ActivitiesView: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

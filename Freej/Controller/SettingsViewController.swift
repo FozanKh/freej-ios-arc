@@ -1,5 +1,5 @@
 //
-//  SettingsView.swift
+//  SettingsViewController.swift
 //  Freej
 //
 //  Created by Abdulelah Hajjar on 10/03/2020.

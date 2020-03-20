@@ -1,5 +1,5 @@
 //
-//  SignUpView.swift
+//  SignUpViewController.swift
 //  Freej
 //
 //  Created by Abdulelah Hajjar on 13/03/2020.
