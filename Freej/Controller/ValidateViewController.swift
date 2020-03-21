@@ -9,49 +9,35 @@
 import UIKit
 import MessageUI
 
-class ValidateViewController: UIViewController, MFMailComposeViewControllerDelegate {
+class ValidateViewController: UIViewController {
     @IBOutlet weak var kfupmIDLabel: UILabel!
     var kfupmID: String!
     var loginStatus = true
     var correctPIN: String?
+	var otp: String!
+	
     @IBOutlet weak var validationCodeTF: UITextField!
     
     override func loadView() {
         super.loadView()
         kfupmIDLabel.text = kfupmID
+		otp = generateOTP()
+		sendCodeToEmail(email: kfupmID + "@kfupm.edu.sa", otp: otp)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        showMailComposer()
-    }
-    
-    func showMailComposer() {
-        guard MFMailComposeViewController.canSendMail() else {
-            print("sfgdfdfdfdf")
-            return
-        }
-        
-        let composer = MFMailComposeViewController()
-        composer.mailComposeDelegate = self
-        composer.setToRecipients(["khd.khamis@gmail.com"])
-        composer.setSubject("Your code")
-        
-        correctPIN = "\(Int.random(in: 1000...9999))"
-        
-        composer.setMessageBody(correctPIN!, isHTML: false)
-        
-        present(composer, animated: true)
-    }
-    
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        controller.dismiss(animated: true)
-    }
+	func sendCodeToEmail(email: String, otp: String) {
+		
+	}
+	
+	func generateOTP() -> String {
+		return "\(Int.random(in: 1000...9999))"
+	}
     
     @IBAction func loginBtn(_ sender: Any) {
         if(validationCodeTF.text == correctPIN) {
             let parentNavController = self.parent as! EnterFreejNavController
             parentNavController.dismiss(loginStatus: self.loginStatus)
+
         }
     }
 }
