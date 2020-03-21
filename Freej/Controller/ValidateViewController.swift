@@ -16,14 +16,15 @@ class ValidateViewController: UIViewController {
 	var loginStatus: Bool!
 	var correctOtp: String!
 	var otpGenerationTime: Date!
-	var parentVC: EnterFreejNavController!
 	
     @IBOutlet weak var validationCodeTF: UITextField!
-    
-    override func loadView() {
-        super.loadView()
+	
+	
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
 		generateOTP()
-    }
+	}
 	
 	@IBAction func loginButton(_ sender: Any) {
 		let userEnteredOTP = validationCodeTF.text ?? "0"
@@ -43,14 +44,18 @@ class ValidateViewController: UIViewController {
 			(self.parent as! EnterFreejNavController).dismiss(loginStatus: false)
 		}))
 		self.present(alert, animated: true)
+		
+		
 	}
     
 	func generateOTP() {
 		correctOtp = "\(Int.random(in: 1000...9999))"
 		otpGenerationTime = Date()
-		let hasSent = NetworkManager.sendOTP(toEmail: kfupmID + "@kfupm.edu.sa", otp: correctOtp)
-		if(!hasSent) {
-			showAlert(message: "The application encountered an error while sending the OTP.")
+		
+		NetworkManager.sendOTP(toEmail: kfupmID + "@kfupm.edu.sa", otp: correctOtp) { (hasSent) in
+			if(!hasSent) {
+				self.showAlert(message: "The application encountered an error while sending the OTP.")
+			}
 		}
 	}
 }

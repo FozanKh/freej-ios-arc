@@ -27,14 +27,11 @@ class NetworkManager {
         }
     }
 	
-	static func sendOTP(toEmail: String, otp: String) -> Bool {
-		let params = ["to" : "abdulelahhajjar@gmail.com", "otp" : otp]
-		var otpSendingStatus = false
-		print(otp)
+	static func sendOTP(toEmail: String, otp: String, completion: @escaping (Bool) -> ()) {
+		let params = ["to" : toEmail, "otp" : otp]
 		Alamofire.request(sendOTPURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
-			otpSendingStatus = response.result.isSuccess
+			completion(response.result.isSuccess)
 		}
-		return otpSendingStatus
 	}
     
     static func signUpUser(_ kfupmID: String, _ firstName: String, _ lastName: String, _ bno: String, completion: @escaping (Bool) -> ()) {
@@ -46,7 +43,7 @@ class NetworkManager {
                         "Status" : "Unactivated"]
         
         Alamofire.request(signUpURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
-            
+            print(response)
             completion(response.result.isSuccess)
         }
     }

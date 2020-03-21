@@ -19,6 +19,7 @@ class SignUpViewController: UIViewController {
         super.loadView()
         kfupmIDTF.text = kfupmID
     }
+	
     @IBAction func signUpBtn(_ sender: Any) {
         NetworkManager.signUpUser(kfupmIDTF.text!, firstNameTF.text!, lastNameTF.text!, buildingNumTF.text!) { (status) in
             if(status == true) {
@@ -26,4 +27,10 @@ class SignUpViewController: UIViewController {
             }
         }
     }
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if(segue.destination is ValidateViewController) {
+			(segue.destination as! ValidateViewController).kfupmID = kfupmID
+		}
+	}
 }
