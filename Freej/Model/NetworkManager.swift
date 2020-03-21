@@ -30,7 +30,7 @@ class NetworkManager {
 	static func sendOTP(toEmail: String, otp: String, completion: @escaping (Bool) -> ()) {
 		let params = ["to" : toEmail, "otp" : otp]
 		Alamofire.request(sendOTPURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
-			completion(response.result.isSuccess)
+			response.response?.statusCode ?? 500 == 201 ? completion(true) : completion(false)
 		}
 	}
     
