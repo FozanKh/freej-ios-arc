@@ -152,7 +152,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="GnM-go-gbE" firstAttribute="centerX" secondItem="eWE-8x-ezR" secondAttribute="centerX" id="ALm-Lv-Hpa"/>
                             <constraint firstItem="hbe-rE-X1R" firstAttribute="leading" secondItem="g86-x9-qlH" secondAttribute="leading" constant="20" id="GCV-Wp-M8f"/>
@@ -168,7 +168,7 @@
                         <outlet property="kfupmIDTF" destination="ZQj-7n-CTA" id="Zgi-FM-Frr"/>
                         <outlet property="noInternetLabel" destination="wQ8-oN-Pgd" id="JHD-tc-bfK"/>
                         <segue destination="y2b-Kb-gxC" kind="presentation" identifier="toEnterFreej" id="zNv-en-hV1"/>
-                        <segue destination="49e-Tb-3d3" kind="show" identifier="toMainScreen" id="uIH-qJ-jZH"/>
+                        <segue destination="49e-Tb-3d3" kind="show" identifier="toMainVC" id="uIH-qJ-jZH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1yy-ay-mKx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -238,7 +238,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="iku-o1-g1T" firstAttribute="trailing" secondItem="Zdf-uI-Ewf" secondAttribute="trailing" constant="20" id="Hf9-TC-uWI"/>
                             <constraint firstItem="Zdf-uI-Ewf" firstAttribute="leading" secondItem="iku-o1-g1T" secondAttribute="leading" constant="20" id="Khf-2h-CpF"/>
@@ -304,18 +304,22 @@
                                         <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Log in"/>
+                                        <connections>
+                                            <action selector="loginButton:" destination="jc6-uM-H8G" eventType="touchUpInside" id="Uni-uj-e9H"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$kfupmID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jy5-eO-C3c">
-                                <rect key="frame" x="149" y="283" width="76" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xCM-qR-AWf">
+                                <rect key="frame" x="46" y="440" width="287" height="87"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <string key="text">You have 5 minutes to enter the OTP, message to developers: add "send again" button to send again but only enable it after 5 minutes</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="3mB-rH-ArA" firstAttribute="leading" secondItem="KqI-rn-4cq" secondAttribute="leading" constant="20" id="BAN-rW-fje"/>
                             <constraint firstItem="KqI-rn-4cq" firstAttribute="bottom" secondItem="3mB-rH-ArA" secondAttribute="bottom" constant="300" id="f7U-2Q-qi4"/>
@@ -325,12 +329,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="WPq-dI-kZu"/>
                     <connections>
-                        <outlet property="kfupmIDLabel" destination="Jy5-eO-C3c" id="n9M-al-VHH"/>
+                        <outlet property="validationCodeTF" destination="30a-Vn-Vuo" id="c0G-XH-HEl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oKv-hm-TdN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1945" y="695"/>
+            <point key="canvasLocation" x="-1946.4000000000001" y="694.58128078817742"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">

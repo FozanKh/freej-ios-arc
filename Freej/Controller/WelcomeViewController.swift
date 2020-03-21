@@ -9,7 +9,9 @@
 import UIKit
 import JGProgressHUD
 
-class WelcomeViewController: UIViewController {
+class WelcomeViewController: UIViewController, LoginDelegate {
+
+    
     let progressManager = JGProgressHUD()
     @IBOutlet weak var noInternetLabel: UILabel!
     @IBOutlet weak var kfupmIDTF: UITextField!
@@ -40,6 +42,13 @@ class WelcomeViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    func didFinishLogInProcess(loginStatus: Bool) {
+        if(loginStatus) {
+            (performSegue(withIdentifier: "toMainVC", sender: self))
+            print(loginStatus)
+        }
+    }
+    
     @IBAction func enterFreejBtn(_ sender: Any) {
         progressManager.show(in: self.view)
         NetworkManager.isSignedUp(kfupmID: kfupmIDTF.text!) { (signUpStatus) in
@@ -55,6 +64,7 @@ class WelcomeViewController: UIViewController {
             let destinationVC = segue.destination as! EnterFreejNavController
             destinationVC.isSignedUp = isSignedUp
             destinationVC.kfupmID = kfupmIDTF.text!
+            destinationVC.loginDelegate = self
         }
     }
 }

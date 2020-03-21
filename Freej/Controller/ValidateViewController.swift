@@ -7,13 +7,55 @@
 //
 
 import UIKit
+import MessageUI
+import Alamofire
 
 class ValidateViewController: UIViewController {
-    @IBOutlet weak var kfupmIDLabel: UILabel!
+	
     var kfupmID: String!
+	var loginStatus: Bool!
+	var correctOtp: String!
+	var otpGenerationTime: Date!
+	
+    @IBOutlet weak var validationCodeTF: UITextField!
+	
+	
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		generateOTP()
+	}
+	
+	@IBAction func loginButton(_ sender: Any) {
+		let userEnteredOTP = validationCodeTF.text ?? "0"
+		if(userEnteredOTP == correctOtp) {
+			(parent as! EnterFreejNavController).dismiss(loginStatus: true)
+		}
+		else {
+			showAlert(message: "The entered OTP did not match our records.")
+		}
+	}
+	
+	func showAlert(message: String) {
+		let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+		
+		alert.addAction(UIAlertAction(title: "Try Again", style: .default, handler: { (UIAlertAction) in self.generateOTP()}))
+		alert.addAction(UIAlertAction(title: "Cancel Login", style: .default, handler: { (UIAlertAction) in
+			(self.parent as! EnterFreejNavController).dismiss(loginStatus: false)
+		}))
+		self.present(alert, animated: true)
+		
+		
+	}
     
-    override func loadView() {
-        super.loadView()
-        kfupmIDLabel.text = kfupmID
-    }
+	func generateOTP() {
+		correctOtp = "\(Int.random(in: 1000...9999))"
+		otpGenerationTime = Date()
+		
+		NetworkManager.sendOTP(toEmail: kfupmID + "@kfupm.edu.sa", otp: correctOtp) { (hasSent) in
+			if(!hasSent) {
+				self.showAlert(message: "The application encountered an error while sending the OTP.")
+			}
+		}
+	}
 }

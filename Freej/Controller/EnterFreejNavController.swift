@@ -8,13 +8,24 @@
 
 import UIKit
 
+protocol LoginDelegate {
+    func didFinishLogInProcess(loginStatus: Bool)
+}
+
 class EnterFreejNavController: UINavigationController {
     var isSignedUp: Bool!
     var kfupmID: String!
     
+    var loginDelegate: LoginDelegate?
+    
     override func loadView() {
         super.loadView()
         isSignedUp ? showValidationScreen() : showSignUpScreen()
+    }
+    
+    func dismiss(loginStatus: Bool) {
+        dismiss(animated: true)
+        loginDelegate?.didFinishLogInProcess(loginStatus: loginStatus)
     }
     
     func showValidationScreen() {

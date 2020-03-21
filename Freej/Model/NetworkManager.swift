@@ -12,9 +12,10 @@ import Alamofire
 import Network
 
 class NetworkManager {
-    static let checkUserSignUpURL = "https://crural-spare.000webhostapp.com/CheckUserSignUpStatus.php"
-    static let singUpURL = "http://crural-spare.000webhostapp.com/PostStudent.php"
-    
+    static let checkUserSignUpURL = "http://freejapp.com/FreejAppRequest/CheckUserSignUpStatus.php"
+    static let signUpURL = "http://freejapp.com/FreejAppRequest/PostStudent.php"
+    static let sendOTPURL = "http://freejapp.com/FreejAppRequest/SendOTP.php"
+	
     static var monitor: NetworkReachabilityManager?
     static let internetStatusNName = Notification.Name("didChangeInternetStatus")
     
@@ -25,6 +26,13 @@ class NetworkManager {
             NotificationCenter.default.post(name: Notification.Name("didChangeInternetStatus"), object: nil, userInfo: ["Status" : parseInternetStatus("\(status)")])
         }
     }
+	
+	static func sendOTP(toEmail: String, otp: String, completion: @escaping (Bool) -> ()) {
+		let params = ["to" : toEmail, "otp" : otp]
+		Alamofire.request(sendOTPURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
+			response.response?.statusCode ?? 500 == 201 ? completion(true) : completion(false)
+		}
+	}
     
     static func signUpUser(_ kfupmID: String, _ firstName: String, _ lastName: String, _ bno: String, completion: @escaping (Bool) -> ()) {
         let params =   ["BNo" : bno,
@@ -34,8 +42,8 @@ class NetworkManager {
                         "Gender" : "M",
                         "Status" : "Unactivated"]
         
-        Alamofire.request(singUpURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
-            
+        Alamofire.request(signUpURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
+            print(response)
             completion(response.result.isSuccess)
         }
     }
