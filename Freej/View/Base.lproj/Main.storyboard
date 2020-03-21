@@ -328,8 +328,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="WPq-dI-kZu"/>
                     <connections>
-                        <outlet property="codeTF" destination="30a-Vn-Vuo" id="O3S-Rf-jsn"/>
                         <outlet property="kfupmIDLabel" destination="Jy5-eO-C3c" id="n9M-al-VHH"/>
+                        <outlet property="validationCodeTF" destination="30a-Vn-Vuo" id="c0G-XH-HEl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oKv-hm-TdN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
