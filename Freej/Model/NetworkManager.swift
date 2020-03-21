@@ -14,7 +14,7 @@ import Network
 class NetworkManager {
     static let checkUserSignUpURL = "https://crural-spare.000webhostapp.com/CheckUserSignUpStatus.php"
     static let signUpURL = "http://crural-spare.000webhostapp.com/PostStudent.php"
-    static let sendOTP = "freejapp.com/FreejAppRequest/SendOTP.php"
+    static let sendOTPURL = "freejapp.com/FreejAppRequest/SendOTP.php"
 	
     static var monitor: NetworkReachabilityManager?
     static let internetStatusNName = Notification.Name("didChangeInternetStatus")
@@ -26,6 +26,13 @@ class NetworkManager {
             NotificationCenter.default.post(name: Notification.Name("didChangeInternetStatus"), object: nil, userInfo: ["Status" : parseInternetStatus("\(status)")])
         }
     }
+	
+	static func sendOTP(toEmail: String, otp: String) {
+		let params = ["to" : "s201727090@kfupm.edu.sa", "otp" : otp]
+		Alamofire.request(sendOTPURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).responseJSON { (reponse) in
+			
+		}
+	}
     
     static func signUpUser(_ kfupmID: String, _ firstName: String, _ lastName: String, _ bno: String, completion: @escaping (Bool) -> ()) {
         let params =   ["BNo" : bno,

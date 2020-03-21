@@ -26,14 +26,11 @@ class ValidateViewController: UIViewController {
 		
 		generateOTP {
 			//After the successful generation of OTP, the code gets sent to the provided email
-			sendCodeToEmail(email: kfupmID + "@kfupm.edu.sa", otp: otp)
+			NetworkManager.sendOTP(toEmail: kfupmID + "@kfupm.edu.sa", otp: otp)
 		}
     }
     
-	func sendCodeToEmail(email: String, otp: String) {
-		let params = ["to" : email, "otp" : otp]
-		Alamofire.request(<#T##url: URLConvertible##URLConvertible#>, method: <#T##HTTPMethod#>, parameters: <#T##Parameters?#>, encoding: <#T##ParameterEncoding#>, headers: <#T##HTTPHeaders?#>)
-	}
+
 	
 	func generateOTP(completion: () -> ()) {
 		otp = "\(Int.random(in: 1000...9999))"
