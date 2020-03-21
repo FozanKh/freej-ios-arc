@@ -8,29 +8,37 @@
 
 import UIKit
 import MessageUI
+import Alamofire
 
 class ValidateViewController: UIViewController {
     @IBOutlet weak var kfupmIDLabel: UILabel!
     var kfupmID: String!
-    var loginStatus = true
+	var loginStatus: Bool!
     var correctPIN: String?
 	var otp: String!
+	var otpGenerationTime: Date!
 	
     @IBOutlet weak var validationCodeTF: UITextField!
     
     override func loadView() {
         super.loadView()
         kfupmIDLabel.text = kfupmID
-		otp = generateOTP()
-		sendCodeToEmail(email: kfupmID + "@kfupm.edu.sa", otp: otp)
+		
+		generateOTP {
+			//After the successful generation of OTP, the code gets sent to the provided email
+			sendCodeToEmail(email: kfupmID + "@kfupm.edu.sa", otp: otp)
+		}
     }
     
 	func sendCodeToEmail(email: String, otp: String) {
-		
+		let params = ["to" : email, "otp" : otp]
+		Alamofire.request(<#T##url: URLConvertible##URLConvertible#>, method: <#T##HTTPMethod#>, parameters: <#T##Parameters?#>, encoding: <#T##ParameterEncoding#>, headers: <#T##HTTPHeaders?#>)
 	}
 	
-	func generateOTP() -> String {
-		return "\(Int.random(in: 1000...9999))"
+	func generateOTP(completion: () -> ()) {
+		otp = "\(Int.random(in: 1000...9999))"
+		otpGenerationTime = Date()
+		completion()
 	}
     
     @IBAction func loginBtn(_ sender: Any) {

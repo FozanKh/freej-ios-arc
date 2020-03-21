@@ -13,8 +13,9 @@ import Network
 
 class NetworkManager {
     static let checkUserSignUpURL = "https://crural-spare.000webhostapp.com/CheckUserSignUpStatus.php"
-    static let singUpURL = "http://crural-spare.000webhostapp.com/PostStudent.php"
-    
+    static let signUpURL = "http://crural-spare.000webhostapp.com/PostStudent.php"
+    static let sendOTP = "freejapp.com/FreejAppRequest/SendOTP.php"
+	
     static var monitor: NetworkReachabilityManager?
     static let internetStatusNName = Notification.Name("didChangeInternetStatus")
     
@@ -34,7 +35,7 @@ class NetworkManager {
                         "Gender" : "M",
                         "Status" : "Unactivated"]
         
-        Alamofire.request(singUpURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
+        Alamofire.request(signUpURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
             
             completion(response.result.isSuccess)
         }
