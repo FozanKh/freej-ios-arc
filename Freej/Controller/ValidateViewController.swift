@@ -11,19 +11,16 @@ import MessageUI
 import Alamofire
 
 class ValidateViewController: UIViewController {
+	
     var kfupmID: String!
 	var loginStatus: Bool!
-    var correctPIN: String?
 	var otp: String!
 	var otpGenerationTime: Date!
 	
-	@IBOutlet weak var kfupmIDLabel: UILabel!
     @IBOutlet weak var validationCodeTF: UITextField!
     
     override func loadView() {
-        super.loadView()
-        kfupmIDLabel.text = kfupmID
-		
+        super.loadView()		
 		generateOTP {
 			//After the successful generation of OTP, the code gets sent to the provided email
 			let status = NetworkManager.sendOTP(toEmail: kfupmID + "@kfupm.edu.sa", otp: otp)
@@ -32,6 +29,13 @@ class ValidateViewController: UIViewController {
 			}
 		}
     }
+	
+	@IBAction func loginButton(_ sender: Any) {
+		let userEnteredOTP = validationCodeTF.text ?? "0"
+		if(userEnteredOTP == otp) {
+			(parent as! EnterFreejNavController).dismiss(loginStatus: true)
+		}
+	}
 	
 	func showErrorSendingOTP() {
 		let alert = UIAlertController(title: "Error", message: "The application encountered an error while sending the OTP.", preferredStyle: .alert)
@@ -55,12 +59,4 @@ class ValidateViewController: UIViewController {
 		otpGenerationTime = Date()
 		completion()
 	}
-    
-    @IBAction func loginBtn(_ sender: Any) {
-        if(validationCodeTF.text == correctPIN) {
-            let parentNavController = self.parent as! EnterFreejNavController
-            parentNavController.dismiss(loginStatus: self.loginStatus)
-
-        }
-    }
 }

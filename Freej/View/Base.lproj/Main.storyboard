@@ -305,14 +305,15 @@
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Log in"/>
                                         <connections>
-                                            <action selector="loginBtn:" destination="jc6-uM-H8G" eventType="touchUpInside" id="TXE-Kp-zZP"/>
+                                            <action selector="loginButton:" destination="jc6-uM-H8G" eventType="touchUpInside" id="Uni-uj-e9H"/>
                                         </connections>
                                     </button>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$kfupmID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jy5-eO-C3c">
-                                <rect key="frame" x="149" y="283" width="76" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xCM-qR-AWf">
+                                <rect key="frame" x="46" y="440" width="287" height="87"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <string key="text">You have 5 minutes to enter the OTP, message to developers: add "send again" button to send again but only enable it after 5 minutes</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -328,13 +329,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="WPq-dI-kZu"/>
                     <connections>
-                        <outlet property="kfupmIDLabel" destination="Jy5-eO-C3c" id="n9M-al-VHH"/>
                         <outlet property="validationCodeTF" destination="30a-Vn-Vuo" id="c0G-XH-HEl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oKv-hm-TdN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1945" y="695"/>
+            <point key="canvasLocation" x="-1946.4000000000001" y="694.58128078817742"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
