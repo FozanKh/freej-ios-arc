@@ -27,11 +27,14 @@ class NetworkManager {
         }
     }
 	
-	static func sendOTP(toEmail: String, otp: String) {
-		let params = ["to" : "s201727090@kfupm.edu.sa", "otp" : otp]
-		Alamofire.request(sendOTPURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).responseJSON { (reponse) in
-			
+	static func sendOTP(toEmail: String, otp: String) -> Bool {
+		let params = ["to" : "abdulelahhajjar@gmail.com", "otp" : otp]
+		var otpSendingStatus = false
+		print(otp)
+		Alamofire.request(sendOTPURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
+			otpSendingStatus = response.result.isSuccess
 		}
+		return otpSendingStatus
 	}
     
     static func signUpUser(_ kfupmID: String, _ firstName: String, _ lastName: String, _ bno: String, completion: @escaping (Bool) -> ()) {
