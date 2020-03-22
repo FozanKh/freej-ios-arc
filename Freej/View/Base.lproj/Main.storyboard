@@ -248,10 +248,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="lzc-f9-d4d"/>
                     <connections>
-                        <outlet property="buildingNumTF" destination="eRm-Cy-hLu" id="goR-lV-Bh2"/>
-                        <outlet property="firstNameTF" destination="zxA-W7-kXE" id="CYj-N5-4gf"/>
-                        <outlet property="kfupmIDTF" destination="G5Y-Ar-hQf" id="vSE-rJ-kAG"/>
-                        <outlet property="lastNameTF" destination="v2V-po-SJK" id="zA4-so-9qw"/>
+                        <outlet property="bNoTF" destination="eRm-Cy-hLu" id="FYJ-5I-Y5y"/>
+                        <outlet property="fNameTF" destination="zxA-W7-kXE" id="0YL-vc-s8A"/>
+                        <outlet property="kfupmIDTF" destination="G5Y-Ar-hQf" id="5q5-2n-xIB"/>
+                        <outlet property="lNameTF" destination="v2V-po-SJK" id="VvE-L0-htG"/>
                         <segue destination="jc6-uM-H8G" kind="show" identifier="toValidateCodeFromSignUp" id="C8S-Mx-Ibt"/>
                     </connections>
                 </viewController>

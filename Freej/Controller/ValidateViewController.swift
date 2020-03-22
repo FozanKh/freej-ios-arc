@@ -33,7 +33,11 @@ class ValidateViewController: UIViewController {
 	@IBAction func loginButton(_ sender: Any) {
 		let userEnteredOTP = validationCodeTF.text ?? "0"
 		if(userEnteredOTP == correctOtp) {
-			(parent as! EnterFreejNavController).dismiss(loginStatus: true)
+			if(newUserValidationDelegate == nil) {
+				(parent as! EnterFreejNavController).dismiss(loginStatus: true)
+			} else {
+				newUserValidationDelegate!.newUserHasValidated()
+			}
 		}
 		else {
 			showAlert(message: "The entered OTP did not match our records.")
