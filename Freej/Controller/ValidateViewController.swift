@@ -42,14 +42,11 @@ class ValidateViewController: UIViewController {
 	
 	func showAlert(message: String) {
 		let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-		
 		alert.addAction(UIAlertAction(title: "Try Again", style: .default, handler: { (UIAlertAction) in self.generateOTP()}))
 		alert.addAction(UIAlertAction(title: "Cancel Login", style: .default, handler: { (UIAlertAction) in
 			(self.parent as! EnterFreejNavController).dismiss(loginStatus: false)
 		}))
 		self.present(alert, animated: true)
-		
-		
 	}
     
 	func generateOTP() {

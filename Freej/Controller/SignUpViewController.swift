@@ -21,12 +21,32 @@ class SignUpViewController: UIViewController, NewUserValidationProtocol {
     }
 	
     @IBAction func signUpBtn(_ sender: Any) {
-		performSegue(withIdentifier: "toValidateCodeFromSignUp", sender: self)
+		sendKFUPMIDToValidateScreen()
     }
 	
 	func newUserHasValidated() {
-		NetworkManager.signUpUser(kfupmIDTF.text!, firstNameTF.text!, lastNameTF.text!, buildingNumTF.text!)
-		NetworkManager.signUpUser(kfupmIDTF.text!, firstNameTF.te, <#T##lastName: String##String#>, <#T##bno: String##String#>, completion: <#T##(Bool) -> ()#>)
+		NetworkManager.signUpUser(kfupmIDTF.text!, fNameTF.text!, lNameTF.text!, bNoTF.text!) { (wasSuccess) in
+			let parentVC = self.parent as! EnterFreejNavController
+			if(wasSuccess) {
+				parentVC.dismiss(loginStatus: true)
+			}
+			else {
+				self.showAlert(message: "Error while signing up a new account.")
+			}
+		}
+	}
+	
+	func sendKFUPMIDToValidateScreen() {
+		performSegue(withIdentifier: "toValidateCodeFromSignUp", sender: self)
+	}
+	
+	func showAlert(message: String) {
+		let parentVC = parent as! EnterFreejNavController
+		let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+		
+		alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { (UIAlertAction) in parentVC.popViewController(animated: true)}))
+		
+		self.present(alert, animated: true)
 	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
