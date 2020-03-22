@@ -8,11 +8,11 @@
 
 import UIKit
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, NewUserValidationProtocol {
     @IBOutlet weak var kfupmIDTF: UITextField!
-    @IBOutlet weak var firstNameTF: UITextField!
-    @IBOutlet weak var lastNameTF: UITextField!
-    @IBOutlet weak var buildingNumTF: UITextField!
+    @IBOutlet weak var fNameTF: UITextField!
+    @IBOutlet weak var lNameTF: UITextField!
+    @IBOutlet weak var bNoTF: UITextField!
     var kfupmID: String!
     
     override func loadView() {
@@ -21,16 +21,39 @@ class SignUpViewController: UIViewController {
     }
 	
     @IBAction func signUpBtn(_ sender: Any) {
-        NetworkManager.signUpUser(kfupmIDTF.text!, firstNameTF.text!, lastNameTF.text!, buildingNumTF.text!) { (status) in
-            if(status == true) {
-                self.performSegue(withIdentifier: "toValidateCodeFromSignUp", sender: self)
-            }
-        }
+		sendKFUPMIDToValidateScreen()
     }
+	
+	func newUserHasValidated() {
+		NetworkManager.signUpUser(kfupmIDTF.text!, fNameTF.text!, lNameTF.text!, bNoTF.text!) { (wasSuccess) in
+			let parentVC = self.parent as! EnterFreejNavController
+			if(wasSuccess) {
+				parentVC.dismiss(loginStatus: true)
+			}
+			else {
+				self.showAlert(message: "Error while signing up a new account. Please try again later.")
+			}
+		}
+	}
+	
+	func sendKFUPMIDToValidateScreen() {
+		performSegue(withIdentifier: "toValidateCodeFromSignUp", sender: self)
+	}
+	
+	func showAlert(message: String) {
+		let parentVC = parent as! EnterFreejNavController
+		let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+		
+		alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { (UIAlertAction) in parentVC.popViewController(animated: true)}))
+		
+		self.present(alert, animated: true)
+	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if(segue.destination is ValidateViewController) {
-			(segue.destination as! ValidateViewController).kfupmID = kfupmID
+			let destinationVC = segue.destination as! ValidateViewController
+			destinationVC.kfupmID = kfupmID
+			destinationVC.newUserValidationDelegate = self
 		}
 	}
 }
