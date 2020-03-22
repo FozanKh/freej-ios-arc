@@ -10,12 +10,17 @@ import UIKit
 import MessageUI
 import Alamofire
 
+protocol NewUserValidationProtocol {
+	func newUserHasValidated()
+}
+
 class ValidateViewController: UIViewController {
-	
     var kfupmID: String!
 	var loginStatus: Bool!
 	var correctOtp: String!
 	var otpGenerationTime: Date!
+	
+	var newUserValidationDelegate: NewUserValidationProtocol?
 	
     @IBOutlet weak var validationCodeTF: UITextField!
 	

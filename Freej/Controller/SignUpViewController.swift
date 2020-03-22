@@ -8,11 +8,11 @@
 
 import UIKit
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, NewUserValidationProtocol {
     @IBOutlet weak var kfupmIDTF: UITextField!
-    @IBOutlet weak var firstNameTF: UITextField!
-    @IBOutlet weak var lastNameTF: UITextField!
-    @IBOutlet weak var buildingNumTF: UITextField!
+    @IBOutlet weak var fNameTF: UITextField!
+    @IBOutlet weak var lNameTF: UITextField!
+    @IBOutlet weak var bNoTF: UITextField!
     var kfupmID: String!
     
     override func loadView() {
@@ -21,16 +21,19 @@ class SignUpViewController: UIViewController {
     }
 	
     @IBAction func signUpBtn(_ sender: Any) {
-        NetworkManager.signUpUser(kfupmIDTF.text!, firstNameTF.text!, lastNameTF.text!, buildingNumTF.text!) { (status) in
-            if(status == true) {
-                self.performSegue(withIdentifier: "toValidateCodeFromSignUp", sender: self)
-            }
-        }
+		performSegue(withIdentifier: "toValidateCodeFromSignUp", sender: self)
     }
+	
+	func newUserHasValidated() {
+		NetworkManager.signUpUser(kfupmIDTF.text!, firstNameTF.text!, lastNameTF.text!, buildingNumTF.text!)
+		NetworkManager.signUpUser(kfupmIDTF.text!, firstNameTF.te, <#T##lastName: String##String#>, <#T##bno: String##String#>, completion: <#T##(Bool) -> ()#>)
+	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if(segue.destination is ValidateViewController) {
-			(segue.destination as! ValidateViewController).kfupmID = kfupmID
+			let destinationVC = segue.destination as! ValidateViewController
+			destinationVC.kfupmID = kfupmID
+			destinationVC.newUserValidationDelegate = self
 		}
 	}
 }
