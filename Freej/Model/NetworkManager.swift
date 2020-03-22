@@ -9,7 +9,6 @@
 import Foundation
 import SwiftyJSON
 import Alamofire
-import Network
 
 class NetworkManager {
     static let checkUserSignUpURL = "http://freejapp.com/FreejAppRequest/CheckUserSignUpStatus.php"
@@ -28,7 +27,7 @@ class NetworkManager {
     }
 	
 	static func sendOTP(toEmail: String, otp: String, completion: @escaping (Bool) -> ()) {
-		let params = ["to" : toEmail, "otp" : otp]
+		let params = ["to" : "abdulelahhajjar@gmail.com", "otp" : otp]
 		Alamofire.request(sendOTPURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
 			response.response?.statusCode ?? 500 == 201 ? completion(true) : completion(false)
 		}
