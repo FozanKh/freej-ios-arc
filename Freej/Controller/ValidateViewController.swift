@@ -20,9 +20,8 @@ class ValidateViewController: UIViewController {
     @IBOutlet weak var validationCodeTF: UITextField!
 	
 	
-	
-	override func viewDidLoad() {
-		super.viewDidLoad()
+	override func loadView() {
+		super.loadView()
 		generateOTP()
 	}
 	
