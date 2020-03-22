@@ -31,7 +31,7 @@ class SignUpViewController: UIViewController, NewUserValidationProtocol {
 				parentVC.dismiss(loginStatus: true)
 			}
 			else {
-				self.showAlert(message: "Error while signing up a new account.")
+				self.showAlert(message: "Error while signing up a new account. Please try again later.")
 			}
 		}
 	}
