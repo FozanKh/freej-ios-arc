@@ -26,6 +26,12 @@ class NetworkManager {
         }
     }
 	
+	static func isSignedUp(kfupmID: String, completion: @escaping (Bool) -> ()) {
+		Alamofire.request(checkUserSignUpURL, method: .post, parameters: ["KFUPMID" : kfupmID], encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
+			completion(response.result.isSuccess)
+		}
+	}
+	
 	static func sendOTP(toEmail: String, otp: String, completion: @escaping (Bool) -> ()) {
 		let params = ["to" : "abdulelahhajjar@gmail.com", "otp" : otp]
 		Alamofire.request(sendOTPURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
@@ -43,13 +49,6 @@ class NetworkManager {
         
         Alamofire.request(signUpURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
             print(response)
-            completion(response.result.isSuccess)
-        }
-    }
-    
-    static func isSignedUp(kfupmID: String, completion: @escaping (Bool) -> ()) {
-        Alamofire.request(checkUserSignUpURL, method: .post, parameters: ["KFUPMID" : kfupmID], encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
-            
             completion(response.result.isSuccess)
         }
     }
