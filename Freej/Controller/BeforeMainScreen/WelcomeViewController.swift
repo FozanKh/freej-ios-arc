@@ -19,7 +19,10 @@ class WelcomeViewController: UIViewController, LoginDelegate {
 
     override func loadView() {
         super.loadView()
-        NotificationCenter.default.addObserver(self, selector: #selector(onDidChangeInternetStatus(_:)), name: NetworkManager.internetStatusNName, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(onDidChangeInternetStatus(_:)), name: NetworkManager.internetStatusNName, object: nil)
+		if(DataModel.currentUser != nil) {
+			performSegue(withIdentifier: "toMainVC", sender: self)
+		}
     }
 	
 	@IBAction func enterFreejBtn(_ sender: Any) {

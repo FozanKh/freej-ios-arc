@@ -16,13 +16,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NetworkManager.setUpInternetStatusNotification()
 		let shouldAutoLogin = userWasLoggedIn()
 		if(shouldAutoLogin) {
-			
+			let user = getStudentFromPersistentDM()
+			if(user != nil) {
+				DataModel.currentUser = user
+			}
 		}
         return true
     }
 	
-	func getStudentFromPersistentDM() {
+	func getStudentFromPersistentDM() -> Student? {
+		var user: Student? = nil
 		
+		let managedContext = persistentContainer.viewContext
+		let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Student")
+		
+		do {
+			user = try managedContext.fetch(fetchRequest)[0] as? Student
+		} catch let error as NSError {
+			print("Could not fetch. \(error), \(error.userInfo)")
+		}
+		return user
 	}
 	
 	func userWasLoggedIn() -> Bool {
