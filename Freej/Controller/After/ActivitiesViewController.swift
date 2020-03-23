@@ -16,7 +16,8 @@ class ActivitiesViewController: UIViewController {
     }
 	
 	@IBAction func logOut(_ sender: Any) {
-		
+		DataModel.clearCurrentUser()
+		parent?.dismiss(animated: true)
 	}
 
 }
