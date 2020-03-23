@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftyJSON
+import CoreData
 
 class User {
 	static var userID: String?
@@ -27,7 +28,26 @@ class User {
 		gender = json["Gender"].stringValue
 		stat = json["Stat"].stringValue
 		
-		//save user
+		guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+			return
+		}
+		
+		let managedContext = appDelegate.persistentContainer.viewContext
+		let entity = NSEntityDescription.entity(forEntityName: "Student", in: managedContext)!
+		let student = NSManagedObject(entity: entity, insertInto: managedContext)
+		student.setValue(userID, forKeyPath: "userID")
+		student.setValue(bno, forKeyPath: "bno")
+		student.setValue(fName, forKeyPath: "fName")
+		student.setValue(lName, forKeyPath: "userID")
+		student.setValue(kfupmID, forKeyPath: "kfupmID")
+		student.setValue(gender, forKeyPath: "gender")
+		student.setValue(stat, forKeyPath: "stat")
+		
+		do {
+			try managedContext.save()
+		} catch let error as NSError {
+			print("Could not save. \(error), \(error.userInfo)")
+		}
 	}
 	
 	static func clearAttributesAndDeleteUser() {
