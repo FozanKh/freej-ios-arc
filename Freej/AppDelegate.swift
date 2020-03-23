@@ -14,6 +14,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         NetworkManager.setUpInternetStatusNotification()
+		
+		let managedContext = persistentContainer.viewContext
+		let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Student")
+		
+		do {
+			let student = try managedContext.fetch(fetchRequest)[0] as! Student
+			print(student.kfupmID)
+			
+		} catch let error as NSError {
+			print("Could not fetch. \(error), \(error.userInfo)")
+		}
+		
         return true
     }
 
