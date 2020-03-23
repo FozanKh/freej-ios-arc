@@ -176,14 +176,14 @@
 			path = BeforeMainScreen;
 			sourceTree = "<group>";
 		};
-		EB163E012428F78C004A34BA /* After */ = {
+		EB163E012428F78C004A34BA /* AfterMainScreen */ = {
 			isa = PBXGroup;
 			children = (
 				EB3641402417E89300F81D6A /* AnnouncementsViewController.swift */,
 				EB3641422417E89300F81D6A /* ActivitiesViewController.swift */,
 				EB4B5E2E2417ECD600EB7EB9 /* SettingsViewController.swift */,
 			);
-			path = After;
+			path = AfterMainScreen;
 			sourceTree = "<group>";
 		};
 		EB3641302417E89300F81D6A = {
@@ -267,7 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				EB163E002428F77A004A34BA /* BeforeMainScreen */,
-				EB163E012428F78C004A34BA /* After */,
+				EB163E012428F78C004A34BA /* AfterMainScreen */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
