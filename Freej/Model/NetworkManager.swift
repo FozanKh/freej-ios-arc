@@ -45,10 +45,10 @@ class NetworkManager {
 	}
 	
 	static func sendOTP(toEmail: String, otp: String, completion: @escaping (Bool) -> ()) {
-//		let params = ["to" : "abdulelahhajjar@gmail.com", "otp" : otp]
-//		Alamofire.request(sendOTPURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
-//			response.response?.statusCode ?? 500 == 201 ? completion(true) : completion(false)
-//		}
+		let params = ["to" : "abdulelahhajjar@gmail.com", "otp" : otp]
+		Alamofire.request(sendOTPURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
+			response.response?.statusCode ?? 500 == 201 ? completion(true) : completion(false)
+		}
 		print(otp)
 	}
     
