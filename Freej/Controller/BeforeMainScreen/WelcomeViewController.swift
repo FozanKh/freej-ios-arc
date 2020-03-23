@@ -57,7 +57,7 @@ class WelcomeViewController: UIViewController, LoginDelegate {
 					self.performSegue(withIdentifier: "toMainVC", sender: self)
 				}
 				else {
-					showAlert(message: "Error while logging into the system.")
+					self.showAlert(message: "Error while logging into the system.")
 				}
 			}
 		}
@@ -65,10 +65,7 @@ class WelcomeViewController: UIViewController, LoginDelegate {
 	
 	func showAlert(message: String) {
 		let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-		alert.addAction(UIAlertAction(title: "Try Again", style: .default, handler: { (UIAlertAction) in self.generateOTP()}))
-		alert.addAction(UIAlertAction(title: "Cancel Login", style: .default, handler: { (UIAlertAction) in
-			(self.parent as! EnterFreejNavController).dismiss(loginStatus: false)
-		}))
+		alert.addAction(UIAlertAction(title: "Dismiss", style: .default))
 		self.present(alert, animated: true)
 	}
 }
