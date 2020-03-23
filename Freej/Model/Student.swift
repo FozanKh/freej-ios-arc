@@ -10,7 +10,7 @@ import Foundation
 import SwiftyJSON
 import CoreData
 
-class User {
+class Student {
 	static var userID: String?
 	static var bno: String?
 	static var fName: String?
