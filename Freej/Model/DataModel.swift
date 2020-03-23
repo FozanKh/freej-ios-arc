@@ -39,4 +39,22 @@ class DataModel {
 		//Set Temporary (this session) currentUser
 		currentUser = student as? Student
 	}
+	
+	static func clearCurrentUser() {
+		guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+			return
+		}
+		
+		let managedContext = appDelegate.persistentContainer.viewContext
+		let DelAllReqVar = NSBatchDeleteRequest(fetchRequest: NSFetchRequest<NSFetchRequestResult>(entityName: "Student"))
+		do {
+			try managedContext.execute(DelAllReqVar)
+		}
+		catch {
+			print(error)
+		}
+		
+		//Remove Temporary (this session) currentUser
+		currentUser = nil
+	}
 }
