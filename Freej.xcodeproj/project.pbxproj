@@ -150,6 +150,27 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		EB163E002428F77A004A34BA /* BeforeMainScreen */ = {
+			isa = PBXGroup;
+			children = (
+				EBFC5A83241AF202000EB7D0 /* WelcomeViewController.swift */,
+				EB6933FC2425148900A66412 /* EnterFreejNavController.swift */,
+				EB04536F2424F690009BAE59 /* SignUpViewController.swift */,
+				EB0453712424F6BB009BAE59 /* ValidateViewController.swift */,
+			);
+			path = BeforeMainScreen;
+			sourceTree = "<group>";
+		};
+		EB163E012428F78C004A34BA /* After */ = {
+			isa = PBXGroup;
+			children = (
+				EB3641402417E89300F81D6A /* AnnouncementsViewController.swift */,
+				EB3641422417E89300F81D6A /* ActivitiesViewController.swift */,
+				EB4B5E2E2417ECD600EB7EB9 /* SettingsViewController.swift */,
+			);
+			path = After;
+			sourceTree = "<group>";
+		};
 		EB3641302417E89300F81D6A = {
 			isa = PBXGroup;
 			children = (
@@ -231,13 +252,8 @@
 		EB4B5E322417F65300EB7EB9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				EB3641402417E89300F81D6A /* AnnouncementsViewController.swift */,
-				EB3641422417E89300F81D6A /* ActivitiesViewController.swift */,
-				EB4B5E2E2417ECD600EB7EB9 /* SettingsViewController.swift */,
-				EBFC5A83241AF202000EB7D0 /* WelcomeViewController.swift */,
-				EB04536F2424F690009BAE59 /* SignUpViewController.swift */,
-				EB0453712424F6BB009BAE59 /* ValidateViewController.swift */,
-				EB6933FC2425148900A66412 /* EnterFreejNavController.swift */,
+				EB163E002428F77A004A34BA /* BeforeMainScreen */,
+				EB163E012428F78C004A34BA /* After */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

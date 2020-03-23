@@ -56,8 +56,19 @@ class WelcomeViewController: UIViewController, LoginDelegate {
 					User.assignAttributesAndSaveUser(json: userInfo[0])
 					self.performSegue(withIdentifier: "toMainVC", sender: self)
 				}
+				else {
+					showAlert(message: "Error while logging into the system.")
+				}
 			}
 		}
 	}
 	
+	func showAlert(message: String) {
+		let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "Try Again", style: .default, handler: { (UIAlertAction) in self.generateOTP()}))
+		alert.addAction(UIAlertAction(title: "Cancel Login", style: .default, handler: { (UIAlertAction) in
+			(self.parent as! EnterFreejNavController).dismiss(loginStatus: false)
+		}))
+		self.present(alert, animated: true)
+	}
 }
