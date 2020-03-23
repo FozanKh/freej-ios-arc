@@ -43,13 +43,21 @@ class WelcomeViewController: UIViewController, LoginDelegate {
 	
     @objc func onDidChangeInternetStatus(_ notification: Notification) {
 		let internetStatus = notification.userInfo?["Status"] as! Bool
-		noInternetLabel.isEnabled = internetStatus
+		noInternetLabel.isHidden = internetStatus
 		enterFreejBtn.isEnabled = internetStatus
 		
 		internetStatus ? (enterFreejBtn.backgroundColor = .systemIndigo) : (enterFreejBtn.backgroundColor = .darkGray)
     }
     
     func didFinishLogInProcess(loginStatus: Bool) {
-        if(loginStatus) { performSegue(withIdentifier: "toMainVC", sender: self) }
+        if(loginStatus) {
+			NetworkManager.getStudent(kfupmID: kfupmIDTF.text!) { (userInfo, requestStatus) in
+				if(requestStatus == true) {
+					User.assignAttributesAndSaveUser(json: userInfo[0])
+					self.performSegue(withIdentifier: "toMainVC", sender: self)
+				}
+			}
+		}
 	}
+	
 }

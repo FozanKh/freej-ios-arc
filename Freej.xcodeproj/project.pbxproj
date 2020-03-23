@@ -21,6 +21,7 @@
 		EB36414B2417E89600F81D6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB3641492417E89600F81D6A /* LaunchScreen.storyboard */; };
 		EB3641562417E89600F81D6A /* FreejTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3641552417E89600F81D6A /* FreejTests.swift */; };
 		EB3641612417E89600F81D6A /* FreejUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3641602417E89600F81D6A /* FreejUITests.swift */; };
+		EB465DE92428E768006766F3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB465DE82428E768006766F3 /* User.swift */; };
 		EB4B5E2F2417ECD600EB7EB9 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4B5E2E2417ECD600EB7EB9 /* SettingsViewController.swift */; };
 		EB4B5E382417F74100EB7EB9 /* MaintenanceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4B5E372417F74100EB7EB9 /* MaintenanceRequest.swift */; };
 		EB4B5E3A2417F75D00EB7EB9 /* Advertisement.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4B5E392417F75D00EB7EB9 /* Advertisement.swift */; };
@@ -80,6 +81,7 @@
 		EB36415C2417E89600F81D6A /* FreejUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FreejUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB3641602417E89600F81D6A /* FreejUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreejUITests.swift; sourceTree = "<group>"; };
 		EB3641622417E89600F81D6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EB465DE82428E768006766F3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		EB4B5E2E2417ECD600EB7EB9 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		EB4B5E372417F74100EB7EB9 /* MaintenanceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceRequest.swift; sourceTree = "<group>"; };
 		EB4B5E392417F75D00EB7EB9 /* Advertisement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Advertisement.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 				EB4B5E3B2417F76F00EB7EB9 /* Announcement.swift */,
 				EB6FC6C12418F96000CBA10B /* Activity.swift */,
 				EB8A2C4D241B03D2005ED1A2 /* NetworkManager.swift */,
+				EB465DE82428E768006766F3 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -512,6 +515,7 @@
 				EB36413F2417E89300F81D6A /* SceneDelegate.swift in Sources */,
 				EB0453722424F6BB009BAE59 /* ValidateViewController.swift in Sources */,
 				EB8A2C4E241B03D2005ED1A2 /* NetworkManager.swift in Sources */,
+				EB465DE92428E768006766F3 /* User.swift in Sources */,
 				EB0453702424F690009BAE59 /* SignUpViewController.swift in Sources */,
 				EBFC5A84241AF202000EB7D0 /* WelcomeViewController.swift in Sources */,
 				EB4B5E382417F74100EB7EB9 /* MaintenanceRequest.swift in Sources */,
