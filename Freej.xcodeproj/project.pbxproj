@@ -154,6 +154,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		EB15FBBF24294D7800780709 /* Cards */ = {
+			isa = PBXGroup;
+			children = (
+				EB4B5E372417F74100EB7EB9 /* MaintenanceRequest.swift */,
+				EB4B5E392417F75D00EB7EB9 /* Advertisement.swift */,
+				EB4B5E3B2417F76F00EB7EB9 /* Announcement.swift */,
+				EB6FC6C12418F96000CBA10B /* Activity.swift */,
+			);
+			path = Cards;
+			sourceTree = "<group>";
+		};
 		EB163E002428F77A004A34BA /* BeforeMainScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -243,10 +254,7 @@
 		EB4B5E312417F64B00EB7EB9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				EB4B5E372417F74100EB7EB9 /* MaintenanceRequest.swift */,
-				EB4B5E392417F75D00EB7EB9 /* Advertisement.swift */,
-				EB4B5E3B2417F76F00EB7EB9 /* Announcement.swift */,
-				EB6FC6C12418F96000CBA10B /* Activity.swift */,
+				EB15FBBF24294D7800780709 /* Cards */,
 				EB8A2C4D241B03D2005ED1A2 /* NetworkManager.swift */,
 				EB465DE82428E768006766F3 /* Student.swift */,
 				EB163E0524294682004A34BA /* DataModel.swift */,
