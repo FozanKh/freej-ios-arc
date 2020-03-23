@@ -53,7 +53,7 @@ class WelcomeViewController: UIViewController, LoginDelegate {
         if(loginStatus) {
 			NetworkManager.getStudent(kfupmID: kfupmIDTF.text!) { (userInfo, requestStatus) in
 				if(requestStatus == true) {
-					User.assignAttributesAndSaveUser(json: userInfo[0])
+					NetworkManager.test(json: userInfo[0])
 					self.performSegue(withIdentifier: "toMainVC", sender: self)
 				}
 				else {

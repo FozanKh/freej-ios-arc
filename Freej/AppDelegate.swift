@@ -19,9 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Student")
 		
 		do {
-			let student = try managedContext.fetch(fetchRequest)[0] as! Student
-			print(student.kfupmID)
-			
+			let student = try managedContext.fetch(fetchRequest) as! [Student]
+			print(student.count)
 		} catch let error as NSError {
 			print("Could not fetch. \(error), \(error.userInfo)")
 		}
@@ -52,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		application to it. This property is optional since there are legitimate
 		error conditions that could cause the creation of the store to fail.
 		*/
-		let container = NSPersistentContainer(name: "test")
+		let container = NSPersistentContainer(name: "DataModel")
 		container.loadPersistentStores(completionHandler: { (storeDescription, error) in
 			if let error = error as NSError? {
 				// Replace this implementation with code to handle the error appropriately.

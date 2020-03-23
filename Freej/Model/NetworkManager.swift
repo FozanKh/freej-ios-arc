@@ -9,6 +9,7 @@
 import Foundation
 import SwiftyJSON
 import Alamofire
+import CoreData
 
 class NetworkManager {
     static let checkUserSignUpURL = "http://freejapp.com/FreejAppRequest/CheckUserSignUpStatus.php"
@@ -18,7 +19,31 @@ class NetworkManager {
 	
     static var monitor: NetworkReachabilityManager?
     static let internetStatusNName = Notification.Name("didChangeInternetStatus")
-    
+	
+	static var currentUser: Student?
+	
+	static func test(json: JSON) {
+		guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+			return
+		}
+		let managedContext = appDelegate.persistentContainer.viewContext
+		let entity = NSEntityDescription.entity(forEntityName: "Student", in: managedContext)!
+		let student = NSManagedObject(entity: entity, insertInto: managedContext)
+		student.setValue(json["UserID"].stringValue, forKeyPath: "userID")
+		student.setValue(json["BNo"].stringValue, forKeyPath: "bno")
+		student.setValue(json["FName"].stringValue, forKeyPath: "fName")
+		student.setValue(json["LName"].stringValue, forKeyPath: "lName")
+		student.setValue(json["KFUPMID"].stringValue, forKeyPath: "kfupmID")
+		student.setValue(json["Gender"].stringValue, forKeyPath: "gender")
+		student.setValue(json["Stat"].stringValue, forKeyPath: "stat")
+		
+		do {
+			try managedContext.save()
+		} catch let error as NSError {
+			print("Could not save. \(error), \(error.userInfo)")
+		}
+	}
+	
     static func setUpInternetStatusNotification() {
         monitor = NetworkReachabilityManager()
         monitor?.startListening()
