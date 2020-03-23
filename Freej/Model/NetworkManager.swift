@@ -27,7 +27,8 @@ class NetworkManager {
     }
 	
 	static func isSignedUp(kfupmID: String, completion: @escaping (Bool) -> ()) {
-		Alamofire.request(checkUserSignUpURL, method: .post, parameters: ["KFUPMID" : kfupmID], encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
+		let params = ["KFUPMID" : kfupmID]
+		Alamofire.request(checkUserSignUpURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
 			completion(response.result.isSuccess)
 		}
 	}
