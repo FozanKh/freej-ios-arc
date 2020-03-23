@@ -31,10 +31,7 @@ class WelcomeViewController: UIViewController, LoginDelegate {
     }
     
     func didFinishLogInProcess(loginStatus: Bool) {
-        if(loginStatus) {
-            (performSegue(withIdentifier: "toMainVC", sender: self))
-            print(loginStatus)
-        }
+        if(loginStatus) { performSegue(withIdentifier: "toMainVC", sender: self) }
     }
     
     @IBAction func enterFreejBtn(_ sender: Any) {
