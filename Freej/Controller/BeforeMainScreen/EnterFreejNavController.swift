@@ -14,7 +14,7 @@ protocol LoginDelegate {
 
 class EnterFreejNavController: UINavigationController {
     var isSignedUp: Bool!
-    var kfupmID: String!
+    var kfupmID: String! //this will be verified in the welcomeVC so it is safe to keep it (!)
     
     var loginDelegate: LoginDelegate?
     
