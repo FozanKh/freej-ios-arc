@@ -14,19 +14,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         NetworkManager.setUpInternetStatusNotification()
+		let shouldAutoLogin = userWasLoggedIn()
+		if(shouldAutoLogin) {
+			
+		}
+        return true
+    }
+	
+	func getStudentFromPersistentDM() {
 		
+	}
+	
+	func userWasLoggedIn() -> Bool {
 		let managedContext = persistentContainer.viewContext
 		let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Student")
+		var userWasLoggedIn = false
 		
 		do {
 			let student = try managedContext.fetch(fetchRequest) as! [Student]
-			print(student.count)
+			student.count > 0 ? (userWasLoggedIn = true) : (userWasLoggedIn = false)
 		} catch let error as NSError {
 			print("Could not fetch. \(error), \(error.userInfo)")
 		}
-		
-        return true
-    }
+		return userWasLoggedIn
+	}
 
     // MARK: UISceneSession Lifecycle
 
