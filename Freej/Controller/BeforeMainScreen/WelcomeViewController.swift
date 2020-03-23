@@ -45,7 +45,6 @@ class WelcomeViewController: UIViewController, LoginDelegate {
 		let internetStatus = notification.userInfo?["Status"] as! Bool
 		noInternetLabel.isHidden = internetStatus
 		enterFreejBtn.isEnabled = internetStatus
-		
 		internetStatus ? (enterFreejBtn.backgroundColor = .systemIndigo) : (enterFreejBtn.backgroundColor = .darkGray)
     }
     
@@ -53,7 +52,7 @@ class WelcomeViewController: UIViewController, LoginDelegate {
         if(loginStatus) {
 			NetworkManager.getStudent(kfupmID: kfupmIDTF.text!) { (userInfo, requestStatus) in
 				if(requestStatus == true) {
-					NetworkManager.test(json: userInfo[0])
+					DataModel.setCurrentUser(userJSON: userInfo[0])
 					self.performSegue(withIdentifier: "toMainVC", sender: self)
 				}
 				else {
