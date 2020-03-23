@@ -21,7 +21,26 @@ class WelcomeViewController: UIViewController, LoginDelegate {
         super.loadView()
         NotificationCenter.default.addObserver(self, selector: #selector(onDidChangeInternetStatus(_:)), name: NetworkManager.internetStatusNName, object: nil)
     }
+	
+	@IBAction func enterFreejBtn(_ sender: Any) {
+		progressManager.show(in: self.view)
+		NetworkManager.isSignedUp(kfupmID: kfupmIDTF.text!) { (signUpStatus) in
+			self.isSignedUp = signUpStatus
+			self.progressManager.dismiss(animated: true)
+			
+			self.performSegue(withIdentifier: "toEnterFreej", sender: self)
+		}
+	}
     
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if(segue.destination is EnterFreejNavController) {
+			let destinationVC = segue.destination as! EnterFreejNavController
+			destinationVC.isSignedUp = isSignedUp
+			destinationVC.kfupmID = kfupmIDTF.text!
+			destinationVC.loginDelegate = self
+		}
+	}
+	
     @objc func onDidChangeInternetStatus(_ notification: Notification) {
 		let internetStatus = notification.userInfo?["Status"] as! Bool
 		noInternetLabel.isEnabled = internetStatus
@@ -32,24 +51,5 @@ class WelcomeViewController: UIViewController, LoginDelegate {
     
     func didFinishLogInProcess(loginStatus: Bool) {
         if(loginStatus) { performSegue(withIdentifier: "toMainVC", sender: self) }
-    }
-    
-    @IBAction func enterFreejBtn(_ sender: Any) {
-        progressManager.show(in: self.view)
-        NetworkManager.isSignedUp(kfupmID: kfupmIDTF.text!) { (signUpStatus) in
-            self.isSignedUp = signUpStatus
-            self.progressManager.dismiss(animated: true)
-            
-            self.performSegue(withIdentifier: "toEnterFreej", sender: self)
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.destination is EnterFreejNavController) {
-            let destinationVC = segue.destination as! EnterFreejNavController
-            destinationVC.isSignedUp = isSignedUp
-            destinationVC.kfupmID = kfupmIDTF.text!
-            destinationVC.loginDelegate = self
-        }
-    }
+	}
 }
