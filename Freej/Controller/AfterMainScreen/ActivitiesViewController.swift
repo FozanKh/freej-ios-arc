@@ -17,7 +17,7 @@ class ActivitiesViewController: UIViewController {
 	
 	@IBAction func logOut(_ sender: Any) {
 		DataModel.clearCurrentUser()
-		parent?.dismiss(animated: true)
+		self.navigationController?.popToRootViewController(animated: true)
 	}
 
 }
