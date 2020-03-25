@@ -17,7 +17,7 @@ import UIKit
 class SignUpViewController: UIViewController, NewUserLoginProtocol {
 	@IBOutlet weak var kfupmIDTF: UITextField! {
 		didSet {
-			kfupmIDTF.backgroundColor = .gray
+			kfupmIDTF.textColor = .gray
 			kfupmIDTF.text = DataModel.currentUser!.kfupmID
 		}
 	}
