@@ -36,6 +36,7 @@ class ValidateViewController: UIViewController {
 		if(userEnteredOTP == correctOtp) {
 			let parentVC = parent as! EnterFreejNavController
 			if(DataModel.userIsSignedUp()) {
+				DataModel.saveCurrentUserToPersistent()
 				parentVC.finishedLoginProcess(loginStatus: true)
 			}
 			else {
