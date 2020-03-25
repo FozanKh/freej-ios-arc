@@ -28,6 +28,9 @@ class WelcomeViewController: UIViewController {
 			if(userJSON != nil) {
 				DataModel.setCurrentUser(userJSON: userJSON!, saveToPersistent: false)
 			}
+			else {
+				DataModel.set
+			}
 			self.performSegue(withIdentifier: "toEnterFreej", sender: self)
 		}
 	}

@@ -32,7 +32,7 @@ class NetworkManager {
 		let params = ["KFUPMID" : kfupmID]
 		Alamofire.request(getStudentURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
 			let responseValue = response.result.value ?? nil
-			responseValue == nil ? completion(nil) : completion(JSON(responseValue!))
+			responseValue == nil ? completion(nil) : completion(JSON(responseValue!)[0])
 		}
 	}
 	

@@ -35,6 +35,16 @@ class DataModel {
 		}
 	}
 	
+	static func setIncompleteUser(kfupmID: String, saveToPersistent: Bool) {
+		let entity = NSEntityDescription.entity(forEntityName: "Student", in: managedContext)!
+		let student = NSManagedObject(entity: entity, insertInto: managedContext)
+		student.setValue(kfupmID, forKeyPath: "kfupmID")
+		
+		if(saveToPersistent) {
+			let _ = saveCurrentUserToPersistent()
+		}
+	}
+	
 	static func saveCurrentUserToPersistent() -> Bool {
 		if(currentUser != nil) {
 			do {
