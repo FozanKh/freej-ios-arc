@@ -10,16 +10,21 @@ import UIKit
 import Alamofire
 import JGProgressHUD
 
+protocol NewUserLoginProtocol {
+	func newUserHasValidated(completion: @escaping (Bool) -> ())
+}
+
 class ValidateViewController: UIViewController {
-    var kfupmID: String!
+	@IBOutlet weak var validationCodeTF: UITextField!
+	
+	let progressManager = JGProgressHUD()
+	
 	var loginStatus: Bool!
 	var correctOtp: String!
 	var otpGenerationTime: Date!
-	let progressManager = JGProgressHUD()
-	
-		
-    @IBOutlet weak var validationCodeTF: UITextField!
-	
+	var signUpUserHandler: (() -> ())?
+
+	var newUserLoginDelegate: NewUserLoginProtocol?
 	
 	override func loadView() {
 		super.loadView()
@@ -29,7 +34,14 @@ class ValidateViewController: UIViewController {
 	@IBAction func loginButton(_ sender: Any) {
 		let userEnteredOTP = validationCodeTF.text ?? "0"
 		if(userEnteredOTP == correctOtp) {
-			
+			if(DataModel.userIsSignedUp()) {
+				//dismiss and show the mainvc
+			}
+			else {
+				newUserLoginDelegate?.newUserHasValidated(completion: { (signUpStatus) in
+					
+				})
+			}
 		}
 		else {
 			showAlert(message: "The entered OTP did not match our records.")
@@ -49,7 +61,7 @@ class ValidateViewController: UIViewController {
 		correctOtp = "\(Int.random(in: 1000...9999))"
 		otpGenerationTime = Date()
 		
-		NetworkManager.sendOTP(toEmail: kfupmID + "@kfupm.edu.sa", otp: correctOtp) { (hasSent) in
+		NetworkManager.sendOTP(toEmail: (DataModel.currentUser?.kfupmID!)! + "@kfupm.edu.sa", otp: correctOtp) { (hasSent) in
 			if(!hasSent) {
 				self.showAlert(message: "The application encountered an error while sending the OTP.")
 			}
