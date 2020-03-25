@@ -28,12 +28,11 @@ class NetworkManager {
         }
     }
 	
-	static func getStudent(kfupmID: String, completion: @escaping (JSON, Bool) -> ()) {
+	static func getStudent(kfupmID: String, completion: @escaping (JSON?) -> ()) {
 		let params = ["KFUPMID" : kfupmID]
 		Alamofire.request(getStudentURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
-			let requestStatus = response.result.isSuccess
-			let userInfo = JSON(response.result.value ?? nil!)
-			completion(userInfo, requestStatus)
+			let responseValue = response.result.value ?? nil
+			responseValue == nil ? completion(nil) : completion(JSON(responseValue!))
 		}
 	}
 	

@@ -27,17 +27,12 @@ class DataModel {
 		student.setValue(userJSON["Gender"].stringValue, forKeyPath: "gender")
 		student.setValue(userJSON["Stat"].stringValue, forKeyPath: "stat")
 		
-		
-		if(saveToPersistent) {
-			do {
-				try managedContext.save()
-			} catch let error as NSError {
-				print("Could not save. \(error), \(error.userInfo)")
-			}
-		}
-		
 		//Set Temporary (this session) currentUser
 		currentUser = student as? Student
+		
+		if(saveToPersistent) {
+			let _ = saveCurrentUserToPersistent()
+		}
 	}
 	
 	static func saveCurrentUserToPersistent() -> Bool {
