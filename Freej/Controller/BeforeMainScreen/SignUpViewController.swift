@@ -24,18 +24,6 @@ class SignUpViewController: UIViewController {
 		sendKFUPMIDToValidateScreen()
     }
 	
-	func newUserHasValidated() {
-		NetworkManager.signUpUser(kfupmIDTF.text!, fNameTF.text!, lNameTF.text!, bNoTF.text!) { (wasSuccess) in
-			let parentVC = self.parent as! EnterFreejNavController
-			if(wasSuccess) {
-				parentVC.dismiss(loginStatus: true)
-			}
-			else {
-				self.showAlert(message: "Error while signing up a new account. Please try again later.")
-			}
-		}
-	}
-	
 	func sendKFUPMIDToValidateScreen() {
 		performSegue(withIdentifier: "toValidateCodeFromSignUp", sender: self)
 	}
