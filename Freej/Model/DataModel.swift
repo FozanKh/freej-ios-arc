@@ -35,6 +35,12 @@ class DataModel {
 		}
 	}
 	
+	static func userIsSignedUp() -> Bool {
+		var userIsSignedUp: Bool
+		currentUser?.userID == nil ? (userIsSignedUp = false) : (userIsSignedUp = true)
+		return userIsSignedUp
+	}
+	
 	static func setIncompleteUser(kfupmID: String, saveToPersistent: Bool) {
 		let entity = NSEntityDescription.entity(forEntityName: "Student", in: managedContext)!
 		let student = NSManagedObject(entity: entity, insertInto: managedContext)

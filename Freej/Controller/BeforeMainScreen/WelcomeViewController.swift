@@ -29,7 +29,7 @@ class WelcomeViewController: UIViewController {
 				DataModel.setCurrentUser(userJSON: userJSON!, saveToPersistent: false)
 			}
 			else {
-				DataModel.set
+				DataModel.setIncompleteUser(kfupmID: self.kfupmIDTF.text!, saveToPersistent: false)
 			}
 			self.performSegue(withIdentifier: "toEnterFreej", sender: self)
 		}
