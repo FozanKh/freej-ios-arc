@@ -9,7 +9,7 @@
 import UIKit
 import JGProgressHUD
 
-class WelcomeViewController: UIViewController, LoginDelegate {
+class WelcomeViewController: UIViewController {
     let progressManager = JGProgressHUD()
 	
     @IBOutlet weak var noInternetLabel: UILabel!
@@ -24,22 +24,14 @@ class WelcomeViewController: UIViewController, LoginDelegate {
 	@IBAction func enterFreejBtn(_ sender: Any) {
 		progressManager.show(in: self.view)
 		NetworkManager.getStudent(kfupmID: kfupmIDTF.text!) { (userJSON) in
-			
-		}
-		
-		self.progressManager.dismiss(animated: true)
-		
-		self.performSegue(withIdentifier: "toEnterFreej", sender: self)
-	}
-    
-	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if(segue.destination is EnterFreejNavController) {
-			let destinationVC = segue.destination as! EnterFreejNavController
-			destinationVC.kfupmID = kfupmIDTF.text!
-			destinationVC.loginDelegate = self
+			self.progressManager.dismiss(animated: true)
+			if(userJSON != nil) {
+				DataModel.setCurrentUser(userJSON: userJSON!, saveToPersistent: false)
+			}
+			self.performSegue(withIdentifier: "toEnterFreej", sender: self)
 		}
 	}
-	
+
     @objc func onDidChangeInternetStatus(_ notification: Notification) {
 		let internetStatus = notification.userInfo?["Status"] as! Bool
 		noInternetLabel.isHidden = internetStatus
