@@ -11,7 +11,7 @@ import UIKit
 class EnterFreejNavController: UINavigationController {
     override func loadView() {
         super.loadView()
-		DataModel.currentUser == nil ? showSignUpScreen() : showValidationScreen()
+		DataModel.userIsSignedUp() ? showValidationScreen() : showSignUpScreen()
     }
     
     func showValidationScreen() {
