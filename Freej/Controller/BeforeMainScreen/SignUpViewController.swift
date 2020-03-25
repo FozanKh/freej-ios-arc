@@ -46,28 +46,26 @@ class SignUpViewController: UIViewController, NewUserLoginProtocol {
 	//The user will be re-downloaded from the Database (we need this to save his user id in the object)
 	//And after completion, the handler will be called with either true or false to the ValidateViewControleler
 	//ValidateViewController will then based on the returned result, dismiss the view and login the user if (true)
-	func newUserHasValidated(completion: @escaping (Bool) -> ()) {
+	func newUserHasValidated(completion: @escaping (Bool, String?) -> ()) {
 		NetworkManager.signUpUser(kfupmIDTF.text!, fNameTF.text!, lNameTF.text!, bNoTF.text!) { (signUpStatus) in
 			if(signUpStatus == true) {
 				
 				NetworkManager.getStudent(kfupmID: self.kfupmIDTF.text!) { (userInfo) in
 					if(userInfo != nil) {
-						completion(true)
+						completion(true, nil)
 						//Save to persistent because the user is successfully logged-in
 						DataModel.setSignedUpUser(userJSON: userInfo!, saveToPersistent: true)
 					}
 					else {
-						self.showAlert(message: "Error: Could not login user.")
 						//Clear from persistent, and local memory because login process was failed.
 						DataModel.clearCurrentUser()
-						completion(false)
+						completion(false, "Error: Could not login user.")
 					}
 				}
 				
 			}
 			else {
-				self.showAlert(message: "Error: Could not sign up user.")
-				completion(false)
+				completion(false, "Error: Could not sign up user.")
 			}
 		}
 	}

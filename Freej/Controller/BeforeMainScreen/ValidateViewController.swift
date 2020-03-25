@@ -11,7 +11,7 @@ import Alamofire
 import JGProgressHUD
 
 protocol NewUserLoginProtocol {
-	func newUserHasValidated(completion: @escaping (Bool) -> ())
+	func newUserHasValidated(completion: @escaping (Bool, String?) -> ())
 }
 
 class ValidateViewController: UIViewController {
@@ -39,9 +39,18 @@ class ValidateViewController: UIViewController {
 			else {
 				progressManager.show(in: self.view)
 				//Delegate method call here (in SignUpViewController)
-				newUserLoginDelegate?.newUserHasValidated(completion: { (success) in
+				newUserLoginDelegate?.newUserHasValidated(completion: { (status, error) in
 					self.progressManager.dismiss(animated: true)
-					parentVC.finishedLoginProcess(loginStatus: true)
+					if(status == false) {
+						let alert = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
+						alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { (UIAlertAction) in
+							parentVC.finishedLoginProcess(loginStatus: status)
+						}))
+						self.present(alert, animated: true)
+					}
+					else {
+						parentVC.finishedLoginProcess(loginStatus: status)
+					}
 				})
 			}
 		}
