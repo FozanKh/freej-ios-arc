@@ -13,10 +13,6 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var fNameTF: UITextField!
     @IBOutlet weak var lNameTF: UITextField!
     @IBOutlet weak var bNoTF: UITextField!
-    
-    override func loadView() {
-        super.loadView()
-    }
 	
     @IBAction func signUpBtn(_ sender: Any) {
 		sendKFUPMIDToValidateScreen()
