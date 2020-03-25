@@ -38,10 +38,6 @@ class WelcomeViewController: UIViewController {
 		enterFreejBtn.isEnabled = internetStatus
 		internetStatus ? (enterFreejBtn.backgroundColor = .systemIndigo) : (enterFreejBtn.backgroundColor = .darkGray)
     }
-    
-    func didFinishLogInProcess(loginStatus: Bool) {
-		
-	}
 	
 	func showAlert(message: String) {
 		let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
