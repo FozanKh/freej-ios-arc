@@ -9,7 +9,6 @@
 import Foundation
 import SwiftyJSON
 import Alamofire
-import CoreData
 
 class NetworkManager {
 	static let getStudentURL = "http://freejapp.com/FreejAppRequest/GetStudent.php"
