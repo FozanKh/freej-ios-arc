@@ -7,21 +7,17 @@
 //
 
 import UIKit
-import MessageUI
 import Alamofire
-
-protocol NewUserValidationProtocol {
-	func newUserHasValidated()
-}
+import JGProgressHUD
 
 class ValidateViewController: UIViewController {
     var kfupmID: String!
 	var loginStatus: Bool!
 	var correctOtp: String!
 	var otpGenerationTime: Date!
+	let progressManager = JGProgressHUD()
 	
-	var newUserValidationDelegate: NewUserValidationProtocol?
-	
+		
     @IBOutlet weak var validationCodeTF: UITextField!
 	
 	
@@ -33,11 +29,7 @@ class ValidateViewController: UIViewController {
 	@IBAction func loginButton(_ sender: Any) {
 		let userEnteredOTP = validationCodeTF.text ?? "0"
 		if(userEnteredOTP == correctOtp) {
-			if(newUserValidationDelegate == nil) {
-				(parent as! EnterFreejNavController).dismiss(loginStatus: true)
-			} else {
-				newUserValidationDelegate!.newUserHasValidated()
-			}
+			
 		}
 		else {
 			showAlert(message: "The entered OTP did not match our records.")
@@ -48,7 +40,7 @@ class ValidateViewController: UIViewController {
 		let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
 		alert.addAction(UIAlertAction(title: "Try Again", style: .default, handler: { (UIAlertAction) in self.generateOTP()}))
 		alert.addAction(UIAlertAction(title: "Cancel Login", style: .default, handler: { (UIAlertAction) in
-			(self.parent as! EnterFreejNavController).dismiss(loginStatus: false)
+//			(self.parent as! EnterFreejNavController).dismiss(loginStatus: false)
 		}))
 		self.present(alert, animated: true)
 	}

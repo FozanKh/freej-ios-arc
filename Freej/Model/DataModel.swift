@@ -12,10 +12,11 @@ import CoreData
 
 class DataModel {
 	static var currentUser: Student?
+	
 	static let appDelegate = UIApplication.shared.delegate as! AppDelegate
 	static let managedContext = appDelegate.persistentContainer.viewContext
 	
-	static func setCurrentUser(userJSON: JSON, saveToPersistent: Bool) {
+	static func setSignedUpUser(userJSON: JSON, saveToPersistent: Bool) {
 		//Set Persistant current user
 		let entity = NSEntityDescription.entity(forEntityName: "Student", in: managedContext)!
 		let student = NSManagedObject(entity: entity, insertInto: managedContext)
@@ -35,20 +36,22 @@ class DataModel {
 		}
 	}
 	
-	static func userIsSignedUp() -> Bool {
-		var userIsSignedUp: Bool
-		currentUser?.userID == nil ? (userIsSignedUp = false) : (userIsSignedUp = true)
-		return userIsSignedUp
-	}
-	
 	static func setUnSignedUpUser(kfupmID: String, saveToPersistent: Bool) {
 		let entity = NSEntityDescription.entity(forEntityName: "Student", in: managedContext)!
 		let student = NSManagedObject(entity: entity, insertInto: managedContext)
 		student.setValue(kfupmID, forKeyPath: "kfupmID")
 		
+		currentUser = student as? Student
+		
 		if(saveToPersistent) {
 			let _ = saveCurrentUserToPersistent()
 		}
+	}
+	
+	static func userIsSignedUp() -> Bool {
+		var userIsSignedUp: Bool
+		currentUser?.userID == nil ? (userIsSignedUp = false) : (userIsSignedUp = true)
+		return userIsSignedUp
 	}
 	
 	static func saveCurrentUserToPersistent() -> Bool {

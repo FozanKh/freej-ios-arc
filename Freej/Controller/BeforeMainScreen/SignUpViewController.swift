@@ -14,12 +14,28 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var lNameTF: UITextField!
     @IBOutlet weak var bNoTF: UITextField!
 	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		kfupmIDTF.textColor = .gray
+		kfupmIDTF.text = DataModel.currentUser!.kfupmID
+	}
+	
     @IBAction func signUpBtn(_ sender: Any) {
 		sendKFUPMIDToValidateScreen()
+		
     }
 	
 	func sendKFUPMIDToValidateScreen() {
 		performSegue(withIdentifier: "toValidateCodeFromSignUp", sender: self)
+	}
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if(segue.destination is ValidateViewController) {
+			let destVC = segue.destination as! ValidateViewController
+			destVC.completionHandler = {
+				
+			}
+		}
 	}
 	
 	func showAlert(message: String) {

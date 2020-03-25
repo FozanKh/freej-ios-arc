@@ -26,7 +26,7 @@ class WelcomeViewController: UIViewController {
 		NetworkManager.getStudent(kfupmID: kfupmIDTF.text!) { (userJSON) in
 			self.progressManager.dismiss(animated: true)
 			if(userJSON != nil) {
-				DataModel.setCurrentUser(userJSON: userJSON!, saveToPersistent: false)
+				DataModel.setSignedUpUser(userJSON: userJSON!, saveToPersistent: false)
 			}
 			else {
 				DataModel.setUnSignedUpUser(kfupmID: self.kfupmIDTF.text!, saveToPersistent: false)
