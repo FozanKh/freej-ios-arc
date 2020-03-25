@@ -41,7 +41,7 @@ class DataModel {
 		return userIsSignedUp
 	}
 	
-	static func setIncompleteUser(kfupmID: String, saveToPersistent: Bool) {
+	static func setUnSignedUpUser(kfupmID: String, saveToPersistent: Bool) {
 		let entity = NSEntityDescription.entity(forEntityName: "Student", in: managedContext)!
 		let student = NSManagedObject(entity: entity, insertInto: managedContext)
 		student.setValue(kfupmID, forKeyPath: "kfupmID")
