@@ -22,24 +22,27 @@ class ValidateViewController: UIViewController {
 	var loginStatus: Bool!
 	var correctOtp: String!
 	var otpGenerationTime: Date!
-	var signUpUserHandler: (() -> ())?
-
+	
 	var newUserLoginDelegate: NewUserLoginProtocol?
 	
 	override func loadView() {
 		super.loadView()
 		generateOTP()
+		
 	}
 	
 	@IBAction func loginButton(_ sender: Any) {
 		let userEnteredOTP = validationCodeTF.text ?? "0"
 		if(userEnteredOTP == correctOtp) {
+			let parentVC = parent as! EnterFreejNavController
 			if(DataModel.userIsSignedUp()) {
-				//dismiss and show the mainvc
+				parentVC.finishedLoginProcess(loginStatus: true)
 			}
 			else {
-				newUserLoginDelegate?.newUserHasValidated(completion: { (signUpStatus) in
-					
+				progressManager.show(in: self.view)
+				newUserLoginDelegate?.newUserHasValidated(completion: { (success) in
+					self.progressManager.dismiss(animated: true)
+					parentVC.finishedLoginProcess(loginStatus: true)
 				})
 			}
 		}
@@ -49,10 +52,11 @@ class ValidateViewController: UIViewController {
 	}
 	
 	func showAlert(message: String) {
+		let parentVC = parent as! EnterFreejNavController
 		let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
 		alert.addAction(UIAlertAction(title: "Try Again", style: .default, handler: { (UIAlertAction) in self.generateOTP()}))
 		alert.addAction(UIAlertAction(title: "Cancel Login", style: .default, handler: { (UIAlertAction) in
-//			(self.parent as! EnterFreejNavController).dismiss(loginStatus: false)
+			parentVC.finishedLoginProcess(loginStatus: false)
 		}))
 		self.present(alert, animated: true)
 	}

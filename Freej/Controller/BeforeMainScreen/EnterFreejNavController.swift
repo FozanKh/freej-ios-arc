@@ -9,11 +9,17 @@
 import UIKit
 
 class EnterFreejNavController: UINavigationController {
+	var loginProcessCompletionHandler: ((Bool) -> ())?
 	
     override func loadView() {
         super.loadView()
 		DataModel.userIsSignedUp() ? showValidationScreen() : showSignUpScreen()
     }
+	
+	func finishedLoginProcess(loginStatus: Bool) {
+		self.dismiss(animated: true)
+		loginProcessCompletionHandler?(loginStatus)
+	}
     
     func showValidationScreen() {
         let vc = storyboard?.instantiateViewController(withIdentifier: "ValidateViewController") as! ValidateViewController

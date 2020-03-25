@@ -34,7 +34,17 @@ class WelcomeViewController: UIViewController {
 			self.performSegue(withIdentifier: "toEnterFreej", sender: self)
 		}
 	}
-
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if(segue.destination is EnterFreejNavController) {
+			let destVC = segue.destination as! EnterFreejNavController
+			destVC.loginProcessCompletionHandler = { status in
+				if(status == true) {
+					self.performSegue(withIdentifier: "toMainVC", sender: self)
+				}
+			}
+		}
+	}
+	
     @objc func onDidChangeInternetStatus(_ notification: Notification) {
 		let internetStatus = notification.userInfo?["Status"] as! Bool
 		noInternetLabel.isHidden = internetStatus

@@ -47,6 +47,7 @@ class SignUpViewController: UIViewController, NewUserLoginProtocol {
 					}
 					else {
 						self.showAlert(message: "Error: Could not login user.")
+						DataModel.clearCurrentUser()
 						completion(false)
 					}
 				}
