@@ -24,12 +24,15 @@ class WelcomeViewController: UIViewController, LoginDelegate {
 	
 	@IBAction func enterFreejBtn(_ sender: Any) {
 		progressManager.show(in: self.view)
-		NetworkManager.isSignedUp(kfupmID: kfupmIDTF.text!) { (signUpStatus) in
-			self.isSignedUp = signUpStatus
-			self.progressManager.dismiss(animated: true)
+		NetworkManager.getStudent(kfupmID: kfupmIDTF.text!) { (userJSON) in
 			
-			self.performSegue(withIdentifier: "toEnterFreej", sender: self)
 		}
+		
+		
+		self.isSignedUp = signUpStatus
+		self.progressManager.dismiss(animated: true)
+		
+		self.performSegue(withIdentifier: "toEnterFreej", sender: self)
 	}
     
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
