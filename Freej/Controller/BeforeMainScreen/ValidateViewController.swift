@@ -16,19 +16,14 @@ protocol NewUserLoginProtocol {
 
 class ValidateViewController: UIViewController {
 	@IBOutlet weak var validationCodeTF: UITextField!
-	
 	let progressManager = JGProgressHUD()
-	
-	var loginStatus: Bool!
 	var correctOtp: String!
 	var otpGenerationTime: Date!
-	
 	var newUserLoginDelegate: NewUserLoginProtocol?
 	
 	override func loadView() {
 		super.loadView()
 		generateOTP()
-		
 	}
 	
 	@IBAction func loginButton(_ sender: Any) {
@@ -36,11 +31,14 @@ class ValidateViewController: UIViewController {
 		if(userEnteredOTP == correctOtp) {
 			let parentVC = parent as! EnterFreejNavController
 			if(DataModel.userIsSignedUp()) {
+				//Save to persistent for future sessions
+				//Only logged-in users are save to persistent
 				let _ = DataModel.saveCurrentUserToPersistent()
 				parentVC.finishedLoginProcess(loginStatus: true)
 			}
 			else {
 				progressManager.show(in: self.view)
+				//Delegate method call here (in SignUpViewController)
 				newUserLoginDelegate?.newUserHasValidated(completion: { (success) in
 					self.progressManager.dismiss(animated: true)
 					parentVC.finishedLoginProcess(loginStatus: true)
@@ -52,16 +50,7 @@ class ValidateViewController: UIViewController {
 		}
 	}
 	
-	func showAlert(message: String) {
-		let parentVC = parent as! EnterFreejNavController
-		let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-		alert.addAction(UIAlertAction(title: "Try Again", style: .default, handler: { (UIAlertAction) in self.generateOTP()}))
-		alert.addAction(UIAlertAction(title: "Cancel Login", style: .default, handler: { (UIAlertAction) in
-			parentVC.finishedLoginProcess(loginStatus: false)
-		}))
-		self.present(alert, animated: true)
-	}
-    
+	//This method will randomly generate OTP, and send it to user.
 	func generateOTP() {
 		correctOtp = "\(Int.random(in: 1000...9999))"
 		otpGenerationTime = Date()
@@ -71,5 +60,15 @@ class ValidateViewController: UIViewController {
 				self.showAlert(message: "The application encountered an error while sending the OTP.")
 			}
 		}
+	}
+	
+	func showAlert(message: String) {
+		let parentVC = parent as! EnterFreejNavController
+		let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "Try Again", style: .default, handler: { (UIAlertAction) in self.generateOTP()}))
+		alert.addAction(UIAlertAction(title: "Cancel Login", style: .default, handler: { (UIAlertAction) in
+			parentVC.finishedLoginProcess(loginStatus: false)
+		}))
+		self.present(alert, animated: true)
 	}
 }

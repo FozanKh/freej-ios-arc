@@ -53,10 +53,12 @@ class SignUpViewController: UIViewController, NewUserLoginProtocol {
 				NetworkManager.getStudent(kfupmID: self.kfupmIDTF.text!) { (userInfo) in
 					if(userInfo != nil) {
 						completion(true)
+						//Save to persistent because the user is successfully logged-in
 						DataModel.setSignedUpUser(userJSON: userInfo!, saveToPersistent: true)
 					}
 					else {
 						self.showAlert(message: "Error: Could not login user.")
+						//Clear from persistent, and local memory because login process was failed.
 						DataModel.clearCurrentUser()
 						completion(false)
 					}
