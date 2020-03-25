@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SignUpViewController: UIViewController, NewUserValidationProtocol {
+class SignUpViewController: UIViewController {
     @IBOutlet weak var kfupmIDTF: UITextField!
     @IBOutlet weak var fNameTF: UITextField!
     @IBOutlet weak var lNameTF: UITextField!
