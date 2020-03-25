@@ -11,7 +11,6 @@ import JGProgressHUD
 
 class WelcomeViewController: UIViewController, LoginDelegate {
     let progressManager = JGProgressHUD()
-	var isSignedUp: Bool!
 	
     @IBOutlet weak var noInternetLabel: UILabel!
     @IBOutlet weak var kfupmIDTF: UITextField!
@@ -28,8 +27,6 @@ class WelcomeViewController: UIViewController, LoginDelegate {
 			
 		}
 		
-		
-		self.isSignedUp = signUpStatus
 		self.progressManager.dismiss(animated: true)
 		
 		self.performSegue(withIdentifier: "toEnterFreej", sender: self)
@@ -38,7 +35,6 @@ class WelcomeViewController: UIViewController, LoginDelegate {
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if(segue.destination is EnterFreejNavController) {
 			let destinationVC = segue.destination as! EnterFreejNavController
-			destinationVC.isSignedUp = isSignedUp
 			destinationVC.kfupmID = kfupmIDTF.text!
 			destinationVC.loginDelegate = self
 		}
@@ -52,17 +48,7 @@ class WelcomeViewController: UIViewController, LoginDelegate {
     }
     
     func didFinishLogInProcess(loginStatus: Bool) {
-        if(loginStatus) {
-			NetworkManager.getStudent(kfupmID: kfupmIDTF.text!) { (userInfo, requestStatus) in
-				if(requestStatus == true) {
-					DataModel.setCurrentUser(userJSON: userInfo[0])
-					self.performSegue(withIdentifier: "toMainVC", sender: self)
-				}
-				else {
-					self.showAlert(message: "Error while logging into the system.")
-				}
-			}
-		}
+		
 	}
 	
 	func showAlert(message: String) {
