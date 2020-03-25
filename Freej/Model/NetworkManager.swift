@@ -12,7 +12,6 @@ import Alamofire
 import CoreData
 
 class NetworkManager {
-    static let checkUserSignUpURL = "http://freejapp.com/FreejAppRequest/CheckUserSignUpStatus.php"
 	static let getStudentURL = "http://freejapp.com/FreejAppRequest/GetStudent.php"
     static let signUpURL = "http://freejapp.com/FreejAppRequest/PostStudent.php"
     static let sendOTPURL = "http://freejapp.com/FreejAppRequest/SendOTP.php"
@@ -33,13 +32,6 @@ class NetworkManager {
 		Alamofire.request(getStudentURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
 			let responseValue = response.result.value ?? nil
 			responseValue == nil ? completion(nil) : completion(JSON(responseValue!)[0])
-		}
-	}
-	
-	static func isSignedUp(kfupmID: String, completion: @escaping (Bool) -> ()) {
-		let params = ["KFUPMID" : kfupmID]
-		Alamofire.request(checkUserSignUpURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
-			completion(response.result.isSuccess)
 		}
 	}
 	
