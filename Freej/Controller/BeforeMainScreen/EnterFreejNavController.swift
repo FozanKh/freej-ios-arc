@@ -8,35 +8,31 @@
 
 import UIKit
 
-protocol LoginDelegate {
-    func didFinishLogInProcess(loginStatus: Bool)
-}
-
 class EnterFreejNavController: UINavigationController {
-    var isSignedUp: Bool!
-    var kfupmID: String! //this will be verified in the welcomeVC so it is safe to keep it (!)
-    
-    var loginDelegate: LoginDelegate?
-    
+	//This completion handler will be set by WelcomeViewController
+	var loginProcessCompletionHandler: ((Bool) -> ())?
+	
     override func loadView() {
         super.loadView()
-        isSignedUp ? showValidationScreen() : showSignUpScreen()
+		//At this point, there must be a user in DataModel class (look at enterFreejBtn implementation)
+		DataModel.userIsSignedUp() ? showValidationScreen() : showSignUpScreen()
     }
+	
+	//This method is called by (ValidationViewController) which dismisses the VC and calls the completion handeler
+	//The completion handler is set by the WelcomeViewController
+	func finishedLoginProcess(loginStatus: Bool) {
+		self.dismiss(animated: true)
+		loginProcessCompletionHandler?(loginStatus)
+	}
     
-    func dismiss(loginStatus: Bool) {
-        dismiss(animated: true)
-        loginDelegate?.didFinishLogInProcess(loginStatus: loginStatus)
-    }
-    
+	//MARK:- Push Suitable View Controller Methods
     func showValidationScreen() {
         let vc = storyboard?.instantiateViewController(withIdentifier: "ValidateViewController") as! ValidateViewController
-        vc.kfupmID = self.kfupmID
         pushViewController(vc, animated: false)
     }
     
     func showSignUpScreen() {
         let vc = storyboard?.instantiateViewController(withIdentifier: "SignUpViewController") as! SignUpViewController
-        vc.kfupmID = self.kfupmID
         pushViewController(vc, animated: false)
     }
 }

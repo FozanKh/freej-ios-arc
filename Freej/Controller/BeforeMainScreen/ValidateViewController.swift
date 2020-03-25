@@ -7,23 +7,19 @@
 //
 
 import UIKit
-import MessageUI
 import Alamofire
+import JGProgressHUD
 
-protocol NewUserValidationProtocol {
-	func newUserHasValidated()
+protocol NewUserLoginProtocol {
+	func newUserHasValidated(completion: @escaping (Bool, String?) -> ())
 }
 
 class ValidateViewController: UIViewController {
-    var kfupmID: String!
-	var loginStatus: Bool!
+	@IBOutlet weak var validationCodeTF: UITextField!
+	let progressManager = JGProgressHUD()
 	var correctOtp: String!
 	var otpGenerationTime: Date!
-	
-	var newUserValidationDelegate: NewUserValidationProtocol?
-	
-    @IBOutlet weak var validationCodeTF: UITextField!
-	
+	var newUserLoginDelegate: NewUserLoginProtocol?
 	
 	override func loadView() {
 		super.loadView()
@@ -33,10 +29,29 @@ class ValidateViewController: UIViewController {
 	@IBAction func loginButton(_ sender: Any) {
 		let userEnteredOTP = validationCodeTF.text ?? "0"
 		if(userEnteredOTP == correctOtp) {
-			if(newUserValidationDelegate == nil) {
-				(parent as! EnterFreejNavController).dismiss(loginStatus: true)
-			} else {
-				newUserValidationDelegate!.newUserHasValidated()
+			let parentVC = parent as! EnterFreejNavController
+			if(DataModel.userIsSignedUp()) {
+				//Save to persistent for future sessions
+				//Only logged-in users are save to persistent
+				let _ = DataModel.saveCurrentUserToPersistent()
+				parentVC.finishedLoginProcess(loginStatus: true)
+			}
+			else {
+				progressManager.show(in: self.view)
+				//Delegate method call here (in SignUpViewController)
+				newUserLoginDelegate?.newUserHasValidated(completion: { (status, error) in
+					self.progressManager.dismiss(animated: true)
+					if(status == false) {
+						let alert = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
+						alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { (UIAlertAction) in
+							parentVC.finishedLoginProcess(loginStatus: status)
+						}))
+						self.present(alert, animated: true)
+					}
+					else {
+						parentVC.finishedLoginProcess(loginStatus: status)
+					}
+				})
 			}
 		}
 		else {
@@ -44,23 +59,25 @@ class ValidateViewController: UIViewController {
 		}
 	}
 	
-	func showAlert(message: String) {
-		let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-		alert.addAction(UIAlertAction(title: "Try Again", style: .default, handler: { (UIAlertAction) in self.generateOTP()}))
-		alert.addAction(UIAlertAction(title: "Cancel Login", style: .default, handler: { (UIAlertAction) in
-			(self.parent as! EnterFreejNavController).dismiss(loginStatus: false)
-		}))
-		self.present(alert, animated: true)
-	}
-    
+	//This method will randomly generate OTP, and send it to user.
 	func generateOTP() {
 		correctOtp = "\(Int.random(in: 1000...9999))"
 		otpGenerationTime = Date()
 		
-		NetworkManager.sendOTP(toEmail: kfupmID + "@kfupm.edu.sa", otp: correctOtp) { (hasSent) in
+		NetworkManager.sendOTP(toEmail: (DataModel.currentUser?.kfupmID!)! + "@kfupm.edu.sa", otp: correctOtp) { (hasSent) in
 			if(!hasSent) {
 				self.showAlert(message: "The application encountered an error while sending the OTP.")
 			}
 		}
+	}
+	
+	func showAlert(message: String) {
+		let parentVC = parent as! EnterFreejNavController
+		let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "Try Again", style: .default, handler: { (UIAlertAction) in self.generateOTP()}))
+		alert.addAction(UIAlertAction(title: "Cancel Login", style: .default, handler: { (UIAlertAction) in
+			parentVC.finishedLoginProcess(loginStatus: false)
+		}))
+		self.present(alert, animated: true)
 	}
 }

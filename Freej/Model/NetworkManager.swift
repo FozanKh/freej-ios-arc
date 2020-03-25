@@ -9,10 +9,8 @@
 import Foundation
 import SwiftyJSON
 import Alamofire
-import CoreData
 
 class NetworkManager {
-    static let checkUserSignUpURL = "http://freejapp.com/FreejAppRequest/CheckUserSignUpStatus.php"
 	static let getStudentURL = "http://freejapp.com/FreejAppRequest/GetStudent.php"
     static let signUpURL = "http://freejapp.com/FreejAppRequest/PostStudent.php"
     static let sendOTPURL = "http://freejapp.com/FreejAppRequest/SendOTP.php"
@@ -28,27 +26,19 @@ class NetworkManager {
         }
     }
 	
-	static func getStudent(kfupmID: String, completion: @escaping (JSON, Bool) -> ()) {
+	static func getStudent(kfupmID: String, completion: @escaping (JSON?) -> ()) {
 		let params = ["KFUPMID" : kfupmID]
 		Alamofire.request(getStudentURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
-			let requestStatus = response.result.isSuccess
-			let userInfo = JSON(response.result.value ?? nil!)
-			completion(userInfo, requestStatus)
-		}
-	}
-	
-	static func isSignedUp(kfupmID: String, completion: @escaping (Bool) -> ()) {
-		let params = ["KFUPMID" : kfupmID]
-		Alamofire.request(checkUserSignUpURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
-			completion(response.result.isSuccess)
+			let responseValue = response.result.value ?? nil
+			responseValue == nil ? completion(nil) : completion(JSON(responseValue!)[0])
 		}
 	}
 	
 	static func sendOTP(toEmail: String, otp: String, completion: @escaping (Bool) -> ()) {
-		let params = ["to" : "abdulelahhajjar@gmail.com", "otp" : otp]
-		Alamofire.request(sendOTPURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
-			response.response?.statusCode ?? 500 == 201 ? completion(true) : completion(false)
-		}
+//		let params = ["to" : "abdulelahhajjar@gmail.com", "otp" : otp]
+//		Alamofire.request(sendOTPURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
+//			response.response?.statusCode ?? 500 == 201 ? completion(true) : completion(false)
+//		}
 		print(otp)
 	}
     
