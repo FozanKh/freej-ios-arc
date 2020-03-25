@@ -12,13 +12,11 @@ import CoreData
 
 class DataModel {
 	static var currentUser: Student?
+	static let appDelegate = UIApplication.shared.delegate as! AppDelegate
+	static let managedContext = appDelegate.persistentContainer.viewContext
 	
-	static func setCurrentUser(userJSON: JSON, saveToPersistant: Bool) {
+	static func setCurrentUser(userJSON: JSON, saveToPersistent: Bool) {
 		//Set Persistant current user
-		guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-			return
-		}
-		let managedContext = appDelegate.persistentContainer.viewContext
 		let entity = NSEntityDescription.entity(forEntityName: "Student", in: managedContext)!
 		let student = NSManagedObject(entity: entity, insertInto: managedContext)
 		student.setValue(userJSON["UserID"].stringValue, forKeyPath: "userID")
@@ -30,7 +28,7 @@ class DataModel {
 		student.setValue(userJSON["Stat"].stringValue, forKeyPath: "stat")
 		
 		
-		if(saveToPersistant) {
+		if(saveToPersistent) {
 			do {
 				try managedContext.save()
 			} catch let error as NSError {
@@ -40,6 +38,19 @@ class DataModel {
 		
 		//Set Temporary (this session) currentUser
 		currentUser = student as? Student
+	}
+	
+	static func saveCurrentUserToPersistent() -> Bool {
+		if(currentUser != nil) {
+			do {
+				try managedContext.save()
+				return true
+			} catch let error as NSError {
+				print("Could not save. \(error), \(error.userInfo)")
+				return false
+			}
+		}
+		return false
 	}
 	
 	static func clearCurrentUser() {
