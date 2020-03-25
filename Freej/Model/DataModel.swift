@@ -13,7 +13,7 @@ import CoreData
 class DataModel {
 	static var currentUser: Student?
 	
-	static func setCurrentUser(userJSON: JSON) {
+	static func setCurrentUser(userJSON: JSON, saveToPersistant: Bool) {
 		//Set Persistant current user
 		guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
 			return
@@ -30,10 +30,12 @@ class DataModel {
 		student.setValue(userJSON["Stat"].stringValue, forKeyPath: "stat")
 		
 		
-		do {
-			try managedContext.save()
-		} catch let error as NSError {
-			print("Could not save. \(error), \(error.userInfo)")
+		if(saveToPersistant) {
+			do {
+				try managedContext.save()
+			} catch let error as NSError {
+				print("Could not save. \(error), \(error.userInfo)")
+			}
 		}
 		
 		//Set Temporary (this session) currentUser
