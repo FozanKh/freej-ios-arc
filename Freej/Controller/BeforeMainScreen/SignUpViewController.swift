@@ -13,11 +13,9 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var fNameTF: UITextField!
     @IBOutlet weak var lNameTF: UITextField!
     @IBOutlet weak var bNoTF: UITextField!
-    var kfupmID: String!
     
     override func loadView() {
         super.loadView()
-        kfupmIDTF.text = kfupmID
     }
 	
     @IBAction func signUpBtn(_ sender: Any) {
@@ -40,8 +38,6 @@ class SignUpViewController: UIViewController {
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if(segue.destination is ValidateViewController) {
 			let destinationVC = segue.destination as! ValidateViewController
-			destinationVC.kfupmID = kfupmID
-			destinationVC.newUserValidationDelegate = self
 		}
 	}
 }
