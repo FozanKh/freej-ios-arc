@@ -77,8 +77,11 @@
                 <navigationController id="pGY-IS-lXP" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="0kh-50-xmf"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="RzN-O4-wXO">
-                        <rect key="frame" x="0.0" y="44" width="375" height="104.33333333333334"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="W0z-1D-lPT" kind="relationship" relationship="rootViewController" id="LZe-PN-Fzc"/>
@@ -95,7 +98,7 @@
                     <view key="view" contentMode="scaleToFill" id="Ybr-Vi-fmP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="1xo-fb-sMG"/>
                     </view>
                     <navigationItem key="navigationItem" id="Htz-ts-X6d"/>
