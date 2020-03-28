@@ -10,10 +10,21 @@ import UIKit
 
 class AnnouncementsViewController: UIViewController {
 
+    @IBOutlet weak var mainTableView: UITableView!
+    
+    var announcements = [Announcement] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
+    
+    func createArray() -> [Announcement] {
+        return nil
+        
+    }
+    
+    
 
 
 }
