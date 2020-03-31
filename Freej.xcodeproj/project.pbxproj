@@ -29,7 +29,6 @@
 		EB4B5E2F2417ECD600EB7EB9 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4B5E2E2417ECD600EB7EB9 /* SettingsViewController.swift */; };
 		EB4B5E382417F74100EB7EB9 /* MaintenanceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4B5E372417F74100EB7EB9 /* MaintenanceRequest.swift */; };
 		EB4B5E3A2417F75D00EB7EB9 /* Advertisement.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4B5E392417F75D00EB7EB9 /* Advertisement.swift */; };
-		EB4B5E3C2417F76F00EB7EB9 /* Announcement.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4B5E3B2417F76F00EB7EB9 /* Announcement.swift */; };
 		EB6933FD2425148900A66412 /* EnterFreejNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6933FC2425148900A66412 /* EnterFreejNavController.swift */; };
 		EB6FC6C22418F96000CBA10B /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6FC6C12418F96000CBA10B /* Activity.swift */; };
 		EB6FC6C82418FE3E00CBA10B /* ERModel.pdf in Resources */ = {isa = PBXBuildFile; fileRef = EB6FC6C42418FE3E00CBA10B /* ERModel.pdf */; };
@@ -93,7 +92,6 @@
 		EB4B5E2E2417ECD600EB7EB9 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		EB4B5E372417F74100EB7EB9 /* MaintenanceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceRequest.swift; sourceTree = "<group>"; };
 		EB4B5E392417F75D00EB7EB9 /* Advertisement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Advertisement.swift; sourceTree = "<group>"; };
-		EB4B5E3B2417F76F00EB7EB9 /* Announcement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Announcement.swift; sourceTree = "<group>"; };
 		EB6933FC2425148900A66412 /* EnterFreejNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterFreejNavController.swift; sourceTree = "<group>"; };
 		EB6FC6C12418F96000CBA10B /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		EB6FC6C42418FE3E00CBA10B /* ERModel.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ERModel.pdf; sourceTree = "<group>"; };
@@ -163,7 +161,6 @@
 			children = (
 				EB4B5E372417F74100EB7EB9 /* MaintenanceRequest.swift */,
 				EB4B5E392417F75D00EB7EB9 /* Advertisement.swift */,
-				EB4B5E3B2417F76F00EB7EB9 /* Announcement.swift */,
 				EB6FC6C12418F96000CBA10B /* Activity.swift */,
 			);
 			path = Cards;
@@ -560,7 +557,6 @@
 				EB6FC6C22418F96000CBA10B /* Activity.swift in Sources */,
 				045107E2242FFF14007A4EC7 /* AnnouncementCell.swift in Sources */,
 				EB163E0624294682004A34BA /* DataModel.swift in Sources */,
-				EB4B5E3C2417F76F00EB7EB9 /* Announcement.swift in Sources */,
 				EB4B5E3A2417F75D00EB7EB9 /* Advertisement.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
