@@ -41,6 +41,8 @@ class WelcomeViewController: UIViewController {
 			self.performSegue(withIdentifier: "toEnterFreej", sender: self)
 		}
 	}
+    
+    
 	
 	//MARK:- Accessing MainVC
 	//This method will initialize the completion handler variable in EnterFreejNavController

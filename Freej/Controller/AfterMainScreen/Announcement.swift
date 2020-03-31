@@ -14,17 +14,19 @@ class Announcement {
     var type : String
     var content : String
     
-    init(icon : UIImage, type : String, content : String) {
+    init(type : String, content : String) {
         self.type = type
         switch type {
         case "General":
-            icon.UIImage = UIImage(systemName: "mic.fill")!
+            self.icon = UIImage(systemName: "mic.fill")!
         case "Specific":
-            icon.UIImage = UIImage(systemName: "bubble.left.fill")!
+            self.icon = UIImage(systemName: "bubble.left.fill")!
         default:
-            UIImage(systemName: "person.fill")!
+            self.icon = UIImage(systemName: "person.fill")!
         }
         
         self.content = content
+    
     }
+    
 }

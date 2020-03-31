@@ -21,7 +21,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="160" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KrR-O2-8V9">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" rowHeight="160" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KrR-O2-8V9">
                                 <rect key="frame" x="0.0" y="140" width="375" height="589"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
@@ -48,7 +48,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rrm-C1-3Sa">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rrm-C1-3Sa">
                                                     <rect key="frame" x="5" y="35" width="365" height="120"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="120" id="bkP-4X-PWD"/>
@@ -69,6 +69,11 @@
                                                 <constraint firstItem="dAQ-Qg-3hB" firstAttribute="top" secondItem="sbo-td-vHi" secondAttribute="top" constant="5" id="rEY-is-oCl"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="icon" destination="dAQ-Qg-3hB" id="jb9-BN-b6v"/>
+                                            <outlet property="mainLabel" destination="Rrm-C1-3Sa" id="Ty8-AN-36s"/>
+                                            <outlet property="typeLabel" destination="RTV-X9-WjF" id="u5Y-Uw-ke9"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -87,6 +92,7 @@
                     <tabBarItem key="tabBarItem" title="الإشعارات" image="first" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="mainTableView" destination="KrR-O2-8V9" id="vUg-TI-UNB"/>
+                        <outlet property="tableView" destination="KrR-O2-8V9" id="mn5-BC-bPA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
