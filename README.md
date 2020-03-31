@@ -1,1 +1,1 @@
-# Freej
+# Freej App
