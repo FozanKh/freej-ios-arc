@@ -21,21 +21,22 @@
                                     <constraint firstAttribute="height" constant="30" id="lZK-9b-Lde"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oyT-AH-bXR">
+                            <textField opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" contentHorizontalAlignment="left" contentVerticalAlignment="top" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oyT-AH-bXR">
                                 <rect key="frame" x="20" y="404" width="335" height="130"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="jfs-G3-XvY"/>
-                                    <constraint firstAttribute="height" constant="130" id="xEL-ef-qH5"/>
+                                    <constraint firstAttribute="height" constant="130" id="8Of-BQ-3Iq"/>
+                                    <constraint firstAttribute="width" secondItem="oyT-AH-bXR" secondAttribute="height" multiplier="67:26" id="lwc-h5-PfR"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r4i-QC-JFG">
                                 <rect key="frame" x="20" y="544" width="335" height="30"/>
                                 <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="S6b-vz-UIb"/>
                                     <constraint firstAttribute="height" constant="30" id="qxb-p5-j4w"/>
                                 </constraints>
                                 <state key="normal" title="Add">
@@ -49,14 +50,16 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Xef-wW-oqh" firstAttribute="trailing" secondItem="r4i-QC-JFG" secondAttribute="trailing" constant="20" id="4jR-yq-8xK"/>
-                            <constraint firstItem="Xef-wW-oqh" firstAttribute="trailing" secondItem="oyT-AH-bXR" secondAttribute="trailing" constant="20" id="8M1-mh-czD"/>
                             <constraint firstItem="r4i-QC-JFG" firstAttribute="leading" secondItem="Xef-wW-oqh" secondAttribute="leading" constant="20" id="8Om-lI-tcf"/>
-                            <constraint firstItem="oyT-AH-bXR" firstAttribute="top" secondItem="ayD-Aa-p6f" secondAttribute="bottom" constant="10" id="PEH-52-Qoz"/>
-                            <constraint firstItem="r4i-QC-JFG" firstAttribute="top" secondItem="oyT-AH-bXR" secondAttribute="bottom" constant="10" id="Vaa-bR-Upn"/>
-                            <constraint firstItem="oyT-AH-bXR" firstAttribute="leading" secondItem="Xef-wW-oqh" secondAttribute="leading" constant="20" id="YYT-NJ-nD3"/>
                             <constraint firstItem="ayD-Aa-p6f" firstAttribute="leading" secondItem="Xef-wW-oqh" secondAttribute="leading" constant="20" id="j5I-LJ-xId"/>
+                            <constraint firstItem="Xef-wW-oqh" firstAttribute="trailing" secondItem="r4i-QC-JFG" secondAttribute="trailing" constant="20" id="jAx-FO-wL4"/>
                             <constraint firstItem="Xef-wW-oqh" firstAttribute="trailing" secondItem="ayD-Aa-p6f" secondAttribute="trailing" constant="20" id="l6H-vK-hNi"/>
+                            <constraint firstItem="r4i-QC-JFG" firstAttribute="top" secondItem="oyT-AH-bXR" secondAttribute="bottom" constant="10" id="n58-RO-nhb"/>
+                            <constraint firstItem="Xef-wW-oqh" firstAttribute="trailing" secondItem="oyT-AH-bXR" secondAttribute="trailing" constant="20" id="r6W-XR-cjS"/>
+                            <constraint firstItem="oyT-AH-bXR" firstAttribute="top" secondItem="ayD-Aa-p6f" secondAttribute="bottom" constant="10" id="wC0-2p-d3l"/>
                             <constraint firstItem="ayD-Aa-p6f" firstAttribute="centerY" secondItem="ykC-JX-zZd" secondAttribute="centerY" id="wP1-Ce-crA"/>
+                            <constraint firstItem="r4i-QC-JFG" firstAttribute="leading" secondItem="Xef-wW-oqh" secondAttribute="leading" constant="20" id="xaH-WT-9ET"/>
+                            <constraint firstItem="oyT-AH-bXR" firstAttribute="leading" secondItem="Xef-wW-oqh" secondAttribute="leading" constant="20" id="yTY-xN-L0N"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Xef-wW-oqh"/>
                     </view>
@@ -153,7 +156,6 @@
                                 </state>
                                 <connections>
                                     <action selector="addAnnouncement:" destination="9pv-A4-QxB" eventType="touchUpInside" id="9mg-lD-PY5"/>
-                                    <segue destination="7jx-Mf-eoM" kind="push" id="hYV-1s-uZp"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -173,6 +175,7 @@
                     <tabBarItem key="tabBarItem" title="الإشعارات" image="first" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="tableView" destination="KrR-O2-8V9" id="mn5-BC-bPA"/>
+                        <segue destination="7jx-Mf-eoM" kind="presentation" identifier="AddAnnounce" id="PFQ-ZV-I0H"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>

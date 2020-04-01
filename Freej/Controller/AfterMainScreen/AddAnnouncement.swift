@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class AddAnnouncement : UIViewController {
+class AddAnnouncement : UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var contentField: UITextField!
     @IBOutlet weak var type: UITextField!
@@ -30,6 +30,20 @@ class AddAnnouncement : UIViewController {
     }
     
     @IBAction func addButton(_ sender: UIButton) {
+        textFeildFunction()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textFeildFunction()
+        return true
+    }
+    
+    func textFeildFunction(){
+        contentField.endEditing(true)
+        addAnnounce()
+    }
+    
+    func addAnnounce() {
         addAnnouncement(antID: "1", userID: "2", title: type.text!, content: contentField.text!)
         self.dismiss(animated: true, completion: nil)
     }

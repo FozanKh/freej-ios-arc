@@ -11,7 +11,7 @@ import SwiftyJSON
 import Alamofire
 
 class AnnouncementsViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     let getAnnouncementsURL = "http://freejapp.com/FreejAppRequest/GetAnnouncements.php"
@@ -72,19 +72,12 @@ class AnnouncementsViewController: UIViewController {
     
     
     @IBAction func addAnnouncement(_ sender: UIButton) {
-       
-            self.showAddAnnouncement()
-        
-    }
-    
-    //MARK:- Push Suitable View Controller Methods
-    func showAddAnnouncement() {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "AddAnnouncement") as! AddAnnouncement
-        
+        print("Changed")
+        performSegue(withIdentifier: "AddAnnounce", sender: self)
     }
     
     
-
+    
 }
 extension AnnouncementsViewController: UITableViewDataSource, UITableViewDelegate {
     
@@ -123,7 +116,7 @@ extension AnnouncementsViewController: UITableViewDataSource, UITableViewDelegat
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView {
         
-
+        
         let header = tableView.dequeueReusableCell(withIdentifier: "AnnouncementCell") as! AnnouncementCell
         header.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         header.mainLabel.textColor = #colorLiteral(red: 0.8736796379, green: 0.1468148232, blue: 0.08675638586, alpha: 1)
