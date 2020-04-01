@@ -15,7 +15,7 @@ class AnnouncementsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     let getAnnouncementsURL = "http://freejapp.com/FreejAppRequest/GetAnnouncements.php"
-    let postAnnouncementURL = "http://freejapp.com/FreejAppRequest/PostAnnouncements.php"
+    static let postAnnouncementURL = "http://freejapp.com/FreejAppRequest/PostAnnouncements.php"
     
     var announcements : [Announcement] = []
     
@@ -56,12 +56,12 @@ class AnnouncementsViewController: UIViewController {
         }
     }
     
-    func postAnnouncement(_ anTID: String, _ userID: String, _ title: String, _ descrp: String, completion: @escaping (Bool) -> ()) {
+    static func postAnnouncement(_ anTID: String, _ userID: String, _ title: String, _ descrp: String, completion: @escaping (Bool) -> ()) {
         let params =   ["AnTID" : anTID,
                         "UserID" : userID,
                         "Title" : title,
                         "Descrp" : descrp,
-                        "SDate" : "2020",
+                        "SDate" : "2020-20-02",
                         "Stat" : "Activated"]
         
         Alamofire.request(postAnnouncementURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
@@ -71,7 +71,19 @@ class AnnouncementsViewController: UIViewController {
     }
     
     
-
+    @IBAction func addAnnouncement(_ sender: UIButton) {
+       
+            self.showAddAnnouncement()
+        
+    }
+    
+    //MARK:- Push Suitable View Controller Methods
+    func showAddAnnouncement() {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "AddAnnouncement") as! AddAnnouncement
+        
+    }
+    
+    
 
 }
 extension AnnouncementsViewController: UITableViewDataSource, UITableViewDelegate {
