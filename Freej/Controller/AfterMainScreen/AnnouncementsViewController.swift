@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import SwiftyJSON
+import Alamofire
 
 class AnnouncementsViewController: UIViewController {
 
-    @IBOutlet weak var mainTableView: UITableView!
     @IBOutlet weak var tableView: UITableView!
+    
+    let getAnnouncementsURL = "http://freejapp.com/FreejAppRequest/GetAnnouncements.php"
+    let postAnnouncementURL = "http://freejapp.com/FreejAppRequest/PostAnnouncements.php"
     
     var announcements : [Announcement] = []
     
@@ -32,26 +36,38 @@ class AnnouncementsViewController: UIViewController {
     func createArray() -> [Announcement] {
         var temp : [Announcement] = []
         
-        let v1 = Announcement(type: "General", content: "This is an example of general announcement created by the admin KHALEEED")
-        let v2 = Announcement(type: "Specific", content: "This is an example of specific announcement created by the ameen KHALEEED")
-        let v3 = Announcement(type: "Technical", content: "This is an example of other announcement created by the admin KHALEEED")
-        let v4 = Announcement(type: "General", content: "This is an example of general announcement created by the admin KHALEEED")
-        let v5 = Announcement(type: "Specific", content: "This is an example of specific announcement created by the ameen KHALEEED")
-        let v6 = Announcement(type: "Technical", content: "This is an example of other announcement created by the admin KHALEEED")
-        let v7 = Announcement(type: "General", content: "This is an example of general announcement created by the admin KHALEEED")
-        let v8 = Announcement(type: "Specific", content: "This is an example of specific announcement created by the ameen KHALEEED")
-        let v9 = Announcement(type: "Technical", content: "This is an example of other announcement created by the admin KHALEEED")
+        temp.append(Announcement(type: "General", content: "This is an example of general announcement created by the admin KHALEEED"))
+        temp.append(Announcement(type: "Specific", content: "This is an example of specific announcement created by the ameen KHALEEED"))
+        temp.append(Announcement(type: "Technical", content: "This is an example of other announcement created by the admin KHALEEED"))
+        temp.append(Announcement(type: "General", content: "This is an example of general announcement created by the admin KHALEEED"))
+        temp.append(Announcement(type: "Specific", content: "This is an example of specific announcement created by the ameen KHALEEED"))
+        temp.append(Announcement(type: "Technical", content: "This is an example of other announcement created by the admin KHALEEED"))
+        temp.append(Announcement(type: "General", content: "This is an example of general announcement created by the admin KHALEEED"))
+        temp.append(Announcement(type: "Specific", content: "This is an example of specific announcement created by the ameen KHALEEED"))
+        temp.append(Announcement(type: "Technical", content: "This is an example of other announcement created by the admin KHALEEED"))
         
-        temp.append(v1)
-        temp.append(v2)
-        temp.append(v3)
-        temp.append(v4)
-        temp.append(v5)
-        temp.append(v6)
-        temp.append(v7)
-        temp.append(v8)
-        temp.append(v9)
         return temp
+    }
+    
+    func getAnnouncements(completion: @escaping (JSON?) -> ()) {
+        Alamofire.request(getAnnouncementsURL, method: .post, parameters: nil, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
+            let responseValue = response.result.value ?? nil
+            responseValue == nil ? completion(nil) : completion(JSON(responseValue!)[0])
+        }
+    }
+    
+    func postAnnouncement(_ anTID: String, _ userID: String, _ title: String, _ descrp: String, completion: @escaping (Bool) -> ()) {
+        let params =   ["AnTID" : anTID,
+                        "UserID" : userID,
+                        "Title" : title,
+                        "Descrp" : descrp,
+                        "SDate" : "2020",
+                        "Stat" : "Activated"]
+        
+        Alamofire.request(postAnnouncementURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
+            print(response)
+            completion(response.result.isSuccess)
+        }
     }
     
     
