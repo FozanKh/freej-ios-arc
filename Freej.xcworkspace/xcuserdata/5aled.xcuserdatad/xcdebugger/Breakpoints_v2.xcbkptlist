@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "4B53053D-441A-4D98-8FA0-D811F4EC150F"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F598766B-3F87-4BA8-9A82-7F7B79CA2D25"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Freej/Controller/AfterMainScreen/AnnouncementsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "AnnouncementsViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "F598766B-3F87-4BA8-9A82-7F7B79CA2D25 - 68e9deb6e22d36ea"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Freej.AnnouncementsViewController.announcements.getter : Swift.Array&lt;Freej.Announcement&gt;"
+                  moduleName = "Freej"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/5aled/Desktop/IOS%20course/Hajjar&apos;sIdea/Freej/Freej/Controller/AfterMainScreen/AnnouncementsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "122">
+               </Location>
+               <Location
+                  uuid = "F598766B-3F87-4BA8-9A82-7F7B79CA2D25 - 3645275e10ef6afe"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Freej.AnnouncementsViewController.announcements.setter : Swift.Array&lt;Freej.Announcement&gt;"
+                  moduleName = "Freej"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/5aled/Desktop/IOS%20course/Hajjar&apos;sIdea/Freej/Freej/Controller/AfterMainScreen/AnnouncementsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "144">
+               </Location>
+               <Location
+                  uuid = "F598766B-3F87-4BA8-9A82-7F7B79CA2D25 - c4ecc92f7ff153e9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Freej.AnnouncementsViewController.announcements.modify : Swift.Array&lt;Freej.Announcement&gt;"
+                  moduleName = "Freej"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/5aled/Desktop/IOS%20course/Hajjar&apos;sIdea/Freej/Freej/Controller/AfterMainScreen/AnnouncementsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "18">
+               </Location>
+               <Location
+                  uuid = "F598766B-3F87-4BA8-9A82-7F7B79CA2D25 - 4c218237e8b30526"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Freej.AnnouncementsViewController.announcements.modify : Swift.Array&lt;Freej.Announcement&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "Freej"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/5aled/Desktop/IOS%20course/Hajjar&apos;sIdea/Freej/Freej/Controller/AfterMainScreen/AnnouncementsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  uuid = "F598766B-3F87-4BA8-9A82-7F7B79CA2D25 - 292e330b8049ad6f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Freej.AnnouncementsViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Freej.AnnouncementsViewController"
+                  moduleName = "Freej"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/5aled/Desktop/IOS%20course/Hajjar&apos;sIdea/Freej/Freej/Controller/AfterMainScreen/AnnouncementsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "375">
+               </Location>
+               <Location
+                  uuid = "F598766B-3F87-4BA8-9A82-7F7B79CA2D25 - 9add0deba537539a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Freej.AnnouncementsViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Freej.AnnouncementsViewController&gt;"
+                  moduleName = "Freej"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/5aled/Desktop/IOS%20course/Hajjar&apos;sIdea/Freej/Freej/Controller/AfterMainScreen/AnnouncementsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "313">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
