@@ -25,34 +25,47 @@ class AnnouncementsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        announcements = createArray()
-        header = announcements[headerNumber]
-        announcements.remove(at: headerNumber)
+//        announcements = createArray()
+//        header = announcements[headerNumber]
+//        announcements.remove(at: headerNumber)
+        getAnnouncements()
         tableView.delegate = self
         tableView.dataSource = self
         
     }
     
-    func createArray() -> [Announcement] {
-        var temp : [Announcement] = []
-        
-        temp.append(Announcement(type: "General", content: "This is an example of general announcement created by the admin KHALEEED"))
-        temp.append(Announcement(type: "Specific", content: "This is an example of specific announcement created by the ameen KHALEEED"))
-        temp.append(Announcement(type: "Technical", content: "This is an example of other announcement created by the admin KHALEEED"))
-        temp.append(Announcement(type: "General", content: "This is an example of general announcement created by the admin KHALEEED"))
-        temp.append(Announcement(type: "Specific", content: "This is an example of specific announcement created by the ameen KHALEEED"))
-        temp.append(Announcement(type: "Technical", content: "This is an example of other announcement created by the admin KHALEEED"))
-        temp.append(Announcement(type: "General", content: "This is an example of general announcement created by the admin KHALEEED"))
-        temp.append(Announcement(type: "Specific", content: "This is an example of specific announcement created by the ameen KHALEEED"))
-        temp.append(Announcement(type: "Technical", content: "This is an example of other announcement created by the admin KHALEEED"))
-        
-        return temp
-    }
+//    func createArray() -> [Announcement] {
+//        var temp : [Announcement] = []
+//
+//        temp.append(Announcement(type: "General", content: "This is an example of general announcement created by the admin KHALEEED"))
+//        temp.append(Announcement(type: "Specific", content: "This is an example of specific announcement created by the ameen KHALEEED"))
+//        temp.append(Announcement(type: "Technical", content: "This is an example of other announcement created by the admin KHALEEED"))
+//        temp.append(Announcement(type: "General", content: "This is an example of general announcement created by the admin KHALEEED"))
+//        temp.append(Announcement(type: "Specific", content: "This is an example of specific announcement created by the ameen KHALEEED"))
+//        temp.append(Announcement(type: "Technical", content: "This is an example of other announcement created by the admin KHALEEED"))
+//        temp.append(Announcement(type: "General", content: "This is an example of general announcement created by the admin KHALEEED"))
+//        temp.append(Announcement(type: "Specific", content: "This is an example of specific announcement created by the ameen KHALEEED"))
+//        temp.append(Announcement(type: "Technical", content: "This is an example of other announcement created by the admin KHALEEED"))
+//
+//        return temp
+//    }
     
-    func getAnnouncements(completion: @escaping (JSON?) -> ()) {
+    func getAnnouncements() {
         Alamofire.request(getAnnouncementsURL, method: .post, parameters: nil, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
-            let responseValue = response.result.value ?? nil
-            responseValue == nil ? completion(nil) : completion(JSON(responseValue!)[0])
+            
+            if let value = response.result.value {
+
+                let json = JSON(value)
+               
+                for anItem in json.array! {
+                    self.announcements.append(Announcement(type: anItem["Title"].stringValue, content: anItem["Descrp"].stringValue))
+                }
+                
+                print(self.announcements.count)
+                
+            }
+
+            self.tableView.reloadData()
         }
     }
     
@@ -75,9 +88,7 @@ class AnnouncementsViewController: UIViewController {
         print("Changed")
         performSegue(withIdentifier: "AddAnnounce", sender: self)
     }
-    
-    
-    
+
 }
 extension AnnouncementsViewController: UITableViewDataSource, UITableViewDelegate {
     
@@ -87,7 +98,7 @@ extension AnnouncementsViewController: UITableViewDataSource, UITableViewDelegat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        print(indexPath.row)
+        
         let announcement = announcements[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "AnnouncementCell") as! AnnouncementCell
         cell.setAnnouncement(announcement: announcement)
@@ -110,22 +121,22 @@ extension AnnouncementsViewController: UITableViewDataSource, UITableViewDelegat
         
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        165
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView {
-        
-        
-        let header = tableView.dequeueReusableCell(withIdentifier: "AnnouncementCell") as! AnnouncementCell
-        header.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        header.mainLabel.textColor = #colorLiteral(red: 0.8736796379, green: 0.1468148232, blue: 0.08675638586, alpha: 1)
-        header.typeLabel.textColor = #colorLiteral(red: 0.8736796379, green: 0.1468148232, blue: 0.08675638586, alpha: 1)
-        header.icon.tintColor = #colorLiteral(red: 0.8736796379, green: 0.1468148232, blue: 0.08675638586, alpha: 1)
-        header.setAnnouncement(announcement: self.header)
-        
-        return header
-    }
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        165
+//    }
+//
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView {
+//
+//
+//        let header = tableView.dequeueReusableCell(withIdentifier: "AnnouncementCell") as! AnnouncementCell
+//        header.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+//        header.mainLabel.textColor = #colorLiteral(red: 0.8736796379, green: 0.1468148232, blue: 0.08675638586, alpha: 1)
+//        header.typeLabel.textColor = #colorLiteral(red: 0.8736796379, green: 0.1468148232, blue: 0.08675638586, alpha: 1)
+//        header.icon.tintColor = #colorLiteral(red: 0.8736796379, green: 0.1468148232, blue: 0.08675638586, alpha: 1)
+//        header.setAnnouncement(announcement: self.header)
+//
+//        return header
+//    }
     
     
 }

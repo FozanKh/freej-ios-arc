@@ -23,20 +23,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" contentHorizontalAlignment="left" contentVerticalAlignment="top" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oyT-AH-bXR">
-                                <rect key="frame" x="20" y="404" width="335" height="130"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="130" id="8Of-BQ-3Iq"/>
-                                    <constraint firstAttribute="width" secondItem="oyT-AH-bXR" secondAttribute="height" multiplier="67:26" id="lwc-h5-PfR"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r4i-QC-JFG">
                                 <rect key="frame" x="20" y="544" width="335" height="30"/>
                                 <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="S6b-vz-UIb"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="30" id="giP-VD-jBC"/>
                                     <constraint firstAttribute="height" constant="30" id="qxb-p5-j4w"/>
                                 </constraints>
                                 <state key="normal" title="Add">
@@ -46,20 +38,32 @@
                                     <action selector="addButton:" destination="7jx-Mf-eoM" eventType="touchUpInside" id="Cee-5d-u40"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z8d-lg-vbG">
+                                <rect key="frame" x="20" y="404" width="335" height="130"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="OXh-hS-jPw"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="r4i-QC-JFG" firstAttribute="top" secondItem="Z8d-lg-vbG" secondAttribute="bottom" constant="10" id="2nf-pH-Fir"/>
                             <constraint firstItem="Xef-wW-oqh" firstAttribute="trailing" secondItem="r4i-QC-JFG" secondAttribute="trailing" constant="20" id="4jR-yq-8xK"/>
                             <constraint firstItem="r4i-QC-JFG" firstAttribute="leading" secondItem="Xef-wW-oqh" secondAttribute="leading" constant="20" id="8Om-lI-tcf"/>
+                            <constraint firstItem="Z8d-lg-vbG" firstAttribute="leading" secondItem="Xef-wW-oqh" secondAttribute="leading" constant="20" id="93v-Ue-dbB"/>
+                            <constraint firstItem="r4i-QC-JFG" firstAttribute="leading" secondItem="Xef-wW-oqh" secondAttribute="leading" constant="20" id="9sH-lh-yL1"/>
+                            <constraint firstItem="Xef-wW-oqh" firstAttribute="trailing" secondItem="r4i-QC-JFG" secondAttribute="trailing" constant="20" id="Dna-Ts-NyU"/>
+                            <constraint firstItem="Xef-wW-oqh" firstAttribute="trailing" secondItem="Z8d-lg-vbG" secondAttribute="trailing" constant="20" id="f77-cB-u5V"/>
+                            <constraint firstItem="Z8d-lg-vbG" firstAttribute="top" secondItem="ayD-Aa-p6f" secondAttribute="bottom" constant="10" id="gn5-uf-BTh"/>
                             <constraint firstItem="ayD-Aa-p6f" firstAttribute="leading" secondItem="Xef-wW-oqh" secondAttribute="leading" constant="20" id="j5I-LJ-xId"/>
                             <constraint firstItem="Xef-wW-oqh" firstAttribute="trailing" secondItem="r4i-QC-JFG" secondAttribute="trailing" constant="20" id="jAx-FO-wL4"/>
                             <constraint firstItem="Xef-wW-oqh" firstAttribute="trailing" secondItem="ayD-Aa-p6f" secondAttribute="trailing" constant="20" id="l6H-vK-hNi"/>
-                            <constraint firstItem="r4i-QC-JFG" firstAttribute="top" secondItem="oyT-AH-bXR" secondAttribute="bottom" constant="10" id="n58-RO-nhb"/>
-                            <constraint firstItem="Xef-wW-oqh" firstAttribute="trailing" secondItem="oyT-AH-bXR" secondAttribute="trailing" constant="20" id="r6W-XR-cjS"/>
-                            <constraint firstItem="oyT-AH-bXR" firstAttribute="top" secondItem="ayD-Aa-p6f" secondAttribute="bottom" constant="10" id="wC0-2p-d3l"/>
                             <constraint firstItem="ayD-Aa-p6f" firstAttribute="centerY" secondItem="ykC-JX-zZd" secondAttribute="centerY" id="wP1-Ce-crA"/>
                             <constraint firstItem="r4i-QC-JFG" firstAttribute="leading" secondItem="Xef-wW-oqh" secondAttribute="leading" constant="20" id="xaH-WT-9ET"/>
-                            <constraint firstItem="oyT-AH-bXR" firstAttribute="leading" secondItem="Xef-wW-oqh" secondAttribute="leading" constant="20" id="yTY-xN-L0N"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Xef-wW-oqh"/>
                     </view>
@@ -67,7 +71,7 @@
                     <value key="contentSizeForViewInPopover" type="size" width="375" height="500"/>
                     <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="contentField" destination="oyT-AH-bXR" id="5Af-CJ-evm"/>
+                        <outlet property="contentField" destination="Z8d-lg-vbG" id="nRN-rU-6el"/>
                         <outlet property="type" destination="ayD-Aa-p6f" id="PM5-fq-bPn"/>
                     </connections>
                 </viewController>
