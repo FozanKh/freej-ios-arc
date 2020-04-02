@@ -41,17 +41,27 @@ class AddAnnouncement : UIViewController, UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textFeildFunction()
+        type.endEditing(true)
         return true
     }
     
     func textFeildFunction(){
-        contentField.endEditing(true)
+        type.endEditing(true)
         addAnnounce()
     }
     
     func addAnnounce() {
-        addAnnouncement(antID: "1", userID: "2", title: type.text!, content: contentField.text!)
+        var atID = ""
+        switch type.text! {
+        case "General":
+            atID = "1"
+        case "Specific":
+            atID = "2"
+        default:
+            atID = "3"
+        }
         
+        addAnnouncement(antID: atID, userID: DataModel.currentUser!.userID!, title: type.text!, content: contentField.text!)
         self.dismiss(animated: true, completion: nil)
         
     }

@@ -736,7 +736,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TP338A8XKT;
+				DEVELOPMENT_TEAM = W2K4HL3BL3;
 				INFOPLIST_FILE = Freej/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -755,7 +755,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TP338A8XKT;
+				DEVELOPMENT_TEAM = W2K4HL3BL3;
 				INFOPLIST_FILE = Freej/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
