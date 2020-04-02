@@ -13,9 +13,11 @@ import Alamofire
 class AnnouncementsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var buttonClick: UIButton!
     
     let getAnnouncementsURL = "http://freejapp.com/FreejAppRequest/GetAnnouncements.php"
     static let postAnnouncementURL = "http://freejapp.com/FreejAppRequest/PostAnnouncements.php"
+    let getAmeenURL = "http://freejapp.com/FreejAppRequest/GetAmeen.php"
     
     var announcements : [Announcement] = []
     var refreshConroller : UIRefreshControl?
@@ -24,6 +26,18 @@ class AnnouncementsViewController: UIViewController {
     var headerNumber = 1
     var header : Announcement!
     
+    override func loadView() {
+        super.loadView()
+        getAmeen(userID: DataModel.currentUser!.userID!) { (Ameen) in
+            if Ameen {
+                self.buttonClick.isHidden = false
+            } else {
+                self.buttonClick.isHidden = true
+            }
+            
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -31,8 +45,10 @@ class AnnouncementsViewController: UIViewController {
         //        header = announcements[headerNumber]
         //        announcements.remove(at: headerNumber)
         getAnnouncements()
+        
         tableView.delegate = self
         tableView.dataSource = self
+        //print(ameen)
         addRefreshControl()
         
     }
@@ -51,6 +67,13 @@ class AnnouncementsViewController: UIViewController {
         getAnnouncements()
         
         
+    }
+    
+    func getAmeen(userID: String, completion: @escaping (Bool) -> ()) {
+        let params = ["UserID" : userID]
+        Alamofire.request(getAmeenURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
+            completion(response.result.isSuccess)
+        }
     }
     
     
