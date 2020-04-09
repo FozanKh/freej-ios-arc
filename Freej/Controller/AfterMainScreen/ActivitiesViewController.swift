@@ -9,16 +9,38 @@
 import UIKit
 
 class ActivitiesViewController: UIViewController {
-
-	override func viewDidLoad() {
+    
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        tableView.delegate = self
+        tableView.dataSource = self
     }
-	
-	@IBAction func logOut(_ sender: Any) {
-		DataModel.clearCurrentUser()
-		self.navigationController?.popToRootViewController(animated: true)
-	}
-
+    
+    
 }
+
+extension ActivitiesViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "RequestCell") as! RequestCell
+            return cell
+        } else if indexPath.row == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MaintenanceCell") as! MaintenanceCell
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ServicesCell") as! ServicesCell
+            return cell
+        }
+    }
+}
+
+
 
