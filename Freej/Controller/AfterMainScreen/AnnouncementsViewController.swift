@@ -75,24 +75,7 @@ class AnnouncementsViewController: UIViewController {
             completion(response.result.isSuccess)
         }
     }
-    
-    
-    //    func createArray() -> [Announcement] {
-    //        var temp : [Announcement] = []
-    //
-    //        temp.append(Announcement(type: "General", content: "This is an example of general announcement created by the admin KHALEEED"))
-    //        temp.append(Announcement(type: "Specific", content: "This is an example of specific announcement created by the ameen KHALEEED"))
-    //        temp.append(Announcement(type: "Technical", content: "This is an example of other announcement created by the admin KHALEEED"))
-    //        temp.append(Announcement(type: "General", content: "This is an example of general announcement created by the admin KHALEEED"))
-    //        temp.append(Announcement(type: "Specific", content: "This is an example of specific announcement created by the ameen KHALEEED"))
-    //        temp.append(Announcement(type: "Technical", content: "This is an example of other announcement created by the admin KHALEEED"))
-    //        temp.append(Announcement(type: "General", content: "This is an example of general announcement created by the admin KHALEEED"))
-    //        temp.append(Announcement(type: "Specific", content: "This is an example of specific announcement created by the ameen KHALEEED"))
-    //        temp.append(Announcement(type: "Technical", content: "This is an example of other announcement created by the admin KHALEEED"))
-    //
-    //        return temp
-    //    }
-    
+  
     func getAnnouncements() {
         Alamofire.request(getAnnouncementsURL, method: .post, parameters: nil, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
             
