@@ -14,6 +14,7 @@
 		04AD6168243EB5B5009DD7A7 /* CollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AD6167243EB5B5009DD7A7 /* CollectionCell.swift */; };
 		04AD616A243EB671009DD7A7 /* MaintenanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AD6169243EB671009DD7A7 /* MaintenanceCell.swift */; };
 		04AD616C243EB729009DD7A7 /* ServicesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AD616B243EB729009DD7A7 /* ServicesCell.swift */; };
+		04AD6170243EFD16009DD7A7 /* DetectingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AD616F243EFD16009DD7A7 /* DetectingPage.swift */; };
 		04FFCB3C24341EC000DE0FFE /* AnnouncementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FFCB3B24341EC000DE0FFE /* AnnouncementsViewController.swift */; };
 		04FFCB3E2434279D00DE0FFE /* AddAnnouncement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FFCB3D2434279D00DE0FFE /* AddAnnouncement.swift */; };
 		2A64875FA3DB40BED70B60DE /* Pods_Freej.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57BEDCB9C7BF77C08BADB881 /* Pods_Freej.framework */; };
@@ -72,6 +73,7 @@
 		04AD6167243EB5B5009DD7A7 /* CollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCell.swift; sourceTree = "<group>"; };
 		04AD6169243EB671009DD7A7 /* MaintenanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceCell.swift; sourceTree = "<group>"; };
 		04AD616B243EB729009DD7A7 /* ServicesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesCell.swift; sourceTree = "<group>"; };
+		04AD616F243EFD16009DD7A7 /* DetectingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectingPage.swift; sourceTree = "<group>"; };
 		04FFCB3B24341EC000DE0FFE /* AnnouncementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsViewController.swift; sourceTree = "<group>"; };
 		04FFCB3D2434279D00DE0FFE /* AddAnnouncement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAnnouncement.swift; sourceTree = "<group>"; };
 		4020848BDCD64D089A5D5B34 /* Pods-Freej.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Freej.release.xcconfig"; path = "Target Support Files/Pods-Freej/Pods-Freej.release.xcconfig"; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 		EB163E012428F78C004A34BA /* AfterMainScreen */ = {
 			isa = PBXGroup;
 			children = (
+				04AD616F243EFD16009DD7A7 /* DetectingPage.swift */,
 				EB3641422417E89300F81D6A /* ActivitiesViewController.swift */,
 				04AD6167243EB5B5009DD7A7 /* CollectionCell.swift */,
 				04AD6163243EB4EF009DD7A7 /* RequestCell.swift */,
@@ -561,6 +564,7 @@
 				EB4B5E2F2417ECD600EB7EB9 /* SettingsViewController.swift in Sources */,
 				04AD616C243EB729009DD7A7 /* ServicesCell.swift in Sources */,
 				04FFCB3E2434279D00DE0FFE /* AddAnnouncement.swift in Sources */,
+				04AD6170243EFD16009DD7A7 /* DetectingPage.swift in Sources */,
 				EB6933FD2425148900A66412 /* EnterFreejNavController.swift in Sources */,
 				EB3641432417E89300F81D6A /* ActivitiesViewController.swift in Sources */,
 				04AD6166243EB52B009DD7A7 /* Actitivities.swift in Sources */,

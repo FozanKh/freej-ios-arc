@@ -17,7 +17,6 @@ class AnnouncementsViewController: UIViewController {
     
     let getAnnouncementsURL = "http://freejapp.com/FreejAppRequest/GetAnnouncements.php"
     static let postAnnouncementURL = "http://freejapp.com/FreejAppRequest/PostAnnouncements.php"
-    let getAmeenURL = "http://freejapp.com/FreejAppRequest/GetAmeen.php"
     
     var announcements : [Announcement] = []
     var refreshConroller : UIRefreshControl?
@@ -28,7 +27,7 @@ class AnnouncementsViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
-        getAmeen(userID: DataModel.currentUser!.userID!) { (Ameen) in
+        DetectingPage.getAmeen(userID: DataModel.currentUser!.userID!) { (Ameen) in
             if Ameen {
                 self.buttonClick.isHidden = false
             } else {
@@ -67,13 +66,6 @@ class AnnouncementsViewController: UIViewController {
         getAnnouncements()
         
         
-    }
-    
-    func getAmeen(userID: String, completion: @escaping (Bool) -> ()) {
-        let params = ["UserID" : userID]
-        Alamofire.request(getAmeenURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
-            completion(response.result.isSuccess)
-        }
     }
   
     func getAnnouncements() {

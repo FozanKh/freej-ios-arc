@@ -29,6 +29,7 @@ class RequestCell: UITableViewCell {
         }
     
         func getActivity() {
+
             Alamofire.request(getActivityURL, method: .post, parameters: ["AcTID" : 1], encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
                 if let value = response.result.value {
                     
@@ -36,11 +37,11 @@ class RequestCell: UITableViewCell {
                     self.activities.removeAll()
                     for anItem in json.array! {
                         self.activities.append(Actitvities(type: anItem["AcTID"].stringValue, title: anItem["Title"].stringValue, text: anItem["Descrp"].stringValue, time: anItem["SDate"].stringValue, status: anItem["Stat"].stringValue))
+                        
                     }
                     print("======================",self.activities.count)
                     
                 }
-                
                 self.collection.reloadData()
             }
         }
