@@ -59,7 +59,10 @@ class WelcomeViewController: UIViewController {
 			let destVC = segue.destination as! EnterFreejNavController
 			destVC.loginProcessCompletionHandler = { status in
 				if(status == true) {
-					self.performSegue(withIdentifier: "toMainVC", sender: self)
+                    NetworkManager.getAmeen(userID: DataModel.currentUser!.userID!) { (status) in
+                        DataModel.currentUser?.isAmeen = status
+                        self.performSegue(withIdentifier: "toMainVC", sender: self)
+                    }
 				}
 			}
 		}

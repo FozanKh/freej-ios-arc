@@ -23,12 +23,12 @@ class DetectingPage: UITabBarController {
         // Do any additional setup after loading the view.
     }
     
-    static func getAmeen(userID: String, completion: @escaping (Bool) -> ()) {
-        let params = ["UserID" : userID]
-        Alamofire.request(getAmeenURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
-            completion(response.result.isSuccess)
-        }
-    }
+//    static func getAmeen(userID: String, completion: @escaping (Bool) -> ()) {
+//        let params = ["UserID" : userID]
+//        Alamofire.request(getAmeenURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
+//            completion(response.result.isSuccess)
+//        }
+//    }
     
 //    static func getActivity(actid : Int){
 //        Alamofire.request(getActivityURL, method: .post, parameters: ["AcTID" : actid], encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in

@@ -11,5 +11,5 @@ import CoreData
 
 @objc(Student)
 class Student: NSManagedObject {
-	
+    var isAmeen: Bool!
 }

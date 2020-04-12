@@ -54,6 +54,7 @@ class SignUpViewController: UIViewController, NewUserLoginProtocol {
 					if(userInfo != nil) {
 						completion(true, nil)
 						//Save to persistent because the user is successfully logged-in
+                        
 						DataModel.setSignedUpUser(userJSON: userInfo!, saveToPersistent: true)
 					}
 					else {

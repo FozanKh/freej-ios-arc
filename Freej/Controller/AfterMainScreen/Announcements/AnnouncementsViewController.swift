@@ -20,42 +20,37 @@ class AnnouncementsViewController: UIViewController {
     var headerNumber = 1
     var header : Announcement!
     
-    override func loadView() {
-        super.loadView()
-        DetectingPage.getAmeen(userID: DataModel.currentUser!.userID!) { (Ameen) in
-            if Ameen {
-                self.buttonClick.isHidden = false
-            } else {
-                self.buttonClick.isHidden = true
-            }
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         //        header = announcements[headerNumber]
         //        announcements.remove(at: headerNumber)
-        
         NetworkManager.getAnnouncements { (announcementsJSON) in
             self.displayAnnouncements(announcementsJSON)
         }
-        
+        setAmeenPrivileges()
+        configureTableView()
+        addRefreshControl()
+    }
+    
+    func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        //print(ameen)
-        addRefreshControl()
-        
+    }
+    
+    func setAmeenPrivileges() {
+        DataModel.currentUser?.isAmeen ?? false ? (buttonClick.isHidden = false) : (buttonClick.isHidden = true)
+
     }
     
     func addRefreshControl() {
         refreshConroller = UIRefreshControl()
         refreshConroller?.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        refreshConroller?.addTarget(self, action: #selector(refreshLest), for: .valueChanged)
+        refreshConroller?.addTarget(self, action: #selector(refreshList), for: .valueChanged)
         tableView.addSubview(refreshConroller!)
         
     }
     
-    @objc func refreshLest(){
+    @objc func refreshList(){
         NetworkManager.getAnnouncements { (annoucementsJSON) in
             self.displayAnnouncements(annoucementsJSON)
             self.refreshConroller?.endRefreshing()
@@ -63,10 +58,10 @@ class AnnouncementsViewController: UIViewController {
     }
     
     func displayAnnouncements(_ announcementsJSON: JSON?) {
-        if let announcementsJSON = announcementsJSON {
+        if let value = announcementsJSON {
             self.announcements.removeAll()
             
-            for anItem in announcementsJSON.array! {
+            for anItem in value.array! {
                 self.announcements.append(Announcement(type: anItem["Title"].stringValue, content: anItem["Descrp"].stringValue))
             }
             

@@ -28,9 +28,6 @@ class Announcement {
             self.icon = UIImage(systemName: "person.fill")!
             atID = "3"
         }
-        
         self.content = content
-    
     }
-    
 }
