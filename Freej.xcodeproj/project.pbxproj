@@ -194,17 +194,14 @@
 		EB163E012428F78C004A34BA /* AfterMainScreen */ = {
 			isa = PBXGroup;
 			children = (
+				EB6794722443CD50004A496E /* Announcements */,
 				04AD616F243EFD16009DD7A7 /* DetectingPage.swift */,
 				EB3641422417E89300F81D6A /* ActivitiesViewController.swift */,
 				04AD6167243EB5B5009DD7A7 /* CollectionCell.swift */,
 				04AD6163243EB4EF009DD7A7 /* RequestCell.swift */,
 				04AD6169243EB671009DD7A7 /* MaintenanceCell.swift */,
 				04AD616B243EB729009DD7A7 /* ServicesCell.swift */,
-				04FFCB3B24341EC000DE0FFE /* AnnouncementsViewController.swift */,
-				045107DF242FFC19007A4EC7 /* Announcement.swift */,
 				EB4B5E2E2417ECD600EB7EB9 /* SettingsViewController.swift */,
-				045107E1242FFF14007A4EC7 /* AnnouncementCell.swift */,
-				04FFCB3D2434279D00DE0FFE /* AddAnnouncement.swift */,
 				04AD6165243EB52B009DD7A7 /* Actitivities.swift */,
 			);
 			path = AfterMainScreen;
@@ -294,6 +291,17 @@
 				EB163E012428F78C004A34BA /* AfterMainScreen */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		EB6794722443CD50004A496E /* Announcements */ = {
+			isa = PBXGroup;
+			children = (
+				04FFCB3B24341EC000DE0FFE /* AnnouncementsViewController.swift */,
+				04FFCB3D2434279D00DE0FFE /* AddAnnouncement.swift */,
+				045107E1242FFF14007A4EC7 /* AnnouncementCell.swift */,
+				045107DF242FFC19007A4EC7 /* Announcement.swift */,
+			);
+			path = Announcements;
 			sourceTree = "<group>";
 		};
 		EB6955F4241AB905004647B4 /* Addons */ = {

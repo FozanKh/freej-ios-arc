@@ -9,45 +9,42 @@
 import Foundation
 import UIKit
 
-class AddAnnouncement : UIViewController, UITextFieldDelegate {
-    
-    
+class AddAnnouncement : UIViewController, UITextViewDelegate {
     @IBOutlet weak var contentField: UITextView!
     @IBOutlet weak var type: UITextField!
     
-  
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        contentField.delegate = self
         contentField.layer.borderWidth = 1
         contentField.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         contentField.layer.cornerRadius = 5
     }
     
     func addAnnouncement(antID : String, userID : String, title : String, content : String){
-        AnnouncementsViewController.postAnnouncement(antID, userID, title, content) { (sent) in
+        NetworkManager.postAnnouncement(antID, userID, title, content) { (sent) in
             if (sent == true){
                 print("Sent successfully")
-                
             }else{
-                print("Faild")
+                print("Failed")
             }
         }
     }
     
     @IBAction func addButton(_ sender: UIButton) {
-        textFeildFunction()
+        textFieldFunction()
+        addAnnounce()
     }
     
+    //Fix go buttong
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textFeildFunction()
+        textFieldFunction()
         type.endEditing(true)
         return true
     }
     
-    func textFeildFunction(){
+    func textFieldFunction() {
         type.endEditing(true)
-        addAnnounce()
     }
     
     func addAnnounce() {
@@ -65,7 +62,4 @@ class AddAnnouncement : UIViewController, UITextFieldDelegate {
         self.dismiss(animated: true, completion: nil)
         
     }
-    
-    
-    
 }

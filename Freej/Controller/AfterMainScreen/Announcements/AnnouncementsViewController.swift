@@ -11,16 +11,11 @@ import SwiftyJSON
 import Alamofire
 
 class AnnouncementsViewController: UIViewController {
-    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var buttonClick: UIButton!
-    
-    let getAnnouncementsURL = "http://freejapp.com/FreejAppRequest/GetAnnouncements.php"
-    static let postAnnouncementURL = "http://freejapp.com/FreejAppRequest/PostAnnouncements.php"
-    
+
     var announcements : [Announcement] = []
     var refreshConroller : UIRefreshControl?
-    
     
     var headerNumber = 1
     var header : Announcement!
@@ -33,7 +28,6 @@ class AnnouncementsViewController: UIViewController {
             } else {
                 self.buttonClick.isHidden = true
             }
-            
         }
     }
     
@@ -41,7 +35,10 @@ class AnnouncementsViewController: UIViewController {
         super.viewDidLoad()
         //        header = announcements[headerNumber]
         //        announcements.remove(at: headerNumber)
-        getAnnouncements()
+        
+        NetworkManager.getAnnouncements { (announcementsJSON) in
+            self.displayAnnouncements(announcementsJSON)
+        }
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -59,48 +56,26 @@ class AnnouncementsViewController: UIViewController {
     }
     
     @objc func refreshLest(){
-        refreshConroller?.endRefreshing()
-        
-        getAnnouncements()
-        
-        
+        NetworkManager.getAnnouncements { (annoucementsJSON) in
+            self.displayAnnouncements(annoucementsJSON)
+            self.refreshConroller?.endRefreshing()
+        }
     }
-  
-    func getAnnouncements() {
-        Alamofire.request(getAnnouncementsURL, method: .post, parameters: nil, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
+    
+    func displayAnnouncements(_ announcementsJSON: JSON?) {
+        if let announcementsJSON = announcementsJSON {
+            self.announcements.removeAll()
             
-            if let value = response.result.value {
-                
-                let json = JSON(value)
-                self.announcements.removeAll()
-                for anItem in json.array! {
-                    self.announcements.append(Announcement(type: anItem["Title"].stringValue, content: anItem["Descrp"].stringValue))
-                    
-                }
-                
-                print(self.announcements.count)
-                
+            for anItem in announcementsJSON.array! {
+                self.announcements.append(Announcement(type: anItem["Title"].stringValue, content: anItem["Descrp"].stringValue))
             }
             
-            self.tableView.reloadData()
+//            print(self.announcements.count)
+            
         }
+        self.tableView.reloadData()
     }
-    
-    static func postAnnouncement(_ anTID: String, _ userID: String, _ title: String, _ descrp: String, completion: @escaping (Bool) -> ()) {
-        let params =   ["AnTID" : anTID,
-                        "UserID" : userID,
-                        "Title" : title,
-                        "Descrp" : descrp,
-                        "SDate" : "2020-20-02",
-                        "Stat" : "Activated"]
-        
-        Alamofire.request(postAnnouncementURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
-            print(response)
-            completion(response.result.isSuccess)
-        }
-    }
-    
-    
+
     @IBAction func addAnnouncement(_ sender: UIButton) {
         print("Changed")
         performSegue(withIdentifier: "AddAnnounce", sender: self)
@@ -108,8 +83,8 @@ class AnnouncementsViewController: UIViewController {
     }
     
 }
+
 extension AnnouncementsViewController: UITableViewDataSource, UITableViewDelegate {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return announcements.count
     }
