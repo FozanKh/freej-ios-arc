@@ -29,7 +29,6 @@ class RequestCell: UITableViewCell {
         }
     
         func getActivity() {
-
             Alamofire.request(getActivityURL, method: .post, parameters: ["AcTID" : 1], encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
                 if let value = response.result.value {
                     

@@ -39,8 +39,6 @@ class AnnouncementsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        //        announcements = createArray()
         //        header = announcements[headerNumber]
         //        announcements.remove(at: headerNumber)
         getAnnouncements()

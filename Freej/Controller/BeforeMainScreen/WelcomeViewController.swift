@@ -17,11 +17,17 @@ class WelcomeViewController: UIViewController {
     @IBOutlet weak var kfupmIDTF: UITextField!
     @IBOutlet weak var enterFreejBtn: UIButton!
 	
+    
+    override func loadView() {
+        super.loadView()
+        setInternetReachabilityObserver()
+    }
+    
 	//MARK:- User Login Methods
 	@IBAction func enterFreejBtn(_ sender: Any) {
 		progressManager.show(in: self.view)
 		NetworkManager.getStudent(kfupmID: kfupmIDTF.text!) { (userJSON) in
-			//userJSON could be an actual user in the databse or simply nil.
+			//userJSON could be an actual user in the databse or simply nil.ç
 			
 			self.progressManager.dismiss(animated: true)
 			if(userJSON != nil) {
