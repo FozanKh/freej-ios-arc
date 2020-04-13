@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Add Announcement-->
+        <!--Add AnnouncementVC-->
         <scene sceneID="FA6-V4-4TS">
             <objects>
-                <viewController storyboardIdentifier="AddAnnouncement" modalPresentationStyle="formSheet" id="7jx-Mf-eoM" customClass="AddAnnouncement" customModule="Freej" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddAnnouncement" modalPresentationStyle="formSheet" id="7jx-Mf-eoM" customClass="AddAnnouncementVC" customModule="Freej" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ykC-JX-zZd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -72,8 +72,8 @@
                     <value key="contentSizeForViewInPopover" type="size" width="375" height="500"/>
                     <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="contentField" destination="Z8d-lg-vbG" id="nRN-rU-6el"/>
-                        <outlet property="type" destination="ayD-Aa-p6f" id="PM5-fq-bPn"/>
+                        <outlet property="ancmtDescrp" destination="Z8d-lg-vbG" id="Wco-Pn-1qd"/>
+                        <outlet property="ancmtTypeTF" destination="ayD-Aa-p6f" id="fGr-jh-42f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g8O-3d-vA5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
