@@ -9,8 +9,6 @@
 import UIKit
 
 class AnnouncementCell: UITableViewCell {
-
-    
     @IBOutlet weak var mainLabel: UILabel!
     @IBOutlet weak var icon: UIImageView!
     @IBOutlet weak var typeLabel: UILabel!
@@ -20,5 +18,4 @@ class AnnouncementCell: UITableViewCell {
         mainLabel.text = announcement.content
         typeLabel.text = announcement.type
     }
-    
 }

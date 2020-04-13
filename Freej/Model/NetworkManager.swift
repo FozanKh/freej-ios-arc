@@ -14,7 +14,10 @@ class NetworkManager {
 	static let getStudentURL = "http://freejapp.com/FreejAppRequest/GetStudent.php"
     static let signUpURL = "http://freejapp.com/FreejAppRequest/PostStudent.php"
     static let sendOTPURL = "http://freejapp.com/FreejAppRequest/SendOTP.php"
-	
+	static let getAnnouncementsURL = "http://freejapp.com/FreejAppRequest/GetAnnouncements.php"
+    static let postAnnouncementURL = "http://freejapp.com/FreejAppRequest/PostAnnouncements.php"
+    static let getAmeenURL = "http://freejapp.com/FreejAppRequest/GetAmeen.php"
+    
     static var monitor: NetworkReachabilityManager?
     static let internetStatusNName = Notification.Name("didChangeInternetStatus")
 		
@@ -26,6 +29,13 @@ class NetworkManager {
         }
     }
 	
+    static func getAmeen(userID: String, completion: @escaping (Bool) -> ()) {
+        let params = ["UserID" : userID]
+        Alamofire.request(getAmeenURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
+            completion(response.result.isSuccess)
+        }
+    }
+    
 	static func getStudent(kfupmID: String, completion: @escaping (JSON?) -> ()) {
 		let params = ["KFUPMID" : kfupmID]
 		Alamofire.request(getStudentURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
@@ -53,6 +63,26 @@ class NetworkManager {
         Alamofire.request(signUpURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
             print(response)
             completion(response.result.isSuccess)
+        }
+    }
+    
+    static func postAnnouncement(_ anTID: String, _ userID: String, _ title: String, _ descrp: String, completion: @escaping (Bool) -> ()) {
+        let params =   ["AnTID" : anTID,
+                        "UserID" : userID,
+                        "Title" : title,
+                        "Descrp" : descrp,
+                        "SDate" : "2020-20-02",
+                        "Stat" : "Activated"]
+        Alamofire.request(postAnnouncementURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
+//            print(response)
+            completion(response.result.isSuccess)
+        }
+    }
+    
+    static func getAnnouncements(completion: @escaping (JSON?) -> ()) {
+        Alamofire.request(getAnnouncementsURL, method: .post, parameters: nil, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
+            let responseValue = response.result.value ?? nil
+            responseValue == nil ? completion(nil) : completion(JSON(responseValue!))
         }
     }
     
