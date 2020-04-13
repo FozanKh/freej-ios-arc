@@ -11,13 +11,17 @@ import SwiftyJSON
 
 class AnnouncementsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var addAncmtButton: UIButton!
 
     var ancmtsArray: [Announcement] = []
     var header: Announcement!
     var headerNumber = 1
     let refreshConroller = UIRefreshControl()
     
+	@IBOutlet weak var addAncmtButton: UIButton!
+	@IBAction func addAnnouncement(_ sender: UIButton) {
+		performSegue(withIdentifier: "toAddAnnouncementVC", sender: self)
+	}
+	
     override func viewDidLoad() {
         super.viewDidLoad()
         //        header = announcements[headerNumber]
@@ -58,11 +62,8 @@ class AnnouncementsViewController: UIViewController {
 			self.tableView.reloadData()
         }
     }
+	
 
-    @IBAction func addAnnouncement(_ sender: UIButton) {
-        print("Changed")
-        performSegue(withIdentifier: "AddAnnounce", sender: self)
-    }
 }
 
 //MARK:- Table View Controller Delegate Extension

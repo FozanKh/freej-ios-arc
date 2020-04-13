@@ -181,7 +181,7 @@
                     <connections>
                         <outlet property="addAncmtButton" destination="wel-o0-YCz" id="Xh5-F8-ZhX"/>
                         <outlet property="tableView" destination="KrR-O2-8V9" id="mn5-BC-bPA"/>
-                        <segue destination="7jx-Mf-eoM" kind="presentation" identifier="AddAnnounce" id="PFQ-ZV-I0H"/>
+                        <segue destination="7jx-Mf-eoM" kind="presentation" identifier="toAddAnnouncementVC" id="PFQ-ZV-I0H"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
