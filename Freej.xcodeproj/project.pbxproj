@@ -36,7 +36,6 @@
 		EB4B5E382417F74100EB7EB9 /* MaintenanceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4B5E372417F74100EB7EB9 /* MaintenanceRequest.swift */; };
 		EB4B5E3A2417F75D00EB7EB9 /* Advertisement.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4B5E392417F75D00EB7EB9 /* Advertisement.swift */; };
 		EB6933FD2425148900A66412 /* EnterFreejNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6933FC2425148900A66412 /* EnterFreejNavController.swift */; };
-		EB6FC6C22418F96000CBA10B /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6FC6C12418F96000CBA10B /* Activity.swift */; };
 		EB6FC6C82418FE3E00CBA10B /* ERModel.pdf in Resources */ = {isa = PBXBuildFile; fileRef = EB6FC6C42418FE3E00CBA10B /* ERModel.pdf */; };
 		EB6FC6C92418FE3E00CBA10B /* LogicalDiagram.pdf in Resources */ = {isa = PBXBuildFile; fileRef = EB6FC6C52418FE3E00CBA10B /* LogicalDiagram.pdf */; };
 		EB6FC6CA2418FE3E00CBA10B /* UseCaseDiagram.pdf in Resources */ = {isa = PBXBuildFile; fileRef = EB6FC6C62418FE3E00CBA10B /* UseCaseDiagram.pdf */; };
@@ -105,7 +104,6 @@
 		EB4B5E372417F74100EB7EB9 /* MaintenanceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceRequest.swift; sourceTree = "<group>"; };
 		EB4B5E392417F75D00EB7EB9 /* Advertisement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Advertisement.swift; sourceTree = "<group>"; };
 		EB6933FC2425148900A66412 /* EnterFreejNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterFreejNavController.swift; sourceTree = "<group>"; };
-		EB6FC6C12418F96000CBA10B /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		EB6FC6C42418FE3E00CBA10B /* ERModel.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ERModel.pdf; sourceTree = "<group>"; };
 		EB6FC6C52418FE3E00CBA10B /* LogicalDiagram.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = LogicalDiagram.pdf; sourceTree = "<group>"; };
 		EB6FC6C62418FE3E00CBA10B /* UseCaseDiagram.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = UseCaseDiagram.pdf; sourceTree = "<group>"; };
@@ -173,12 +171,16 @@
 			children = (
 				EB4B5E372417F74100EB7EB9 /* MaintenanceRequest.swift */,
 				EB4B5E392417F75D00EB7EB9 /* Advertisement.swift */,
-				EB6FC6C12418F96000CBA10B /* Activity.swift */,
+				04AD6165243EB52B009DD7A7 /* Actitivities.swift */,
+				04AD6167243EB5B5009DD7A7 /* CollectionCell.swift */,
+				04AD6163243EB4EF009DD7A7 /* RequestCell.swift */,
+				04AD6169243EB671009DD7A7 /* MaintenanceCell.swift */,
+				04AD616B243EB729009DD7A7 /* ServicesCell.swift */,
 			);
 			path = Cards;
 			sourceTree = "<group>";
 		};
-		EB163E002428F77A004A34BA /* BeforeMainScreen */ = {
+		EB283E34244474F800F6B311 /* PreLoginVC's */ = {
 			isa = PBXGroup;
 			children = (
 				EBFC5A83241AF202000EB7D0 /* WelcomeViewController.swift */,
@@ -186,22 +188,23 @@
 				EB04536F2424F690009BAE59 /* SignUpViewController.swift */,
 				EB0453712424F6BB009BAE59 /* ValidateViewController.swift */,
 			);
-			path = BeforeMainScreen;
+			path = "PreLoginVC's";
 			sourceTree = "<group>";
 		};
-		EB163E012428F78C004A34BA /* AfterMainScreen */ = {
+		EB283E352444776600F6B311 /* SettingsVC */ = {
 			isa = PBXGroup;
 			children = (
-				EB6794722443CD50004A496E /* Announcements */,
-				EB3641422417E89300F81D6A /* ActivitiesViewController.swift */,
-				04AD6167243EB5B5009DD7A7 /* CollectionCell.swift */,
-				04AD6163243EB4EF009DD7A7 /* RequestCell.swift */,
-				04AD6169243EB671009DD7A7 /* MaintenanceCell.swift */,
-				04AD616B243EB729009DD7A7 /* ServicesCell.swift */,
 				EB4B5E2E2417ECD600EB7EB9 /* SettingsViewController.swift */,
-				04AD6165243EB52B009DD7A7 /* Actitivities.swift */,
 			);
-			path = AfterMainScreen;
+			path = SettingsVC;
+			sourceTree = "<group>";
+		};
+		EB283E362444776F00F6B311 /* ActivitiesVC */ = {
+			isa = PBXGroup;
+			children = (
+				EB3641422417E89300F81D6A /* ActivitiesViewController.swift */,
+			);
+			path = ActivitiesVC;
 			sourceTree = "<group>";
 		};
 		EB3641302417E89300F81D6A = {
@@ -284,13 +287,15 @@
 		EB4B5E322417F65300EB7EB9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				EB163E002428F77A004A34BA /* BeforeMainScreen */,
-				EB163E012428F78C004A34BA /* AfterMainScreen */,
+				EB283E362444776F00F6B311 /* ActivitiesVC */,
+				EB283E352444776600F6B311 /* SettingsVC */,
+				EB283E34244474F800F6B311 /* PreLoginVC's */,
+				EB6794722443CD50004A496E /* AnnouncementsVC */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		EB6794722443CD50004A496E /* Announcements */ = {
+		EB6794722443CD50004A496E /* AnnouncementsVC */ = {
 			isa = PBXGroup;
 			children = (
 				04FFCB3B24341EC000DE0FFE /* AnnouncementsViewController.swift */,
@@ -298,7 +303,7 @@
 				045107E1242FFF14007A4EC7 /* AnnouncementCell.swift */,
 				045107DF242FFC19007A4EC7 /* Announcement.swift */,
 			);
-			path = Announcements;
+			path = AnnouncementsVC;
 			sourceTree = "<group>";
 		};
 		EB6955F4241AB905004647B4 /* Addons */ = {
@@ -583,7 +588,6 @@
 				EBFC5A84241AF202000EB7D0 /* WelcomeViewController.swift in Sources */,
 				045107E0242FFC19007A4EC7 /* Announcement.swift in Sources */,
 				EB4B5E382417F74100EB7EB9 /* MaintenanceRequest.swift in Sources */,
-				EB6FC6C22418F96000CBA10B /* Activity.swift in Sources */,
 				045107E2242FFF14007A4EC7 /* AnnouncementCell.swift in Sources */,
 				EB163E0624294682004A34BA /* DataModel.swift in Sources */,
 				04AD6164243EB4EF009DD7A7 /* RequestCell.swift in Sources */,
