@@ -8,7 +8,6 @@
 
 import UIKit
 import SwiftyJSON
-import Alamofire
 
 class AnnouncementsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
@@ -30,12 +29,7 @@ class AnnouncementsViewController: UIViewController {
         }
         setAmeenPrivileges()
     }
-    
-    func configureTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
-    }
-    
+	
     func setAmeenPrivileges() {
         DataModel.currentUser?.isAmeen ?? false ? (addAncmtButton.isHidden = false) : (addAncmtButton.isHidden = true)
     }
@@ -52,6 +46,7 @@ class AnnouncementsViewController: UIViewController {
             self.refreshConroller.endRefreshing()
         }
     }
+	
 	
 	func displayAnnouncements(_ announcementsJSON: JSON?) {
         if let value = announcementsJSON {
@@ -70,7 +65,13 @@ class AnnouncementsViewController: UIViewController {
     }
 }
 
+//MARK:- Table View Controller Delegate Extension
 extension AnnouncementsViewController: UITableViewDataSource, UITableViewDelegate {
+	func configureTableView() {
+		tableView.delegate = self
+		tableView.dataSource = self
+	}
+	
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ancmtsArray.count
     }
@@ -116,4 +117,3 @@ extension AnnouncementsViewController: UITableViewDataSource, UITableViewDelegat
     
     
 }
-
