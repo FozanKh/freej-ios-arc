@@ -22,6 +22,23 @@ class AddAnnouncementVC : UIViewController, UITextViewDelegate {
 		addAnnouncement()
 	}
 	
+	func addAnnouncement() {
+		var atID = ""
+		switch ancmtTypeTF.text! {
+		case "General":
+			atID = "1"
+		case "Specific":
+			atID = "2"
+		default:
+			atID = "3"
+		}
+		
+		NetworkManager.postAnnouncement(atID, DataModel.currentUser!.userID!, ancmtTypeTF.text!, ancmtDescrp.text!) { (sent) in
+			sent ? print("Sent successfully") : print("Failed")
+		}
+		self.dismiss(animated: true, completion: nil)
+	}
+	
 	func configureTextView() {
 		ancmtDescrp.delegate = self
 		ancmtDescrp.layer.borderWidth = 1
@@ -37,21 +54,4 @@ class AddAnnouncementVC : UIViewController, UITextViewDelegate {
 		}
 		return true
 	}
-    
-    func addAnnouncement() {
-        var atID = ""
-        switch ancmtTypeTF.text! {
-        case "General":
-            atID = "1"
-        case "Specific":
-            atID = "2"
-        default:
-            atID = "3"
-        }
-		
-		NetworkManager.postAnnouncement(atID, DataModel.currentUser!.userID!, ancmtTypeTF.text!, ancmtDescrp.text!) { (sent) in
-			sent ? print("Sent successfully") : print("Failed")
-		}
-        self.dismiss(animated: true, completion: nil)
-    }
 }
