@@ -179,7 +179,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="الإشعارات" image="first" id="acW-dT-cKf"/>
                     <connections>
-                        <outlet property="buttonClick" destination="wel-o0-YCz" id="bFF-xi-Ebp"/>
+                        <outlet property="addAncmtButton" destination="wel-o0-YCz" id="Xh5-F8-ZhX"/>
                         <outlet property="tableView" destination="KrR-O2-8V9" id="mn5-BC-bPA"/>
                         <segue destination="7jx-Mf-eoM" kind="presentation" identifier="AddAnnounce" id="PFQ-ZV-I0H"/>
                     </connections>
@@ -909,10 +909,10 @@
             </objects>
             <point key="canvasLocation" x="-1946.4000000000001" y="694.58128078817742"/>
         </scene>
-        <!--Detecting Page-->
+        <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController storyboardIdentifier="MainVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="49e-Tb-3d3" customClass="DetectingPage" customModule="Freej" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="49e-Tb-3d3" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="9gT-Ww-vE3"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>

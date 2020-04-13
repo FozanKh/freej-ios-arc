@@ -12,24 +12,23 @@ import Alamofire
 
 class AnnouncementsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var buttonClick: UIButton!
+    @IBOutlet weak var addAncmtButton: UIButton!
 
-    var announcements : [Announcement] = []
-    var refreshConroller : UIRefreshControl?
-    
+    var ancmtsArray: [Announcement] = []
+    var header: Announcement!
     var headerNumber = 1
-    var header : Announcement!
+    let refreshConroller = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //        header = announcements[headerNumber]
         //        announcements.remove(at: headerNumber)
+		configureTableView()
+		addRefreshControl()
         NetworkManager.getAnnouncements { (announcementsJSON) in
             self.displayAnnouncements(announcementsJSON)
         }
         setAmeenPrivileges()
-        configureTableView()
-        addRefreshControl()
     }
     
     func configureTableView() {
@@ -38,56 +37,46 @@ class AnnouncementsViewController: UIViewController {
     }
     
     func setAmeenPrivileges() {
-        DataModel.currentUser?.isAmeen ?? false ? (buttonClick.isHidden = false) : (buttonClick.isHidden = true)
-
+        DataModel.currentUser?.isAmeen ?? false ? (addAncmtButton.isHidden = false) : (addAncmtButton.isHidden = true)
     }
     
     func addRefreshControl() {
-        refreshConroller = UIRefreshControl()
-        refreshConroller?.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        refreshConroller?.addTarget(self, action: #selector(refreshList), for: .valueChanged)
-        tableView.addSubview(refreshConroller!)
-        
+        refreshConroller.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        refreshConroller.addTarget(self, action: #selector(refreshAncmtsList), for: .valueChanged)
+        tableView.addSubview(refreshConroller)
     }
     
-    @objc func refreshList(){
+    @objc func refreshAncmtsList(){
         NetworkManager.getAnnouncements { (annoucementsJSON) in
             self.displayAnnouncements(annoucementsJSON)
-            self.refreshConroller?.endRefreshing()
+            self.refreshConroller.endRefreshing()
         }
     }
-    
-    func displayAnnouncements(_ announcementsJSON: JSON?) {
+	
+	func displayAnnouncements(_ announcementsJSON: JSON?) {
         if let value = announcementsJSON {
-            self.announcements.removeAll()
-            
+            self.ancmtsArray.removeAll()
             for anItem in value.array! {
-                self.announcements.append(Announcement(type: anItem["Title"].stringValue, content: anItem["Descrp"].stringValue))
+                self.ancmtsArray.append(Announcement(type: anItem["Title"].stringValue, content: anItem["Descrp"].stringValue))
             }
-            
-//            print(self.announcements.count)
-            
+			//            print(self.announcements.count)
+			self.tableView.reloadData()
         }
-        self.tableView.reloadData()
     }
 
     @IBAction func addAnnouncement(_ sender: UIButton) {
         print("Changed")
         performSegue(withIdentifier: "AddAnnounce", sender: self)
-        
     }
-    
 }
 
 extension AnnouncementsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return announcements.count
+        return ancmtsArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        
-        let announcement = announcements[indexPath.row]
+        let announcement = ancmtsArray[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "AnnouncementCell") as! AnnouncementCell
         cell.setAnnouncement(announcement: announcement)
         
@@ -106,7 +95,6 @@ extension AnnouncementsViewController: UITableViewDataSource, UITableViewDelegat
             cell.icon.tintColor = #colorLiteral(red: 0.003921568627, green: 0.6392156863, blue: 0.8039215686, alpha: 1)
         }
         return cell
-        
     }
     
     //    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
