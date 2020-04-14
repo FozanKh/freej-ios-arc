@@ -62,8 +62,6 @@ class AnnouncementsVC: UIViewController {
 			self.tableView.reloadData()
         }
     }
-	
-
 }
 
 //MARK:- Table View Controller Delegate Extension

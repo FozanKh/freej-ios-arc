@@ -191,12 +191,12 @@
 			path = PreLoginVC;
 			sourceTree = "<group>";
 		};
-		EB283E352444776600F6B311 /* AfterMainScreen */ = {
+		EB283E352444776600F6B311 /* SettingsVC */ = {
 			isa = PBXGroup;
 			children = (
 				EB4B5E2E2417ECD600EB7EB9 /* SettingsVC.swift */,
 			);
-			path = AfterMainScreen;
+			path = SettingsVC;
 			sourceTree = "<group>";
 		};
 		EB283E362444776F00F6B311 /* ActivitiesVC */ = {
@@ -290,7 +290,7 @@
 				EB283E34244474F800F6B311 /* PreLoginVC */,
 				EB283E362444776F00F6B311 /* ActivitiesVC */,
 				EB6794722443CD50004A496E /* AnnouncementsVC */,
-				EB283E352444776600F6B311 /* AfterMainScreen */,
+				EB283E352444776600F6B311 /* SettingsVC */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

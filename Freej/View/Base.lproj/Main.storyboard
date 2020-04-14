@@ -628,6 +628,23 @@
             </objects>
             <point key="canvasLocation" x="-2732" y="2232.2660098522169"/>
         </scene>
+        <!--Item-->
+        <scene sceneID="aJI-hh-0dB">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qkc-yC-C1k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController id="hzS-SW-c9l" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="xqV-uJ-zvN"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="KaV-93-h5a">
+                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="6v6-HH-jOa" kind="relationship" relationship="rootViewController" id="oro-gY-eT8"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="-1946" y="2232"/>
+        </scene>
         <!--SettingsView-->
         <scene sceneID="HTn-az-LCe">
             <objects>
@@ -635,34 +652,15 @@
                     <view key="view" contentMode="scaleToFill" id="ie4-ed-8WW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الإعدادات" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DVa-hU-Fwt">
-                                <rect key="frame" x="226.66666666666663" y="100" width="132.33333333333337" height="39.666666666666657"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="33"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vPR-AU-M9X">
-                                <rect key="frame" x="160" y="391" width="55" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Log Out"/>
-                                <connections>
-                                    <action selector="logOut:" destination="6v6-HH-jOa" eventType="touchUpInside" id="Ruu-2p-rCc"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="DVa-hU-Fwt" firstAttribute="top" secondItem="uDv-fP-Tfo" secondAttribute="top" constant="56" id="bxF-tw-27I"/>
-                            <constraint firstItem="uDv-fP-Tfo" firstAttribute="trailing" secondItem="DVa-hU-Fwt" secondAttribute="trailing" constant="16" id="sba-8X-IxG"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="uDv-fP-Tfo"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="الإعدادات" id="0p3-By-iii"/>
+                    <navigationItem key="navigationItem" id="DbV-2A-lmt"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VEq-tk-dD4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1940" y="2233"/>
+            <point key="canvasLocation" x="-1946" y="2939"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lXg-km-JKq">
@@ -922,7 +920,7 @@
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="hj8-iT-Uvh"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="0Ju-T0-Xf7"/>
-                        <segue destination="6v6-HH-jOa" kind="relationship" relationship="viewControllers" id="3Nv-gw-37c"/>
+                        <segue destination="hzS-SW-c9l" kind="relationship" relationship="viewControllers" id="b0y-H7-J9F"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
