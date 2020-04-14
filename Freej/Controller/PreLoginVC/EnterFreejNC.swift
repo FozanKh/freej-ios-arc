@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EnterFreejNavController: UINavigationController {
+class EnterFreejNC: UINavigationController {
 	//This completion handler will be set by WelcomeViewController
 	var loginProcessCompletionHandler: ((Bool) -> ())?
 	
@@ -27,12 +27,12 @@ class EnterFreejNavController: UINavigationController {
     
 	//MARK:- Push Suitable View Controller Methods
     func showValidationScreen() {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "ValidateViewController") as! ValidateViewController
+        let vc = storyboard?.instantiateViewController(withIdentifier: "ValidateViewController") as! ValidateVC
         pushViewController(vc, animated: false)
     }
     
     func showSignUpScreen() {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "SignUpViewController") as! SignUpViewController
+        let vc = storyboard?.instantiateViewController(withIdentifier: "SignUpViewController") as! SignUpVC
         pushViewController(vc, animated: false)
     }
 }

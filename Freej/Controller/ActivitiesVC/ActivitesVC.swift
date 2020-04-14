@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ActivitiesViewController: UIViewController {
+class ActivitesVC: UIViewController {
     
     
     @IBOutlet weak var tableView: UITableView!
@@ -22,7 +22,7 @@ class ActivitiesViewController: UIViewController {
     
 }
 
-extension ActivitiesViewController: UITableViewDataSource, UITableViewDelegate {
+extension ActivitesVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3

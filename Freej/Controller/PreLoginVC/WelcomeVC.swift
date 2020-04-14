@@ -9,7 +9,7 @@
 import UIKit
 import JGProgressHUD
 
-class WelcomeViewController: UIViewController {
+class WelcomeVC: UIViewController {
 	
 	//This pod is temporary to show database connection
     let progressManager = JGProgressHUD()
@@ -55,8 +55,8 @@ class WelcomeViewController: UIViewController {
 	//EnterFreejNavController will call this handler whenever a login process is completed with (Bool)
 	//This handler is NOT called by this class
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if(segue.destination is EnterFreejNavController) {
-			let destVC = segue.destination as! EnterFreejNavController
+		if(segue.destination is EnterFreejNC) {
+			let destVC = segue.destination as! EnterFreejNC
 			destVC.loginProcessCompletionHandler = { status in
 				if(status == true) {
                     NetworkManager.getAmeen(userID: DataModel.currentUser!.userID!) { (status) in

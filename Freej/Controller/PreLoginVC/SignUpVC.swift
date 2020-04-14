@@ -14,7 +14,7 @@
 */
 import UIKit
 
-class SignUpViewController: UIViewController, NewUserLoginProtocol {
+class SignUpVC: UIViewController, NewUserLoginProtocol {
 	@IBOutlet weak var kfupmIDTF: UITextField! {
 		didSet {
 			kfupmIDTF.textColor = .gray
@@ -33,8 +33,8 @@ class SignUpViewController: UIViewController, NewUserLoginProtocol {
     }
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if(segue.destination is ValidateViewController) {
-			let destVC = segue.destination as! ValidateViewController
+		if(segue.destination is ValidateVC) {
+			let destVC = segue.destination as! ValidateVC
 			destVC.newUserLoginDelegate = self
 		}
 	}
@@ -73,7 +73,7 @@ class SignUpViewController: UIViewController, NewUserLoginProtocol {
 	
 	//MARK:- Misc. Methods
 	func showAlert(message: String) {
-		let parentVC = parent as! EnterFreejNavController
+		let parentVC = parent as! EnterFreejNC
 		let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
 		alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { (UIAlertAction) in parentVC.popViewController(animated: true)}))
 		self.present(alert, animated: true)

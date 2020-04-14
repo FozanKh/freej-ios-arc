@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 
-class AnnouncementsViewController: UIViewController {
+class AnnouncementsVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
     var ancmtsArray: [Announcement] = []
@@ -67,7 +67,7 @@ class AnnouncementsViewController: UIViewController {
 }
 
 //MARK:- Table View Controller Delegate Extension
-extension AnnouncementsViewController: UITableViewDataSource, UITableViewDelegate {
+extension AnnouncementsVC: UITableViewDataSource, UITableViewDelegate {
 	func configureTableView() {
 		tableView.delegate = self
 		tableView.dataSource = self

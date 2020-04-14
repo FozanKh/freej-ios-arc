@@ -14,7 +14,7 @@ protocol NewUserLoginProtocol {
 	func newUserHasValidated(completion: @escaping (Bool, String?) -> ())
 }
 
-class ValidateViewController: UIViewController {
+class ValidateVC: UIViewController {
 	@IBOutlet weak var validationCodeTF: UITextField!
 	let progressManager = JGProgressHUD()
 	var correctOtp: String!
@@ -29,7 +29,7 @@ class ValidateViewController: UIViewController {
 	@IBAction func loginButton(_ sender: Any) {
 		let userEnteredOTP = validationCodeTF.text ?? "0"
 		if(userEnteredOTP == correctOtp) {
-			let parentVC = parent as! EnterFreejNavController
+			let parentVC = parent as! EnterFreejNC
 			if(DataModel.userIsSignedUp()) {
 				//Save to persistent for future sessions
 				//Only logged-in users are save to persistent
@@ -72,7 +72,7 @@ class ValidateViewController: UIViewController {
 	}
 	
 	func showAlert(message: String) {
-		let parentVC = parent as! EnterFreejNavController
+		let parentVC = parent as! EnterFreejNC
 		let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
 		alert.addAction(UIAlertAction(title: "Try Again", style: .default, handler: { (UIAlertAction) in self.generateOTP()}))
 		alert.addAction(UIAlertAction(title: "Cancel Login", style: .default, handler: { (UIAlertAction) in

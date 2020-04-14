@@ -83,7 +83,7 @@
         <!--AnouncementsView-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController title="AnouncementsView" id="9pv-A4-QxB" userLabel="AnouncementsView" customClass="AnnouncementsViewController" customModule="Freej" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="AnouncementsView" id="9pv-A4-QxB" userLabel="AnouncementsView" customClass="AnnouncementsVC" customModule="Freej" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -191,7 +191,7 @@
         <!--ActivitiesView-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController title="ActivitiesView" id="8rJ-Kc-sve" userLabel="ActivitiesView" customClass="ActivitiesViewController" customModule="Freej" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="ActivitiesView" id="8rJ-Kc-sve" userLabel="ActivitiesView" customClass="ActivitesVC" customModule="Freej" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -262,7 +262,7 @@
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6tX-Az-1FJ">
-                                                                                <rect key="frame" x="73" y="5" width="33.333333333333343" height="20"/>
+                                                                                <rect key="frame" x="73" y="5" width="33.666666666666657" height="20"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="20" id="xWQ-44-uBW"/>
                                                                                 </constraints>
@@ -395,7 +395,7 @@
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="39E-zt-Up3">
-                                                                                <rect key="frame" x="73" y="5" width="33.333333333333343" height="20"/>
+                                                                                <rect key="frame" x="73" y="5" width="33.666666666666657" height="20"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="20" id="145-gC-DlS"/>
                                                                                 </constraints>
@@ -528,7 +528,7 @@
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ADJ-nH-GOa">
-                                                                                <rect key="frame" x="73" y="5" width="33.333333333333343" height="20"/>
+                                                                                <rect key="frame" x="73" y="5" width="33.666666666666657" height="20"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="20" id="emp-Oz-qsj"/>
                                                                                 </constraints>
@@ -631,7 +631,7 @@
         <!--SettingsView-->
         <scene sceneID="HTn-az-LCe">
             <objects>
-                <viewController title="SettingsView" id="6v6-HH-jOa" userLabel="SettingsView" customClass="SettingsViewController" customModule="Freej" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="SettingsView" id="6v6-HH-jOa" userLabel="SettingsView" customClass="SettingsVC" customModule="Freej" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ie4-ed-8WW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -679,10 +679,10 @@
             </objects>
             <point key="canvasLocation" x="-4319" y="1083"/>
         </scene>
-        <!--Welcome View Controller-->
+        <!--WelcomeVC-->
         <scene sceneID="2bP-si-6Af">
             <objects>
-                <viewController storyboardIdentifier="WelcomeVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="w8f-yv-Qgc" customClass="WelcomeViewController" customModule="Freej" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WelcomeVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="w8f-yv-Qgc" customClass="WelcomeVC" customModule="Freej" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eWE-8x-ezR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -748,10 +748,10 @@
             </objects>
             <point key="canvasLocation" x="-3519" y="1083"/>
         </scene>
-        <!--Sign Up View Controller-->
+        <!--Sign UpVC-->
         <scene sceneID="yck-Vf-hvu">
             <objects>
-                <viewController storyboardIdentifier="SignUpViewController" id="qwO-c7-bNi" customClass="SignUpViewController" customModule="Freej" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignUpViewController" id="qwO-c7-bNi" customClass="SignUpVC" customModule="Freej" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dBS-bg-Kke">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -832,10 +832,10 @@
             </objects>
             <point key="canvasLocation" x="-1945" y="-10"/>
         </scene>
-        <!--Enter Freej Nav Controller-->
+        <!--Enter FreejNC-->
         <scene sceneID="FgD-tY-1PK">
             <objects>
-                <navigationController navigationBarHidden="YES" id="y2b-Kb-gxC" customClass="EnterFreejNavController" customModule="Freej" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController navigationBarHidden="YES" id="y2b-Kb-gxC" customClass="EnterFreejNC" customModule="Freej" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="jyc-pp-u9I"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lWK-I3-IIF">
                         <rect key="frame" x="0.0" y="-54" width="0.0" height="0.0"/>
@@ -849,10 +849,10 @@
             </objects>
             <point key="canvasLocation" x="-2732" y="409"/>
         </scene>
-        <!--Validate View Controller-->
+        <!--ValidateVC-->
         <scene sceneID="xgc-p3-GQX">
             <objects>
-                <viewController storyboardIdentifier="ValidateViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jc6-uM-H8G" customClass="ValidateViewController" customModule="Freej" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ValidateViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jc6-uM-H8G" customClass="ValidateVC" customModule="Freej" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2sq-5V-b8J">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

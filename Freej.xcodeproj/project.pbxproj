@@ -14,28 +14,28 @@
 		04AD6168243EB5B5009DD7A7 /* CollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AD6167243EB5B5009DD7A7 /* CollectionCell.swift */; };
 		04AD616A243EB671009DD7A7 /* MaintenanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AD6169243EB671009DD7A7 /* MaintenanceCell.swift */; };
 		04AD616C243EB729009DD7A7 /* ServicesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AD616B243EB729009DD7A7 /* ServicesCell.swift */; };
-		04FFCB3C24341EC000DE0FFE /* AnnouncementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FFCB3B24341EC000DE0FFE /* AnnouncementsViewController.swift */; };
+		04FFCB3C24341EC000DE0FFE /* AnnouncementsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FFCB3B24341EC000DE0FFE /* AnnouncementsVC.swift */; };
 		04FFCB3E2434279D00DE0FFE /* AddAnnouncementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FFCB3D2434279D00DE0FFE /* AddAnnouncementVC.swift */; };
 		2A64875FA3DB40BED70B60DE /* Pods_Freej.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57BEDCB9C7BF77C08BADB881 /* Pods_Freej.framework */; };
 		86EEB1FBE9E1D14FAFE944AF /* Pods_FreejTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90D42A89E1EEA7CE780BBDED /* Pods_FreejTests.framework */; };
 		E3CACB3BE0C7DB36F70B7DFD /* Pods_Freej_FreejUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2A66BFDCB59CE87E809D6D0 /* Pods_Freej_FreejUITests.framework */; };
-		EB0453702424F690009BAE59 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB04536F2424F690009BAE59 /* SignUpViewController.swift */; };
-		EB0453722424F6BB009BAE59 /* ValidateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0453712424F6BB009BAE59 /* ValidateViewController.swift */; };
+		EB0453702424F690009BAE59 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB04536F2424F690009BAE59 /* SignUpVC.swift */; };
+		EB0453722424F6BB009BAE59 /* ValidateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0453712424F6BB009BAE59 /* ValidateVC.swift */; };
 		EB163E042428FB7B004A34BA /* PersistentDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EB163E022428FB7B004A34BA /* PersistentDataModel.xcdatamodeld */; };
 		EB163E0624294682004A34BA /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB163E0524294682004A34BA /* DataModel.swift */; };
 		EB36413D2417E89300F81D6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB36413C2417E89300F81D6A /* AppDelegate.swift */; };
 		EB36413F2417E89300F81D6A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB36413E2417E89300F81D6A /* SceneDelegate.swift */; };
-		EB3641432417E89300F81D6A /* ActivitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3641422417E89300F81D6A /* ActivitiesViewController.swift */; };
+		EB3641432417E89300F81D6A /* ActivitesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3641422417E89300F81D6A /* ActivitesVC.swift */; };
 		EB3641462417E89300F81D6A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB3641442417E89300F81D6A /* Main.storyboard */; };
 		EB3641482417E89600F81D6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB3641472417E89600F81D6A /* Assets.xcassets */; };
 		EB36414B2417E89600F81D6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB3641492417E89600F81D6A /* LaunchScreen.storyboard */; };
 		EB3641562417E89600F81D6A /* FreejTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3641552417E89600F81D6A /* FreejTests.swift */; };
 		EB3641612417E89600F81D6A /* FreejUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3641602417E89600F81D6A /* FreejUITests.swift */; };
 		EB465DE92428E768006766F3 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB465DE82428E768006766F3 /* Student.swift */; };
-		EB4B5E2F2417ECD600EB7EB9 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4B5E2E2417ECD600EB7EB9 /* SettingsViewController.swift */; };
+		EB4B5E2F2417ECD600EB7EB9 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4B5E2E2417ECD600EB7EB9 /* SettingsVC.swift */; };
 		EB4B5E382417F74100EB7EB9 /* MaintenanceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4B5E372417F74100EB7EB9 /* MaintenanceRequest.swift */; };
 		EB4B5E3A2417F75D00EB7EB9 /* Advertisement.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4B5E392417F75D00EB7EB9 /* Advertisement.swift */; };
-		EB6933FD2425148900A66412 /* EnterFreejNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6933FC2425148900A66412 /* EnterFreejNavController.swift */; };
+		EB6933FD2425148900A66412 /* EnterFreejNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6933FC2425148900A66412 /* EnterFreejNC.swift */; };
 		EB6FC6C82418FE3E00CBA10B /* ERModel.pdf in Resources */ = {isa = PBXBuildFile; fileRef = EB6FC6C42418FE3E00CBA10B /* ERModel.pdf */; };
 		EB6FC6C92418FE3E00CBA10B /* LogicalDiagram.pdf in Resources */ = {isa = PBXBuildFile; fileRef = EB6FC6C52418FE3E00CBA10B /* LogicalDiagram.pdf */; };
 		EB6FC6CA2418FE3E00CBA10B /* UseCaseDiagram.pdf in Resources */ = {isa = PBXBuildFile; fileRef = EB6FC6C62418FE3E00CBA10B /* UseCaseDiagram.pdf */; };
@@ -43,7 +43,7 @@
 		EB8A2C4E241B03D2005ED1A2 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8A2C4D241B03D2005ED1A2 /* NetworkManager.swift */; };
 		EB945A5C241ABC8E005D2BAD /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EB945A58241ABC4F005D2BAD /* SF-Pro-Display-Bold.otf */; };
 		EB945A5D241ABC93005D2BAD /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = EB945A59241ABC4F005D2BAD /* SF-Pro-Display-Regular.otf */; };
-		EBFC5A84241AF202000EB7D0 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFC5A83241AF202000EB7D0 /* WelcomeViewController.swift */; };
+		EBFC5A84241AF202000EB7D0 /* WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFC5A83241AF202000EB7D0 /* WelcomeVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,7 +71,7 @@
 		04AD6167243EB5B5009DD7A7 /* CollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCell.swift; sourceTree = "<group>"; };
 		04AD6169243EB671009DD7A7 /* MaintenanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceCell.swift; sourceTree = "<group>"; };
 		04AD616B243EB729009DD7A7 /* ServicesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesCell.swift; sourceTree = "<group>"; };
-		04FFCB3B24341EC000DE0FFE /* AnnouncementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsViewController.swift; sourceTree = "<group>"; };
+		04FFCB3B24341EC000DE0FFE /* AnnouncementsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsVC.swift; sourceTree = "<group>"; };
 		04FFCB3D2434279D00DE0FFE /* AddAnnouncementVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAnnouncementVC.swift; sourceTree = "<group>"; };
 		4020848BDCD64D089A5D5B34 /* Pods-Freej.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Freej.release.xcconfig"; path = "Target Support Files/Pods-Freej/Pods-Freej.release.xcconfig"; sourceTree = "<group>"; };
 		57BEDCB9C7BF77C08BADB881 /* Pods_Freej.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Freej.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,14 +81,14 @@
 		93695000B220FEADDD20C473 /* Pods-FreejTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreejTests.debug.xcconfig"; path = "Target Support Files/Pods-FreejTests/Pods-FreejTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AC83FDCADD2D94240D34537A /* Pods-Freej-FreejUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Freej-FreejUITests.debug.xcconfig"; path = "Target Support Files/Pods-Freej-FreejUITests/Pods-Freej-FreejUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B97E63841FA88A67ADB9B49A /* Pods-Freej.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Freej.debug.xcconfig"; path = "Target Support Files/Pods-Freej/Pods-Freej.debug.xcconfig"; sourceTree = "<group>"; };
-		EB04536F2424F690009BAE59 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		EB0453712424F6BB009BAE59 /* ValidateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateViewController.swift; sourceTree = "<group>"; };
+		EB04536F2424F690009BAE59 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		EB0453712424F6BB009BAE59 /* ValidateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateVC.swift; sourceTree = "<group>"; };
 		EB163E032428FB7B004A34BA /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		EB163E0524294682004A34BA /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		EB3641392417E89300F81D6A /* Freej.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Freej.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB36413C2417E89300F81D6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB36413E2417E89300F81D6A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		EB3641422417E89300F81D6A /* ActivitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesViewController.swift; sourceTree = "<group>"; };
+		EB3641422417E89300F81D6A /* ActivitesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitesVC.swift; sourceTree = "<group>"; };
 		EB3641452417E89300F81D6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EB3641472417E89600F81D6A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EB36414A2417E89600F81D6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -100,10 +100,10 @@
 		EB3641602417E89600F81D6A /* FreejUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreejUITests.swift; sourceTree = "<group>"; };
 		EB3641622417E89600F81D6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB465DE82428E768006766F3 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
-		EB4B5E2E2417ECD600EB7EB9 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		EB4B5E2E2417ECD600EB7EB9 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		EB4B5E372417F74100EB7EB9 /* MaintenanceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceRequest.swift; sourceTree = "<group>"; };
 		EB4B5E392417F75D00EB7EB9 /* Advertisement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Advertisement.swift; sourceTree = "<group>"; };
-		EB6933FC2425148900A66412 /* EnterFreejNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterFreejNavController.swift; sourceTree = "<group>"; };
+		EB6933FC2425148900A66412 /* EnterFreejNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterFreejNC.swift; sourceTree = "<group>"; };
 		EB6FC6C42418FE3E00CBA10B /* ERModel.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ERModel.pdf; sourceTree = "<group>"; };
 		EB6FC6C52418FE3E00CBA10B /* LogicalDiagram.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = LogicalDiagram.pdf; sourceTree = "<group>"; };
 		EB6FC6C62418FE3E00CBA10B /* UseCaseDiagram.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = UseCaseDiagram.pdf; sourceTree = "<group>"; };
@@ -111,7 +111,7 @@
 		EB8A2C4D241B03D2005ED1A2 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		EB945A58241ABC4F005D2BAD /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = text; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
 		EB945A59241ABC4F005D2BAD /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = text; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
-		EBFC5A83241AF202000EB7D0 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		EBFC5A83241AF202000EB7D0 /* WelcomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeVC.swift; sourceTree = "<group>"; };
 		F2A66BFDCB59CE87E809D6D0 /* Pods_Freej_FreejUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Freej_FreejUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -183,10 +183,10 @@
 		EB283E34244474F800F6B311 /* PreLoginVC */ = {
 			isa = PBXGroup;
 			children = (
-				EBFC5A83241AF202000EB7D0 /* WelcomeViewController.swift */,
-				EB6933FC2425148900A66412 /* EnterFreejNavController.swift */,
-				EB04536F2424F690009BAE59 /* SignUpViewController.swift */,
-				EB0453712424F6BB009BAE59 /* ValidateViewController.swift */,
+				EBFC5A83241AF202000EB7D0 /* WelcomeVC.swift */,
+				EB6933FC2425148900A66412 /* EnterFreejNC.swift */,
+				EB04536F2424F690009BAE59 /* SignUpVC.swift */,
+				EB0453712424F6BB009BAE59 /* ValidateVC.swift */,
 			);
 			path = PreLoginVC;
 			sourceTree = "<group>";
@@ -194,7 +194,7 @@
 		EB283E352444776600F6B311 /* AfterMainScreen */ = {
 			isa = PBXGroup;
 			children = (
-				EB4B5E2E2417ECD600EB7EB9 /* SettingsViewController.swift */,
+				EB4B5E2E2417ECD600EB7EB9 /* SettingsVC.swift */,
 			);
 			path = AfterMainScreen;
 			sourceTree = "<group>";
@@ -202,7 +202,7 @@
 		EB283E362444776F00F6B311 /* ActivitiesVC */ = {
 			isa = PBXGroup;
 			children = (
-				EB3641422417E89300F81D6A /* ActivitiesViewController.swift */,
+				EB3641422417E89300F81D6A /* ActivitesVC.swift */,
 			);
 			path = ActivitiesVC;
 			sourceTree = "<group>";
@@ -298,7 +298,7 @@
 		EB6794722443CD50004A496E /* AnnouncementsVC */ = {
 			isa = PBXGroup;
 			children = (
-				04FFCB3B24341EC000DE0FFE /* AnnouncementsViewController.swift */,
+				04FFCB3B24341EC000DE0FFE /* AnnouncementsVC.swift */,
 				04FFCB3D2434279D00DE0FFE /* AddAnnouncementVC.swift */,
 				045107E1242FFF14007A4EC7 /* AnnouncementCell.swift */,
 				045107DF242FFC19007A4EC7 /* Announcement.swift */,
@@ -571,27 +571,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB4B5E2F2417ECD600EB7EB9 /* SettingsViewController.swift in Sources */,
+				EB4B5E2F2417ECD600EB7EB9 /* SettingsVC.swift in Sources */,
 				04AD616C243EB729009DD7A7 /* ServicesCell.swift in Sources */,
 				04FFCB3E2434279D00DE0FFE /* AddAnnouncementVC.swift in Sources */,
-				EB6933FD2425148900A66412 /* EnterFreejNavController.swift in Sources */,
-				EB3641432417E89300F81D6A /* ActivitiesViewController.swift in Sources */,
+				EB6933FD2425148900A66412 /* EnterFreejNC.swift in Sources */,
+				EB3641432417E89300F81D6A /* ActivitesVC.swift in Sources */,
 				04AD6166243EB52B009DD7A7 /* Actitivities.swift in Sources */,
 				EB36413D2417E89300F81D6A /* AppDelegate.swift in Sources */,
 				EB36413F2417E89300F81D6A /* SceneDelegate.swift in Sources */,
-				EB0453722424F6BB009BAE59 /* ValidateViewController.swift in Sources */,
+				EB0453722424F6BB009BAE59 /* ValidateVC.swift in Sources */,
 				EB8A2C4E241B03D2005ED1A2 /* NetworkManager.swift in Sources */,
 				04AD6168243EB5B5009DD7A7 /* CollectionCell.swift in Sources */,
 				EB465DE92428E768006766F3 /* Student.swift in Sources */,
 				EB163E042428FB7B004A34BA /* PersistentDataModel.xcdatamodeld in Sources */,
-				EB0453702424F690009BAE59 /* SignUpViewController.swift in Sources */,
-				EBFC5A84241AF202000EB7D0 /* WelcomeViewController.swift in Sources */,
+				EB0453702424F690009BAE59 /* SignUpVC.swift in Sources */,
+				EBFC5A84241AF202000EB7D0 /* WelcomeVC.swift in Sources */,
 				045107E0242FFC19007A4EC7 /* Announcement.swift in Sources */,
 				EB4B5E382417F74100EB7EB9 /* MaintenanceRequest.swift in Sources */,
 				045107E2242FFF14007A4EC7 /* AnnouncementCell.swift in Sources */,
 				EB163E0624294682004A34BA /* DataModel.swift in Sources */,
 				04AD6164243EB4EF009DD7A7 /* RequestCell.swift in Sources */,
-				04FFCB3C24341EC000DE0FFE /* AnnouncementsViewController.swift in Sources */,
+				04FFCB3C24341EC000DE0FFE /* AnnouncementsVC.swift in Sources */,
 				EB4B5E3A2417F75D00EB7EB9 /* Advertisement.swift in Sources */,
 				04AD616A243EB671009DD7A7 /* MaintenanceCell.swift in Sources */,
 			);
