@@ -9,7 +9,7 @@
 import UIKit
 
 class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
-	let tableView = UITableView()
+	lazy var tableView = UITableView(frame: view.frame, style: .insetGrouped)
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
