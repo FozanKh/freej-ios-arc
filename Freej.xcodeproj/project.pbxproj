@@ -43,6 +43,7 @@
 		EB8A2C4E241B03D2005ED1A2 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8A2C4D241B03D2005ED1A2 /* NetworkManager.swift */; };
 		EB945A5C241ABC8E005D2BAD /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EB945A58241ABC4F005D2BAD /* SF-Pro-Display-Bold.otf */; };
 		EB945A5D241ABC93005D2BAD /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = EB945A59241ABC4F005D2BAD /* SF-Pro-Display-Regular.otf */; };
+		EBA9C14B2446015B0032382B /* SettingsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA9C14A2446015B0032382B /* SettingsData.swift */; };
 		EBFC5A84241AF202000EB7D0 /* WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFC5A83241AF202000EB7D0 /* WelcomeVC.swift */; };
 /* End PBXBuildFile section */
 
@@ -111,6 +112,7 @@
 		EB8A2C4D241B03D2005ED1A2 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		EB945A58241ABC4F005D2BAD /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = text; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
 		EB945A59241ABC4F005D2BAD /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = text; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
+		EBA9C14A2446015B0032382B /* SettingsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsData.swift; sourceTree = "<group>"; };
 		EBFC5A83241AF202000EB7D0 /* WelcomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeVC.swift; sourceTree = "<group>"; };
 		F2A66BFDCB59CE87E809D6D0 /* Pods_Freej_FreejUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Freej_FreejUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -195,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				EB4B5E2E2417ECD600EB7EB9 /* SettingsVC.swift */,
+				EBA9C14A2446015B0032382B /* SettingsData.swift */,
 			);
 			path = SettingsVC;
 			sourceTree = "<group>";
@@ -579,6 +582,7 @@
 				04AD6166243EB52B009DD7A7 /* Actitivities.swift in Sources */,
 				EB36413D2417E89300F81D6A /* AppDelegate.swift in Sources */,
 				EB36413F2417E89300F81D6A /* SceneDelegate.swift in Sources */,
+				EBA9C14B2446015B0032382B /* SettingsData.swift in Sources */,
 				EB0453722424F6BB009BAE59 /* ValidateVC.swift in Sources */,
 				EB8A2C4E241B03D2005ED1A2 /* NetworkManager.swift in Sources */,
 				04AD6168243EB5B5009DD7A7 /* CollectionCell.swift in Sources */,
