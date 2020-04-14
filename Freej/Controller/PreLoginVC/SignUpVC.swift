@@ -55,7 +55,7 @@ class SignUpVC: UIViewController, NewUserLoginProtocol {
 						completion(true, nil)
 						//Save to persistent because the user is successfully logged-in
                         
-						DataModel.setSignedUpUser(userJSON: userInfo!, saveToPersistent: true)
+//						DataModel.setSignedUpUser(userJSON: userInfo!, saveToPersistent: true)
 					}
 					else {
 						//Clear from persistent, and local memory because login process was failed.
@@ -73,9 +73,9 @@ class SignUpVC: UIViewController, NewUserLoginProtocol {
 	
 	//MARK:- Misc. Methods
 	func showAlert(message: String) {
-		let parentVC = parent as! EnterFreejNC
+//		let parentVC = parent as! EnterFreejNC
 		let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-		alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { (UIAlertAction) in parentVC.popViewController(animated: true)}))
+//		alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { (UIAlertAction) in parentVC.popViewController(animated: true)}))
 		self.present(alert, animated: true)
 	}
 }

@@ -16,7 +16,7 @@ class DataModel {
 	static let appDelegate = UIApplication.shared.delegate as! AppDelegate
 	static let managedContext = appDelegate.persistentContainer.viewContext
 	
-	static func setSignedUpUser(userJSON: JSON, saveToPersistent: Bool) {
+	static func setSignedUpUser(userJSON: JSON, saveToPersistent: Bool, isSignedUpDB: Bool) {
 		//Set Persistant current user
 		let entity = NSEntityDescription.entity(forEntityName: "Student", in: managedContext)!
 		let student = NSManagedObject(entity: entity, insertInto: managedContext)
@@ -36,7 +36,7 @@ class DataModel {
 		}
 	}
 	
-	static func setUnSignedUpUser(kfupmID: String, saveToPersistent: Bool) {
+	static func setUnSignedUpUser(kfupmID: String, saveToPersistent: Bool, isSignedUpDB: Bool) {
 		let entity = NSEntityDescription.entity(forEntityName: "Student", in: managedContext)!
 		let student = NSManagedObject(entity: entity, insertInto: managedContext)
 		student.setValue(kfupmID, forKeyPath: "kfupmID")

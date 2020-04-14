@@ -35,16 +35,17 @@ class WelcomeVC: UIViewController {
 				//And they will be initialized as a signedUpUser in the DataModel.
 				//The user will not be save to the persistent data model, (because only logged-in users are)
 				//Will go to login page
-				DataModel.setSignedUpUser(userJSON: userJSON!, saveToPersistent: false)
+				DataModel.setSignedUpUser(userJSON: userJSON!, saveToPersistent: false, isSignedUpDB: true)
+				self.performSegue(withIdentifier: "toValidateVC", sender: self)
 			}
 			else {
 				//At this point, userJSON is not signedup in the database.
 				//Therefore, a partial unsignedup user is going to be created with ONLY KFUPM ID
 				//The user will not be save to the persistent data model, (because only logged-in users are)
 				//Will go to signup page
-				DataModel.setUnSignedUpUser(kfupmID: self.kfupmIDTF.text!, saveToPersistent: false)
+				DataModel.setUnSignedUpUser(kfupmID: self.kfupmIDTF.text!, saveToPersistent: false, isSignedUpDB: false)
+				self.performSegue(withIdentifier: "toSignUpVC", sender: self)
 			}
-			self.performSegue(withIdentifier: "toEnterFreej", sender: self)
 		}
 	}
     
@@ -55,17 +56,7 @@ class WelcomeVC: UIViewController {
 	//EnterFreejNavController will call this handler whenever a login process is completed with (Bool)
 	//This handler is NOT called by this class
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if(segue.destination is EnterFreejNC) {
-			let destVC = segue.destination as! EnterFreejNC
-			destVC.loginProcessCompletionHandler = { status in
-				if(status == true) {
-                    NetworkManager.getAmeen(userID: DataModel.currentUser!.userID!) { (status) in
-                        DataModel.currentUser?.isAmeen = status
-                        self.performSegue(withIdentifier: "toMainVC", sender: self)
-                    }
-				}
-			}
-		}
+		
 	}
 	
 	//MARK:- Internet Reachability Methods

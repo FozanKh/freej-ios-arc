@@ -29,12 +29,9 @@ class ValidateVC: UIViewController {
 	@IBAction func loginButton(_ sender: Any) {
 		let userEnteredOTP = validationCodeTF.text ?? "0"
 		if(userEnteredOTP == correctOtp) {
-			let parentVC = parent as! EnterFreejNC
 			if(DataModel.userIsSignedUp()) {
-				//Save to persistent for future sessions
-				//Only logged-in users are save to persistent
+				//Save to persistent for future sessions (Only logged-in users are saved to persistent)
 				let _ = DataModel.saveCurrentUserToPersistent()
-				parentVC.finishedLoginProcess(loginStatus: true)
 			}
 			else {
 				progressManager.show(in: self.view)
@@ -44,12 +41,12 @@ class ValidateVC: UIViewController {
 					if(status == false) {
 						let alert = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
 						alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { (UIAlertAction) in
-							parentVC.finishedLoginProcess(loginStatus: status)
+//							parentVC.finishedLoginProcess(loginStatus: status)
 						}))
 						self.present(alert, animated: true)
 					}
 					else {
-						parentVC.finishedLoginProcess(loginStatus: status)
+//						parentVC.finishedLoginProcess(loginStatus: status)
 					}
 				})
 			}
@@ -72,11 +69,11 @@ class ValidateVC: UIViewController {
 	}
 	
 	func showAlert(message: String) {
-		let parentVC = parent as! EnterFreejNC
+//		let parentVC = parent as! EnterFreejNC
 		let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
 		alert.addAction(UIAlertAction(title: "Try Again", style: .default, handler: { (UIAlertAction) in self.generateOTP()}))
 		alert.addAction(UIAlertAction(title: "Cancel Login", style: .default, handler: { (UIAlertAction) in
-			parentVC.finishedLoginProcess(loginStatus: false)
+//			parentVC.finishedLoginProcess(loginStatus: false)
 		}))
 		self.present(alert, animated: true)
 	}
