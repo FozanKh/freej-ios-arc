@@ -13,19 +13,20 @@ class ActivitesVC: UIViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
+        configureTableView()
     }
-    
-    
 }
 
 extension ActivitesVC: UITableViewDataSource, UITableViewDelegate {
-    
+	func configureTableView() {
+		tableView.delegate = self
+		tableView.dataSource = self
+	}
+	
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }
-    
+	
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "RequestCell") as! RequestCell
