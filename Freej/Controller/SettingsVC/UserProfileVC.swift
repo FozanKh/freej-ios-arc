@@ -33,6 +33,9 @@ class UserProfileVC: UIViewController {
 		}
 	}
 	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+	}
 	@IBAction func submitChanges(_ sender: Any) {
 		NetworkManager.updateUserInfo(kfupmID: (DataModel.currentUser?.kfupmID)!, fName: fNameTF.text!, lName: lNameTF.text!, bno: bnoTF.text!) { (success) in
 			success ? self.showAlert(title: "Success", message: "User info updated successfully") : self.showAlert(title: "Error", message: "Error while updating user info")
@@ -52,7 +55,8 @@ class UserProfileVC: UIViewController {
 	
 	func logoutUser() {
 		DataModel.clearCurrentUser()
-		navigationController?.popViewController(animated: true)
+		parent?.navigationController?.popToRootViewController(animated: true)
+		self.dismiss(animated: true)
 	}
 	
 	func showAlert(title: String, message: String) {

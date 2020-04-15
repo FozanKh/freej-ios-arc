@@ -52,6 +52,7 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 		let cell = UITableViewCell()
 		cell.textLabel?.text = (SettingsData.sections[indexPath.section][indexPath.row]).cellTitle
 		cell.imageView?.image = (SettingsData.sections[indexPath.section][indexPath.row]).getImage()
+		cell.accessoryType = .disclosureIndicator
 		return cell
 	}
 }

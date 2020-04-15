@@ -27,12 +27,19 @@ class ValidateVC: UIViewController {
 			if(DataModel.userIsSignedUp()) {
 				//Save to persistent for future sessions (Only logged-in users are saved to persistent)
 				let _ = DataModel.saveCurrentUserToPersistent()
+				print("here")
 				self.dismiss(animated: true)
 			}
 			else {
 				let user = DataModel.currentUser!
 				NetworkManager.signUpUser(user.kfupmID!, user.fName!, user.lName!, user.bno!) { (dbStu) in
-					dbStu == nil ? self.showAlert("Error while signing up a new user.") : DataModel.setCurrentStudent(student: dbStu!, saveToPersistent: true)
+					if(dbStu != nil) {
+						DataModel.setCurrentStudent(student: dbStu!, saveToPersistent: true)
+						self.dismiss(animated: true)
+					}
+					else {
+						self.showAlert("Error while signing up a new user.")
+					}
 				}
 			}
 		}
