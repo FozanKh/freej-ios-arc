@@ -9,13 +9,7 @@
 import UIKit
 
 class ActivitesVC: UIViewController {
-    
-    
     @IBOutlet weak var tableView: UITableView!
-	@IBAction func logOutBtn(_ sender: Any) {
-		DataModel.clearCurrentUser()
-		navigationController?.popViewController(animated: true)
-	}
 	
     override func viewDidLoad() {
         super.viewDidLoad()
