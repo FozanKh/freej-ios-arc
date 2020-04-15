@@ -27,6 +27,7 @@ class ValidateVC: UIViewController {
 			if(DataModel.userIsSignedUp()) {
 				//Save to persistent for future sessions (Only logged-in users are saved to persistent)
 				let _ = DataModel.saveCurrentUserToPersistent()
+				self.dismiss(animated: true)
 			}
 			else {
 				let user = DataModel.currentUser!
