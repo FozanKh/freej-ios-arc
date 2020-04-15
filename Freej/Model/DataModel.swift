@@ -21,11 +21,11 @@ class DataModel {
 	static let managedContext = appDelegate.persistentContainer.viewContext
 	
 	static var dataModelDelegate: DataModelProtocol?
+	
 	static func setCurrentStudent(student: Student, saveToPersistent: Bool) {
 		currentUser = student
 		if(saveToPersistent) {
 			let _ = saveCurrentUserToPersistent()
-			dataModelDelegate?.userHasValidated()
 		}
 	}
 	
@@ -64,6 +64,7 @@ class DataModel {
 		if(currentUser != nil) {
 			do {
 				try managedContext.save()
+				dataModelDelegate?.userHasValidated()
 				return true
 			} catch let error as NSError {
 				print("Could not save. \(error), \(error.userInfo)")
