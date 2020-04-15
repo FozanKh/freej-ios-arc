@@ -44,8 +44,6 @@ class SignUpVC: UIViewController {
 	}
 }
 
-
-
 //This delegate method will get called by the ValidationController upon the SUCCESS of OTP code validation.
 //Since the user in DataModel.currentUser is not complete (i.e. only has KFUPM ID)
 //check enterFreejBtn implementation for further explanation in WelcomeViewController.

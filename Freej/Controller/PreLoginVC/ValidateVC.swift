@@ -10,16 +10,11 @@ import UIKit
 import Alamofire
 import JGProgressHUD
 
-protocol NewUserLoginProtocol {
-	func newUserHasValidated(completion: @escaping (Bool, String?) -> ())
-}
-
 class ValidateVC: UIViewController {
 	@IBOutlet weak var validationCodeTF: UITextField!
 	let progressManager = JGProgressHUD()
 	var correctOtp: String!
 	var otpGenerationTime: Date!
-	var newUserLoginDelegate: NewUserLoginProtocol?
 	
 	override func loadView() {
 		super.loadView()
@@ -34,21 +29,7 @@ class ValidateVC: UIViewController {
 				let _ = DataModel.saveCurrentUserToPersistent()
 			}
 			else {
-				progressManager.show(in: self.view)
-				//Delegate method call here (in SignUpViewController)
-				newUserLoginDelegate?.newUserHasValidated(completion: { (status, error) in
-					self.progressManager.dismiss(animated: true)
-					if(status == false) {
-						let alert = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
-						alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { (UIAlertAction) in
-//							parentVC.finishedLoginProcess(loginStatus: status)
-						}))
-						self.present(alert, animated: true)
-					}
-					else {
-//						parentVC.finishedLoginProcess(loginStatus: status)
-					}
-				})
+				
 			}
 		}
 		else {
