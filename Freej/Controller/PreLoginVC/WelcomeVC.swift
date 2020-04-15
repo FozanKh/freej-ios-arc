@@ -9,8 +9,7 @@
 import UIKit
 import JGProgressHUD
 
-class WelcomeVC: UIViewController {
-	
+class WelcomeVC: UIViewController, DataModelProtocol {
 	//This pod is temporary to show database connection
     let progressManager = JGProgressHUD()
     @IBOutlet weak var noInternetLabel: UILabel!
@@ -20,6 +19,7 @@ class WelcomeVC: UIViewController {
     
     override func loadView() {
         super.loadView()
+		DataModel.dataModelDelegate = self
         setInternetReachabilityObserver()
     }
     
@@ -41,11 +41,9 @@ class WelcomeVC: UIViewController {
 	}
 	
 	//MARK:- Accessing MainVC
-	//This method will initialize the completion handler variable in EnterFreejNavController
-	//EnterFreejNavController will call this handler whenever a login process is completed with (Bool)
-	//This handler is NOT called by this class
-	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		
+	//This method will be called when a user is saved to the persistent data base to be enrolled to the main vc
+	func userHasValidated() {
+		performSegue(withIdentifier: "toMainVC", sender: self)
 	}
 	
 	//MARK:- Internet Reachability Methods

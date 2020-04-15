@@ -10,36 +10,22 @@ import Foundation
 import SwiftyJSON
 import CoreData
 
+protocol DataModelProtocol {
+	func userHasValidated()
+}
+
 class DataModel {
 	static var currentUser: Student?
 	
 	static let appDelegate = UIApplication.shared.delegate as! AppDelegate
 	static let managedContext = appDelegate.persistentContainer.viewContext
 	
-	static func setSignedUpUser(userJSON: JSON, saveToPersistent: Bool, isSignedUpDB: Bool) {
-		//Set Persistant current user
-		let entity = NSEntityDescription.entity(forEntityName: "Student", in: managedContext)!
-		let student = NSManagedObject(entity: entity, insertInto: managedContext)
-		student.setValue(userJSON["UserID"].stringValue, forKeyPath: "userID")
-		student.setValue(userJSON["BNo"].stringValue, forKeyPath: "bno")
-		student.setValue(userJSON["FName"].stringValue, forKeyPath: "fName")
-		student.setValue(userJSON["LName"].stringValue, forKeyPath: "lName")
-		student.setValue(userJSON["KFUPMID"].stringValue, forKeyPath: "kfupmID")
-		student.setValue(userJSON["Gender"].stringValue, forKeyPath: "gender")
-		student.setValue(userJSON["Stat"].stringValue, forKeyPath: "stat")
-		
-		//Set Temporary (this session) currentUser
-		currentUser = student as? Student
-		
-		if(saveToPersistent) {
-			let _ = saveCurrentUserToPersistent()
-		}
-	}
-	
+	static var dataModelDelegate: DataModelProtocol?
 	static func setCurrentStudent(student: Student, saveToPersistent: Bool) {
 		currentUser = student
 		if(saveToPersistent) {
 			let _ = saveCurrentUserToPersistent()
+			dataModelDelegate?.userHasValidated()
 		}
 	}
 	
@@ -66,18 +52,6 @@ class DataModel {
 		let entity = NSEntityDescription.entity(forEntityName: "Student", in: managedContext)!
 		let student = NSManagedObject(entity: entity, insertInto: managedContext)
 		currentUser = student as? Student
-	}
-	
-	static func setUnSignedUpUser(kfupmID: String, saveToPersistent: Bool, isSignedUpDB: Bool) {
-		let entity = NSEntityDescription.entity(forEntityName: "Student", in: managedContext)!
-		let student = NSManagedObject(entity: entity, insertInto: managedContext)
-		student.setValue(kfupmID, forKeyPath: "kfupmID")
-		
-		currentUser = student as? Student
-		
-		if(saveToPersistent) {
-			let _ = saveCurrentUserToPersistent()
-		}
 	}
 	
 	static func userIsSignedUp() -> Bool {
