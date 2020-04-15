@@ -19,7 +19,8 @@ struct SettingsData {
 								SettingsCellData(cellTitle: "Privacy Policy", cellIcon: "doc.plaintext", cellSegueID: "toPrivacypolicy"),
 								SettingsCellData(cellTitle: "Credits", cellIcon: "doc.plaintext", cellSegueID: "toCredits")]
 	
-	static let sections = [userSettings, appSettings]
+	static let logoutSection = [SettingsCellData(cellTitle: "Log Out", cellIcon: "delete.right", cellSegueID: "toLogOut")]
+	static let sections = [userSettings, appSettings, logoutSection]
 }
 
 struct SettingsCellData {

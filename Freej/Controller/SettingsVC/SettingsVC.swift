@@ -37,7 +37,14 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let segueID = SettingsData.sections[indexPath.section][indexPath.row].cellSegueID
-		performSegue(withIdentifier: segueID, sender: self)
+		if(segueID == "toLogOut") {
+			DataModel.clearCurrentUser()
+			parent?.navigationController?.popToRootViewController(animated: true)
+		}
+		else {
+			performSegue(withIdentifier: segueID, sender: self)
+		}
+		tableView.deselectRow(at: indexPath, animated: true)
 	}
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -53,6 +60,8 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 		cell.textLabel?.text = (SettingsData.sections[indexPath.section][indexPath.row]).cellTitle
 		cell.imageView?.image = (SettingsData.sections[indexPath.section][indexPath.row]).getImage()
 		cell.accessoryType = .disclosureIndicator
+		
+		indexPath.section == 2 ? (cell.tintColor = .red) : (cell.tintColor = .systemBlue)
 		return cell
 	}
 }
