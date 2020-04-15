@@ -36,6 +36,32 @@ class DataModel {
 		}
 	}
 	
+	static func setCurrentStudent(student: Student, saveToPersistent: Bool) {
+		currentUser = student
+		if(saveToPersistent) {
+			let _ = saveCurrentUserToPersistent()
+		}
+	}
+	
+	//This method does not save in the persistent model, it only instantiates a student object
+	static func createStudent(fromJSON: JSON?, isSignuedDB: Bool) -> Student? {
+		if(fromJSON != nil) {
+			let entity = NSEntityDescription.entity(forEntityName: "Student", in: managedContext)!
+			let student = NSManagedObject(entity: entity, insertInto: managedContext)
+			student.setValue(fromJSON!["UserID"].stringValue, forKeyPath: "userID")
+			student.setValue(fromJSON!["BNo"].stringValue, forKeyPath: "bno")
+			student.setValue(fromJSON!["FName"].stringValue, forKeyPath: "fName")
+			student.setValue(fromJSON!["LName"].stringValue, forKeyPath: "lName")
+			student.setValue(fromJSON!["KFUPMID"].stringValue, forKeyPath: "kfupmID")
+			student.setValue(fromJSON!["Gender"].stringValue, forKeyPath: "gender")
+			student.setValue(fromJSON!["Stat"].stringValue, forKeyPath: "stat")
+			student.setValue(fromJSON!["IsAmeen"].stringValue, forKeyPath: "isAmeen")
+			student.setValue(String(isSignuedDB), forKeyPath: "isSignedUpDB")
+			return student as? Student
+		}
+		return nil
+	}
+	
 	static func setUnSignedUpUser(kfupmID: String, saveToPersistent: Bool, isSignedUpDB: Bool) {
 		let entity = NSEntityDescription.entity(forEntityName: "Student", in: managedContext)!
 		let student = NSManagedObject(entity: entity, insertInto: managedContext)

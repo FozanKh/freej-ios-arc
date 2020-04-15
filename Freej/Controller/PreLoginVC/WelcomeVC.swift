@@ -26,16 +26,16 @@ class WelcomeVC: UIViewController {
 	//MARK:- User Login Methods
 	@IBAction func enterFreejBtn(_ sender: Any) {
 		progressManager.show(in: self.view)
-		NetworkManager.getStudent(kfupmID: kfupmIDTF.text!) { (userJSON) in
+		NetworkManager.getStudent(kfupmID: kfupmIDTF.text!) { (student) in
 			//userJSON could be an actual user in the databse or simply nil.ç
 			
 			self.progressManager.dismiss(animated: true)
-			if(userJSON != nil) {
+			if(student != nil) {
 				//At this point, userJSON is a fully signedup user in the database
 				//And they will be initialized as a signedUpUser in the DataModel.
-				//The user will not be save to the persistent data model, (because only logged-in users are)
+				//The user willnont be save to the persistent data model, (because only logged-in users are)
 				//Will go to login page
-				DataModel.setSignedUpUser(userJSON: userJSON!, saveToPersistent: false, isSignedUpDB: true)
+				DataModel.setCurrentStudent(student: student!, saveToPersistent: false)
 				self.performSegue(withIdentifier: "toValidateVC", sender: self)
 			}
 			else {
@@ -43,7 +43,6 @@ class WelcomeVC: UIViewController {
 				//Therefore, a partial unsignedup user is going to be created with ONLY KFUPM ID
 				//The user will not be save to the persistent data model, (because only logged-in users are)
 				//Will go to signup page
-				DataModel.setUnSignedUpUser(kfupmID: self.kfupmIDTF.text!, saveToPersistent: false, isSignedUpDB: false)
 				self.performSegue(withIdentifier: "toSignUpVC", sender: self)
 			}
 		}
