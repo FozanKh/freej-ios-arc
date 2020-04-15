@@ -17,7 +17,9 @@ class NetworkManager {
 	static let getAnnouncementsURL = "http://freejapp.com/FreejAppRequest/GetAnnouncements.php"
     static let postAnnouncementURL = "http://freejapp.com/FreejAppRequest/PostAnnouncements.php"
     static let getAmeenURL = "http://freejapp.com/FreejAppRequest/GetAmeen.php"
-    
+    static let deleteStudentURL = "http://freejapp.com/FreejAppRequest/DeleteStudent.php"
+	static let updateUserInfoURL = "http://freejapp.com/FreejAppRequest/UpdateUserInfo.php"
+	
     static var monitor: NetworkReachabilityManager?
     static let internetStatusNName = Notification.Name("didChangeInternetStatus")
 		
@@ -29,6 +31,24 @@ class NetworkManager {
         }
     }
 	
+	static func updateUserInfo(kfupmID: String, fName: String, lName: String, bno: String, completion: @escaping (Bool) -> ()) {
+		let params = ["KFUPMID" : kfupmID,
+					  "FName" : fName,
+					  "LName" : lName,
+					  "BNo" : bno]
+		Alamofire.request(updateUserInfoURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
+			let statusCode = response.response?.statusCode
+			statusCode == 201 ? completion(true) : completion(false)
+		}
+	}
+	
+	static func deleteStudent(kfupmID: String, completion: @escaping (Bool) -> ()) {
+		let params = ["KFUPMID" : kfupmID]
+		Alamofire.request(deleteStudentURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
+			let statusCode = response.response?.statusCode
+			statusCode == 201 ? completion(true) : completion(false)
+		}
+	}
     static func getAmeen(userID: String, completion: @escaping (Bool) -> ()) {
         let params = ["UserID" : userID]
         Alamofire.request(getAmeenURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
