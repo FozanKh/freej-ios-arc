@@ -58,7 +58,7 @@ class NetworkManager {
 		print(otp)
 	}
     
-    static func signUpUser(_ kfupmID: String, _ firstName: String, _ lastName: String, _ bno: String, completion: @escaping (Bool) -> ()) {
+    static func signUpUser(_ kfupmID: String, _ firstName: String, _ lastName: String, _ bno: String, completion: @escaping (Student?) -> ()) {
         let params =   ["BNo" : bno,
                         "FName" : firstName,
                         "LName" : lastName,
@@ -67,8 +67,9 @@ class NetworkManager {
                         "Status" : "Unactivated"]
         
         Alamofire.request(signUpURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
-            print(response)
-            completion(response.result.isSuccess)
+			getStudent(kfupmID: kfupmID) { (studentDB) in
+				completion(studentDB)
+			}
         }
     }
     
