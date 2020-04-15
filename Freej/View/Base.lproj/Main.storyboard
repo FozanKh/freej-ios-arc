@@ -607,6 +607,14 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QRH-fa-XpJ">
+                                <rect key="frame" x="164" y="76" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="logOutBtn:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="ydX-ZT-XCg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -631,7 +639,6 @@
         <!--Item-->
         <scene sceneID="aJI-hh-0dB">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Qkc-yC-C1k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController id="hzS-SW-c9l" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="xqV-uJ-zvN"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="KaV-93-h5a">
@@ -642,6 +649,7 @@
                         <segue destination="6v6-HH-jOa" kind="relationship" relationship="rootViewController" id="oro-gY-eT8"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qkc-yC-C1k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1946" y="2232"/>
         </scene>
@@ -738,8 +746,9 @@
                         <outlet property="enterFreejBtn" destination="ycV-is-Gt4" id="yav-a4-Brs"/>
                         <outlet property="kfupmIDTF" destination="ZQj-7n-CTA" id="Zgi-FM-Frr"/>
                         <outlet property="noInternetLabel" destination="wQ8-oN-Pgd" id="JHD-tc-bfK"/>
-                        <segue destination="y2b-Kb-gxC" kind="presentation" identifier="toEnterFreej" id="zNv-en-hV1"/>
+                        <segue destination="y2b-Kb-gxC" kind="presentation" identifier="toSignUpVC" id="zNv-en-hV1"/>
                         <segue destination="49e-Tb-3d3" kind="show" identifier="toMainVC" id="uIH-qJ-jZH"/>
+                        <segue destination="jc6-uM-H8G" kind="presentation" identifier="toValidateVC" id="IeL-sJ-FIb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1yy-ay-mKx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -830,10 +839,10 @@
             </objects>
             <point key="canvasLocation" x="-1945" y="-10"/>
         </scene>
-        <!--Enter FreejNC-->
+        <!--Navigation Controller-->
         <scene sceneID="FgD-tY-1PK">
             <objects>
-                <navigationController navigationBarHidden="YES" id="y2b-Kb-gxC" customClass="EnterFreejNC" customModule="Freej" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController navigationBarHidden="YES" id="y2b-Kb-gxC" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="jyc-pp-u9I"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lWK-I3-IIF">
                         <rect key="frame" x="0.0" y="-54" width="0.0" height="0.0"/>
@@ -928,6 +937,9 @@
             <point key="canvasLocation" x="-2732" y="1433"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="IeL-sJ-FIb"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>

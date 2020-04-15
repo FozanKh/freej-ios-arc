@@ -8,8 +8,8 @@
 
 import Foundation
 import CoreData
+import SwiftyJSON
 
 @objc(Student)
 class Student: NSManagedObject {
-    var isAmeen: Bool!
 }

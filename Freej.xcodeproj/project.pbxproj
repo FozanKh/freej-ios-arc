@@ -35,7 +35,6 @@
 		EB4B5E2F2417ECD600EB7EB9 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4B5E2E2417ECD600EB7EB9 /* SettingsVC.swift */; };
 		EB4B5E382417F74100EB7EB9 /* MaintenanceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4B5E372417F74100EB7EB9 /* MaintenanceRequest.swift */; };
 		EB4B5E3A2417F75D00EB7EB9 /* Advertisement.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4B5E392417F75D00EB7EB9 /* Advertisement.swift */; };
-		EB6933FD2425148900A66412 /* EnterFreejNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6933FC2425148900A66412 /* EnterFreejNC.swift */; };
 		EB6FC6C82418FE3E00CBA10B /* ERModel.pdf in Resources */ = {isa = PBXBuildFile; fileRef = EB6FC6C42418FE3E00CBA10B /* ERModel.pdf */; };
 		EB6FC6C92418FE3E00CBA10B /* LogicalDiagram.pdf in Resources */ = {isa = PBXBuildFile; fileRef = EB6FC6C52418FE3E00CBA10B /* LogicalDiagram.pdf */; };
 		EB6FC6CA2418FE3E00CBA10B /* UseCaseDiagram.pdf in Resources */ = {isa = PBXBuildFile; fileRef = EB6FC6C62418FE3E00CBA10B /* UseCaseDiagram.pdf */; };
@@ -104,7 +103,6 @@
 		EB4B5E2E2417ECD600EB7EB9 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		EB4B5E372417F74100EB7EB9 /* MaintenanceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceRequest.swift; sourceTree = "<group>"; };
 		EB4B5E392417F75D00EB7EB9 /* Advertisement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Advertisement.swift; sourceTree = "<group>"; };
-		EB6933FC2425148900A66412 /* EnterFreejNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterFreejNC.swift; sourceTree = "<group>"; };
 		EB6FC6C42418FE3E00CBA10B /* ERModel.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ERModel.pdf; sourceTree = "<group>"; };
 		EB6FC6C52418FE3E00CBA10B /* LogicalDiagram.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = LogicalDiagram.pdf; sourceTree = "<group>"; };
 		EB6FC6C62418FE3E00CBA10B /* UseCaseDiagram.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = UseCaseDiagram.pdf; sourceTree = "<group>"; };
@@ -186,7 +184,6 @@
 			isa = PBXGroup;
 			children = (
 				EBFC5A83241AF202000EB7D0 /* WelcomeVC.swift */,
-				EB6933FC2425148900A66412 /* EnterFreejNC.swift */,
 				EB04536F2424F690009BAE59 /* SignUpVC.swift */,
 				EB0453712424F6BB009BAE59 /* ValidateVC.swift */,
 			);
@@ -577,7 +574,6 @@
 				EB4B5E2F2417ECD600EB7EB9 /* SettingsVC.swift in Sources */,
 				04AD616C243EB729009DD7A7 /* ServicesCell.swift in Sources */,
 				04FFCB3E2434279D00DE0FFE /* AddAnnouncementVC.swift in Sources */,
-				EB6933FD2425148900A66412 /* EnterFreejNC.swift in Sources */,
 				EB3641432417E89300F81D6A /* ActivitesVC.swift in Sources */,
 				04AD6166243EB52B009DD7A7 /* Actitivities.swift in Sources */,
 				EB36413D2417E89300F81D6A /* AppDelegate.swift in Sources */,

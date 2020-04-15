@@ -9,8 +9,7 @@
 import UIKit
 import JGProgressHUD
 
-class WelcomeVC: UIViewController {
-	
+class WelcomeVC: UIViewController, DataModelProtocol {
 	//This pod is temporary to show database connection
     let progressManager = JGProgressHUD()
     @IBOutlet weak var noInternetLabel: UILabel!
@@ -20,52 +19,31 @@ class WelcomeVC: UIViewController {
     
     override func loadView() {
         super.loadView()
+		DataModel.dataModelDelegate = self
         setInternetReachabilityObserver()
     }
     
 	//MARK:- User Login Methods
 	@IBAction func enterFreejBtn(_ sender: Any) {
 		progressManager.show(in: self.view)
-		NetworkManager.getStudent(kfupmID: kfupmIDTF.text!) { (userJSON) in
-			//userJSON could be an actual user in the databse or simply nil.ç
-			
+		NetworkManager.getStudent(kfupmID: kfupmIDTF.text!) { (student) in
 			self.progressManager.dismiss(animated: true)
-			if(userJSON != nil) {
-				//At this point, userJSON is a fully signedup user in the database
-				//And they will be initialized as a signedUpUser in the DataModel.
-				//The user will not be save to the persistent data model, (because only logged-in users are)
-				//Will go to login page
-				DataModel.setSignedUpUser(userJSON: userJSON!, saveToPersistent: false)
+			if(student != nil) {
+				DataModel.setCurrentStudent(student: student!, saveToPersistent: false)
+				self.performSegue(withIdentifier: "toValidateVC", sender: self)
 			}
 			else {
-				//At this point, userJSON is not signedup in the database.
-				//Therefore, a partial unsignedup user is going to be created with ONLY KFUPM ID
-				//The user will not be save to the persistent data model, (because only logged-in users are)
-				//Will go to signup page
-				DataModel.setUnSignedUpUser(kfupmID: self.kfupmIDTF.text!, saveToPersistent: false)
+				DataModel.instantiateEmptyStudent()
+				DataModel.currentUser!.kfupmID = self.kfupmIDTF.text!
+				self.performSegue(withIdentifier: "toSignUpVC", sender: self)
 			}
-			self.performSegue(withIdentifier: "toEnterFreej", sender: self)
 		}
 	}
-    
-    
 	
 	//MARK:- Accessing MainVC
-	//This method will initialize the completion handler variable in EnterFreejNavController
-	//EnterFreejNavController will call this handler whenever a login process is completed with (Bool)
-	//This handler is NOT called by this class
-	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if(segue.destination is EnterFreejNC) {
-			let destVC = segue.destination as! EnterFreejNC
-			destVC.loginProcessCompletionHandler = { status in
-				if(status == true) {
-                    NetworkManager.getAmeen(userID: DataModel.currentUser!.userID!) { (status) in
-                        DataModel.currentUser?.isAmeen = status
-                        self.performSegue(withIdentifier: "toMainVC", sender: self)
-                    }
-				}
-			}
-		}
+	//This method will be called when a user is saved to the persistent data base to be enrolled to the main vc
+	func userHasValidated() {
+		performSegue(withIdentifier: "toMainVC", sender: self)
 	}
 	
 	//MARK:- Internet Reachability Methods

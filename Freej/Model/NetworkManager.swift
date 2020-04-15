@@ -36,11 +36,17 @@ class NetworkManager {
         }
     }
     
-	static func getStudent(kfupmID: String, completion: @escaping (JSON?) -> ()) {
+	static func getStudent(kfupmID: String, completion: @escaping (Student?) -> ()) {
 		let params = ["KFUPMID" : kfupmID]
+		
 		Alamofire.request(getStudentURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
 			let responseValue = response.result.value ?? nil
-			responseValue == nil ? completion(nil) : completion(JSON(responseValue!)[0])
+			let jsonResponse: JSON?
+			
+			responseValue == nil ? (jsonResponse = nil) : (jsonResponse = JSON(responseValue!)[0])
+			
+			let createdStudent = DataModel.createStudent(fromJSON: jsonResponse, isSignuedDB: true)
+			completion(createdStudent)
 		}
 	}
 	
@@ -52,7 +58,7 @@ class NetworkManager {
 		print(otp)
 	}
     
-    static func signUpUser(_ kfupmID: String, _ firstName: String, _ lastName: String, _ bno: String, completion: @escaping (Bool) -> ()) {
+    static func signUpUser(_ kfupmID: String, _ firstName: String, _ lastName: String, _ bno: String, completion: @escaping (Student?) -> ()) {
         let params =   ["BNo" : bno,
                         "FName" : firstName,
                         "LName" : lastName,
@@ -61,8 +67,9 @@ class NetworkManager {
                         "Status" : "Unactivated"]
         
         Alamofire.request(signUpURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
-            print(response)
-            completion(response.result.isSuccess)
+			getStudent(kfupmID: kfupmID) { (studentDB) in
+				completion(studentDB)
+			}
         }
     }
     
