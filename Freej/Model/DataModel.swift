@@ -55,11 +55,17 @@ class DataModel {
 			student.setValue(fromJSON!["KFUPMID"].stringValue, forKeyPath: "kfupmID")
 			student.setValue(fromJSON!["Gender"].stringValue, forKeyPath: "gender")
 			student.setValue(fromJSON!["Stat"].stringValue, forKeyPath: "stat")
-			student.setValue(fromJSON!["IsAmeen"].stringValue, forKeyPath: "isAmeen")
-			student.setValue(String(isSignuedDB), forKeyPath: "isSignedUpDB")
+			student.setValue(fromJSON!["IsAmeen"].boolValue, forKeyPath: "isAmeen")
+			student.setValue(isSignuedDB, forKeyPath: "isSignedUpDB")
 			return student as? Student
 		}
 		return nil
+	}
+	
+	static func instantiateEmptyStudent() {
+		let entity = NSEntityDescription.entity(forEntityName: "Student", in: managedContext)!
+		let student = NSManagedObject(entity: entity, insertInto: managedContext)
+		currentUser = student as? Student
 	}
 	
 	static func setUnSignedUpUser(kfupmID: String, saveToPersistent: Bool, isSignedUpDB: Bool) {

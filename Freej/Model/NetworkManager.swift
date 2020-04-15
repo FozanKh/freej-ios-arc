@@ -38,11 +38,13 @@ class NetworkManager {
     
 	static func getStudent(kfupmID: String, completion: @escaping (Student?) -> ()) {
 		let params = ["KFUPMID" : kfupmID]
+		
 		Alamofire.request(getStudentURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
 			let responseValue = response.result.value ?? nil
 			let jsonResponse: JSON?
 			
 			responseValue == nil ? (jsonResponse = nil) : (jsonResponse = JSON(responseValue!)[0])
+			
 			let createdStudent = DataModel.createStudent(fromJSON: jsonResponse, isSignuedDB: true)
 			completion(createdStudent)
 		}
