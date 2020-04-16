@@ -13,7 +13,12 @@ import JGProgressHUD
 class ValidateVC: UIViewController {
 	@IBOutlet weak var validationCodeTF: UITextField!
 	let progressManager = JGProgressHUD()
-	var correctOtp: String!
+	var correctOtp: String! {
+		didSet {
+			validationCodeTF.text = correctOtp
+		}
+	}
+	
 	var otpGenerationTime: Date!
 	
 	override func loadView() {

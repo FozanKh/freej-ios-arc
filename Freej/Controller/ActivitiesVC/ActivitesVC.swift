@@ -14,15 +14,21 @@ class ActivitesVC: UIViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		registerCells()
 		setScreenHeight()
         configureTableView()
     }
 	
 	func setScreenHeight() {
+		let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+		let statusBarHeight = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
+		
 		screenHeight = UIScreen.main.fixedCoordinateSpace.bounds.height - self.navigationController!.navigationBar.frame.size.height - 80
-		if(UIDevice().name.contains("X") || UIDevice().name.contains("11")) {
-			screenHeight! -= 50
-		}
+		screenHeight -= statusBarHeight
+	}
+	
+	func registerCells() {
+		tableView.register(UINib(nibName: "ActivityTypeCell", bundle: nil), forCellReuseIdentifier: "ActivityTypeCell")
 	}
 }
 
@@ -31,6 +37,7 @@ extension ActivitesVC: UITableViewDataSource, UITableViewDelegate {
 		title = "Activities"
 		tableView.delegate = self
 		tableView.dataSource = self
+		tableView.separatorStyle = .none
 		view.addSubview(tableView)
 		tableView.translatesAutoresizingMaskIntoConstraints = false
 		tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -47,22 +54,18 @@ extension ActivitesVC: UITableViewDataSource, UITableViewDelegate {
         return 1
     }
 	
+	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		return screenHeight / 3
+	}
+	
 	func numberOfSections(in tableView: UITableView) -> Int {
 		return 3
 	}
 	
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        if indexPath.row == 0 {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "RequestCell") as! RequestCell
-//            return cell
-//        } else if indexPath.row == 1 {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "MaintenanceCell") as! MaintenanceCell
-//            return cell
-//        } else {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "ServicesCell") as! ServicesCell
-//            return cell
-//        }
-		return UITableViewCell()
+		let cell = tableView.dequeueReusableCell(withIdentifier: "ActivityTypeCell")!
+		cell.selectionStyle = .none
+		return cell
     }
 }
 
