@@ -36,7 +36,7 @@ class NetworkManager {
 		Alamofire.request(getActivityTypesURL, method: .get, parameters: nil, encoding: URLEncoding.default, headers: .none).responseJSON { (activityTypes) in
 			let responseValue = activityTypes.result.value ?? nil
 			if(responseValue == nil) {completion(nil)}
-			let activityTypes = ActivityType.getActivityTypesArray(fromJSON: JSON(responseValue!)[0])
+			let activityTypes = ActivityType.getActivityTypesArray(fromJSON: JSON(responseValue!))
 			completion(activityTypes)
 		}
 	}

@@ -21,7 +21,9 @@ class ActivitesVC: UIViewController {
     }
 	
 	func loadActivities() {
-		
+		NetworkManager.getActivityTypes { (hey) in
+			
+		}
 	}
 	
 	func setScreenHeight() {
