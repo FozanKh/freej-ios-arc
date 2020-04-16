@@ -9,7 +9,7 @@
 import UIKit
 
 class ActivitesVC: UIViewController {
-    @IBOutlet weak var tableView: UITableView!
+    lazy var tableView = UITableView()
 	
     override func viewDidLoad() {
         super.viewDidLoad()
