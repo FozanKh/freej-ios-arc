@@ -15,6 +15,8 @@ struct ActivityType {
 	let color1Hex:	String
 	let color2Hex:	String
 	
+	static var activityTypesArray: [ActivityType]?
+	
 	static func getActivityTypesArray(fromJSON: JSON) -> [ActivityType]? {
 		var atArray = [ActivityType]()
 		for at in fromJSON.array! {
@@ -22,8 +24,10 @@ struct ActivityType {
 			let dbTypeName =	at["TypeName"].stringValue
 			let dbColor1Hex =	at["Color1"].stringValue
 			let dbColor2Hex =	at["Color2"].stringValue
+			print(dbAcTID)
 			atArray.append(ActivityType(acTID: dbAcTID, typeName: dbTypeName, color1Hex: dbColor1Hex, color2Hex: dbColor2Hex))
 		}
+		activityTypesArray = atArray
 		return atArray
 	}
 }

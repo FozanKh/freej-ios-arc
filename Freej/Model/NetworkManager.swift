@@ -33,9 +33,11 @@ class NetworkManager {
     }
 	
 	static func getActivityTypes(completion: @escaping ([ActivityType]?) -> ()) {
-		Alamofire.request(getActivityTypesURL, method: .get, parameters: nil, encoding: URLEncoding.default, headers: .none).responseJSON { (activityTypes) in
+		Alamofire.request(getActivityTypesURL, method: .post, parameters: nil, encoding: URLEncoding.default, headers: .none).responseJSON { (activityTypes) in
+			
 			let responseValue = activityTypes.result.value ?? nil
 			if(responseValue == nil) {completion(nil)}
+			
 			let activityTypes = ActivityType.getActivityTypesArray(fromJSON: JSON(responseValue!))
 			completion(activityTypes)
 		}
