@@ -29,16 +29,24 @@ struct Activity {
 		}
 	}
 	
+	static func getCount(id: Int) -> Int {
+		var count = 0
+		for activity in activitiesArray! {
+			if(activity.acTID == id) {count += 1}
+		}
+		return count
+	}
+	
 	static func activitiesArray(fromJSON: JSON) -> [Activity] {
 		var acArray = [Activity]()
-		for _ in fromJSON.array! {
-			let dbAcID =	fromJSON["AcID"].intValue
-			let dbAcTID =	fromJSON["AcTID"].intValue
-			let dbUserID =	fromJSON["UserID"].stringValue
-			let dbTitle =	fromJSON["Title"].stringValue
-			let dbDescrp =	fromJSON["Descrp"].stringValue
-			let dbSDate = 	fromJSON["SDate"].stringValue
-			let dbIconURL =	fromJSON["IconURL"].stringValue
+		for ac in fromJSON.array! {
+			let dbAcID =	ac["AcID"].intValue
+			let dbAcTID =	ac["AcTID"].intValue
+			let dbUserID =	ac["UserID"].stringValue
+			let dbTitle =	ac["Title"].stringValue
+			let dbDescrp =	ac["Descrp"].stringValue
+			let dbSDate = 	ac["SDate"].stringValue
+			let dbIconURL =	ac["IconURL"].stringValue
 			acArray.append(Activity(acID: dbAcID, acTID: dbAcTID, creatorID: dbUserID, title: dbTitle, descrp: dbDescrp, SDate: dbSDate, iconURL: dbIconURL))
 		}
 		return acArray

@@ -10,6 +10,8 @@ import UIKit
 
 class ActivityTypeCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 	@IBOutlet weak var collectionView: UICollectionView!
+	var acTID: Int!
+	
 	@IBAction func addActivity(_ sender: Any) {
 	}
 	
@@ -29,7 +31,7 @@ class ActivityTypeCell: UITableViewCell, UICollectionViewDataSource, UICollectio
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return 10
+		return Activity.getCount(id: section)
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
