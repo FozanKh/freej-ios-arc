@@ -17,7 +17,12 @@ class ActivitesVC: UIViewController {
 		registerCells()
 		setScreenHeight()
         configureTableView()
+		loadActivities()
     }
+	
+	func loadActivities() {
+		
+	}
 	
 	func setScreenHeight() {
 		let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
