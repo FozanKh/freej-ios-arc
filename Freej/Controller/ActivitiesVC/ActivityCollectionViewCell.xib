@@ -17,14 +17,14 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ui4-bO-SyG">
-                        <rect key="frame" x="10" y="10" width="244" height="151"/>
+                        <rect key="frame" x="10" y="0.0" width="244" height="161"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                 </subviews>
             </view>
             <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <constraints>
-                <constraint firstItem="ui4-bO-SyG" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="20u-jg-H8f"/>
+                <constraint firstItem="ui4-bO-SyG" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="20u-jg-H8f"/>
                 <constraint firstAttribute="bottom" secondItem="ui4-bO-SyG" secondAttribute="bottom" constant="10" id="EGE-Eg-0w5"/>
                 <constraint firstItem="ui4-bO-SyG" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="bPg-gb-fiA"/>
                 <constraint firstAttribute="trailing" secondItem="ui4-bO-SyG" secondAttribute="trailing" constant="10" id="uOg-2D-zEn"/>

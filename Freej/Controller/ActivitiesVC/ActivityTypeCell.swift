@@ -10,6 +10,8 @@ import UIKit
 
 class ActivityTypeCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 	@IBOutlet weak var collectionView: UICollectionView!
+	@IBAction func addActivity(_ sender: Any) {
+	}
 	
     override func awakeFromNib() {
         super.awakeFromNib()
