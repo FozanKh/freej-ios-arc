@@ -19,8 +19,19 @@ class ActivitesVC: UIViewController {
 
 extension ActivitesVC: UITableViewDataSource, UITableViewDelegate {
 	func configureTableView() {
+		title = "Activities"
 		tableView.delegate = self
 		tableView.dataSource = self
+		view.addSubview(tableView)
+		tableView.translatesAutoresizingMaskIntoConstraints = false
+		tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+		tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+		tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+		tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+		tableView.backgroundColor = .systemGroupedBackground
+		let footer = UIView()
+		tableView.tableFooterView = footer
+		tableView.sectionFooterHeight = CGFloat(20.0)
 	}
 	
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
