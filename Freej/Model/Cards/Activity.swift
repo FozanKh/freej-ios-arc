@@ -15,13 +15,14 @@ struct Activity {
 	let creatorID:	String
 	let title:		String
 	let descrp:		String
-	let SDate:		String
+	let sDate:		String
 	let iconURL:	String
+	let stat:		String
 	
 	static var activitiesArray: [Activity]?
 	
 	static func refreshActivitiesArray() {
-		NetworkManager.getActivities { (activitiesJSON) in
+		NetworkManager.getActivities(bno: DataModel.currentUser!.bno!) { (activitiesJSON) in
 			if(activitiesJSON == nil) {activitiesArray = [Activity]()}
 			else {
 				activitiesArray = activitiesArray(fromJSON: activitiesJSON!)
@@ -37,6 +38,17 @@ struct Activity {
 		return count
 	}
 	
+	static func getActivityArray(filterAcTID: Int) -> [Activity] {
+		var speceficArray = [Activity]()
+		print(filterAcTID)
+		for specefic in activitiesArray! {
+			if(specefic.acTID == filterAcTID) {
+				speceficArray.append(specefic)
+			}
+		}
+		return speceficArray
+	}
+	
 	static func activitiesArray(fromJSON: JSON) -> [Activity] {
 		var acArray = [Activity]()
 		for ac in fromJSON.array! {
@@ -47,7 +59,9 @@ struct Activity {
 			let dbDescrp =	ac["Descrp"].stringValue
 			let dbSDate = 	ac["SDate"].stringValue
 			let dbIconURL =	ac["IconURL"].stringValue
-			acArray.append(Activity(acID: dbAcID, acTID: dbAcTID, creatorID: dbUserID, title: dbTitle, descrp: dbDescrp, SDate: dbSDate, iconURL: dbIconURL))
+			let dbStat =	ac["Stat"].stringValue
+			
+			acArray.append(Activity(acID: dbAcID, acTID: dbAcTID, creatorID: dbUserID, title: dbTitle, descrp: dbDescrp, sDate: dbSDate, iconURL: dbIconURL, stat: dbStat))
 		}
 		return acArray
 	}

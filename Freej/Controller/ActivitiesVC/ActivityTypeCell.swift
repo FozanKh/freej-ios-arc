@@ -10,40 +10,39 @@ import UIKit
 
 class ActivityTypeCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 	@IBOutlet weak var collectionView: UICollectionView!
-	var acTID: Int!
+	var acTID = -1
+	var speceficActivityArray = [Activity]()
 	
-	@IBAction func addActivity(_ sender: Any) {
+	func setupCell() {
+		configureCollectionView()
+		speceficActivityArray = Activity.getActivityArray(filterAcTID: acTID)
 	}
 	
-    override func awakeFromNib() {
-        super.awakeFromNib()
-		configureCollectionView()
+	func configureCollectionView() {
+		collectionView.register(UINib(nibName: "ActivityCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ActivityCollectionViewCell")
+		collectionView.dataSource = self
+		collectionView.delegate = self
 		let layout = UICollectionViewFlowLayout()
 		layout.scrollDirection = .horizontal
 		collectionView.sizeToFit()
 		collectionView.collectionViewLayout = layout
-		collectionView.register(UINib(nibName: "ActivityCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ActivityCollectionViewCell")
-    }
-	
-	func configureCollectionView() {
-		collectionView.dataSource = self
-		collectionView.delegate = self
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return Activity.getCount(id: section)
+		return Activity.getCount(id: acTID)
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
 		return 20.0
 	}
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ActivityCollectionViewCell", for: indexPath)
+		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ActivityCollectionViewCell", for: indexPath) as! ActivityCollectionViewCell
+		cell.activity = speceficActivityArray[indexPath.row]
 		return cell
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-		return CGSize(width: frame.width - 60.0, height: frame.height-40)
+		return CGSize(width: frame.width - 60.0, height: frame.height - 40)
 	}
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

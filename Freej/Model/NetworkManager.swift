@@ -33,11 +33,13 @@ class NetworkManager {
         }
     }
 	
-	static func getActivities(completion: @escaping (JSON?) -> ()) {
-		Alamofire.request(getActivitiesURL, method: .post, parameters: nil, encoding: URLEncoding.default, headers: .none).responseJSON { (activities) in
+	static func getActivities(bno: String, completion: @escaping (JSON?) -> ()) {
+		Alamofire.request(getActivitiesURL, method: .post, parameters: ["BNo" : bno], encoding: URLEncoding.default, headers: .none).responseJSON { (activities) in
 			let responseValue = activities.result.value ?? nil
 			if(responseValue == nil) {completion(nil)}
-			completion(JSON(responseValue!))
+			else {
+				completion(JSON(responseValue!))
+			}
 		}
 	}
 	
@@ -46,9 +48,10 @@ class NetworkManager {
 			
 			let responseValue = activityTypes.result.value ?? nil
 			if(responseValue == nil) {completion(nil)}
-			
-			let activityTypes = ActivityType.getActivityTypesArray(fromJSON: JSON(responseValue!))
-			completion(activityTypes)
+			else {
+				let activityTypes = ActivityType.getActivityTypesArray(fromJSON: JSON(responseValue!))
+				completion(activityTypes)
+			}
 		}
 	}
 	

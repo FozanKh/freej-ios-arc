@@ -9,7 +9,7 @@
 import UIKit
 
 class ActivitesVC: UIViewController {
-    lazy var tableView = UITableView()
+	var tableView = UITableView()
 	var screenHeight: CGFloat!
 	
     override func viewDidLoad() {
@@ -47,7 +47,7 @@ extension ActivitesVC: UITableViewDataSource, UITableViewDelegate {
 		tableView.backgroundColor = .systemGroupedBackground
 		let footer = UIView()
 		tableView.tableFooterView = footer
-		tableView.rowHeight = screenHeight / 3
+		tableView.rowHeight = screenHeight / CGFloat(ActivityType.activityTypesArray!.count)
 	}
 	
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -63,11 +63,13 @@ extension ActivitesVC: UITableViewDataSource, UITableViewDelegate {
 	}
 	
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: "ActivityTypeCell")!
+		let cell = tableView.dequeueReusableCell(withIdentifier: "ActivityTypeCell")! as! ActivityTypeCell
 		cell.selectionStyle = .none
+		
+		if(indexPath.section < ActivityType.activityTypesArray!.count && ActivityType.activityTypesArray != nil) {
+			cell.acTID = ActivityType.activityTypesArray![indexPath.section].acTID
+		}
+		cell.setupCell()
 		return cell
     }
 }
-
-
-
