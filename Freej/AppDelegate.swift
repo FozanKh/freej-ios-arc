@@ -15,8 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         NetworkManager.setUpInternetStatusNotification()
 		NetworkManager.getActivityTypes { (types) in
-			print(types?.count)
+			
 		}
+		Activity.refreshActivitiesArray()
 		return true
     }
 	

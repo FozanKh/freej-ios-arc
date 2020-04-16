@@ -24,7 +24,6 @@ struct ActivityType {
 			let dbTypeName =	at["TypeName"].stringValue
 			let dbColor1Hex =	at["Color1"].stringValue
 			let dbColor2Hex =	at["Color2"].stringValue
-			print(dbAcTID)
 			atArray.append(ActivityType(acTID: dbAcTID, typeName: dbTypeName, color1Hex: dbColor1Hex, color2Hex: dbColor2Hex))
 		}
 		activityTypesArray = atArray

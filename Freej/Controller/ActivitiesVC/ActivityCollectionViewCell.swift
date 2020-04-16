@@ -9,7 +9,7 @@
 import UIKit
 
 class ActivityCollectionViewCell: UICollectionViewCell {
-
+	
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

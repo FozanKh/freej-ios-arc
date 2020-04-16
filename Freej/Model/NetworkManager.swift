@@ -20,6 +20,7 @@ class NetworkManager {
     static let deleteStudentURL = "http://freejapp.com/FreejAppRequest/DeleteStudent.php"
 	static let updateUserInfoURL = "http://freejapp.com/FreejAppRequest/UpdateUserInfo.php"
 	static let getActivityTypesURL = "http://freejapp.com/FreejAppRequest/GetActivityTypes.php"
+	static let getActivitiesURL = "http://freejapp.com/FreejAppRequest/GetActivities.php"
 	
     static var monitor: NetworkReachabilityManager?
     static let internetStatusNName = Notification.Name("didChangeInternetStatus")
@@ -31,6 +32,14 @@ class NetworkManager {
             NotificationCenter.default.post(name: Notification.Name("didChangeInternetStatus"), object: nil, userInfo: ["Status" : parseInternetStatus("\(status)")])
         }
     }
+	
+	static func getActivities(completion: @escaping (JSON?) -> ()) {
+		Alamofire.request(getActivitiesURL, method: .post, parameters: nil, encoding: URLEncoding.default, headers: .none).responseJSON { (activities) in
+			let responseValue = activities.result.value ?? nil
+			if(responseValue == nil) {completion(nil)}
+			completion(JSON(responseValue!))
+		}
+	}
 	
 	static func getActivityTypes(completion: @escaping ([ActivityType]?) -> ()) {
 		Alamofire.request(getActivityTypesURL, method: .post, parameters: nil, encoding: URLEncoding.default, headers: .none).responseJSON { (activityTypes) in
