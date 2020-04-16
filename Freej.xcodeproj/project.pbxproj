@@ -35,6 +35,10 @@
 		EB4B5E2F2417ECD600EB7EB9 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4B5E2E2417ECD600EB7EB9 /* SettingsVC.swift */; };
 		EB4B5E382417F74100EB7EB9 /* MaintenanceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4B5E372417F74100EB7EB9 /* MaintenanceRequest.swift */; };
 		EB4B5E3A2417F75D00EB7EB9 /* Advertisement.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4B5E392417F75D00EB7EB9 /* Advertisement.swift */; };
+		EB52C4992448A7F500F01ABA /* ActivityTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB52C4972448A7F500F01ABA /* ActivityTypeCell.swift */; };
+		EB52C49A2448A7F500F01ABA /* ActivityTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB52C4982448A7F500F01ABA /* ActivityTypeCell.xib */; };
+		EB52C4A12448AA2C00F01ABA /* ActivityCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB52C49F2448AA2C00F01ABA /* ActivityCollectionViewCell.swift */; };
+		EB52C4A22448AA2C00F01ABA /* ActivityCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB52C4A02448AA2C00F01ABA /* ActivityCollectionViewCell.xib */; };
 		EB6FC6C82418FE3E00CBA10B /* ERModel.pdf in Resources */ = {isa = PBXBuildFile; fileRef = EB6FC6C42418FE3E00CBA10B /* ERModel.pdf */; };
 		EB6FC6C92418FE3E00CBA10B /* LogicalDiagram.pdf in Resources */ = {isa = PBXBuildFile; fileRef = EB6FC6C52418FE3E00CBA10B /* LogicalDiagram.pdf */; };
 		EB6FC6CA2418FE3E00CBA10B /* UseCaseDiagram.pdf in Resources */ = {isa = PBXBuildFile; fileRef = EB6FC6C62418FE3E00CBA10B /* UseCaseDiagram.pdf */; };
@@ -104,6 +108,10 @@
 		EB4B5E2E2417ECD600EB7EB9 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		EB4B5E372417F74100EB7EB9 /* MaintenanceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceRequest.swift; sourceTree = "<group>"; };
 		EB4B5E392417F75D00EB7EB9 /* Advertisement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Advertisement.swift; sourceTree = "<group>"; };
+		EB52C4972448A7F500F01ABA /* ActivityTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTypeCell.swift; sourceTree = "<group>"; };
+		EB52C4982448A7F500F01ABA /* ActivityTypeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityTypeCell.xib; sourceTree = "<group>"; };
+		EB52C49F2448AA2C00F01ABA /* ActivityCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCollectionViewCell.swift; sourceTree = "<group>"; };
+		EB52C4A02448AA2C00F01ABA /* ActivityCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityCollectionViewCell.xib; sourceTree = "<group>"; };
 		EB6FC6C42418FE3E00CBA10B /* ERModel.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ERModel.pdf; sourceTree = "<group>"; };
 		EB6FC6C52418FE3E00CBA10B /* LogicalDiagram.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = LogicalDiagram.pdf; sourceTree = "<group>"; };
 		EB6FC6C62418FE3E00CBA10B /* UseCaseDiagram.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = UseCaseDiagram.pdf; sourceTree = "<group>"; };
@@ -206,6 +214,10 @@
 			isa = PBXGroup;
 			children = (
 				EB3641422417E89300F81D6A /* ActivitesVC.swift */,
+				EB52C4972448A7F500F01ABA /* ActivityTypeCell.swift */,
+				EB52C4982448A7F500F01ABA /* ActivityTypeCell.xib */,
+				EB52C49F2448AA2C00F01ABA /* ActivityCollectionViewCell.swift */,
+				EB52C4A02448AA2C00F01ABA /* ActivityCollectionViewCell.xib */,
 			);
 			path = ActivitiesVC;
 			sourceTree = "<group>";
@@ -438,12 +450,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB52C4A22448AA2C00F01ABA /* ActivityCollectionViewCell.xib in Resources */,
 				EB945A5D241ABC93005D2BAD /* SF-Pro-Display-Regular.otf in Resources */,
 				EB945A5C241ABC8E005D2BAD /* SF-Pro-Display-Bold.otf in Resources */,
 				EB6FC6CB2418FE3E00CBA10B /* UserRequirements.docx in Resources */,
 				EB6FC6CA2418FE3E00CBA10B /* UseCaseDiagram.pdf in Resources */,
 				EB36414B2417E89600F81D6A /* LaunchScreen.storyboard in Resources */,
 				EB3641482417E89600F81D6A /* Assets.xcassets in Resources */,
+				EB52C49A2448A7F500F01ABA /* ActivityTypeCell.xib in Resources */,
 				EB3641462417E89300F81D6A /* Main.storyboard in Resources */,
 				EB6FC6C82418FE3E00CBA10B /* ERModel.pdf in Resources */,
 				EB6FC6C92418FE3E00CBA10B /* LogicalDiagram.pdf in Resources */,
@@ -586,11 +600,13 @@
 				EB8A2C4E241B03D2005ED1A2 /* NetworkManager.swift in Sources */,
 				04AD6168243EB5B5009DD7A7 /* CollectionCell.swift in Sources */,
 				EB465DE92428E768006766F3 /* Student.swift in Sources */,
+				EB52C4A12448AA2C00F01ABA /* ActivityCollectionViewCell.swift in Sources */,
 				EB163E042428FB7B004A34BA /* PersistentDataModel.xcdatamodeld in Sources */,
 				EB0453702424F690009BAE59 /* SignUpVC.swift in Sources */,
 				EBFC5A84241AF202000EB7D0 /* WelcomeVC.swift in Sources */,
 				045107E0242FFC19007A4EC7 /* Announcement.swift in Sources */,
 				EB4B5E382417F74100EB7EB9 /* MaintenanceRequest.swift in Sources */,
+				EB52C4992448A7F500F01ABA /* ActivityTypeCell.swift in Sources */,
 				045107E2242FFF14007A4EC7 /* AnnouncementCell.swift in Sources */,
 				EB163E0624294682004A34BA /* DataModel.swift in Sources */,
 				04AD6164243EB4EF009DD7A7 /* RequestCell.swift in Sources */,

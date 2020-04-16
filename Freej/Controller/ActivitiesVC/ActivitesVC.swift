@@ -9,40 +9,63 @@
 import UIKit
 
 class ActivitesVC: UIViewController {
-    
-    
-    @IBOutlet weak var tableView: UITableView!
-	@IBAction func logOutBtn(_ sender: Any) {
-		DataModel.clearCurrentUser()
-		navigationController?.popViewController(animated: true)
-	}
+    lazy var tableView = UITableView()
+	var screenHeight: CGFloat!
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
+		registerCells()
+		setScreenHeight()
+        configureTableView()
     }
-    
-    
+	
+	func setScreenHeight() {
+		let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+		let statusBarHeight = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
+		
+		screenHeight = UIScreen.main.fixedCoordinateSpace.bounds.height - self.navigationController!.navigationBar.frame.size.height - 80
+		screenHeight -= statusBarHeight
+	}
+	
+	func registerCells() {
+		tableView.register(UINib(nibName: "ActivityTypeCell", bundle: nil), forCellReuseIdentifier: "ActivityTypeCell")
+	}
 }
 
 extension ActivitesVC: UITableViewDataSource, UITableViewDelegate {
-    
+	func configureTableView() {
+		title = "Activities"
+		tableView.delegate = self
+		tableView.dataSource = self
+		tableView.separatorStyle = .none
+		view.addSubview(tableView)
+		tableView.translatesAutoresizingMaskIntoConstraints = false
+		tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+		tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+		tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+		tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+		tableView.backgroundColor = .systemGroupedBackground
+		let footer = UIView()
+		tableView.tableFooterView = footer
+		tableView.rowHeight = screenHeight / 3
+	}
+	
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 1
     }
-    
+	
+	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		return screenHeight / 3
+	}
+	
+	func numberOfSections(in tableView: UITableView) -> Int {
+		return 3
+	}
+	
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "RequestCell") as! RequestCell
-            return cell
-        } else if indexPath.row == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "MaintenanceCell") as! MaintenanceCell
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ServicesCell") as! ServicesCell
-            return cell
-        }
+		let cell = tableView.dequeueReusableCell(withIdentifier: "ActivityTypeCell")!
+		cell.selectionStyle = .none
+		return cell
     }
 }
 
