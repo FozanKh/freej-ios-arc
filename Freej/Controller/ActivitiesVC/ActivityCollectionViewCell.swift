@@ -9,10 +9,17 @@
 import UIKit
 
 class ActivityCollectionViewCell: UICollectionViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
+	@IBOutlet weak var title: UILabel!
+	@IBOutlet weak var descrp: UILabel!
+	@IBOutlet weak var sDate: UILabel!
+	@IBOutlet weak var iconURL: UILabel!
+	
+	var activity: Activity! {
+		didSet {
+			title.text = activity.title
+			descrp.text = activity.descrp
+			sDate.text = activity.sDate
+			iconURL.text = activity.iconURL
+		}
+	}
 }

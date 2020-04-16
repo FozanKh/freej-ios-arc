@@ -23,8 +23,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		if(shouldAutoLogin) {
 			let user = appDelegate.getStudentFromPersistentDM()
 			if(user != nil) {
+				
 				DataModel.currentUser = user
 				let rootVC = UIApplication.shared.windows.first?.rootViewController as! UINavigationController
+				NetworkManager.getActivityTypes {(types) in}
+				
+				Activity.refreshActivitiesArray()
 				let mainVC = storyboard.instantiateViewController(withIdentifier: "MainVC")
 				rootVC.pushViewController(mainVC, animated: false)
 			}

@@ -20,6 +20,7 @@ class NetworkManager {
     static let deleteStudentURL = "http://freejapp.com/FreejAppRequest/DeleteStudent.php"
 	static let updateUserInfoURL = "http://freejapp.com/FreejAppRequest/UpdateUserInfo.php"
 	static let getActivityTypesURL = "http://freejapp.com/FreejAppRequest/GetActivityTypes.php"
+	static let getActivitiesURL = "http://freejapp.com/FreejAppRequest/GetActivities.php"
 	
     static var monitor: NetworkReachabilityManager?
     static let internetStatusNName = Notification.Name("didChangeInternetStatus")
@@ -32,14 +33,25 @@ class NetworkManager {
         }
     }
 	
+	static func getActivities(bno: String, completion: @escaping (JSON?) -> ()) {
+		Alamofire.request(getActivitiesURL, method: .post, parameters: ["BNo" : bno], encoding: URLEncoding.default, headers: .none).responseJSON { (activities) in
+			let responseValue = activities.result.value ?? nil
+			if(responseValue == nil) {completion(nil)}
+			else {
+				completion(JSON(responseValue!))
+			}
+		}
+	}
+	
 	static func getActivityTypes(completion: @escaping ([ActivityType]?) -> ()) {
 		Alamofire.request(getActivityTypesURL, method: .post, parameters: nil, encoding: URLEncoding.default, headers: .none).responseJSON { (activityTypes) in
 			
 			let responseValue = activityTypes.result.value ?? nil
 			if(responseValue == nil) {completion(nil)}
-			
-			let activityTypes = ActivityType.getActivityTypesArray(fromJSON: JSON(responseValue!))
-			completion(activityTypes)
+			else {
+				let activityTypes = ActivityType.getActivityTypesArray(fromJSON: JSON(responseValue!))
+				completion(activityTypes)
+			}
 		}
 	}
 	
