@@ -48,6 +48,7 @@
 		EB945A5D241ABC93005D2BAD /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = EB945A59241ABC4F005D2BAD /* SF-Pro-Display-Regular.otf */; };
 		EBA9C14B2446015B0032382B /* SettingsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA9C14A2446015B0032382B /* SettingsData.swift */; };
 		EBD2370D244781030095700F /* UserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD2370C244781030095700F /* UserProfileVC.swift */; };
+		EBF0A4022448E0EC00D7C93A /* ActivityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF0A4012448E0EC00D7C93A /* ActivityType.swift */; };
 		EBFC5A84241AF202000EB7D0 /* WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFC5A83241AF202000EB7D0 /* WelcomeVC.swift */; };
 /* End PBXBuildFile section */
 
@@ -121,6 +122,7 @@
 		EB945A59241ABC4F005D2BAD /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = text; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
 		EBA9C14A2446015B0032382B /* SettingsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsData.swift; sourceTree = "<group>"; };
 		EBD2370C244781030095700F /* UserProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileVC.swift; sourceTree = "<group>"; };
+		EBF0A4012448E0EC00D7C93A /* ActivityType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityType.swift; sourceTree = "<group>"; };
 		EBFC5A83241AF202000EB7D0 /* WelcomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeVC.swift; sourceTree = "<group>"; };
 		F2A66BFDCB59CE87E809D6D0 /* Pods_Freej_FreejUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Freej_FreejUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -295,6 +297,7 @@
 				EB465DE82428E768006766F3 /* Student.swift */,
 				EB163E0524294682004A34BA /* DataModel.swift */,
 				EB163E022428FB7B004A34BA /* PersistentDataModel.xcdatamodeld */,
+				EBF0A4012448E0EC00D7C93A /* ActivityType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -613,6 +616,7 @@
 				04FFCB3C24341EC000DE0FFE /* AnnouncementsVC.swift in Sources */,
 				EB4B5E3A2417F75D00EB7EB9 /* Advertisement.swift in Sources */,
 				04AD616A243EB671009DD7A7 /* MaintenanceCell.swift in Sources */,
+				EBF0A4022448E0EC00D7C93A /* ActivityType.swift in Sources */,
 				EBD2370D244781030095700F /* UserProfileVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -55,11 +55,11 @@ extension ActivitesVC: UITableViewDataSource, UITableViewDelegate {
     }
 	
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		return screenHeight / 3
+		return screenHeight / CGFloat(ActivityType.activityTypesArray!.count)
 	}
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
-		return 3
+		return ActivityType.activityTypesArray!.count
 	}
 	
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
