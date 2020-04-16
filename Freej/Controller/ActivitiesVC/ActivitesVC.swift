@@ -10,11 +10,20 @@ import UIKit
 
 class ActivitesVC: UIViewController {
     lazy var tableView = UITableView()
+	var screenHeight: CGFloat!
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		setScreenHeight()
         configureTableView()
     }
+	
+	func setScreenHeight() {
+		screenHeight = UIScreen.main.fixedCoordinateSpace.bounds.height - self.navigationController!.navigationBar.frame.size.height - 80
+		if(UIDevice().name.contains("X") || UIDevice().name.contains("11")) {
+			screenHeight! -= 50
+		}
+	}
 }
 
 extension ActivitesVC: UITableViewDataSource, UITableViewDelegate {
@@ -31,24 +40,29 @@ extension ActivitesVC: UITableViewDataSource, UITableViewDelegate {
 		tableView.backgroundColor = .systemGroupedBackground
 		let footer = UIView()
 		tableView.tableFooterView = footer
-		tableView.sectionFooterHeight = CGFloat(20.0)
+		tableView.rowHeight = screenHeight / 3
 	}
 	
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 1
     }
 	
+	func numberOfSections(in tableView: UITableView) -> Int {
+		return 3
+	}
+	
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "RequestCell") as! RequestCell
-            return cell
-        } else if indexPath.row == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "MaintenanceCell") as! MaintenanceCell
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ServicesCell") as! ServicesCell
-            return cell
-        }
+//        if indexPath.row == 0 {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "RequestCell") as! RequestCell
+//            return cell
+//        } else if indexPath.row == 1 {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "MaintenanceCell") as! MaintenanceCell
+//            return cell
+//        } else {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "ServicesCell") as! ServicesCell
+//            return cell
+//        }
+		return UITableViewCell()
     }
 }
 
