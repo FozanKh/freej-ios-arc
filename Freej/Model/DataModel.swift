@@ -47,8 +47,17 @@ class DataModel {
 	}
 	
 	static func loadSessionData(completion: @escaping () -> ()) {
-		ActivityType.refreshActivityTypesArray {
-			Activity.refreshActivitiesArray {
+		ActivityType.refreshActivityTypesArray { activityTypesDidDownload in
+			//If the activity types were not downloaded successfully.
+			//activities shall not be downloaded as it may contain activity types which are not in the activityTypesArray saved in CoreData which will case a crash to the application.
+			if(activityTypesDidDownload) {
+				Activity.refreshActivitiesArray {
+					Announcement.refreshAnnouncementsArray {
+						completion()
+					}
+				}
+			}
+			else {
 				Announcement.refreshAnnouncementsArray {
 					completion()
 				}
