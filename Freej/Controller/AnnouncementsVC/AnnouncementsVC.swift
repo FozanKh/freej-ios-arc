@@ -12,7 +12,6 @@ import SwiftyJSON
 class AnnouncementsVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
-    var ancmtsArray: [Announcement] = []
     var header: Announcement!
     var headerNumber = 1
     let refreshConroller = UIRefreshControl()
@@ -28,9 +27,10 @@ class AnnouncementsVC: UIViewController {
         //        announcements.remove(at: headerNumber)
 		configureTableView()
 		addRefreshControl()
-        NetworkManager.getAnnouncements { (announcementsJSON) in
-            self.displayAnnouncements(announcementsJSON)
-        }
+		Announcement.refreshAnnouncementsArray {
+			self.displayAnnouncements()
+		}
+		
         setAmeenPrivileges()
     }
 	
@@ -45,22 +45,14 @@ class AnnouncementsVC: UIViewController {
     }
     
     @objc func refreshAncmtsList(){
-        NetworkManager.getAnnouncements { (annoucementsJSON) in
-            self.displayAnnouncements(annoucementsJSON)
-            self.refreshConroller.endRefreshing()
-        }
+		Announcement.refreshAnnouncementsArray {
+			self.displayAnnouncements()
+			self.refreshConroller.endRefreshing()
+		}
     }
 	
-	
-	func displayAnnouncements(_ announcementsJSON: JSON?) {
-        if let value = announcementsJSON {
-            self.ancmtsArray.removeAll()
-            for anItem in value.array! {
-                self.ancmtsArray.append(Announcement(type: anItem["Title"].stringValue, content: anItem["Descrp"].stringValue))
-            }
-			//            print(self.announcements.count)
-			self.tableView.reloadData()
-        }
+	func displayAnnouncements() {
+		self.tableView.reloadData()
     }
 }
 
@@ -72,11 +64,11 @@ extension AnnouncementsVC: UITableViewDataSource, UITableViewDelegate {
 	}
 	
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ancmtsArray.count
+		return Announcement.ancmtsArray!.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let announcement = ancmtsArray[indexPath.row]
+		let announcement = Announcement.ancmtsArray![indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "AnnouncementCell") as! AnnouncementCell
         cell.setAnnouncement(announcement: announcement)
         

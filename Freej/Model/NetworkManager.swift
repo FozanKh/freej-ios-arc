@@ -137,13 +137,6 @@ class NetworkManager {
         }
     }
     
-    static func getAnnouncements(completion: @escaping (JSON?) -> ()) {
-        Alamofire.request(getAnnouncementsURL, method: .post, parameters: nil, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
-            let responseValue = response.result.value ?? nil
-            responseValue == nil ? completion(nil) : completion(JSON(responseValue!))
-        }
-    }
-    
     static func parseInternetStatus(_ status: String) -> Bool {
         var boolStatus: Bool
         "\(status)".contains("not") ? (boolStatus = false) : (boolStatus = true)
