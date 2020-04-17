@@ -17,34 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		return true
     }
 	
-	func getStudentFromPersistentDM() -> Student? {
-		var user: Student? = nil
-		
-		let managedContext = persistentContainer.viewContext
-		let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Student")
-		
-		do {
-			user = try managedContext.fetch(fetchRequest)[0] as? Student
-		} catch let error as NSError {
-			print("Could not fetch. \(error), \(error.userInfo)")
-		}
-		return user
-	}
-	
-	func userWasLoggedIn() -> Bool {
-		let managedContext = persistentContainer.viewContext
-		let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Student")
-		var userWasLoggedIn = false
-		
-		do {
-			let student = try managedContext.fetch(fetchRequest) as! [Student]
-			student.count > 0 ? (userWasLoggedIn = true) : (userWasLoggedIn = false)
-		} catch let error as NSError {
-			print("Could not fetch. \(error), \(error.userInfo)")
-		}
-		return userWasLoggedIn
-	}
-
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {

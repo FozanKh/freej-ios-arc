@@ -18,18 +18,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
-		let appDelegate = UIApplication.shared.delegate as! AppDelegate
-		let shouldAutoLogin = appDelegate.userWasLoggedIn()
+		
+		let shouldAutoLogin = DataModel.userWasLoggedIn()
+		
 		if(shouldAutoLogin) {
-			let user = appDelegate.getStudentFromPersistentDM()
+			let user = DataModel.getStudentFromPersistentDM()
 			if(user != nil) {
+				DataModel.setCurrentStudent(student: user!, saveToPersistent: true)
 				
-				DataModel.currentUser = user
-				let rootVC = UIApplication.shared.windows.first?.rootViewController as! UINavigationController
-				
+				//Consider edge cases here
 				ActivityType.refreshActivityTypesArray()
 				Activity.refreshActivitiesArray()
 				Announcement.refreshAnnouncementsArray {}
+				
+				let rootVC = UIApplication.shared.windows.first?.rootViewController as! UINavigationController
 				let mainVC = storyboard.instantiateViewController(withIdentifier: "MainVC")
 				rootVC.pushViewController(mainVC, animated: false)
 			}

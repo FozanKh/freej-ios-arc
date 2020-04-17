@@ -73,6 +73,32 @@ class DataModel {
 		return false
 	}
 	
+	static func getStudentFromPersistentDM() -> Student? {
+		var user: Student? = nil
+		
+		let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Student")
+		
+		do {
+			user = try managedContext.fetch(fetchRequest)[0] as? Student
+		} catch let error as NSError {
+			print("Could not fetch. \(error), \(error.userInfo)")
+		}
+		return user
+	}
+	
+	static func userWasLoggedIn() -> Bool {
+		let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Student")
+		var userWasLoggedIn = false
+		
+		do {
+			let student = try managedContext.fetch(fetchRequest) as! [Student]
+			student.count > 0 ? (userWasLoggedIn = true) : (userWasLoggedIn = false)
+		} catch let error as NSError {
+			print("Could not fetch. \(error), \(error.userInfo)")
+		}
+		return userWasLoggedIn
+	}
+	
 	static func clearCurrentUser() {
 		guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
 			return
