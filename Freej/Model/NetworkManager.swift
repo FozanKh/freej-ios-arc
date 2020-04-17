@@ -10,6 +10,13 @@ import Foundation
 import SwiftyJSON
 import Alamofire
 
+enum RequestType {
+	case student
+	case announcement
+	case activityType
+	case activity
+}
+
 class NetworkManager {
 	static let getStudentURL = "http://freejapp.com/FreejAppRequest/GetStudent.php"
     static let signUpURL = "http://freejapp.com/FreejAppRequest/PostStudent.php"
@@ -33,13 +40,26 @@ class NetworkManager {
         }
     }
 	
-	static func getActivities(bno: String, completion: @escaping (JSON?) -> ()) {
-		Alamofire.request(getActivitiesURL, method: .post, parameters: ["BNo" : bno], encoding: URLEncoding.default, headers: .none).responseJSON { (activities) in
-			let responseValue = activities.result.value ?? nil
-			if(responseValue == nil) {completion(nil)}
-			else {
-				completion(JSON(responseValue!))
-			}
+	static func postRequest(type: RequestType, params: [String : String], responseJSON: @escaping (JSON?) -> ()) {
+		
+		Alamofire.request(url(forType: type), method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).responseJSON { (response) in
+			let responseValue = response.result.value ?? nil
+			
+			if(responseValue == nil) {responseJSON(nil)}
+			else {responseJSON(JSON(responseValue!))}
+		}
+	}
+	
+	static func url(forType: RequestType) -> String {
+		switch forType {
+		case .student:
+			return getStudentURL
+		case .announcement:
+			return getAnnouncementsURL
+		case .activityType:
+			return getActivityTypesURL
+		case .activity:
+			return getActivitiesURL
 		}
 	}
 	
