@@ -19,6 +19,7 @@ enum RequestType {
 	case addAnnouncement
 	case deleteStudent
 	case sendOTP
+	case addStudent
 }
 
 struct NetworkManager {
@@ -32,6 +33,7 @@ struct NetworkManager {
 	static let getActivityTypesURL = "http://freejapp.com/FreejAppRequest/GetActivityTypes.php"
 	static let getActivitiesURL = "http://freejapp.com/FreejAppRequest/GetActivities.php"
 	
+	//MARK:- Internet Monitor
     static var monitor: NetworkReachabilityManager?
     static let internetStatusNName = Notification.Name("didChangeInternetStatus")
 		
@@ -43,6 +45,7 @@ struct NetworkManager {
         }
     }
 	
+	//MARK:- Request Methods
 	static func jsonRequest(type: RequestType, params: [String : String]?, responseJSON: @escaping (JSON?) -> ()) {
 		Alamofire.request(url(forType: type), method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).responseJSON { (response) in
 			let responseValue = response.result.value ?? nil
@@ -77,24 +80,12 @@ struct NetworkManager {
 			return deleteStudentURL
 		case .sendOTP:
 			return sendOTPURL
+		case .addStudent:
+			return signUpURL
 		}
 	}
-    
-    static func signUpUser(_ kfupmID: String, _ firstName: String, _ lastName: String, _ bno: String, completion: @escaping (JSON?) -> ()) {
-        let params =   ["BNo" : bno,
-                        "FName" : firstName,
-                        "LName" : lastName,
-                        "KFUPMID" : kfupmID,
-                        "Gender" : "M",
-                        "Status" : "Unactivated"]
-        
-        Alamofire.request(signUpURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
-			jsonRequest(type: .student, params: ["KFUPMID" : kfupmID]) { (studentJSON) in
-				completion(studentJSON)
-			}
-        }
-    }
 
+	//MARK:- Misc. Methods
     static func parseInternetStatus(_ status: String) -> Bool {
         var boolStatus: Bool
         "\(status)".contains("not") ? (boolStatus = false) : (boolStatus = true)

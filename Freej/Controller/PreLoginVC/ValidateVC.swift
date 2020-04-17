@@ -35,8 +35,7 @@ class ValidateVC: UIViewController {
 				self.dismiss(animated: true)
 			}
 			else {
-				let user = DataModel.currentUser!
-				NetworkManager.signUpUser(user.kfupmID!, user.fName!, user.lName!, user.bno!) { (dbStuJSON) in
+				DataModel.currentUser?.signUp(completion: { (dbStuJSON) in
 					if(dbStuJSON != nil) {
 						let student = DataModel.createStudent(fromJSON: dbStuJSON!, isSignuedDB: true)
 						DataModel.setCurrentStudent(student: student, saveToPersistent: true)
@@ -45,7 +44,7 @@ class ValidateVC: UIViewController {
 					else {
 						self.showAlert("Error while signing up a new user.")
 					}
-				}
+				})
 			}
 		}
 		else {
