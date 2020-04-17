@@ -36,6 +36,7 @@ class UserProfileVC: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 	}
+	
 	@IBAction func submitChanges(_ sender: Any) {
 		let params = ["FName" : fNameTF.text!, "LName" : lNameTF.text!, "BNo" : bnoTF.text!]
 		NetworkManager.boolRequest(type: .updateUserInfo, params: params) { (success) in

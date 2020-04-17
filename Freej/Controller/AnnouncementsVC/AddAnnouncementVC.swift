@@ -33,8 +33,9 @@ class AddAnnouncementVC : UIViewController, UITextViewDelegate {
 			atID = "3"
 		}
 		
-		NetworkManager.postAnnouncement(atID, DataModel.currentUser!.userID!, ancmtTypeTF.text!, ancmtDescrp.text!) { (sent) in
-			sent ? print("Sent successfully") : print("Failed")
+		let ancmt = Announcement(type: atID, content: ancmtDescrp.text!, userid: DataModel.currentUser!.userID!)
+		ancmt.addToDatabase { (sucess) in
+			print(sucess)
 		}
 		self.dismiss(animated: true, completion: nil)
 	}

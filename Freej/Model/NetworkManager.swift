@@ -16,6 +16,7 @@ enum RequestType {
 	case activityType
 	case activity
 	case updateUserInfo
+	case addAnnouncement
 }
 
 struct NetworkManager {
@@ -68,20 +69,11 @@ struct NetworkManager {
 			return getActivitiesURL
 		case .updateUserInfo:
 			return updateUserInfoURL
+		case .addAnnouncement:
+			return postAnnouncementURL
 		}
 	}
-	
-//	static func updateUserInfo(kfupmID: String, fName: String, lName: String, bno: String, completion: @escaping (Bool) -> ()) {
-//		let params = ["KFUPMID" : kfupmID,
-//					  "FName" : fName,
-//					  "LName" : lName,
-//					  "BNo" : bno]
-//		Alamofire.request(updateUserInfoURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
-//			let statusCode = response.response?.statusCode
-//			statusCode == 201 ? completion(true) : completion(false)
-//		}
-//	}
-//	
+
 	static func deleteStudent(kfupmID: String, completion: @escaping (Bool) -> ()) {
 		let params = ["KFUPMID" : kfupmID]
 		Alamofire.request(deleteStudentURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
@@ -113,17 +105,17 @@ struct NetworkManager {
         }
     }
     
-    static func postAnnouncement(_ anTID: String, _ userID: String, _ title: String, _ descrp: String, completion: @escaping (Bool) -> ()) {
-        let params =   ["AnTID" : anTID,
-                        "UserID" : userID,
-                        "Title" : title,
-                        "Descrp" : descrp,
-                        "SDate" : "2020-20-02",
-                        "Stat" : "Activated"]
-        Alamofire.request(postAnnouncementURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
-            completion(response.result.isSuccess)
-        }
-    }
+//    static func postAnnouncement(_ anTID: String, _ userID: String, _ title: String, _ descrp: String, completion: @escaping (Bool) -> ()) {
+//        let params =   ["AnTID" : anTID,
+//                        "UserID" : userID,
+//                        "Title" : title,
+//                        "Descrp" : descrp,
+//                        "SDate" : "2020-20-02",
+//                        "Stat" : "Activated"]
+//        Alamofire.request(postAnnouncementURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
+//            completion(response.result.isSuccess)
+//        }
+//    }
     
     static func parseInternetStatus(_ status: String) -> Bool {
         var boolStatus: Bool

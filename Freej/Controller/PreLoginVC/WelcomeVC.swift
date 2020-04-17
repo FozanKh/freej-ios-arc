@@ -29,9 +29,8 @@ class WelcomeVC: UIViewController, DataModelProtocol {
 		
 		NetworkManager.jsonRequest(type: .student, params: ["KFUPMID" : kfupmIDTF.text!]) { (stuJSON) in
 			self.progressManager.dismiss(animated: true)
-			
 			if(stuJSON != nil) {
-				let stu = DataModel.createStudent(fromJSON: stuJSON, isSignuedDB: true)
+				let stu = DataModel.createStudent(fromJSON: stuJSON![0], isSignuedDB: true)
 				DataModel.setCurrentStudent(student: stu, saveToPersistent: false)
 				self.performSegue(withIdentifier: "toValidateVC", sender: self)
 			}
