@@ -34,7 +34,7 @@ struct Announcement {
 						"SDate" : "2020-20-02",
 						"Stat" : "Activated"]
 		
-		NetworkManager.boolRequest(type: .addAnnouncement, params: params) { (success) in completion(success ?? false)}
+		NetworkManager.boolRequest(type: .addAnnouncement, params: params) { (success) in completion(success)}
 	}
 	
 	static func announcementsArray(fromJSON: JSON) -> [Announcement] {

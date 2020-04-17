@@ -57,11 +57,13 @@ class ValidateVC: UIViewController {
 	func generateOTP() {
 		correctOtp = "\(Int.random(in: 1000...9999))"
 		otpGenerationTime = Date()
+		let params = ["to" : "abdulelahhajjar@gmail.com", "otp" : correctOtp!]
 		
-		NetworkManager.sendOTP(toEmail: (DataModel.currentUser?.kfupmID!)! + "@kfupm.edu.sa", otp: correctOtp) {(hasSent) in
+		NetworkManager.boolRequest(type: .sendOTP, params: params) { (hasSent) in
 			if(!hasSent) {
 				self.showAlert("The application encountered an error while sending the OTP.")
 			}
+			print(self.correctOtp!)
 		}
 	}
 	

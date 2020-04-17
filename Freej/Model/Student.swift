@@ -12,4 +12,9 @@ import SwiftyJSON
 
 @objc(Student)
 class Student: NSManagedObject {
+	func deleteStudentRecord(completion: @escaping (Bool) -> ()) {
+		NetworkManager.boolRequest(type: .deleteStudent, params: ["KFUPMID" : kfupmID!]) { (success) in
+			completion(success)
+		}
+	}
 }

@@ -17,6 +17,8 @@ enum RequestType {
 	case activity
 	case updateUserInfo
 	case addAnnouncement
+	case deleteStudent
+	case sendOTP
 }
 
 struct NetworkManager {
@@ -50,7 +52,7 @@ struct NetworkManager {
 		}
 	}
 	
-	static func boolRequest(type: RequestType, params: [String : String]?, responseBool: @escaping (Bool?) -> ()) {
+	static func boolRequest(type: RequestType, params: [String : String]?, responseBool: @escaping (Bool) -> ()) {
 		Alamofire.request(url(forType: type), method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
 			let statusCode = response.response?.statusCode
 			statusCode == 201 ? responseBool(true) : responseBool(false)
@@ -71,23 +73,11 @@ struct NetworkManager {
 			return updateUserInfoURL
 		case .addAnnouncement:
 			return postAnnouncementURL
+		case .deleteStudent:
+			return deleteStudentURL
+		case .sendOTP:
+			return sendOTPURL
 		}
-	}
-
-	static func deleteStudent(kfupmID: String, completion: @escaping (Bool) -> ()) {
-		let params = ["KFUPMID" : kfupmID]
-		Alamofire.request(deleteStudentURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
-			let statusCode = response.response?.statusCode
-			statusCode == 201 ? completion(true) : completion(false)
-		}
-	}
-    
-	static func sendOTP(toEmail: String, otp: String, completion: @escaping (Bool) -> ()) {
-//		let params = ["to" : "abdulelahhajjar@gmail.com", "otp" : otp]
-//		Alamofire.request(sendOTPURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
-//			response.response?.statusCode ?? 500 == 201 ? completion(true) : completion(false)
-//		}
-		print(otp)
 	}
     
     static func signUpUser(_ kfupmID: String, _ firstName: String, _ lastName: String, _ bno: String, completion: @escaping (JSON?) -> ()) {
