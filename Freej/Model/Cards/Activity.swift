@@ -21,10 +21,16 @@ struct Activity {
 	
 	static var activitiesArray: [Activity]?
 	
-	static func refreshActivitiesArray() {
+	static func refreshActivitiesArray(completion: @escaping () -> ()) {
 		NetworkManager.jsonRequest(type: .activity, params: ["BNo" : DataModel.currentUser!.bno!]) { (activitiesJSON) in
-			if (activitiesJSON == nil) {activitiesArray = [Activity]()}
-			else {activitiesArray = activitiesArray(fromJSON: activitiesJSON!)}
+			if (activitiesJSON == nil) {
+				activitiesArray = [Activity]()
+				completion()
+			}
+			else {
+				activitiesArray = activitiesArray(fromJSON: activitiesJSON!)
+				completion()
+			}
 		}
 	}
 	

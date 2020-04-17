@@ -46,6 +46,16 @@ class DataModel {
 		return student as! Student
 	}
 	
+	static func loadSessionData(completion: @escaping () -> ()) {
+		ActivityType.refreshActivityTypesArray {
+			Activity.refreshActivitiesArray {
+				Announcement.refreshAnnouncementsArray {
+					completion()
+				}
+			}
+		}
+	}
+	
 	static func instantiateEmptyStudent() {
 		let entity = NSEntityDescription.entity(forEntityName: "Student", in: managedContext)!
 		let student = NSManagedObject(entity: entity, insertInto: managedContext)

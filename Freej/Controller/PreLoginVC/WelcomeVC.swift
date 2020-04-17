@@ -36,6 +36,7 @@ class WelcomeVC: UIViewController, DataModelProtocol {
 				DataModel.currentUser!.kfupmID = self.kfupmIDTF.text!
 				self.performSegue(withIdentifier: "toSignUpVC", sender: self)
 			}
+			self.progressManager.dismiss()
 		}
 	}
 	

@@ -27,9 +27,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 				DataModel.setCurrentStudent(student: user!, saveToPersistent: true)
 				
 				//Consider edge cases here
-				ActivityType.refreshActivityTypesArray()
-				Activity.refreshActivitiesArray()
-				Announcement.refreshAnnouncementsArray {}
 				
 				let rootVC = UIApplication.shared.windows.first?.rootViewController as! UINavigationController
 				let mainVC = storyboard.instantiateViewController(withIdentifier: "MainVC")
