@@ -17,7 +17,14 @@ struct ActivityType {
 	
 	static var activityTypesArray: [ActivityType]?
 	
-	static func getActivityTypesArray(fromJSON: JSON) -> [ActivityType]? {
+	static func refreshActivityTypesArray() {
+		NetworkManager.postRequest(type: .activityType, params: nil) { (activityTypesJSON) in
+			if (activityTypesJSON == nil) {activityTypesArray = [ActivityType]()}
+			else {activityTypesArray = activityTypesArray(fromJSON: activityTypesJSON!)}
+		}
+	}
+	
+	static func activityTypesArray(fromJSON: JSON) -> [ActivityType]? {
 		var atArray = [ActivityType]()
 		for at in fromJSON.array! {
 			let dbAcTID =		at["AcTID"].intValue

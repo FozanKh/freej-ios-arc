@@ -40,7 +40,7 @@ class NetworkManager {
         }
     }
 	
-	static func postRequest(type: RequestType, params: [String : String], responseJSON: @escaping (JSON?) -> ()) {
+	static func postRequest(type: RequestType, params: [String : String]?, responseJSON: @escaping (JSON?) -> ()) {
 		Alamofire.request(url(forType: type), method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).responseJSON { (response) in
 			let responseValue = response.result.value ?? nil
 			
@@ -109,7 +109,7 @@ class NetworkManager {
 		print(otp)
 	}
     
-    static func signUpUser(_ kfupmID: String, _ firstName: String, _ lastName: String, _ bno: String, completion: @escaping (Student?) -> ()) {
+    static func signUpUser(_ kfupmID: String, _ firstName: String, _ lastName: String, _ bno: String, completion: @escaping (JSON?) -> ()) {
         let params =   ["BNo" : bno,
                         "FName" : firstName,
                         "LName" : lastName,
@@ -118,8 +118,8 @@ class NetworkManager {
                         "Status" : "Unactivated"]
         
         Alamofire.request(signUpURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
-			getStudent(kfupmID: kfupmID) { (studentDB) in
-				completion(studentDB)
+			postRequest(type: .student, params: ["KFUPMID" : kfupmID]) { (studentJSON) in
+				completion(studentJSON)
 			}
         }
     }
