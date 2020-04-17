@@ -19,7 +19,7 @@ class Student: NSManagedObject {
 	}
 	
 	func signUp(completion: @escaping (JSON?) -> ()) {
-		let params = ["KFUPMID" : kfupmID!, "FName" : fName!, "LName" : lName!, "BNo" : bno!]
+		let params = ["KFUPMID" : kfupmID!, "FName" : fName!, "LName" : lName!, "BNo" : bno!, "Gender" : "M", "Stat" : "Active"]
 		
 		NetworkManager.boolRequest(type: .addStudent, params: params) { (didSignUp) in
 			if(didSignUp) {
