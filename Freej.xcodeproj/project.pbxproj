@@ -267,8 +267,8 @@
 			children = (
 				EBF0A4062449257200D7C93A /* Cards */,
 				EB465DE82428E768006766F3 /* Student.swift */,
-				EB163E0524294682004A34BA /* DataModel.swift */,
 				EB163E022428FB7B004A34BA /* PersistentDataModel.xcdatamodeld */,
+				EB163E0524294682004A34BA /* DataModel.swift */,
 				EB8A2C4D241B03D2005ED1A2 /* NetworkManager.swift */,
 			);
 			path = Model;

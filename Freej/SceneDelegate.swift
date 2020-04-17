@@ -26,9 +26,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 				
 				DataModel.currentUser = user
 				let rootVC = UIApplication.shared.windows.first?.rootViewController as! UINavigationController
-				NetworkManager.getActivityTypes {(types) in}
 				
+				ActivityType.refreshActivityTypesArray()
 				Activity.refreshActivitiesArray()
+				Announcement.refreshAnnouncementsArray {}
 				let mainVC = storyboard.instantiateViewController(withIdentifier: "MainVC")
 				rootVC.pushViewController(mainVC, animated: false)
 			}

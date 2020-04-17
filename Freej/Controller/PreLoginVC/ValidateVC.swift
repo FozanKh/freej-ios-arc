@@ -32,20 +32,19 @@ class ValidateVC: UIViewController {
 			if(DataModel.userIsSignedUp()) {
 				//Save to persistent for future sessions (Only logged-in users are saved to persistent)
 				let _ = DataModel.saveCurrentUserToPersistent()
-				print("here")
 				self.dismiss(animated: true)
 			}
 			else {
-				let user = DataModel.currentUser!
-				NetworkManager.signUpUser(user.kfupmID!, user.fName!, user.lName!, user.bno!) { (dbStu) in
-					if(dbStu != nil) {
-						DataModel.setCurrentStudent(student: dbStu!, saveToPersistent: true)
+				DataModel.currentUser?.signUp(completion: { (dbStuJSON) in
+					if(dbStuJSON != nil) {
+						let student = DataModel.createStudent(fromJSON: dbStuJSON!, isSignuedDB: true)
+						DataModel.setCurrentStudent(student: student, saveToPersistent: true)
 						self.dismiss(animated: true)
 					}
 					else {
 						self.showAlert("Error while signing up a new user.")
 					}
-				}
+				})
 			}
 		}
 		else {
@@ -57,11 +56,13 @@ class ValidateVC: UIViewController {
 	func generateOTP() {
 		correctOtp = "\(Int.random(in: 1000...9999))"
 		otpGenerationTime = Date()
+		let params = ["to" : "abdulelahhajjar@gmail.com", "otp" : correctOtp!]
 		
-		NetworkManager.sendOTP(toEmail: (DataModel.currentUser?.kfupmID!)! + "@kfupm.edu.sa", otp: correctOtp) {(hasSent) in
+		NetworkManager.boolRequest(type: .sendOTP, params: params) { (hasSent) in
 			if(!hasSent) {
 				self.showAlert("The application encountered an error while sending the OTP.")
 			}
+			print(self.correctOtp!)
 		}
 	}
 	
