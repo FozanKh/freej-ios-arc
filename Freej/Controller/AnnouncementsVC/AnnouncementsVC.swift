@@ -64,7 +64,7 @@ extension AnnouncementsVC: UITableViewDataSource, UITableViewDelegate {
 	}
 	
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return Announcement.ancmtsArray!.count
+		return Announcement.ancmtsArray?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

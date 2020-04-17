@@ -18,7 +18,7 @@ struct Announcement {
 	static var ancmtsArray: [Announcement]?
 	
 	static func refreshAnnouncementsArray(completion: @escaping () -> ()) {
-		NetworkManager.postRequest(type: .announcement, params: nil) { (ancmtsJSON) in
+		NetworkManager.jsonRequest(type: .announcement, params: nil) { (ancmtsJSON) in
 			if (ancmtsJSON == nil) {ancmtsArray = [Announcement]()}
 			else {ancmtsArray = announcementsArray(fromJSON: ancmtsJSON!)}
 			completion()

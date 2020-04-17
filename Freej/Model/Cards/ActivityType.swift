@@ -18,7 +18,7 @@ struct ActivityType {
 	static var activityTypesArray: [ActivityType]?
 	
 	static func refreshActivityTypesArray() {
-		NetworkManager.postRequest(type: .activityType, params: nil) { (activityTypesJSON) in
+		NetworkManager.jsonRequest(type: .activityType, params: nil) { (activityTypesJSON) in
 			if (activityTypesJSON == nil) {activityTypesArray = [ActivityType]()}
 			else {activityTypesArray = activityTypesArray(fromJSON: activityTypesJSON!)}
 		}

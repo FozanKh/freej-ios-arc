@@ -22,7 +22,7 @@ struct Activity {
 	static var activitiesArray: [Activity]?
 	
 	static func refreshActivitiesArray() {
-		NetworkManager.postRequest(type: .activity, params: ["BNo" : DataModel.currentUser!.bno!]) { (activitiesJSON) in
+		NetworkManager.jsonRequest(type: .activity, params: ["BNo" : DataModel.currentUser!.bno!]) { (activitiesJSON) in
 			if (activitiesJSON == nil) {activitiesArray = [Activity]()}
 			else {activitiesArray = activitiesArray(fromJSON: activitiesJSON!)}
 		}

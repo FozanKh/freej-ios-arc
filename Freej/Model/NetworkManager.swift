@@ -15,15 +15,15 @@ enum RequestType {
 	case announcement
 	case activityType
 	case activity
+	case updateUserInfo
 }
 
-class NetworkManager {
+struct NetworkManager {
 	static let getStudentURL = "http://freejapp.com/FreejAppRequest/GetStudent.php"
     static let signUpURL = "http://freejapp.com/FreejAppRequest/PostStudent.php"
     static let sendOTPURL = "http://freejapp.com/FreejAppRequest/SendOTP.php"
 	static let getAnnouncementsURL = "http://freejapp.com/FreejAppRequest/GetAnnouncements.php"
     static let postAnnouncementURL = "http://freejapp.com/FreejAppRequest/PostAnnouncements.php"
-    static let getAmeenURL = "http://freejapp.com/FreejAppRequest/GetAmeen.php"
     static let deleteStudentURL = "http://freejapp.com/FreejAppRequest/DeleteStudent.php"
 	static let updateUserInfoURL = "http://freejapp.com/FreejAppRequest/UpdateUserInfo.php"
 	static let getActivityTypesURL = "http://freejapp.com/FreejAppRequest/GetActivityTypes.php"
@@ -40,12 +40,19 @@ class NetworkManager {
         }
     }
 	
-	static func postRequest(type: RequestType, params: [String : String]?, responseJSON: @escaping (JSON?) -> ()) {
+	static func jsonRequest(type: RequestType, params: [String : String]?, responseJSON: @escaping (JSON?) -> ()) {
 		Alamofire.request(url(forType: type), method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).responseJSON { (response) in
 			let responseValue = response.result.value ?? nil
 			
 			if(responseValue == nil) {responseJSON(nil)}
 			else {responseJSON(JSON(responseValue!))}
+		}
+	}
+	
+	static func boolRequest(type: RequestType, params: [String : String]?, responseBool: @escaping (Bool?) -> ()) {
+		Alamofire.request(url(forType: type), method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
+			let statusCode = response.response?.statusCode
+			statusCode == 201 ? responseBool(true) : responseBool(false)
 		}
 	}
 	
@@ -59,20 +66,22 @@ class NetworkManager {
 			return getActivityTypesURL
 		case .activity:
 			return getActivitiesURL
+		case .updateUserInfo:
+			return updateUserInfoURL
 		}
 	}
 	
-	static func updateUserInfo(kfupmID: String, fName: String, lName: String, bno: String, completion: @escaping (Bool) -> ()) {
-		let params = ["KFUPMID" : kfupmID,
-					  "FName" : fName,
-					  "LName" : lName,
-					  "BNo" : bno]
-		Alamofire.request(updateUserInfoURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
-			let statusCode = response.response?.statusCode
-			statusCode == 201 ? completion(true) : completion(false)
-		}
-	}
-	
+//	static func updateUserInfo(kfupmID: String, fName: String, lName: String, bno: String, completion: @escaping (Bool) -> ()) {
+//		let params = ["KFUPMID" : kfupmID,
+//					  "FName" : fName,
+//					  "LName" : lName,
+//					  "BNo" : bno]
+//		Alamofire.request(updateUserInfoURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
+//			let statusCode = response.response?.statusCode
+//			statusCode == 201 ? completion(true) : completion(false)
+//		}
+//	}
+//	
 	static func deleteStudent(kfupmID: String, completion: @escaping (Bool) -> ()) {
 		let params = ["KFUPMID" : kfupmID]
 		Alamofire.request(deleteStudentURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
@@ -80,27 +89,7 @@ class NetworkManager {
 			statusCode == 201 ? completion(true) : completion(false)
 		}
 	}
-    static func getAmeen(userID: String, completion: @escaping (Bool) -> ()) {
-        let params = ["UserID" : userID]
-        Alamofire.request(getAmeenURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
-            completion(response.result.isSuccess)
-        }
-    }
     
-	static func getStudent(kfupmID: String, completion: @escaping (Student?) -> ()) {
-		let params = ["KFUPMID" : kfupmID]
-		
-		Alamofire.request(getStudentURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
-			let responseValue = response.result.value ?? nil
-			let jsonResponse: JSON?
-			
-			responseValue == nil ? (jsonResponse = nil) : (jsonResponse = JSON(responseValue!)[0])
-			
-			let createdStudent = DataModel.createStudent(fromJSON: jsonResponse, isSignuedDB: true)
-			completion(createdStudent)
-		}
-	}
-	
 	static func sendOTP(toEmail: String, otp: String, completion: @escaping (Bool) -> ()) {
 //		let params = ["to" : "abdulelahhajjar@gmail.com", "otp" : otp]
 //		Alamofire.request(sendOTPURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
@@ -118,7 +107,7 @@ class NetworkManager {
                         "Status" : "Unactivated"]
         
         Alamofire.request(signUpURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
-			postRequest(type: .student, params: ["KFUPMID" : kfupmID]) { (studentJSON) in
+			jsonRequest(type: .student, params: ["KFUPMID" : kfupmID]) { (studentJSON) in
 				completion(studentJSON)
 			}
         }
@@ -132,7 +121,6 @@ class NetworkManager {
                         "SDate" : "2020-20-02",
                         "Stat" : "Activated"]
         Alamofire.request(postAnnouncementURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
-//            print(response)
             completion(response.result.isSuccess)
         }
     }

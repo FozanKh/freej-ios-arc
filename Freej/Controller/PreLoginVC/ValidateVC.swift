@@ -40,7 +40,7 @@ class ValidateVC: UIViewController {
 				NetworkManager.signUpUser(user.kfupmID!, user.fName!, user.lName!, user.bno!) { (dbStuJSON) in
 					if(dbStuJSON != nil) {
 						let student = DataModel.createStudent(fromJSON: dbStuJSON, isSignuedDB: true)
-						DataModel.setCurrentStudent(student: student!, saveToPersistent: true)
+						DataModel.setCurrentStudent(student: student, saveToPersistent: true)
 						self.dismiss(animated: true)
 					}
 					else {

@@ -29,7 +29,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 				
 				ActivityType.refreshActivityTypesArray()
 				Activity.refreshActivitiesArray()
-				
+				Announcement.refreshAnnouncementsArray {}
 				let mainVC = storyboard.instantiateViewController(withIdentifier: "MainVC")
 				rootVC.pushViewController(mainVC, animated: false)
 			}

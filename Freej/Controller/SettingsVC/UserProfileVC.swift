@@ -37,8 +37,9 @@ class UserProfileVC: UIViewController {
 		super.viewDidLoad()
 	}
 	@IBAction func submitChanges(_ sender: Any) {
-		NetworkManager.updateUserInfo(kfupmID: (DataModel.currentUser?.kfupmID)!, fName: fNameTF.text!, lName: lNameTF.text!, bno: bnoTF.text!) { (success) in
-			success ? self.showAlert(title: "Success", message: "User info updated successfully") : self.showAlert(title: "Error", message: "Error while updating user info")
+		let params = ["FName" : fNameTF.text!, "LName" : lNameTF.text!, "BNo" : bnoTF.text!]
+		NetworkManager.boolRequest(type: .updateUserInfo, params: params) { (success) in
+			success ?? false ? self.showAlert(title: "Success", message: "User info updated successfully") : self.showAlert(title: "Error", message: "Error while updating user info")
 		}
 	}
 	
