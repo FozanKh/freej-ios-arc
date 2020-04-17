@@ -94,19 +94,7 @@ struct NetworkManager {
 			}
         }
     }
-    
-//    static func postAnnouncement(_ anTID: String, _ userID: String, _ title: String, _ descrp: String, completion: @escaping (Bool) -> ()) {
-//        let params =   ["AnTID" : anTID,
-//                        "UserID" : userID,
-//                        "Title" : title,
-//                        "Descrp" : descrp,
-//                        "SDate" : "2020-20-02",
-//                        "Stat" : "Activated"]
-//        Alamofire.request(postAnnouncementURL, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
-//            completion(response.result.isSuccess)
-//        }
-//    }
-    
+
     static func parseInternetStatus(_ status: String) -> Bool {
         var boolStatus: Bool
         "\(status)".contains("not") ? (boolStatus = false) : (boolStatus = true)
