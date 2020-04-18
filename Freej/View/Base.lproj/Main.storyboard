@@ -614,7 +614,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Zfw-d4-eSL"/>
                     <connections>
-                        <segue destination="xwk-OA-AaF" kind="presentation" identifier="toRootNC" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="ebq-M9-4JP"/>
+                        <segue destination="xwk-OA-AaF" kind="presentation" identifier="toRootNC" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="ebq-M9-4JP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VCU-mj-pCB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

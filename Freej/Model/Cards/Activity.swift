@@ -19,53 +19,49 @@ struct Activity {
 	let iconURL:	String
 	let stat:		String
 	
-	static var activitiesArray: [Activity]?
+	static var activitiesDict: [Int : [Activity]]?
 	
 	static func refreshActivitiesArray(completion: @escaping () -> ()) {
 		NetworkManager.jsonRequest(type: .activity, params: ["BNo" : DataModel.currentUser!.bno!]) { (activitiesJSON) in
 			if (activitiesJSON == nil) {
-				activitiesArray = [Activity]()
+				activitiesDict = [Int : [Activity]]()
 				completion()
 			}
 			else {
-				activitiesArray = activitiesArray(fromJSON: activitiesJSON!)
+				activitiesDict = getActivitiesDict(fromJSON: activitiesJSON!)
+				
 				completion()
 			}
 		}
 	}
 	
-	static func getCount(id: Int) -> Int {
-		var count = 0
-		for activity in activitiesArray! {
-			if(activity.acTID == id) {count += 1}
-		}
-		return count
-	}
-	
-	static func getActivityArray(filterAcTID: Int) -> [Activity] {
-		var speceficArray = [Activity]()
-		for specefic in activitiesArray! {
-			if(specefic.acTID == filterAcTID) {
-				speceficArray.append(specefic)
-			}
-		}
-		return speceficArray
-	}
-	
-	static func activitiesArray(fromJSON: JSON) -> [Activity] {
-		var acArray = [Activity]()
-		for ac in fromJSON.array! {
-			let dbAcID =	ac["AcID"].intValue
-			let dbAcTID =	ac["AcTID"].intValue
-			let dbUserID =	ac["UserID"].stringValue
-			let dbTitle =	ac["Title"].stringValue
-			let dbDescrp =	ac["Descrp"].stringValue
-			let dbSDate = 	ac["SDate"].stringValue
-			let dbIconURL =	ac["IconURL"].stringValue
-			let dbStat =	ac["Stat"].stringValue
+	static func getActivitiesDict(fromJSON: JSON) -> [Int : [Activity]] {
+		var dict = [Int : [Activity]]()
+		var jsonArray = fromJSON.array!
+		
+		for activityType in ActivityType.activityTypesArray! {
+			var tempActivityArray = [Activity]()
 			
-			acArray.append(Activity(acID: dbAcID, acTID: dbAcTID, creatorID: dbUserID, title: dbTitle, descrp: dbDescrp, sDate: dbSDate, iconURL: dbIconURL, stat: dbStat))
+			for activity in jsonArray {
+				if(activity["AcTID"].intValue == activityType.acTID) {
+					let dbAcID =	activity["AcID"].intValue
+					let dbAcTID =	activity["AcTID"].intValue
+					let dbUserID =	activity["UserID"].stringValue
+					let dbTitle =	activity["Title"].stringValue
+					let dbDescrp =	activity["Descrp"].stringValue
+					let dbSDate = 	activity["SDate"].stringValue
+					let dbIconURL =	activity["IconURL"].stringValue
+					let dbStat =	activity["Stat"].stringValue
+					
+					tempActivityArray.append(Activity(acID: dbAcID, acTID: dbAcTID, creatorID: dbUserID, title: dbTitle, descrp: dbDescrp, sDate: dbSDate, iconURL: dbIconURL, stat: dbStat))
+					let indexOfActivity = jsonArray.firstIndex(of: activity)
+					if(indexOfActivity != nil) {jsonArray.remove(at: jsonArray.firstIndex(of: activity)!)}
+				}
+			}
+			dict[activityType.acTID] = tempActivityArray
+			
 		}
-		return acArray
+		
+		return dict
 	}
 }

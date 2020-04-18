@@ -11,12 +11,14 @@ import UIKit
 class ActivitesVC: UIViewController {
 	var tableView = UITableView()
 	var screenHeight: CGFloat!
-	
+	let refreshConroller = UIRefreshControl()
+
     override func viewDidLoad() {
-        super.viewDidLoad()
+		super.viewDidLoad()
 		registerCells()
 		setScreenHeight()
         configureTableView()
+		addRefreshControl()
     }
 	
 	func setScreenHeight() {
@@ -34,9 +36,9 @@ class ActivitesVC: UIViewController {
 
 extension ActivitesVC: UITableViewDataSource, UITableViewDelegate {
 	func configureTableView() {
-		title = "Activities"
 		tableView.delegate = self
 		tableView.dataSource = self
+		title = "Activities"
 		tableView.separatorStyle = .none
 		view.addSubview(tableView)
 		tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -48,6 +50,19 @@ extension ActivitesVC: UITableViewDataSource, UITableViewDelegate {
 		let footer = UIView()
 		tableView.tableFooterView = footer
 		tableView.rowHeight = screenHeight / CGFloat(ActivityType.activityTypesArray!.count)
+	}
+	
+	func addRefreshControl() {
+		refreshConroller.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+		refreshConroller.addTarget(self, action: #selector(refreshActivitiesList), for: .valueChanged)
+		tableView.addSubview(refreshConroller)
+	}
+	
+	@objc func refreshActivitiesList() {
+		DataModel.loadSessionData {
+			self.refreshConroller.endRefreshing()
+			self.tableView.reloadData()
+		}
 	}
 	
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -69,6 +84,7 @@ extension ActivitesVC: UITableViewDataSource, UITableViewDelegate {
 		if(indexPath.section < ActivityType.activityTypesArray!.count && ActivityType.activityTypesArray != nil) {
 			cell.acTID = ActivityType.activityTypesArray![indexPath.section].acTID
 		}
+		
 		cell.setupCell()
 		return cell
     }
