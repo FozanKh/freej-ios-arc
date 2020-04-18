@@ -44,7 +44,6 @@ struct Activity {
 	
 	static func getActivityArray(filterAcTID: Int) -> [Activity] {
 		var speceficArray = [Activity]()
-		print(filterAcTID)
 		for specefic in activitiesArray! {
 			if(specefic.acTID == filterAcTID) {
 				speceficArray.append(specefic)
