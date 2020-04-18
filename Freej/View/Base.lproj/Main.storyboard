@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xwk-OA-AaF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="x1w-gs-Deo">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -261,17 +261,18 @@
         <!--Navigation Controller-->
         <scene sceneID="lXg-km-JKq">
             <objects>
-                <navigationController navigationBarHidden="YES" id="xwk-OA-AaF" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="RootNC" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="xwk-OA-AaF" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="l2t-8v-P9U"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kFX-f0-yul">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="w8f-yv-Qgc" kind="relationship" relationship="rootViewController" id="w0r-fS-Zyi"/>
+                        <segue destination="w8f-yv-Qgc" kind="relationship" relationship="rootViewController" id="TSL-x6-tic"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ETx-xu-hdC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4319" y="1083"/>
+            <point key="canvasLocation" x="-4388" y="1083"/>
         </scene>
         <!--WelcomeVC-->
         <scene sceneID="2bP-si-6Af">
@@ -600,6 +601,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wkh-Ps-ErY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-961" y="2939"/>
+        </scene>
+        <!--LoadingVC-->
+        <scene sceneID="eXq-vW-eR6">
+            <objects>
+                <viewController id="x1w-gs-Deo" customClass="LoadingVC" customModule="Freej" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7xM-hq-EVX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="YpF-Vw-cdn"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Zfw-d4-eSL"/>
+                    <connections>
+                        <segue destination="xwk-OA-AaF" kind="presentation" identifier="toRootNC" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="ebq-M9-4JP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VCU-mj-pCB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-5265" y="1083"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
