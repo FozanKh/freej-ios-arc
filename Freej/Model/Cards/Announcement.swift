@@ -19,7 +19,7 @@ struct Announcement {
 	static var ancmtsArray: [Announcement]?
 	
 	static func refreshAnnouncementsArray(completion: @escaping () -> ()) {
-		NetworkManager.jsonRequest(type: .announcement, params: nil) { (ancmtsJSON) in
+		NetworkManager.jsonRequest(type: .announcement, params: ["BNo" : DataModel.currentUser!.bno!]) { (ancmtsJSON) in
 			if (ancmtsJSON == nil) {
 				ancmtsArray = [Announcement]()
 				completion()
@@ -45,7 +45,8 @@ struct Announcement {
 	static func announcementsArray(fromJSON: JSON) -> [Announcement] {
 		var anArray = [Announcement]()
 		for an in fromJSON.array! {
-			let dbType = "General"
+			let dbType = an["AnTID"].stringValue
+			print(dbType)
 			let dbContent = an["Descrp"].stringValue
 			let dbUserID = an["UserID"].stringValue
 			anArray.append(Announcement(type: dbType, content: dbContent, userid: dbUserID))
@@ -54,19 +55,19 @@ struct Announcement {
 	}
 	
 	init(type : String, content : String, userid: String) {
-        self.type = type
-        switch type {
-        case "General":
-            self.icon = UIImage(systemName: "mic.fill")!
-            atID = "1"
-        case "Specific":
-            self.icon = UIImage(systemName: "bubble.left.fill")!
-            atID = "2"
-        default:
-            self.icon = UIImage(systemName: "person.fill")!
-            atID = "3"
-        }
-        self.content = content
+		atID = type
+		switch type {
+		case "00000001":
+			self.icon = UIImage(systemName: "mic.fill")!
+			self.type = "General"
+		case "00000002":
+			self.icon = UIImage(systemName: "bubble.left.fill")!
+			self.type = "Specific"
+		default:
+			self.icon = UIImage(systemName: "person.fill")!
+			self.type = "Technical"
+		}
+		self.content = content
 		self.userid = userid
-    }
+	}
 }

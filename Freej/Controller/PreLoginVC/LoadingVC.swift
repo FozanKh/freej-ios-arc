@@ -12,9 +12,9 @@ class LoadingVC: UIViewController {
 	var mainVC: UIViewController?
 	var welcVC: UIViewController?
 	var vcToBeShown: UIViewController?
-
-	override func loadView() {
-		super.loadView()
+	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
 		setViewControllerVariables()
 		if(DataModel.userWasLoggedIn()) {
 			let user = DataModel.getStudentFromPersistentDM()
