@@ -81,8 +81,8 @@ extension ActivitesVC: UITableViewDataSource, UITableViewDelegate {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "ActivityTypeCell")! as! ActivityTypeCell
 		cell.selectionStyle = .none
 		
-		if(indexPath.section < ActivityType.activityTypesArray!.count && ActivityType.activityTypesArray != nil) {
-			cell.acTID = ActivityType.activityTypesArray![indexPath.section].acTID
+		if ActivityType.activityTypesArray != nil && indexPath.section < ActivityType.activityTypesArray!.count {
+			cell.activityType = ActivityType.activityTypesArray![indexPath.section]
 		}
 		
 		cell.setupCell()

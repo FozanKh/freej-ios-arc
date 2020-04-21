@@ -10,12 +10,12 @@ import UIKit
 
 class ActivityTypeCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 	@IBOutlet weak var collectionView: UICollectionView!
-	var acTID = -1
+	var activityType: ActivityType?
 	var speceficActivityArray = [Activity]()
 	
 	func setupCell() {
-		if Activity.activitiesDict?.keys.contains(acTID) ?? false {
-			speceficActivityArray = Activity.activitiesDict?[acTID] ?? [Activity]()
+		if activityType != nil && Activity.activitiesDict?.keys.contains(activityType!) ?? false {
+			speceficActivityArray = Activity.activitiesDict?[activityType!] ?? [Activity]()
 		}
 		configureCollectionView()
 	}
