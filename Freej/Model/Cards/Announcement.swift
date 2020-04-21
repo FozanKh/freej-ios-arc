@@ -46,7 +46,6 @@ struct Announcement {
 		var anArray = [Announcement]()
 		for an in fromJSON.array! {
 			let dbType = an["AnTID"].stringValue
-			print(dbType)
 			let dbContent = an["Descrp"].stringValue
 			let dbUserID = an["UserID"].stringValue
 			anArray.append(Announcement(type: dbType, content: dbContent, userid: dbUserID))

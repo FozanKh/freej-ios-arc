@@ -46,6 +46,19 @@ class DataModel {
 		return student as! Student
 	}
 	
+	static func getActivityTypesFromPersistent() -> [ActivityType] {
+		var activityTypes: [ActivityType]? = nil
+		
+		let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "ActivityType")
+		
+		do {
+			activityTypes = try managedContext.fetch(fetchRequest) as? [ActivityType]
+		} catch let error as NSError {
+			print("Could not fetch. \(error), \(error.userInfo)")
+		}
+		return activityTypes ?? [ActivityType]()
+	}
+	
 	static func loadSessionData(completion: @escaping () -> ()) {
 		ActivityType.refreshActivityTypesArray { activityTypesDidDownload in
 			//If the activity types were not downloaded successfully.
@@ -54,15 +67,23 @@ class DataModel {
 				Activity.refreshActivitiesArray {
 					Announcement.refreshAnnouncementsArray {
 						completion()
+						saveCurrentUserToPersistent()
 					}
 				}
 			}
 			else {
 				Announcement.refreshAnnouncementsArray {
 					completion()
+					saveCurrentUserToPersistent()
 				}
 			}
 		}
+	}
+	
+	static func instantiateEmptyActivityType() -> ActivityType {
+		let entity = NSEntityDescription.entity(forEntityName: "ActivityType", in: managedContext)!
+		let activityType = NSManagedObject(entity: entity, insertInto: managedContext)
+		return activityType as! ActivityType
 	}
 	
 	static func instantiateEmptyStudent() {
@@ -71,10 +92,15 @@ class DataModel {
 		currentUser = student as? Student
 	}
 	
+	static func instantiateEmptyActivity() -> Activity {
+		let entity = NSEntityDescription.entity(forEntityName: "Activity", in: managedContext)!
+		let activity = NSManagedObject(entity: entity, insertInto: managedContext)
+		return activity as! Activity
+	}
+	
 	static func userIsSignedUp() -> Bool {
 		var userIsSignedUp: Bool
 		currentUser?.userID == nil ? (userIsSignedUp = false) : (userIsSignedUp = true)
-		print(userIsSignedUp)
 		return userIsSignedUp
 	}
 	
@@ -134,5 +160,20 @@ class DataModel {
 		
 		//Remove Temporary (this session) currentUser
 		currentUser = nil
+	}
+	
+	static func cleaActivityTypes() {
+		guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+			return
+		}
+		
+		let managedContext = appDelegate.persistentContainer.viewContext
+		let DelAllReqVar = NSBatchDeleteRequest(fetchRequest: NSFetchRequest<NSFetchRequestResult>(entityName: "ActivityType"))
+		do {
+			try managedContext.execute(DelAllReqVar)
+		}
+		catch {
+			print(error)
+		}
 	}
 }

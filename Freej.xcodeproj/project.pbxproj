@@ -16,7 +16,6 @@
 		E3CACB3BE0C7DB36F70B7DFD /* Pods_Freej_FreejUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2A66BFDCB59CE87E809D6D0 /* Pods_Freej_FreejUITests.framework */; };
 		EB0453702424F690009BAE59 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB04536F2424F690009BAE59 /* SignUpVC.swift */; };
 		EB0453722424F6BB009BAE59 /* ValidateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0453712424F6BB009BAE59 /* ValidateVC.swift */; };
-		EB107FB3244F6C0A00524A81 /* SessionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB107FB2244F6C0A00524A81 /* SessionData.swift */; };
 		EB163E042428FB7B004A34BA /* PersistentDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EB163E022428FB7B004A34BA /* PersistentDataModel.xcdatamodeld */; };
 		EB163E0624294682004A34BA /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB163E0524294682004A34BA /* DataModel.swift */; };
 		EB20BC15244B413D0037ACD9 /* LoadingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB20BC14244B413D0037ACD9 /* LoadingVC.swift */; };
@@ -80,7 +79,6 @@
 		B97E63841FA88A67ADB9B49A /* Pods-Freej.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Freej.debug.xcconfig"; path = "Target Support Files/Pods-Freej/Pods-Freej.debug.xcconfig"; sourceTree = "<group>"; };
 		EB04536F2424F690009BAE59 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		EB0453712424F6BB009BAE59 /* ValidateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateVC.swift; sourceTree = "<group>"; };
-		EB107FB2244F6C0A00524A81 /* SessionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionData.swift; sourceTree = "<group>"; };
 		EB163E032428FB7B004A34BA /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		EB163E0524294682004A34BA /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		EB20BC14244B413D0037ACD9 /* LoadingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingVC.swift; sourceTree = "<group>"; };
@@ -275,7 +273,6 @@
 				EB163E022428FB7B004A34BA /* PersistentDataModel.xcdatamodeld */,
 				EB163E0524294682004A34BA /* DataModel.swift */,
 				EB8A2C4D241B03D2005ED1A2 /* NetworkManager.swift */,
-				EB107FB2244F6C0A00524A81 /* SessionData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -597,7 +594,6 @@
 				045107E2242FFF14007A4EC7 /* AnnouncementCell.swift in Sources */,
 				EB163E0624294682004A34BA /* DataModel.swift in Sources */,
 				04FFCB3C24341EC000DE0FFE /* AnnouncementsVC.swift in Sources */,
-				EB107FB3244F6C0A00524A81 /* SessionData.swift in Sources */,
 				EBF0A4022448E0EC00D7C93A /* ActivityType.swift in Sources */,
 				EBF0A4042448F20800D7C93A /* Activity.swift in Sources */,
 				EBD2370D244781030095700F /* UserProfileVC.swift in Sources */,

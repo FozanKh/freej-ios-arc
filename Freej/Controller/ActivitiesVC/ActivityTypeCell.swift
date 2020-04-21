@@ -14,9 +14,7 @@ class ActivityTypeCell: UITableViewCell, UICollectionViewDataSource, UICollectio
 	var speceficActivityArray = [Activity]()
 	
 	func setupCell() {
-		if activityType != nil && Activity.activitiesDict?.keys.contains(activityType!) ?? false {
-			speceficActivityArray = Activity.activitiesDict?[activityType!] ?? [Activity]()
-		}
+		speceficActivityArray = activityType?.relationship?.allObjects as? [Activity] as [Activity]? ?? [Activity]()
 		configureCollectionView()
 	}
 	

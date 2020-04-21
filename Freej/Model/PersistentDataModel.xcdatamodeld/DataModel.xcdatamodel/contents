@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E287" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="SessionData" representedClassName="SessionData" syncable="YES" codeGenerationType="category">
-        <attribute name="activitiesDict" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[ActivityType:[Activity]]"/>
+    <entity name="Activity" representedClassName="Activity" syncable="YES" codeGenerationType="category">
+        <attribute name="acID" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="acTID" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="descrp" optional="YES" attributeType="String"/>
+        <attribute name="iconURL" optional="YES" attributeType="String"/>
+        <attribute name="sDate" optional="YES" attributeType="String"/>
+        <attribute name="stat" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="userID" optional="YES" attributeType="String"/>
+        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ActivityType" inverseName="relationship" inverseEntity="ActivityType"/>
+    </entity>
+    <entity name="ActivityType" representedClassName="ActivityType" syncable="YES" codeGenerationType="category">
+        <attribute name="acTID" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="color1" optional="YES" attributeType="String"/>
+        <attribute name="color2" optional="YES" attributeType="String"/>
+        <attribute name="typeName" optional="YES" attributeType="String"/>
+        <relationship name="relationship" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Activity" inverseName="relationship" inverseEntity="Activity"/>
     </entity>
     <entity name="Student" representedClassName="Student" syncable="YES" codeGenerationType="category">
         <attribute name="bno" optional="YES" attributeType="String"/>
@@ -15,7 +30,8 @@
         <attribute name="userID" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="SessionData" positionX="-54" positionY="63" width="128" height="58"/>
+        <element name="Activity" positionX="-27" positionY="81" width="128" height="178"/>
+        <element name="ActivityType" positionX="-45" positionY="72" width="128" height="118"/>
         <element name="Student" positionX="-54" positionY="-9" width="128" height="178"/>
     </elements>
 </model>
