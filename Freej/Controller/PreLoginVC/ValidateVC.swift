@@ -27,24 +27,31 @@ class ValidateVC: UIViewController {
 	}
 	
 	@IBAction func loginButton(_ sender: Any) {
+		progressManager.show(in: view, animated: true)
 		let userEnteredOTP = validationCodeTF.text ?? "0"
+		
 		if(userEnteredOTP == correctOtp) {
-			if(DataModel.userIsSignedUp()) {
-				//Save to persistent for future sessions (Only logged-in users are saved to persistent)
-				let _ = DataModel.saveCurrentUserToPersistent()
-				self.dismiss(animated: true)
-			}
-			else {
-				DataModel.currentUser?.signUp(completion: { (dbStuJSON) in
-					if(dbStuJSON != nil) {
-						let student = DataModel.createStudent(fromJSON: dbStuJSON!, isSignuedDB: true)
-						DataModel.setCurrentStudent(student: student, saveToPersistent: true)
-						self.dismiss(animated: true)
-					}
-					else {
-						self.showAlert("Error while signing up a new user.")
-					}
-				})
+			DataModel.loadSessionData {
+				if(DataModel.userIsSignedUp()) {
+					//Save to persistent for future sessions (Only logged-in users are saved to persistent)
+					let _ = DataModel.saveCurrentUserToPersistent()
+					self.progressManager.dismiss()
+					self.dismiss(animated: true)
+				}
+				else {
+					DataModel.currentUser?.signUp(completion: { (dbStuJSON) in
+						if(dbStuJSON != nil) {
+							let student = DataModel.createStudent(fromJSON: dbStuJSON!, isSignuedDB: true)
+							DataModel.setCurrentStudent(student: student, saveToPersistent: true)
+							self.progressManager.dismiss()
+							self.dismiss(animated: true)
+						}
+						else {
+							self.progressManager.dismiss()
+							self.showAlert("Error while signing up a new user.")
+						}
+					})
+				}
 			}
 		}
 		else {

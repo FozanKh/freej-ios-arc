@@ -12,6 +12,13 @@ import SwiftyJSON
 
 @objc(Student)
 class Student: NSManagedObject {
+	static func getStudentDB(kfupmID: String, completion: @escaping (Student?) -> ()) {
+		NetworkManager.jsonRequest(type: .student, params: ["KFUPMID" : kfupmID]) { (stuJSON) in
+			if(stuJSON != nil) {completion(DataModel.createStudent(fromJSON: JSON(stuJSON!)[0], isSignuedDB: true))}
+			else {completion(nil)}
+		}
+	}
+	
 	func deleteStudentRecord(completion: @escaping (Bool) -> ()) {
 		NetworkManager.boolRequest(type: .deleteStudent, params: ["KFUPMID" : kfupmID!]) { (success) in
 			completion(success)

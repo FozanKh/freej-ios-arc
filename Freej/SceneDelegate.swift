@@ -9,7 +9,6 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
     var window: UIWindow?
 	let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
@@ -18,24 +17,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
-		
-		let shouldAutoLogin = DataModel.userWasLoggedIn()
-		
-		if(shouldAutoLogin) {
-			let user = DataModel.getStudentFromPersistentDM()
-			if(user != nil) {
-				DataModel.setCurrentStudent(student: user!, saveToPersistent: true)
-				
-				//Consider edge cases here
-				ActivityType.refreshActivityTypesArray()
-				Activity.refreshActivitiesArray()
-				Announcement.refreshAnnouncementsArray {}
-				
-				let rootVC = UIApplication.shared.windows.first?.rootViewController as! UINavigationController
-				let mainVC = storyboard.instantiateViewController(withIdentifier: "MainVC")
-				rootVC.pushViewController(mainVC, animated: false)
-			}
-		}
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -65,7 +46,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
-
 }
-

@@ -14,22 +14,27 @@ class ActivityTypeCell: UITableViewCell, UICollectionViewDataSource, UICollectio
 	var speceficActivityArray = [Activity]()
 	
 	func setupCell() {
+		if Activity.activitiesDict?.keys.contains(acTID) ?? false {
+			speceficActivityArray = Activity.activitiesDict?[acTID] ?? [Activity]()
+		}
 		configureCollectionView()
-		speceficActivityArray = Activity.getActivityArray(filterAcTID: acTID)
 	}
 	
 	func configureCollectionView() {
 		collectionView.register(UINib(nibName: "ActivityCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ActivityCollectionViewCell")
 		collectionView.dataSource = self
 		collectionView.delegate = self
+		
 		let layout = UICollectionViewFlowLayout()
 		layout.scrollDirection = .horizontal
-		collectionView.sizeToFit()
-		collectionView.collectionViewLayout = layout
+		collectionView.reloadData()
+		if(speceficActivityArray.count > 0) {
+			collectionView.collectionViewLayout = layout
+		}
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return Activity.getCount(id: acTID)
+		return speceficActivityArray.count
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

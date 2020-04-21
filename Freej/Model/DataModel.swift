@@ -46,6 +46,25 @@ class DataModel {
 		return student as! Student
 	}
 	
+	static func loadSessionData(completion: @escaping () -> ()) {
+		ActivityType.refreshActivityTypesArray { activityTypesDidDownload in
+			//If the activity types were not downloaded successfully.
+			//activities shall not be downloaded as it may contain activity types which are not in the activityTypesArray saved in CoreData which will case a crash to the application.
+			if(activityTypesDidDownload) {
+				Activity.refreshActivitiesArray {
+					Announcement.refreshAnnouncementsArray {
+						completion()
+					}
+				}
+			}
+			else {
+				Announcement.refreshAnnouncementsArray {
+					completion()
+				}
+			}
+		}
+	}
+	
 	static func instantiateEmptyStudent() {
 		let entity = NSEntityDescription.entity(forEntityName: "Student", in: managedContext)!
 		let student = NSManagedObject(entity: entity, insertInto: managedContext)

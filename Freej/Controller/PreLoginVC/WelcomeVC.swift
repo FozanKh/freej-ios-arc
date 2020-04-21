@@ -26,12 +26,9 @@ class WelcomeVC: UIViewController, DataModelProtocol {
 	//MARK:- User Login Methods
 	@IBAction func enterFreejBtn(_ sender: Any) {
 		progressManager.show(in: self.view)
-		
-		NetworkManager.jsonRequest(type: .student, params: ["KFUPMID" : kfupmIDTF.text!]) { (stuJSON) in
-			self.progressManager.dismiss(animated: true)
-			if(stuJSON != nil) {
-				let stu = DataModel.createStudent(fromJSON: stuJSON![0], isSignuedDB: true)
-				DataModel.setCurrentStudent(student: stu, saveToPersistent: false)
+		Student.getStudentDB(kfupmID: kfupmIDTF.text!) { (stuDB) in
+			if(stuDB != nil) {
+				DataModel.setCurrentStudent(student: stuDB!, saveToPersistent: false)
 				self.performSegue(withIdentifier: "toValidateVC", sender: self)
 			}
 			else {
@@ -39,6 +36,7 @@ class WelcomeVC: UIViewController, DataModelProtocol {
 				DataModel.currentUser!.kfupmID = self.kfupmIDTF.text!
 				self.performSegue(withIdentifier: "toSignUpVC", sender: self)
 			}
+			self.progressManager.dismiss()
 		}
 	}
 	

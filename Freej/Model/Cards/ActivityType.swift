@@ -17,10 +17,16 @@ struct ActivityType {
 	
 	static var activityTypesArray: [ActivityType]?
 	
-	static func refreshActivityTypesArray() {
+	static func refreshActivityTypesArray(completion: @escaping (Bool) -> ()) {
 		NetworkManager.jsonRequest(type: .activityType, params: nil) { (activityTypesJSON) in
-			if (activityTypesJSON == nil) {activityTypesArray = [ActivityType]()}
-			else {activityTypesArray = activityTypesArray(fromJSON: activityTypesJSON!)}
+			if (activityTypesJSON == nil) {
+				activityTypesArray = [ActivityType]()
+				completion(false)
+			}
+			else {
+				activityTypesArray = activityTypesArray(fromJSON: activityTypesJSON!)
+				completion(true)
+			}
 		}
 	}
 	
