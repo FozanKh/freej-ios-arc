@@ -23,7 +23,7 @@
         <attribute name="fName" optional="YES" attributeType="String"/>
         <attribute name="gender" optional="YES" attributeType="String"/>
         <attribute name="isAmeen" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="isSignedUpDB" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isLoggedIn" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="kfupmID" optional="YES" attributeType="String"/>
         <attribute name="lName" optional="YES" attributeType="String"/>
         <attribute name="stat" optional="YES" attributeType="String"/>

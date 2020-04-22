@@ -18,9 +18,13 @@ class LoadingVC: UIViewController {
 		setViewControllerVariables()
 		let fetchResult = DataModel.fetch(entity: .student)
 		if(fetchResult != nil && fetchResult!.count > 0) {
-			let user = fetchResult![0]
-			DataModel.setCurrentStudent(student: user as! Student, saveToPersistent: true)
-			loadMainVC()
+			let user = fetchResult![0] as! Student
+			if user.isLoggedIn {
+				DataModel.currentUser = user 
+				loadMainVC()
+			} else {
+				loadWelcomeVC()
+			}
 		}
 		else {loadWelcomeVC()}
 	}

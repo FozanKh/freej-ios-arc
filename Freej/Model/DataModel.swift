@@ -19,6 +19,10 @@ enum Entity: String {
 }
 
 class DataModel {
+	static let appDelegate = UIApplication.shared.delegate as! AppDelegate
+	static let managedContext = appDelegate.persistentContainer.viewContext
+	static var dataModelDelegate: DataModelProtocol?
+	
 	static var activityTypesArray: [ActivityType]? {
 		didSet {
 			saveSession()
@@ -27,24 +31,11 @@ class DataModel {
 	
 	static var currentUser: Student? {
 		didSet {
-			
+			saveSession()
+			if currentUser?.isLoggedIn ?? false && currentUser?.isSignedUp() ?? false {dataModelDelegate?.userHasValidated()}
 		}
 	}
-	
-	static let appDelegate = UIApplication.shared.delegate as! AppDelegate
-	static let managedContext = appDelegate.persistentContainer.viewContext
-	
-	static var dataModelDelegate: DataModelProtocol?
-	
-	static func setCurrentStudent(student: Student, saveToPersistent: Bool) {
-		currentUser = student
-		if(saveToPersistent) {
-			let _ = saveCurrentUserToPersistent()
-		}
-	}
-	
-	//This method does not save in the persistent model, it only instantiates a student object
-	
+		
 	static func fetch(entity: Entity) -> [NSManagedObject]? {
 		let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entity.rawValue)
 		var fetchedResult: [NSManagedObject]?
@@ -69,39 +60,19 @@ class DataModel {
 	
 	static func loadSessionData(completion: @escaping () -> ()) {
 		ActivityType.refreshActivityTypesArray { activityTypesDidDownload in
-			//If the activity types were not downloaded successfully.
-			//activities shall not be downloaded as it may contain activity types which are not in the activityTypesArray saved in CoreData which will case a crash to the application.
 			if(activityTypesDidDownload) {
 				Activity.refreshActivitiesArray {
 					Announcement.refreshAnnouncementsArray {
 						completion()
-						saveCurrentUserToPersistent()
 					}
 				}
 			}
 			else {
 				Announcement.refreshAnnouncementsArray {
 					completion()
-					saveCurrentUserToPersistent()
 				}
 			}
 		}
-	}
-	
-
-	
-	static func saveCurrentUserToPersistent() -> Bool {
-		if(currentUser != nil) {
-			do {
-				try managedContext.save()
-				dataModelDelegate?.userHasValidated()
-				return true
-			} catch let error as NSError {
-				print("Could not save. \(error), \(error.userInfo)")
-				return false
-			}
-		}
-		return false
 	}
 	
 	static func clear(entity: Entity) {

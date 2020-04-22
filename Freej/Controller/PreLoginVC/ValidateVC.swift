@@ -33,16 +33,15 @@ class ValidateVC: UIViewController {
 		if(userEnteredOTP == correctOtp) {
 			DataModel.loadSessionData {
 				if(DataModel.currentUser?.isSignedUp() ?? false) {
-					//Save to persistent for future sessions (Only logged-in users are saved to persistent)
-					let _ = DataModel.saveCurrentUserToPersistent()
+					DataModel.currentUser?.isLoggedIn = true
 					self.progressManager.dismiss()
 					self.dismiss(animated: true)
 				}
 				else {
 					DataModel.currentUser?.signUp(completion: { (dbStuJSON) in
 						if(dbStuJSON != nil) {
-							let student = Student.createStudent(fromJSON: dbStuJSON!, isSignuedDB: true)
-							DataModel.setCurrentStudent(student: student, saveToPersistent: true)
+							let student = Student.createStudent(fromJSON: dbStuJSON!, isLoggedIn: true)
+							DataModel.currentUser = student
 							self.progressManager.dismiss()
 							self.dismiss(animated: true)
 						}

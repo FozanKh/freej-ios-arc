@@ -28,7 +28,7 @@ class WelcomeVC: UIViewController, DataModelProtocol {
 		progressManager.show(in: self.view)
 		Student.getStudentDB(kfupmID: kfupmIDTF.text!) { (stuDB) in
 			if(stuDB != nil) {
-				DataModel.setCurrentStudent(student: stuDB!, saveToPersistent: false)
+				DataModel.currentUser = stuDB!
 				self.performSegue(withIdentifier: "toValidateVC", sender: self)
 			}
 			else {

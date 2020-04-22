@@ -36,7 +36,7 @@ class Student: NSManagedObject {
 	
 	static func getStudentDB(kfupmID: String, completion: @escaping (Student?) -> ()) {
 		NetworkManager.jsonRequest(type: .student, params: ["KFUPMID" : kfupmID]) { (stuJSON) in
-			if(stuJSON != nil) {completion(Student.createStudent(fromJSON: JSON(stuJSON!)[0], isSignuedDB: true))}
+			if(stuJSON != nil) {completion(Student.createStudent(fromJSON: JSON(stuJSON!)[0], isLoggedIn: false))}
 			else {completion(nil)}
 		}
 	}
@@ -68,7 +68,7 @@ class Student: NSManagedObject {
 		}
 	}
 	
-	static func createStudent(fromJSON: JSON, isSignuedDB: Bool) -> Student {
+	static func createStudent(fromJSON: JSON, isLoggedIn: Bool) -> Student {
 		let entity = NSEntityDescription.entity(forEntityName: "Student", in: DataModel.managedContext)!
 		let student = NSManagedObject(entity: entity, insertInto: DataModel.managedContext)
 		student.setValue(fromJSON["UserID"].stringValue, forKeyPath: "userID")
@@ -79,7 +79,7 @@ class Student: NSManagedObject {
 		student.setValue(fromJSON["Gender"].stringValue, forKeyPath: "gender")
 		student.setValue(fromJSON["Stat"].stringValue, forKeyPath: "stat")
 		student.setValue(fromJSON["IsAmeen"].boolValue, forKeyPath: "isAmeen")
-		student.setValue(isSignuedDB, forKeyPath: "isSignedUpDB")
+		student.setValue(isLoggedIn, forKeyPath: "isLoggedIn")
 		print(fromJSON)
 		return student as! Student
 	}
