@@ -39,6 +39,7 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 		let segueID = SettingsData.sections[indexPath.section][indexPath.row].cellSegueID
 		if(segueID == "toLogOut") {
 			DataModel.clear(entity: .student)
+			DataModel.clear(entity: .activityType)
 			parent?.navigationController?.popToRootViewController(animated: true)
 		}
 		else {

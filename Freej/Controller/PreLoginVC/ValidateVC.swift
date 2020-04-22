@@ -34,15 +34,17 @@ class ValidateVC: UIViewController {
 			DataModel.loadSessionData {
 				if(DataModel.currentUser?.isSignedUp() ?? false) {
 					DataModel.currentUser?.isLoggedIn = true
-					DataModel.currentUser = DataModel.currentUser //this is super funny, this calls didSet
+					DataModel.currentUser = DataModel.currentUser
+					DataModel.saveSession()
 					self.progressManager.dismiss()
 					self.dismiss(animated: true)
 				}
 				else {
 					DataModel.currentUser?.signUp(completion: { (dbStuJSON) in
 						if(dbStuJSON != nil) {
-							let student = Student.createStudent(fromJSON: dbStuJSON!, isLoggedIn: true)
+							let student = Student.createStudent(fromJSON: dbStuJSON![0], isLoggedIn: true)
 							DataModel.currentUser = student
+							DataModel.saveSession()
 							self.progressManager.dismiss()
 							self.dismiss(animated: true)
 						}

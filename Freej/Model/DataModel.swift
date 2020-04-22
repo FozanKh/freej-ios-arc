@@ -24,18 +24,15 @@ class DataModel {
 	static var dataModelDelegate: DataModelProtocol?
 	
 	static var activityTypesArray: [ActivityType]? {
-		didSet {
-			saveSession()
-		}
+		didSet {saveSession()}
 	}
 	
 	static var currentUser: Student? {
 		didSet {
-			saveSession()
 			if currentUser?.isLoggedIn ?? false && currentUser?.isSignedUp() ?? false {dataModelDelegate?.userHasValidated()}
 		}
 	}
-		
+	
 	static func fetch(entity: Entity) -> [NSManagedObject]? {
 		let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entity.rawValue)
 		var fetchedResult: [NSManagedObject]?
@@ -72,20 +69,12 @@ class DataModel {
 	}
 	
 	static func clear(entity: Entity) {
-		let managedContext = appDelegate.persistentContainer.viewContext
 		let DelAllReqVar = NSBatchDeleteRequest(fetchRequest: NSFetchRequest<NSFetchRequestResult>(entityName: entity.rawValue))
 		do {
 			try managedContext.execute(DelAllReqVar)
 		}
 		catch {
 			print(error)
-		}
-		
-		switch entity {
-		case .activityType:
-			activityTypesArray = nil
-		case .student:
-			currentUser = nil
 		}
 	}
 }

@@ -13,7 +13,8 @@ import SwiftyJSON
 @objc(Student)
 class Student: NSManagedObject {
 	
-	init(userID: String, bno: String, fName: String, lName: String, kfupmID: String, gender: String, stat: String) {
+	init(userID: String, bno: String, fName: String, lName: String, kfupmID: String, gender: String, stat: String, isLoggedin: Bool) {
+		DataModel.clear(entity: .student)
 		let managedContext = DataModel.managedContext
 		super.init(entity: NSEntityDescription.entity(forEntityName: "Student", in: managedContext)!, insertInto: managedContext)
 		self.userID = userID
@@ -29,9 +30,11 @@ class Student: NSManagedObject {
 		super.init(entity: entity, insertInto: context)
 	}
 	
-	init() {
+	init(isLoggedIn: Bool) {
+		DataModel.clear(entity: .student)
 		let managedContext = DataModel.managedContext
 		super.init(entity: NSEntityDescription.entity(forEntityName: "Student", in: managedContext)!, insertInto: managedContext)
+		self.isLoggedIn = isLoggedIn
 	}
 	
 	static func getStudentDB(kfupmID: String, completion: @escaping (Student?) -> ()) {
@@ -69,6 +72,7 @@ class Student: NSManagedObject {
 	}
 	
 	static func createStudent(fromJSON: JSON, isLoggedIn: Bool) -> Student {
+		DataModel.clear(entity: .student)
 		let entity = NSEntityDescription.entity(forEntityName: "Student", in: DataModel.managedContext)!
 		let student = NSManagedObject(entity: entity, insertInto: DataModel.managedContext)
 		student.setValue(fromJSON["UserID"].stringValue, forKeyPath: "userID")
