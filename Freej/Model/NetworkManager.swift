@@ -20,6 +20,7 @@ enum RequestType {
 	case deleteStudent
 	case sendOTP
 	case addStudent
+    case whatsAppLink
 }
 
 struct NetworkManager {
@@ -32,6 +33,7 @@ struct NetworkManager {
 	static let updateUserInfoURL = "http://freejapp.com/FreejAppRequest/UpdateUserInfo.php"
 	static let getActivityTypesURL = "http://freejapp.com/FreejAppRequest/GetActivityTypes.php"
 	static let getActivitiesURL = "http://freejapp.com/FreejAppRequest/GetActivities.php"
+    static let getWhatsappURL = "http://freejapp.com/FreejAppRequest/GetWhatsappURL.php"
 	
 	//MARK:- Internet Monitor
     static var monitor: NetworkReachabilityManager?
@@ -82,6 +84,8 @@ struct NetworkManager {
 			return sendOTPURL
 		case .addStudent:
 			return signUpURL
+        case .whatsAppLink:
+            return getWhatsappURL
 		}
 	}
 

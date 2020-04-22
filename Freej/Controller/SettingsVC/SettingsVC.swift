@@ -7,17 +7,44 @@
 //
 
 import UIKit
+import SafariServices
 
 class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 	lazy var tableView = UITableView(frame: view.frame, style: .insetGrouped)
-	
+    var whatsappLink : String = ""
+    
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		tableView.delegate = self
 		tableView.dataSource = self
 		configureTableView()
 		view.backgroundColor = .systemGray5
+        getWhatsappLink {
+                       print(self.whatsappLink)
+                   }
 	}
+    
+    func showSafariVC(for url: String){
+        guard let url = URL(string: url) else {
+            return
+        }
+        let safariVC = SFSafariViewController(url: url)
+        present(safariVC, animated: true, completion: nil)
+    }
+
+    func getWhatsappLink(completion: @escaping () -> ()){
+        NetworkManager.jsonRequest(type: .whatsAppLink, params: ["BNo" : DataModel.currentUser!.bno!]) { (whatsappJSON) in
+            if (whatsappJSON == nil) {
+                self.whatsappLink = ""
+                completion()
+            }
+            else {
+                self.whatsappLink = whatsappJSON!.array![0]["GroupURL"].stringValue
+                //print(self.whatsappLink)
+                completion()
+            }
+        }
+    }
 	
 	func configureTableView() {
 		title = "Settings"
@@ -41,7 +68,9 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 			DataModel.clear(entity: .student)
 			DataModel.clear(entity: .activityType)
 			parent?.navigationController?.popToRootViewController(animated: true)
-		}
+        } else if(segueID == "toWhatsappGroup") {
+            showSafariVC(for: whatsappLink)
+        }
 		else {
 			performSegue(withIdentifier: segueID, sender: self)
 		}
