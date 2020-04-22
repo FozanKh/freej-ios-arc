@@ -61,5 +61,6 @@ public class Activity: NSManagedObject {
 			}
 			activityType.relationship = NSSet(array: tempActivityArray)
 		}
+		DataModel.activityTypesArray = DataModel.activityTypesArray
 	}
 }

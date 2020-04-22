@@ -31,7 +31,6 @@ class DataModel {
 	
 	static var currentUser: Student? {
 		didSet {
-			print("here543453455346")
 			saveSession()
 			if currentUser?.isLoggedIn ?? false && currentUser?.isSignedUp() ?? false {dataModelDelegate?.userHasValidated()}
 		}

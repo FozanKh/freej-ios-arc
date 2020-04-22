@@ -17,6 +17,7 @@ public class ActivityType: NSManagedObject {
 			if (activityTypesJSON == nil) {
 				DataModel.activityTypesArray = (DataModel.fetch(entity: .activityType) ?? [ActivityType]()) as? [ActivityType]
 				completion(false)
+				//check activitirs
 			}
 			else {
 				DataModel.activityTypesArray = getActivityTypesArray(fromJSON: activityTypesJSON!)
