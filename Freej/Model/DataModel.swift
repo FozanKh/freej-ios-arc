@@ -62,15 +62,11 @@ class DataModel {
 		ActivityType.refreshActivityTypesArray { activityTypesDidDownload in
 			if(activityTypesDidDownload) {
 				Activity.refreshActivitiesArray {
-					Announcement.refreshAnnouncementsArray {
-						completion()
-					}
+					Announcement.refreshAnnouncementsArray {completion()}
 				}
 			}
 			else {
-				Announcement.refreshAnnouncementsArray {
-					completion()
-				}
+				Announcement.refreshAnnouncementsArray {completion()}
 			}
 		}
 	}
