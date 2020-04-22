@@ -19,25 +19,42 @@ public class Activity: NSManagedObject {
 		}
 	}
 	
+	init(_ acID: Int, _ acTID: Int, _ userID: String, _ title: String, _ descrp: String, _ sDate: String, _ iconURL: String, _ stat: String, _ relationship: ActivityType) {
+		let managedContext = DataModel.managedContext
+		super.init(entity: NSEntityDescription.entity(forEntityName: "Activity", in: managedContext)!, insertInto: managedContext)
+		self.acID = Int32(acID)
+		self.acTID = Int32(acTID)
+		self.userID = userID
+		self.title = title
+		self.descrp = descrp
+		self.sDate = sDate
+		self.iconURL = iconURL
+		self.stat = stat
+	}
+	
+	override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
+		super.init(entity: entity, insertInto: context)
+	}
+	
 	static func getActivitiesDict(fromJSON: JSON?) {
 		
 		var jsonArray = fromJSON?.array ?? [JSON]()
-		for activityType in ActivityType.activityTypesArray! {
+		for activityType in DataModel.activityTypesArray! {
 
 			var tempActivityArray = [Activity]()
 			for activity in jsonArray {
 				if(activity["AcTID"].intValue == activityType.acTID) {
-					let ac = DataModel.instantiateEmptyActivity()
-					ac.acID =	Int32(activity["AcID"].intValue)
-					ac.acTID =	Int32(activity["AcTID"].intValue)
-					ac.userID =	activity["UserID"].stringValue
-					ac.title =	activity["Title"].stringValue
-					ac.descrp =	activity["Descrp"].stringValue
-					ac.sDate = 	activity["SDate"].stringValue
-					ac.iconURL = activity["IconURL"].stringValue
-					ac.stat =	activity["Stat"].stringValue
-					ac.relationship = activityType
-					tempActivityArray.append(ac)
+					let acID =	activity["AcID"].intValue
+					let acTID =	activity["AcTID"].intValue
+					let userID =	activity["UserID"].stringValue
+					let title =	activity["Title"].stringValue
+					let descrp =	activity["Descrp"].stringValue
+					let sDate = 	activity["SDate"].stringValue
+					let iconURL = activity["IconURL"].stringValue
+					let stat =	activity["Stat"].stringValue
+					let relationship = activityType
+					
+					tempActivityArray.append(Activity(acID, acTID, userID, title, descrp, sDate, iconURL, stat, relationship))
 					let indexOfActivity = jsonArray.firstIndex(of: activity)
 					if(indexOfActivity != nil) {jsonArray.remove(at: jsonArray.firstIndex(of: activity)!)}
 				}

@@ -49,7 +49,7 @@ extension ActivitesVC: UITableViewDataSource, UITableViewDelegate {
 		tableView.backgroundColor = .systemGroupedBackground
 		let footer = UIView()
 		tableView.tableFooterView = footer
-		tableView.rowHeight = screenHeight / CGFloat(ActivityType.activityTypesArray!.count)
+		tableView.rowHeight = screenHeight / CGFloat(DataModel.activityTypesArray?.count ?? 3)
 	}
 	
 	func addRefreshControl() {
@@ -70,19 +70,19 @@ extension ActivitesVC: UITableViewDataSource, UITableViewDelegate {
     }
 	
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		return screenHeight / CGFloat(ActivityType.activityTypesArray!.count)
+		return screenHeight / CGFloat(DataModel.activityTypesArray?.count ?? 3)
 	}
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
-		return ActivityType.activityTypesArray!.count
+		return DataModel.activityTypesArray?.count ?? 3
 	}
 	
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "ActivityTypeCell")! as! ActivityTypeCell
 		cell.selectionStyle = .none
 		
-		if ActivityType.activityTypesArray != nil && indexPath.section < ActivityType.activityTypesArray!.count {
-			cell.activityType = ActivityType.activityTypesArray![indexPath.section]
+		if DataModel.activityTypesArray != nil && indexPath.section < DataModel.activityTypesArray!.count {
+			cell.activityType = DataModel.activityTypesArray![indexPath.section]
 		}
 		
 		cell.setupCell()

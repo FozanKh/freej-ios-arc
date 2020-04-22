@@ -32,7 +32,7 @@ class ValidateVC: UIViewController {
 		
 		if(userEnteredOTP == correctOtp) {
 			DataModel.loadSessionData {
-				if(DataModel.userIsSignedUp()) {
+				if(DataModel.currentUser?.isSignedUp() ?? false) {
 					//Save to persistent for future sessions (Only logged-in users are saved to persistent)
 					let _ = DataModel.saveCurrentUserToPersistent()
 					self.progressManager.dismiss()
@@ -41,7 +41,7 @@ class ValidateVC: UIViewController {
 				else {
 					DataModel.currentUser?.signUp(completion: { (dbStuJSON) in
 						if(dbStuJSON != nil) {
-							let student = DataModel.createStudent(fromJSON: dbStuJSON!, isSignuedDB: true)
+							let student = Student.createStudent(fromJSON: dbStuJSON!, isSignuedDB: true)
 							DataModel.setCurrentStudent(student: student, saveToPersistent: true)
 							self.progressManager.dismiss()
 							self.dismiss(animated: true)
@@ -80,7 +80,7 @@ class ValidateVC: UIViewController {
 		}))
 		alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (UIAlertAction) in
 			self.dismiss(animated: true)
-			DataModel.clearCurrentUser()
+			DataModel.clear(entity: .student)
 		}))
 		self.present(alert, animated: true)
 	}

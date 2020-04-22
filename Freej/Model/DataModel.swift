@@ -14,8 +14,22 @@ protocol DataModelProtocol {
 	func userHasValidated()
 }
 
+enum Entity: String {
+	case student = "Student", activityType = "ActivityType"
+}
+
 class DataModel {
-	static var currentUser: Student?
+	static var activityTypesArray: [ActivityType]? {
+		didSet {
+			saveSession()
+		}
+	}
+	
+	static var currentUser: Student? {
+		didSet {
+			
+		}
+	}
 	
 	static let appDelegate = UIApplication.shared.delegate as! AppDelegate
 	static let managedContext = appDelegate.persistentContainer.viewContext
@@ -30,33 +44,27 @@ class DataModel {
 	}
 	
 	//This method does not save in the persistent model, it only instantiates a student object
-	static func createStudent(fromJSON: JSON, isSignuedDB: Bool) -> Student {
-		let entity = NSEntityDescription.entity(forEntityName: "Student", in: managedContext)!
-		let student = NSManagedObject(entity: entity, insertInto: managedContext)
-		student.setValue(fromJSON["UserID"].stringValue, forKeyPath: "userID")
-		student.setValue(fromJSON["BNo"].stringValue, forKeyPath: "bno")
-		student.setValue(fromJSON["FName"].stringValue, forKeyPath: "fName")
-		student.setValue(fromJSON["LName"].stringValue, forKeyPath: "lName")
-		student.setValue(fromJSON["KFUPMID"].stringValue, forKeyPath: "kfupmID")
-		student.setValue(fromJSON["Gender"].stringValue, forKeyPath: "gender")
-		student.setValue(fromJSON["Stat"].stringValue, forKeyPath: "stat")
-		student.setValue(fromJSON["IsAmeen"].boolValue, forKeyPath: "isAmeen")
-		student.setValue(isSignuedDB, forKeyPath: "isSignedUpDB")
-		print(fromJSON)
-		return student as! Student
-	}
 	
-	static func getActivityTypesFromPersistent() -> [ActivityType] {
-		var activityTypes: [ActivityType]? = nil
-		
-		let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "ActivityType")
+	static func fetch(entity: Entity) -> [NSManagedObject]? {
+		let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entity.rawValue)
+		var fetchedResult: [NSManagedObject]?
 		
 		do {
-			activityTypes = try managedContext.fetch(fetchRequest) as? [ActivityType]
+			fetchedResult = try managedContext.fetch(fetchRequest)
 		} catch let error as NSError {
 			print("Could not fetch. \(error), \(error.userInfo)")
 		}
-		return activityTypes ?? [ActivityType]()
+		
+		//should call validate entity here
+		return fetchedResult
+	}
+	
+	static func saveSession() {
+		do {
+			try managedContext.save()
+		} catch let error as NSError {
+			print("Could not save. \(error), \(error.userInfo)")
+		}
 	}
 	
 	static func loadSessionData(completion: @escaping () -> ()) {
@@ -80,29 +88,7 @@ class DataModel {
 		}
 	}
 	
-	static func instantiateEmptyActivityType() -> ActivityType {
-		let entity = NSEntityDescription.entity(forEntityName: "ActivityType", in: managedContext)!
-		let activityType = NSManagedObject(entity: entity, insertInto: managedContext)
-		return activityType as! ActivityType
-	}
-	
-	static func instantiateEmptyStudent() {
-		let entity = NSEntityDescription.entity(forEntityName: "Student", in: managedContext)!
-		let student = NSManagedObject(entity: entity, insertInto: managedContext)
-		currentUser = student as? Student
-	}
-	
-	static func instantiateEmptyActivity() -> Activity {
-		let entity = NSEntityDescription.entity(forEntityName: "Activity", in: managedContext)!
-		let activity = NSManagedObject(entity: entity, insertInto: managedContext)
-		return activity as! Activity
-	}
-	
-	static func userIsSignedUp() -> Bool {
-		var userIsSignedUp: Bool
-		currentUser?.userID == nil ? (userIsSignedUp = false) : (userIsSignedUp = true)
-		return userIsSignedUp
-	}
+
 	
 	static func saveCurrentUserToPersistent() -> Bool {
 		if(currentUser != nil) {
@@ -118,39 +104,9 @@ class DataModel {
 		return false
 	}
 	
-	static func getStudentFromPersistentDM() -> Student? {
-		var user: Student? = nil
-		
-		let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Student")
-		
-		do {
-			user = try managedContext.fetch(fetchRequest)[0] as? Student
-		} catch let error as NSError {
-			print("Could not fetch. \(error), \(error.userInfo)")
-		}
-		return user
-	}
-	
-	static func userWasLoggedIn() -> Bool {
-		let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Student")
-		var userWasLoggedIn = false
-		
-		do {
-			let student = try managedContext.fetch(fetchRequest) as! [Student]
-			student.count > 0 ? (userWasLoggedIn = true) : (userWasLoggedIn = false)
-		} catch let error as NSError {
-			print("Could not fetch. \(error), \(error.userInfo)")
-		}
-		return userWasLoggedIn
-	}
-	
-	static func clearCurrentUser() {
-		guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-			return
-		}
-		
+	static func clear(entity: Entity) {
 		let managedContext = appDelegate.persistentContainer.viewContext
-		let DelAllReqVar = NSBatchDeleteRequest(fetchRequest: NSFetchRequest<NSFetchRequestResult>(entityName: "Student"))
+		let DelAllReqVar = NSBatchDeleteRequest(fetchRequest: NSFetchRequest<NSFetchRequestResult>(entityName: entity.rawValue))
 		do {
 			try managedContext.execute(DelAllReqVar)
 		}
@@ -158,22 +114,11 @@ class DataModel {
 			print(error)
 		}
 		
-		//Remove Temporary (this session) currentUser
-		currentUser = nil
-	}
-	
-	static func cleaActivityTypes() {
-		guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-			return
-		}
-		
-		let managedContext = appDelegate.persistentContainer.viewContext
-		let DelAllReqVar = NSBatchDeleteRequest(fetchRequest: NSFetchRequest<NSFetchRequestResult>(entityName: "ActivityType"))
-		do {
-			try managedContext.execute(DelAllReqVar)
-		}
-		catch {
-			print(error)
+		switch entity {
+		case .activityType:
+			activityTypesArray = nil
+		case .student:
+			currentUser = nil
 		}
 	}
 }

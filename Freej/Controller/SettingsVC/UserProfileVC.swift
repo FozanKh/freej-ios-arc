@@ -56,7 +56,7 @@ class UserProfileVC: UIViewController {
 	}
 	
 	func logoutUser() {
-		DataModel.clearCurrentUser()
+		DataModel.clear(entity: .student)
 		parent?.navigationController?.popToRootViewController(animated: true)
 		self.dismiss(animated: true)
 	}

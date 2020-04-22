@@ -12,36 +12,44 @@ import CoreData
 
 @objc(ActivityType)
 public class ActivityType: NSManagedObject {
-	static var activityTypesArray: [ActivityType]?
-	
 	static func refreshActivityTypesArray(completion: @escaping (Bool) -> ()) {
 		NetworkManager.jsonRequest(type: .activityType, params: nil) { (activityTypesJSON) in
 			if (activityTypesJSON == nil) {
-				activityTypesArray = DataModel.getActivityTypesFromPersistent()
+				DataModel.activityTypesArray = (DataModel.fetch(entity: .activityType) ?? [ActivityType]()) as? [ActivityType]
 				completion(false)
 			}
 			else {
-				activityTypesArray = activityTypesArray(fromJSON: activityTypesJSON!)
+				DataModel.activityTypesArray = getActivityTypesArray(fromJSON: activityTypesJSON!)
 				completion(true)
 			}
 		}
 	}
 	
-	static func activityTypesArray(fromJSON: JSON) -> [ActivityType]? {
+	init(acTID: Int, typeName: String, color1: String, color2: String) {
+		let managedContext = DataModel.managedContext
+		super.init(entity: NSEntityDescription.entity(forEntityName: "ActivityType", in: managedContext)!, insertInto: managedContext)
+		self.acTID = Int32(acTID)
+		self.typeName = typeName
+		self.color1 = color1
+		self.color2 = color2
+	}
+	
+	override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
+		super.init(entity: entity, insertInto: context)
+	}
+	
+	static func getActivityTypesArray(fromJSON: JSON) -> [ActivityType]? {
 		var atArray = [ActivityType]()
-		DataModel.cleaActivityTypes()
+		DataModel.clear(entity: .activityType)
 		
 		for activityType in fromJSON.array! {
-			let at = DataModel.instantiateEmptyActivityType()
+			let acTID = activityType["AcTID"].intValue
+			let typeName = activityType["TypeName"].stringValue
+			let color1 = activityType["Color1"].stringValue
+			let color2 = activityType["Color2"].stringValue
 			
-			at.acTID = Int32(exactly: activityType["AcTID"].intValue) ?? 0
-			at.typeName = activityType["TypeName"].stringValue
-			at.color1 = activityType["Color1"].stringValue
-			at.color2 = activityType["Color2"].stringValue
-			
-			atArray.append(at)
+			atArray.append(ActivityType(acTID: acTID, typeName: typeName, color1: color1, color2: color2))
 		}
-		activityTypesArray = atArray
 		return atArray
 	}
 }

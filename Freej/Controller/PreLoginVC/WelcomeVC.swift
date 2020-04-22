@@ -32,7 +32,7 @@ class WelcomeVC: UIViewController, DataModelProtocol {
 				self.performSegue(withIdentifier: "toValidateVC", sender: self)
 			}
 			else {
-				DataModel.instantiateEmptyStudent()
+				DataModel.currentUser = Student()
 				DataModel.currentUser!.kfupmID = self.kfupmIDTF.text!
 				self.performSegue(withIdentifier: "toSignUpVC", sender: self)
 			}

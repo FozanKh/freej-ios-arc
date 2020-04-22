@@ -16,13 +16,11 @@ class LoadingVC: UIViewController {
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		setViewControllerVariables()
-		if(DataModel.userWasLoggedIn()) {
-			let user = DataModel.getStudentFromPersistentDM()
-			if(user != nil) {
-				DataModel.setCurrentStudent(student: user!, saveToPersistent: true)
-				loadMainVC()
-			}
-			else {loadWelcomeVC()}
+		let fetchResult = DataModel.fetch(entity: .student)
+		if(fetchResult != nil && fetchResult!.count > 0) {
+			let user = fetchResult![0]
+			DataModel.setCurrentStudent(student: user as! Student, saveToPersistent: true)
+			loadMainVC()
 		}
 		else {loadWelcomeVC()}
 	}
@@ -35,7 +33,7 @@ class LoadingVC: UIViewController {
 	}
 	
 	func loadWelcomeVC() {
-		DataModel.clearCurrentUser()
+		DataModel.clear(entity: .student)
 		vcToBeShown = welcVC
 		self.performSegue(withIdentifier: "toRootNC", sender: self)
 	}
