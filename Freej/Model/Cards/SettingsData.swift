@@ -13,7 +13,7 @@ struct SettingsData {
 	static let userSettings = [	SettingsCellData(cellTitle: "Profile", cellIcon: "person", cellSegueID: "toEditProfile"),
 								SettingsCellData(cellTitle: "Recent Activity", cellIcon: "arrow.clockwise.circle", cellSegueID: "toAllActivities"),
 								SettingsCellData(cellTitle: "Personalization", cellIcon: "paintbrush", cellSegueID: "toPersonalization"),
-								SettingsCellData(cellTitle: "Building WhatsApp Group", cellIcon: "phone.circle", cellSegueID: "toPersonalization")]
+								SettingsCellData(cellTitle: "Building WhatsApp Group", cellIcon: "phone.circle", cellSegueID: "toWhatsappGroup")]
 								
 	static let appSettings = [	SettingsCellData(cellTitle: "Report Problem", cellIcon: "exclamationmark.triangle", cellSegueID: "toReportProblem"),
 								SettingsCellData(cellTitle: "Contact Us", cellIcon: "paperplane", cellSegueID: "toContactUs"),
@@ -23,6 +23,7 @@ struct SettingsData {
 	static let logoutSection = [SettingsCellData(cellTitle: "Log Out", cellIcon: "delete.right", cellSegueID: "toLogOut")]
 	static let sections = [userSettings, appSettings, logoutSection]
 }
+
 
 struct SettingsCellData {
 	let cellTitle:	String
