@@ -34,6 +34,7 @@ class ValidateVC: UIViewController {
 			DataModel.loadSessionData {
 				if(DataModel.currentUser?.isSignedUp() ?? false) {
 					DataModel.currentUser?.isLoggedIn = true
+					DataModel.currentUser = DataModel.currentUser //this is super funny, this calls didSet
 					self.progressManager.dismiss()
 					self.dismiss(animated: true)
 				}
