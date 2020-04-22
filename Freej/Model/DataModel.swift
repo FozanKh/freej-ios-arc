@@ -14,6 +14,7 @@ protocol DataModelProtocol {
 	func userHasValidated()
 }
 
+
 enum Entity: String {
 	case student = "Student", activityType = "ActivityType"
 }
