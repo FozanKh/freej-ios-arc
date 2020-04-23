@@ -199,6 +199,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Activities" image="rectangle.on.rectangle.angled" catalog="system" id="cPa-gy-q4n"/>
                     <navigationItem key="navigationItem" id="zVi-TU-phc"/>
+                    <connections>
+                        <segue destination="mYc-XX-YPY" kind="presentation" identifier="toAddActivityVC" id="bIh-3n-wsi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
@@ -620,6 +623,63 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VCU-mj-pCB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-5265" y="1083"/>
+        </scene>
+        <!--AddActivityVC-->
+        <scene sceneID="S2W-a6-l1w">
+            <objects>
+                <viewController title="AddActivityVC" id="mYc-XX-YPY" customClass="AddActivityVC" customModule="Freej" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="76p-M1-bg6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="epo-LQ-eTk">
+                                <rect key="frame" x="10" y="112" width="355" height="212"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8ZF-EL-Ecs">
+                                        <rect key="frame" x="0.0" y="0.0" width="355" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="UQ0-dE-tSe">
+                                        <rect key="frame" x="0.0" y="44" width="355" height="128"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="128" id="sYy-i3-igM"/>
+                                        </constraints>
+                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fXl-XX-FM5">
+                                        <rect key="frame" x="0.0" y="182" width="355" height="30"/>
+                                        <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="addActivityBtn:" destination="mYc-XX-YPY" eventType="touchUpInside" id="RZV-wO-ysb"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="epo-LQ-eTk" firstAttribute="leading" secondItem="QcL-v7-Oes" secondAttribute="leading" constant="10" id="6if-Cw-YHq"/>
+                            <constraint firstItem="QcL-v7-Oes" firstAttribute="trailing" secondItem="epo-LQ-eTk" secondAttribute="trailing" constant="10" id="Whf-6J-5dX"/>
+                            <constraint firstItem="QcL-v7-Oes" firstAttribute="bottom" secondItem="epo-LQ-eTk" secondAttribute="bottom" constant="400" id="hBe-ZF-Dgr"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="QcL-v7-Oes"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="sjj-sj-3nh"/>
+                    <connections>
+                        <outlet property="activityContent" destination="UQ0-dE-tSe" id="jxO-Pg-L2t"/>
+                        <outlet property="addActivityOutlet" destination="fXl-XX-FM5" id="t8e-MK-eLG"/>
+                        <outlet property="titleTF" destination="8ZF-EL-Ecs" id="Qt9-AJ-MNO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rd7-ZC-Oo4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2732" y="3701.9704433497536"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

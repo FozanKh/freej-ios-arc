@@ -23,6 +23,11 @@ class WelcomeVC: UIViewController, DataModelProtocol {
         setInternetReachabilityObserver()
     }
     
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		DataModel.dataModelDelegate = self
+	}
+	
 	//MARK:- User Login Methods
 	@IBAction func enterFreejBtn(_ sender: Any) {
 		progressManager.show(in: self.view)
@@ -43,7 +48,6 @@ class WelcomeVC: UIViewController, DataModelProtocol {
 	//MARK:- Accessing MainVC
 	//This method will be called when a user is saved to the persistent data base to be enrolled to the main vc
 	func userHasValidated() {
-		DataModel.dataModelDelegate = nil
 		performSegue(withIdentifier: "toMainVC", sender: self)
 	}
 	

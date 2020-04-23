@@ -13,7 +13,7 @@ import CoreData
 @objc(ActivityType)
 public class ActivityType: NSManagedObject {
 	static func refreshActivityTypesArray(completion: @escaping (Bool) -> ()) {
-		NetworkManager.jsonRequest(type: .activityType, params: nil) { (activityTypesJSON) in
+		NetworkManager.request(type: .activityType, params: nil) { (activityTypesJSON, status) in
 			if (activityTypesJSON == nil) {
 				DataModel.activityTypesArray = (DataModel.fetch(entity: .activityType) ?? [ActivityType]()) as? [ActivityType]
 				completion(false)

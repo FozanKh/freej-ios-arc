@@ -19,7 +19,7 @@ struct Announcement {
 	static var ancmtsArray: [Announcement]?
 	
 	static func refreshAnnouncementsArray(completion: @escaping () -> ()) {
-		NetworkManager.jsonRequest(type: .announcement, params: ["BNo" : DataModel.currentUser!.bno!]) { (ancmtsJSON) in
+		NetworkManager.request(type: .announcement, params: ["BNo" : DataModel.currentUser!.bno!]) { (ancmtsJSON, status) in
 			if (ancmtsJSON == nil) {
 				ancmtsArray = [Announcement]()
 				completion()
@@ -39,7 +39,7 @@ struct Announcement {
 						"SDate" : "2020-20-02",
 						"Stat" : "Activated"]
 		
-		NetworkManager.boolRequest(type: .addAnnouncement, params: params) { (success) in completion(success)}
+		NetworkManager.request(type: .addAnnouncement, params: params) { (json, success) in completion(success)}
 	}
 	
 	static func announcementsArray(fromJSON: JSON) -> [Announcement] {
@@ -56,10 +56,10 @@ struct Announcement {
 	init(type : String, content : String, userid: String) {
 		atID = type
 		switch type {
-		case "00000001":
+		case "1":
 			self.icon = UIImage(systemName: "mic.fill")!
 			self.type = "General"
-		case "00000002":
+		case "2":
 			self.icon = UIImage(systemName: "bubble.left.fill")!
 			self.type = "Specific"
 		default:

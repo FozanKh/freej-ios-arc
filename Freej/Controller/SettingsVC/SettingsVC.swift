@@ -33,7 +33,7 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
 
     func getWhatsappLink(completion: @escaping () -> ()){
-        NetworkManager.jsonRequest(type: .whatsAppLink, params: ["BNo" : DataModel.currentUser!.bno!]) { (whatsappJSON) in
+        NetworkManager.request(type: .whatsAppLink, params: ["BNo" : DataModel.currentUser!.bno!]) { (whatsappJSON, status) in
             if (whatsappJSON == nil) {
                 self.whatsappLink = ""
                 completion()

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ActivitesVC: UIViewController {
+class ActivitesVC: UIViewController, ActivityTypeCellProtocol {
 	var tableView = UITableView()
 	var screenHeight: CGFloat!
 	let refreshConroller = UIRefreshControl()
@@ -20,6 +20,17 @@ class ActivitesVC: UIViewController {
         configureTableView()
 		addRefreshControl()
     }
+	
+	func didPressAddActivity(activityType: ActivityType) {
+		performSegue(withIdentifier: "toAddActivityVC", sender: activityType)
+	}
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.destination is AddActivityVC {
+			let dest = segue.destination as! AddActivityVC
+			dest.activityType = sender as? ActivityType
+		}
+	}
 	
 	func setScreenHeight() {
 		let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
@@ -84,6 +95,8 @@ extension ActivitesVC: UITableViewDataSource, UITableViewDelegate {
 		if DataModel.activityTypesArray != nil && indexPath.section < DataModel.activityTypesArray!.count {
 			cell.activityType = DataModel.activityTypesArray![indexPath.section]
 		}
+		
+		cell.activityTypeCellDelegate = self
 		
 		cell.setupCell()
 		return cell
