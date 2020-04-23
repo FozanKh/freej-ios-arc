@@ -28,8 +28,8 @@ class ActivityCollectionViewCell: UICollectionViewCell {
 			descrp.text = activity.descrp
 			sDate.text = activity.sDate
 			iconURL.text = activity.iconURL
-			let shouldShowDelete = activity.userID == DataModel.currentUser?.userID
-			deleteOutlet.isHidden = !shouldShowDelete
+			let cannotDelete = activity.userID != DataModel.currentUser?.userID
+			deleteOutlet.isHidden = (cannotDelete && !(DataModel.currentUser?.isAmeen ?? false))
 		}
 	}
 	
