@@ -22,6 +22,7 @@ enum RequestType: String {
 	case addStudent = "http://freejapp.com/FreejAppRequest/PostStudent.php"
     case whatsAppLink = "http://freejapp.com/FreejAppRequest/GetWhatsappURL.php"
 	case addActivity = "http://freejapp.com/FreejAppRequest/PostActivity.php"
+	case deleteActivity = "http://freejapp.com/FreejAppRequest/DeleteActivity.php"
 }
 
 struct NetworkManager {

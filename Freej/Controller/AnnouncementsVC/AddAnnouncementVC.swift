@@ -26,11 +26,11 @@ class AddAnnouncementVC : UIViewController, UITextViewDelegate {
 		var atID = ""
 		switch ancmtTypeTF.text! {
 		case "General":
-			atID = "00000001"
+			atID = "1"
 		case "Specific":
-			atID = "00000002"
+			atID = "2"
 		default:
-			atID = "00000003"
+			atID = "3"
 		}
 		
 		let ancmt = Announcement(type: atID, content: ancmtDescrp.text!, userid: DataModel.currentUser!.userID!)

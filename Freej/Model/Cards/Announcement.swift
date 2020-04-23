@@ -56,10 +56,10 @@ struct Announcement {
 	init(type : String, content : String, userid: String) {
 		atID = type
 		switch type {
-		case "00000001":
+		case "1":
 			self.icon = UIImage(systemName: "mic.fill")!
 			self.type = "General"
-		case "00000002":
+		case "2":
 			self.icon = UIImage(systemName: "bubble.left.fill")!
 			self.type = "Specific"
 		default:
