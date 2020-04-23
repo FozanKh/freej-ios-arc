@@ -12,14 +12,26 @@ class AddActivityVC: UIViewController {
 	
 	@IBOutlet weak var activityContent: UITextView!
 	@IBOutlet weak var addActivityOutlet: UIButton!
+	@IBOutlet weak var titleTF: UITextField!
+	
 	@IBAction func addActivityBtn(_ sender: Any) {
+		let params = ["AcTID" : "\(activityType!.acTID)",
+					  "UserID" : DataModel.currentUser!.userID!,
+					  "Title" : titleTF.text!,
+					  "Descrp" : activityContent.text!,
+					  "SDate" : "\(Date())",
+					  "IconURL" : "NA",
+					  "Stat" : "Unhandled"]
 		
+		NetworkManager.request(type: .addActivity, params: params) { (json, success) in
+			print("\(self.activityType?.typeName ?? "no type name") addition status = \(success)")
+		}
 	}
 	
 	var activityType: ActivityType?
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		print(activityType)
+		addActivityOutlet.setTitle("Add \(activityType?.typeName! ?? "")", for: .normal)
 	}
 }

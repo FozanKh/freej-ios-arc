@@ -13,7 +13,7 @@ import CoreData
 @objc(Activity)
 public class Activity: NSManagedObject {
 	static func refreshActivitiesArray(completion: @escaping () -> ()) {
-		NetworkManager.jsonRequest(type: .activity, params: ["BNo" : DataModel.currentUser!.bno!]) { (activitiesJSON) in
+		NetworkManager.request(type: .activity, params: ["BNo" : DataModel.currentUser!.bno!]) { (activitiesJSON, status) in
 			getActivitiesDict(fromJSON: activitiesJSON)
 			completion()
 		}

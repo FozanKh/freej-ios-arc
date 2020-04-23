@@ -19,7 +19,7 @@ struct Announcement {
 	static var ancmtsArray: [Announcement]?
 	
 	static func refreshAnnouncementsArray(completion: @escaping () -> ()) {
-		NetworkManager.jsonRequest(type: .announcement, params: ["BNo" : DataModel.currentUser!.bno!]) { (ancmtsJSON) in
+		NetworkManager.request(type: .announcement, params: ["BNo" : DataModel.currentUser!.bno!]) { (ancmtsJSON, status) in
 			if (ancmtsJSON == nil) {
 				ancmtsArray = [Announcement]()
 				completion()
@@ -39,7 +39,7 @@ struct Announcement {
 						"SDate" : "2020-20-02",
 						"Stat" : "Activated"]
 		
-		NetworkManager.boolRequest(type: .addAnnouncement, params: params) { (success) in completion(success)}
+		NetworkManager.request(type: .addAnnouncement, params: params) { (json, success) in completion(success)}
 	}
 	
 	static func announcementsArray(fromJSON: JSON) -> [Announcement] {

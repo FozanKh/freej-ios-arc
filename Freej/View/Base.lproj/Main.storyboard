@@ -633,10 +633,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="epo-LQ-eTk">
-                                <rect key="frame" x="10" y="156" width="355" height="168"/>
+                                <rect key="frame" x="10" y="112" width="355" height="212"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="UQ0-dE-tSe">
-                                        <rect key="frame" x="0.0" y="0.0" width="355" height="128"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8ZF-EL-Ecs">
+                                        <rect key="frame" x="0.0" y="0.0" width="355" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="UQ0-dE-tSe">
+                                        <rect key="frame" x="0.0" y="44" width="355" height="128"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="128" id="sYy-i3-igM"/>
@@ -646,7 +651,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fXl-XX-FM5">
-                                        <rect key="frame" x="0.0" y="138" width="355" height="30"/>
+                                        <rect key="frame" x="0.0" y="182" width="355" height="30"/>
                                         <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
@@ -669,6 +674,7 @@
                     <connections>
                         <outlet property="activityContent" destination="UQ0-dE-tSe" id="jxO-Pg-L2t"/>
                         <outlet property="addActivityOutlet" destination="fXl-XX-FM5" id="t8e-MK-eLG"/>
+                        <outlet property="titleTF" destination="8ZF-EL-Ecs" id="Qt9-AJ-MNO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rd7-ZC-Oo4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
