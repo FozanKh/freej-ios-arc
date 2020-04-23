@@ -50,13 +50,6 @@ struct NetworkManager {
 		}
 	}
 	
-	static func boolRequest(type: RequestType, params: [String : String]?, responseBool: @escaping (Bool) -> ()) {
-		Alamofire.request(type.rawValue, method: .post, parameters: params, encoding: URLEncoding.default, headers: .none).validate().responseJSON { (response) in
-			let statusCode = response.response?.statusCode
-			statusCode == 201 ? responseBool(true) : responseBool(false)
-		}
-	}
-
 	//MARK:- Misc. Methods
     static func parseInternetStatus(_ status: String) -> Bool {
         var boolStatus: Bool
