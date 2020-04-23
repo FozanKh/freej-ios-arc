@@ -8,10 +8,15 @@
 
 import UIKit
 
+protocol ActivityTypeCellProtocol {
+	func didPressAddActivity(activityType: ActivityType)
+}
+
 class ActivityTypeCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 	@IBOutlet weak var collectionView: UICollectionView!
 	var activityType: ActivityType?
 	var speceficActivityArray = [Activity]()
+	var activityTypeCellDelegate: ActivityTypeCellProtocol?
 	
 	func setupCell() {
 		speceficActivityArray = activityType?.relationship?.allObjects as? [Activity] as [Activity]? ?? [Activity]()
@@ -29,6 +34,10 @@ class ActivityTypeCell: UITableViewCell, UICollectionViewDataSource, UICollectio
 		if(speceficActivityArray.count > 0) {
 			collectionView.collectionViewLayout = layout
 		}
+	}
+	
+	@IBAction func addActivityBtn(_ sender: Any) {
+		activityTypeCellDelegate?.didPressAddActivity(activityType: activityType!)
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
