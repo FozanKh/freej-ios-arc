@@ -57,25 +57,39 @@ class DataModel {
 	}
 	
 	static func loadSessionData(completion: @escaping () -> ()) {
-		ActivityType.refreshActivityTypesArray { activityTypesDidDownload in
-			if(activityTypesDidDownload) {
-				Activity.refreshActivitiesArray {
-					Announcement.refreshAnnouncementsArray {completion()}
-				}
-			}
-			else {
-				Announcement.refreshAnnouncementsArray {completion()}
-			}
+		NetworkManager.request(type: .sessionData, params: ["BNo" : currentUser!.bno!, "UserID" : currentUser!.userID!]) { (json, status) in
+			setActivitiesArrays(from: json)
+			completion()
 		}
 	}
 	
 	static func clear(entity: Entity) {
 		let DelAllReqVar = NSBatchDeleteRequest(fetchRequest: NSFetchRequest<NSFetchRequestResult>(entityName: entity.rawValue))
-		do {
-			try managedContext.execute(DelAllReqVar)
+		do {try managedContext.execute(DelAllReqVar)}
+		catch {print(error)}
+	}
+	
+	static func setActivitiesArrays(from json: JSON?) {
+		clear(entity: .activityType)
+		
+		var tempActivityTypesArray = [ActivityType]()
+		var activitiesArray = json?["Activity"].array ?? [JSON]()
+		
+		for activityType in json?["ActivityType"].array ?? [JSON]() {
+			let at = ActivityType(json: activityType)
+			
+			for activity in activitiesArray {
+				if activity["AcTID"].int32Value == at.acTID {
+					at.addToBuildingActivities(Activity(json: activity))
+					
+					if activity["UserID"].stringValue == currentUser?.userID {
+						at.addToStudentActivities(Activity(json: activity))
+					}
+					activitiesArray.remove(at: activitiesArray.firstIndex(of: activity)!)
+				}
+			}
+			tempActivityTypesArray.append(at)
 		}
-		catch {
-			print(error)
-		}
+		activityTypesArray = tempActivityTypesArray
 	}
 }
