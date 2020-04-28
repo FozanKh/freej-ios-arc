@@ -47,7 +47,11 @@
                     </stackView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nLC-vq-eNU">
                         <rect key="frame" x="267" y="8" width="45" height="30"/>
+                        <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <state key="normal" title="Delete"/>
+                        <connections>
+                            <action selector="deleteAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="thc-5q-iYo"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
@@ -60,6 +64,13 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="deleteOutlet" destination="nLC-vq-eNU" id="wLX-79-Xew"/>
+                <outlet property="descrp" destination="b65-3d-bV9" id="Qnl-Tg-Yib"/>
+                <outlet property="iconURL" destination="0dj-Bs-wRP" id="tXE-p8-pr3"/>
+                <outlet property="sDate" destination="TEH-Qy-a6M" id="mIO-8f-6pV"/>
+                <outlet property="title" destination="N3Z-LO-VR0" id="sI5-0d-gD1"/>
+            </connections>
             <point key="canvasLocation" x="131.8840579710145" y="200.22321428571428"/>
         </tableViewCell>
     </objects>

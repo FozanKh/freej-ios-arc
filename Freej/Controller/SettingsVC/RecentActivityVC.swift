@@ -9,7 +9,7 @@
 import UIKit
 
 class RecentActivityVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
-	let tableView = UITableView()
+	lazy var tableView = UITableView(frame: view.frame, style: .insetGrouped)
 	var screenHeight: CGFloat!
 	
 	override func loadView() {
@@ -32,22 +32,17 @@ class RecentActivityVC: UIViewController, UITableViewDelegate, UITableViewDataSo
 		tableView.register(UINib(nibName: "ActivityCell", bundle: nil), forCellReuseIdentifier: "ActivityCell")
 		title = "Recent Activity"
 		view.addSubview(tableView)
-		//		navigationController?.navigationBar.subviews[1].semanticContentAttribute = .forceRightToLeft
 		tableView.translatesAutoresizingMaskIntoConstraints = false
 		tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
 		tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
 		tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
 		tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
 		tableView.backgroundColor = .systemGroupedBackground
-		tableView.rowHeight = screenHeight / 3.4
+		tableView.rowHeight = screenHeight / 4
 	}
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
 		return DataModel.activityTypesArray?.count ?? 0
-	}
-	
-	func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-		return CGFloat(20.0)
 	}
 	
 	func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -63,7 +58,9 @@ class RecentActivityVC: UIViewController, UITableViewDelegate, UITableViewDataSo
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: "ActivityCell")
-		return cell!
+		let cell = tableView.dequeueReusableCell(withIdentifier: "ActivityCell") as! ActivityCell
+		cell.activity = (DataModel.activityTypesArray?[indexPath.section].studentActivities?.allObjects as! [Activity])[indexPath.row]
+		
+		return cell
 	}
 }
