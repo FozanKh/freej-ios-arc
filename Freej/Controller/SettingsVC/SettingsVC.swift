@@ -11,7 +11,6 @@ import SafariServices
 
 class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 	lazy var tableView = UITableView(frame: view.frame, style: .insetGrouped)
-    var whatsappLink : String = ""
     
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -21,8 +20,8 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 		view.backgroundColor = .systemGray5
 	}
     
-    func showSafariVC(for url: String){
-        guard let url = URL(string: url) else {
+    func showSafariVC(for url: String?) {
+		guard let url = URL(string: url!) else {
             return
         }
         let safariVC = SFSafariViewController(url: url)
@@ -51,8 +50,8 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 			DataModel.clear(entity: .student)
 			DataModel.clear(entity: .activityType)
 			parent?.navigationController?.popToRootViewController(animated: true)
-        } else if(segueID == "toWhatsappGroup") {
-            showSafariVC(for: whatsappLink)
+        } else if(segueID == "toWhatsAppGroup") {
+			showSafariVC(for: DataModel.whatsAppGroup)
         }
 		else {
 			performSegue(withIdentifier: segueID, sender: self)

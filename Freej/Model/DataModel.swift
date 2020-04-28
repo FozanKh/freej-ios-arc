@@ -37,6 +37,8 @@ class DataModel {
 		}
 	}
 	
+	static var whatsAppGroup: String?
+	
 	static func fetch(entity: Entity) -> [NSManagedObject]? {
 		let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entity.rawValue)
 		var fetchedResult: [NSManagedObject]?
@@ -66,6 +68,7 @@ class DataModel {
 			if success {
 				setActivitiesArrays(from: json)
 				setAnnoucementsArray(from: json)
+				whatsAppGroup = json?["GroupURL"][0].stringValue
 			} else {
 				activityTypesArray = fetch(entity: .activityType) as? [ActivityType]
 				announcementsArray = fetch(entity: .announcement) as? [Announcement]
