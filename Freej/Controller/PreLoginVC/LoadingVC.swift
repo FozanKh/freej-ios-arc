@@ -9,13 +9,8 @@
 import UIKit
 
 class LoadingVC: UIViewController {
-	var mainVC: UIViewController?
-	var welcVC: UIViewController?
-	var vcToBeShown: UIViewController?
-	
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
-		setViewControllerVariables()
 		
 		let fetchResult = DataModel.fetch(entity: .student)
 		
@@ -32,25 +27,20 @@ class LoadingVC: UIViewController {
 	}
 	
 	func loadMainVC() {
+		let mainVC = storyboard!.instantiateViewController(withIdentifier: "MainVC")
 		DataModel.loadSessionData {
-			self.vcToBeShown = self.mainVC
-			self.performSegue(withIdentifier: "toRootNC", sender: self)
+			self.performSegue(withIdentifier: "toRootNC", sender: mainVC)
 		}
 	}
 	
 	func loadWelcomeVC() {
+		let welcVC = storyboard!.instantiateViewController(withIdentifier: "WelcomeVC")
 		DataModel.clear(entity: .student)
-		vcToBeShown = welcVC
-		self.performSegue(withIdentifier: "toRootNC", sender: self)
-	}
-	
-	func setViewControllerVariables() {
-		mainVC = storyboard!.instantiateViewController(withIdentifier: "MainVC")
-		welcVC = storyboard!.instantiateViewController(withIdentifier: "WelcomeVC")
+		self.performSegue(withIdentifier: "toRootNC", sender: welcVC)
 	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		let destVC = segue.destination as! UINavigationController
-		destVC.pushViewController(vcToBeShown!, animated: false)
+		destVC.pushViewController(sender as! UIViewController, animated: false)
 	}
 }
