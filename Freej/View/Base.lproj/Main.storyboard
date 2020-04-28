@@ -378,7 +378,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="Zdf-uI-Ewf">
-                                <rect key="frame" x="20" y="234" width="335" height="190"/>
+                                <rect key="frame" x="20" y="210" width="335" height="114"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="KFUPM ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G5Y-Ar-hQf">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="34"/>
@@ -395,20 +395,6 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Building #" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eRm-Cy-hLu">
-                                        <rect key="frame" x="0.0" y="120" width="335" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FWa-Fh-tF3">
-                                        <rect key="frame" x="0.0" y="160" width="335" height="30"/>
-                                        <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="Sign Up"/>
-                                        <connections>
-                                            <action selector="signUpBtn:" destination="qwO-c7-bNi" eventType="touchUpInside" id="gEo-xX-cgf"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please enter your student information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lK7-j4-Kfe">
@@ -425,18 +411,42 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FWa-Fh-tF3">
+                                <rect key="frame" x="20" y="396" width="335" height="34"/>
+                                <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="Y0a-P0-r8v"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Sign Up"/>
+                                <connections>
+                                    <action selector="signUpBtn:" destination="qwO-c7-bNi" eventType="touchUpInside" id="gEo-xX-cgf"/>
+                                </connections>
+                            </button>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IhZ-BC-ccF">
+                                <rect key="frame" x="10" y="330" width="355" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="rad-v2-oxJ"/>
+                                </constraints>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="IhZ-BC-ccF" firstAttribute="leading" secondItem="iku-o1-g1T" secondAttribute="leading" constant="10" id="5oV-df-ue5"/>
+                            <constraint firstItem="iku-o1-g1T" firstAttribute="trailing" secondItem="FWa-Fh-tF3" secondAttribute="trailing" constant="20" id="Bx4-zx-gsm"/>
                             <constraint firstItem="iku-o1-g1T" firstAttribute="trailing" secondItem="Zdf-uI-Ewf" secondAttribute="trailing" constant="20" id="Hf9-TC-uWI"/>
                             <constraint firstItem="Zdf-uI-Ewf" firstAttribute="leading" secondItem="iku-o1-g1T" secondAttribute="leading" constant="20" id="Khf-2h-CpF"/>
-                            <constraint firstItem="iku-o1-g1T" firstAttribute="bottom" secondItem="Zdf-uI-Ewf" secondAttribute="bottom" constant="300" id="NDZ-Gr-Ws1"/>
+                            <constraint firstItem="IhZ-BC-ccF" firstAttribute="top" secondItem="Zdf-uI-Ewf" secondAttribute="bottom" constant="6" id="MfA-LQ-6cf"/>
+                            <constraint firstItem="iku-o1-g1T" firstAttribute="bottom" secondItem="Zdf-uI-Ewf" secondAttribute="bottom" constant="400" id="NDZ-Gr-Ws1"/>
+                            <constraint firstItem="FWa-Fh-tF3" firstAttribute="leading" secondItem="iku-o1-g1T" secondAttribute="leading" constant="20" id="a9w-ow-lm8"/>
+                            <constraint firstItem="iku-o1-g1T" firstAttribute="trailing" secondItem="IhZ-BC-ccF" secondAttribute="trailing" constant="10" id="hXU-0Z-Abk"/>
+                            <constraint firstItem="FWa-Fh-tF3" firstAttribute="top" secondItem="IhZ-BC-ccF" secondAttribute="bottom" constant="6" id="xy3-yX-Smx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iku-o1-g1T"/>
                     </view>
                     <navigationItem key="navigationItem" id="lzc-f9-d4d"/>
                     <connections>
-                        <outlet property="bNoTF" destination="eRm-Cy-hLu" id="FYJ-5I-Y5y"/>
+                        <outlet property="bnoPicker" destination="IhZ-BC-ccF" id="iBs-EE-ZKh"/>
                         <outlet property="fNameTF" destination="zxA-W7-kXE" id="0YL-vc-s8A"/>
                         <outlet property="kfupmIDTF" destination="G5Y-Ar-hQf" id="5q5-2n-xIB"/>
                         <outlet property="lNameTF" destination="v2V-po-SJK" id="VvE-L0-htG"/>
@@ -445,7 +455,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KA8-FF-Mlz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1945" y="-10"/>
+            <point key="canvasLocation" x="-1946.4000000000001" y="-10.344827586206897"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="FgD-tY-1PK">
@@ -705,7 +715,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="IeL-sJ-FIb"/>
+        <segue reference="C8S-Mx-Ibt"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="bell" catalog="system" width="128" height="124"/>

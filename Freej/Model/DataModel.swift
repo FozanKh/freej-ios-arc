@@ -67,6 +67,7 @@ class DataModel {
 	static func loadSessionData(completion: @escaping () -> ()) {
 		let params = ["UserID" : currentUser?.userID ?? "NA",
 					  "BNo" : currentUser?.bno ?? "NA"]
+		
 		NetworkManager.request(type: .sessionData, params: params) { (json, success) in
 			if success {
 				setActivitiesArrays(from: json)

@@ -36,7 +36,9 @@ class LoadingVC: UIViewController {
 	func loadWelcomeVC() {
 		let welcVC = storyboard!.instantiateViewController(withIdentifier: "WelcomeVC")
 		DataModel.clear(entity: .student)
-		self.performSegue(withIdentifier: "toRootNC", sender: welcVC)
+		DataModel.loadSessionData {
+			self.performSegue(withIdentifier: "toRootNC", sender: welcVC)
+		}
 	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
