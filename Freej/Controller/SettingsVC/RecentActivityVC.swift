@@ -10,15 +10,26 @@ import UIKit
 
 class RecentActivityVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 	let tableView = UITableView()
+	var screenHeight: CGFloat!
 	
 	override func loadView() {
 		super.loadView()
+		setScreenHeight()
 		configureTableView()
+	}
+	
+	func setScreenHeight() {
+		let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+		let statusBarHeight = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
+		
+		screenHeight = UIScreen.main.fixedCoordinateSpace.bounds.height - self.navigationController!.navigationBar.frame.size.height - 80
+		screenHeight -= statusBarHeight
 	}
 	
 	func configureTableView() {
 		tableView.delegate = self
 		tableView.dataSource = self
+		tableView.register(UINib(nibName: "ActivityCell", bundle: nil), forCellReuseIdentifier: "ActivityCell")
 		title = "Recent Activity"
 		view.addSubview(tableView)
 		//		navigationController?.navigationBar.subviews[1].semanticContentAttribute = .forceRightToLeft
@@ -28,16 +39,31 @@ class RecentActivityVC: UIViewController, UITableViewDelegate, UITableViewDataSo
 		tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
 		tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
 		tableView.backgroundColor = .systemGroupedBackground
-		let test = UIView()
-		tableView.tableFooterView = test
-		tableView.sectionFooterHeight = CGFloat(20.0)
+		tableView.rowHeight = screenHeight / 3.4
+	}
+	
+	func numberOfSections(in tableView: UITableView) -> Int {
+		return DataModel.activityTypesArray?.count ?? 0
+	}
+	
+	func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+		return CGFloat(20.0)
+	}
+	
+	func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+		view.tintColor = .systemGroupedBackground
+	}
+	
+	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+		return DataModel.activityTypesArray?[section].typeName ?? "Error"
 	}
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 10
+		return DataModel.activityTypesArray?[section].studentActivities?.count ?? 0
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		return UITableViewCell()
+		let cell = tableView.dequeueReusableCell(withIdentifier: "ActivityCell")
+		return cell!
 	}
 }
