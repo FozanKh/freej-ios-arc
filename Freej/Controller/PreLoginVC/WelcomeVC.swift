@@ -16,32 +16,25 @@ class WelcomeVC: UIViewController, DataModelProtocol {
     @IBOutlet weak var kfupmIDTF: UITextField!
     @IBOutlet weak var enterFreejBtn: UIButton!
 	
-    
     override func loadView() {
         super.loadView()
 		DataModel.dataModelDelegate = self
         setInternetReachabilityObserver()
     }
-    
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(animated)
-		DataModel.dataModelDelegate = self
-	}
 	
 	//MARK:- User Login Methods
 	@IBAction func enterFreejBtn(_ sender: Any) {
 		progressManager.show(in: self.view)
 		Student.getStudentDB(kfupmID: kfupmIDTF.text!) { (stuDB) in
+			self.progressManager.dismiss()
 			if(stuDB != nil) {
 				DataModel.currentUser = stuDB!
 				self.performSegue(withIdentifier: "toValidateVC", sender: self)
 			}
 			else {
-				DataModel.currentUser = Student(isLoggedIn: false)
-				DataModel.currentUser!.kfupmID = self.kfupmIDTF.text!
+				DataModel.currentUser = Student(kfupmID: self.kfupmIDTF.text!, isLoggedIn: false)
 				self.performSegue(withIdentifier: "toSignUpVC", sender: self)
 			}
-			self.progressManager.dismiss()
 		}
 	}
 	

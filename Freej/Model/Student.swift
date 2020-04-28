@@ -30,7 +30,7 @@ class Student: NSManagedObject {
 		super.init(entity: entity, insertInto: context)
 	}
 	
-	init(isLoggedIn: Bool) {
+	init(kfupmID: String, isLoggedIn: Bool) {
 		DataModel.clear(entity: .student)
 		let managedContext = DataModel.managedContext
 		super.init(entity: NSEntityDescription.entity(forEntityName: "Student", in: managedContext)!, insertInto: managedContext)

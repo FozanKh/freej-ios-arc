@@ -173,10 +173,10 @@
 		EB283E34244474F800F6B311 /* PreLoginVC */ = {
 			isa = PBXGroup;
 			children = (
+				EB20BC14244B413D0037ACD9 /* LoadingVC.swift */,
 				EBFC5A83241AF202000EB7D0 /* WelcomeVC.swift */,
 				EB04536F2424F690009BAE59 /* SignUpVC.swift */,
 				EB0453712424F6BB009BAE59 /* ValidateVC.swift */,
-				EB20BC14244B413D0037ACD9 /* LoadingVC.swift */,
 			);
 			path = PreLoginVC;
 			sourceTree = "<group>";
