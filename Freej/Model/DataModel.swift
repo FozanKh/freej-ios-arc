@@ -23,6 +23,7 @@ class DataModel {
 	static let managedContext = appDelegate.persistentContainer.viewContext
 	static var dataModelDelegate: DataModelProtocol?
 	
+	//MARK:- Persistent Data
 	static var activityTypesArray: [ActivityType]? {
 		didSet {saveSession()}
 	}
@@ -39,6 +40,7 @@ class DataModel {
 	
 	static var whatsAppGroup: String?
 	
+	//MARK:- Core Data Methods
 	static func fetch(entity: Entity) -> [NSManagedObject]? {
 		let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entity.rawValue)
 		var fetchedResult: [NSManagedObject]?
@@ -54,13 +56,20 @@ class DataModel {
 	}
 	
 	static func saveSession() {
-		do {
-			try managedContext.save()
-		} catch let error as NSError {
+		do {try managedContext.save()}
+		catch let error as NSError {
 			print("Could not save. \(error), \(error.userInfo)")
 		}
 	}
 	
+	static func clear(entity: Entity) {
+		let DelAllReqVar = NSBatchDeleteRequest(fetchRequest: NSFetchRequest<NSFetchRequestResult>(entityName: entity.rawValue))
+		do {try managedContext.execute(DelAllReqVar)}
+		catch {print(error)}
+	}
+	
+	//MARK:- JSON Parsing Methods
+	//This method will load the session data according to the internet connection the user has
 	static func loadSessionData(completion: @escaping () -> ()) {
 		let params = ["UserID" : currentUser?.userID ?? "NA",
 					  "BNo" : currentUser?.bno ?? "NA"]
@@ -77,12 +86,34 @@ class DataModel {
 		}
 	}
 	
-	static func clear(entity: Entity) {
-		let DelAllReqVar = NSBatchDeleteRequest(fetchRequest: NSFetchRequest<NSFetchRequestResult>(entityName: entity.rawValue))
-		do {try managedContext.execute(DelAllReqVar)}
-		catch {print(error)}
+	//This method will clear the previous array of activity types, and create a new one from the json
+	static func setActivitiesArrays(from json: JSON?) {
+		clear(entity: .activityType)
+		
+		var tempActivityTypesArray = [ActivityType]()
+		
+		var jsonAcivitiesArray = json?["Activity"].array ?? [JSON]()
+		let jsonActivityTypesArray = json?["ActivityType"].array ?? [JSON]()
+		
+		for activityType in jsonActivityTypesArray {
+			let at = ActivityType(json: activityType)
+			
+			for activity in jsonAcivitiesArray {
+				if activity["AcTID"].int32Value == at.acTID {
+					at.addToBuildingActivities(Activity(json: activity))
+					
+					if activity["UserID"].stringValue == currentUser?.userID {
+						at.addToStudentActivities(Activity(json: activity))
+					}
+					jsonAcivitiesArray.remove(at: jsonAcivitiesArray.firstIndex(of: activity)!)
+				}
+			}
+			tempActivityTypesArray.append(at)
+		}
+		activityTypesArray = tempActivityTypesArray
 	}
 	
+	//This method will clear the previous array of announcements, and create a new one from the json
 	static func setAnnoucementsArray(from json: JSON?) {
 		clear(entity: .announcement)
 		var anArray = [Announcement]()
@@ -90,29 +121,5 @@ class DataModel {
 			anArray.append(Announcement(json: an))
 		}
 		announcementsArray = anArray
-	}
-	
-	static func setActivitiesArrays(from json: JSON?) {
-		clear(entity: .activityType)
-		
-		var tempActivityTypesArray = [ActivityType]()
-		var activitiesArray = json?["Activity"].array ?? [JSON]()
-		
-		for activityType in json?["ActivityType"].array ?? [JSON]() {
-			let at = ActivityType(json: activityType)
-			
-			for activity in activitiesArray {
-				if activity["AcTID"].int32Value == at.acTID {
-					at.addToBuildingActivities(Activity(json: activity))
-					
-					if activity["UserID"].stringValue == currentUser?.userID {
-						at.addToStudentActivities(Activity(json: activity))
-					}
-					activitiesArray.remove(at: activitiesArray.firstIndex(of: activity)!)
-				}
-			}
-			tempActivityTypesArray.append(at)
-		}
-		activityTypesArray = tempActivityTypesArray
 	}
 }
