@@ -9,7 +9,8 @@
 import UIKit
 
 class AddActivityVC: UIViewController {
-	
+	var activityType: ActivityType?
+
 	@IBOutlet weak var activityContent: UITextView!
 	@IBOutlet weak var addActivityOutlet: UIButton!
 	@IBOutlet weak var titleTF: UITextField!
@@ -19,16 +20,13 @@ class AddActivityVC: UIViewController {
 					  "UserID" : DataModel.currentUser!.userID!,
 					  "Title" : titleTF.text!,
 					  "Descrp" : activityContent.text!,
-					  "SDate" : "\(Date())",
+					  "SDate" : "",
 					  "IconURL" : "NA",
 					  "Stat" : "Unhandled"]
-		
 		NetworkManager.request(type: .addActivity, params: params) { (json, success) in
 			print("\(self.activityType?.typeName ?? "no type name") addition status = \(success)")
 		}
 	}
-	
-	var activityType: ActivityType?
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
