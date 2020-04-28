@@ -24,20 +24,14 @@ class DataModel {
 	static var dataModelDelegate: DataModelProtocol?
 	
 	//MARK:- Persistent Data
-	static var activityTypesArray: [ActivityType]? {
-		didSet {saveSession()}
-	}
-	
-	static var announcementsArray: [Announcement]? {
-		didSet {saveSession()}
-	}
-	
+	static var activityTypesArray: [ActivityType]? {didSet {saveSession()}}
+	static var announcementsArray: [Announcement]? {didSet {saveSession()}}
 	static var currentUser: Student? {
 		didSet {
 			if currentUser?.isLoggedIn ?? false && currentUser?.isSignedUp() ?? false {dataModelDelegate?.userHasValidated()}
 		}
 	}
-	
+	static var buildings: [String]? {didSet{saveSession()}}
 	static var whatsAppGroup: String?
 	
 	//MARK:- Core Data Methods
@@ -73,14 +67,17 @@ class DataModel {
 	static func loadSessionData(completion: @escaping () -> ()) {
 		let params = ["UserID" : currentUser?.userID ?? "NA",
 					  "BNo" : currentUser?.bno ?? "NA"]
+		
 		NetworkManager.request(type: .sessionData, params: params) { (json, success) in
 			if success {
 				setActivitiesArrays(from: json)
 				setAnnoucementsArray(from: json)
+				setBuildingsArray(from: json)
 				whatsAppGroup = json?["GroupURL"][0].stringValue
 			} else {
 				activityTypesArray = fetch(entity: .activityType) as? [ActivityType]
 				announcementsArray = fetch(entity: .announcement) as? [Announcement]
+				buildings = generateDefaultBuildings()
 			}
 			completion()
 		}
@@ -121,5 +118,25 @@ class DataModel {
 			anArray.append(Announcement(json: an))
 		}
 		announcementsArray = anArray
+	}
+	
+	static func setBuildingsArray(from json: JSON?) {
+		var bArray = [String]()
+		
+		for bno in json?["Building"].array ?? [JSON] () {
+			bArray.append(bno["BNo"].stringValue)
+		}
+		
+		print("Downloaded Buildings: \(bArray)")
+		buildings = bArray
+	}
+	
+	static func generateDefaultBuildings() -> [String] {
+		var bArray = [String]()
+		for bno in 816...858 {
+			bArray.append("\(bno)")
+		}
+		print("Default Generated Buildings: \(bArray)")
+		return bArray
 	}
 }
