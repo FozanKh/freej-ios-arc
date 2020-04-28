@@ -11,7 +11,7 @@ import UIKit
 
 struct SettingsData {
 	static let userSettings = [	SettingsCellData(cellTitle: "Profile", cellIcon: "person", cellSegueID: "toEditProfile"),
-								SettingsCellData(cellTitle: "Recent Activity", cellIcon: "arrow.clockwise.circle", cellSegueID: "toAllActivities"),
+								SettingsCellData(cellTitle: "Recent Activity", cellIcon: "arrow.clockwise.circle", cellSegueID: "toRecentActivity"),
 								SettingsCellData(cellTitle: "Personalization", cellIcon: "paintbrush", cellSegueID: "toPersonalization"),
 								SettingsCellData(cellTitle: "Building WhatsApp Group", cellIcon: "phone.circle", cellSegueID: "toWhatsAppGroup")]
 								

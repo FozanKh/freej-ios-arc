@@ -18,6 +18,7 @@
 		EB0453722424F6BB009BAE59 /* ValidateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0453712424F6BB009BAE59 /* ValidateVC.swift */; };
 		EB163E042428FB7B004A34BA /* PersistentDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EB163E022428FB7B004A34BA /* PersistentDataModel.xcdatamodeld */; };
 		EB163E0624294682004A34BA /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB163E0524294682004A34BA /* DataModel.swift */; };
+		EB1B08342458A1290017FD7C /* RecentActivityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1B08332458A1290017FD7C /* RecentActivityVC.swift */; };
 		EB20BC15244B413D0037ACD9 /* LoadingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB20BC14244B413D0037ACD9 /* LoadingVC.swift */; };
 		EB36413D2417E89300F81D6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB36413C2417E89300F81D6A /* AppDelegate.swift */; };
 		EB36413F2417E89300F81D6A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB36413E2417E89300F81D6A /* SceneDelegate.swift */; };
@@ -82,6 +83,7 @@
 		EB0453712424F6BB009BAE59 /* ValidateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateVC.swift; sourceTree = "<group>"; };
 		EB163E032428FB7B004A34BA /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		EB163E0524294682004A34BA /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		EB1B08332458A1290017FD7C /* RecentActivityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentActivityVC.swift; sourceTree = "<group>"; };
 		EB20BC14244B413D0037ACD9 /* LoadingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingVC.swift; sourceTree = "<group>"; };
 		EB3641392417E89300F81D6A /* Freej.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Freej.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB36413C2417E89300F81D6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 			children = (
 				EB4B5E2E2417ECD600EB7EB9 /* SettingsVC.swift */,
 				EBD2370C244781030095700F /* UserProfileVC.swift */,
+				EB1B08332458A1290017FD7C /* RecentActivityVC.swift */,
 			);
 			path = SettingsVC;
 			sourceTree = "<group>";
@@ -587,6 +590,7 @@
 				EBC1F7D624523AB700B652CC /* AddActivityVC.swift in Sources */,
 				EBA9C14B2446015B0032382B /* SettingsData.swift in Sources */,
 				EB0453722424F6BB009BAE59 /* ValidateVC.swift in Sources */,
+				EB1B08342458A1290017FD7C /* RecentActivityVC.swift in Sources */,
 				EB8A2C4E241B03D2005ED1A2 /* NetworkManager.swift in Sources */,
 				EB465DE92428E768006766F3 /* Student.swift in Sources */,
 				EB52C4A12448AA2C00F01ABA /* ActivityCollectionViewCell.swift in Sources */,
