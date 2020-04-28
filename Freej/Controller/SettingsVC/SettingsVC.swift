@@ -19,9 +19,6 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 		tableView.dataSource = self
 		configureTableView()
 		view.backgroundColor = .systemGray5
-        getWhatsappLink {
-                       print(self.whatsappLink)
-                   }
 	}
     
     func showSafariVC(for url: String){
@@ -30,20 +27,6 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
         let safariVC = SFSafariViewController(url: url)
         present(safariVC, animated: true, completion: nil)
-    }
-
-    func getWhatsappLink(completion: @escaping () -> ()){
-        NetworkManager.request(type: .whatsAppLink, params: ["BNo" : DataModel.currentUser!.bno!]) { (whatsappJSON, status) in
-            if (whatsappJSON == nil) {
-                self.whatsappLink = ""
-                completion()
-            }
-            else {
-                self.whatsappLink = whatsappJSON!.array![0]["GroupURL"].stringValue
-                //print(self.whatsappLink)
-                completion()
-            }
-        }
     }
 	
 	func configureTableView() {

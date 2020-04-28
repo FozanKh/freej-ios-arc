@@ -40,13 +40,15 @@ public class Announcement: NSManagedObject {
 	}
 	
 	func addToDatabase(completion: @escaping (Bool) -> ()) {
-		let params =   ["AnTID" : "\(anID)",
+		let params =   ["AnTID" : "\(anTID)",
 						"UserID" : userID!,
 						"Title" : title!,
 						"Descrp" : descrp!,
-						"SDate" : sDate!,
-						"Stat" : "Activated"]
+						"SDate" : "",
+						"Stat" : "Active"]
 		
-		NetworkManager.request(type: .addAnnouncement, params: params) { (json, success) in completion(success)}
+		NetworkManager.request(type: .addAnnouncement, params: params) { (json, success) in
+			completion(success)
+		}
 	}
 }

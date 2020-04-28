@@ -33,7 +33,8 @@ class AddAnnouncementVC : UIViewController, UITextViewDelegate {
 			anTID = 3
 		}
 		
-		let ancmt = Announcement(anTID: anTID, userID: DataModel.currentUser?.userID ?? "NA", title: "title", descrp: ancmtDescrp.text, sDate: "\(Date())")
+		let ancmt = Announcement(anTID: anTID, userID: DataModel.currentUser?.userID ?? "NA", title: "title", descrp: ancmtDescrp.text, sDate: "i")
+		
 		ancmt.addToDatabase { (success) in
 			print(success)
 		}

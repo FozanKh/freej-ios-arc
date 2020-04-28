@@ -27,7 +27,6 @@ class AnnouncementsVC: UIViewController {
         //        announcements.remove(at: headerNumber)
 		configureTableView()
 		addRefreshControl()
-		print(DataModel.announcementsArray)
 		DataModel.loadSessionData {
 			self.displayAnnouncements()
 		}
