@@ -39,14 +39,14 @@ class Student: NSManagedObject {
 	}
 	
 	static func getStudentDB(kfupmID: String, completion: @escaping (Student?) -> ()) {
-		NetworkManager.request(type: .student, params: ["KFUPMID" : kfupmID]) { (stuJSON, status) in
+		NetworkManager.request(type: .getUser, params: ["KFUPMID" : kfupmID]) { (stuJSON, status) in
 			if(stuJSON != nil) {completion(Student.createStudent(fromJSON: JSON(stuJSON!)[0], isLoggedIn: false))}
 			else {completion(nil)}
 		}
 	}
 	
 	func deleteStudentRecord(completion: @escaping (Bool) -> ()) {
-		NetworkManager.request(type: .deleteStudent, params: ["KFUPMID" : kfupmID!]) { (json, success) in
+		NetworkManager.request(type: .deleteUser, params: ["KFUPMID" : kfupmID!]) { (json, success) in
 			completion(success)
 		}
 	}
@@ -66,9 +66,9 @@ class Student: NSManagedObject {
 	func signUp(completion: @escaping (JSON?) -> ()) {
 		let params = ["KFUPMID" : kfupmID!, "FName" : fName!, "LName" : lName!, "BNo" : bno!, "Gender" : "M", "Stat" : "Active"]
 		
-		NetworkManager.request(type: .addStudent, params: params) { (json, didSignUp) in
+		NetworkManager.request(type: .addUser, params: params) { (json, didSignUp) in
 			if(didSignUp) {
-				NetworkManager.request(type: .student, params: ["KFUPMID" : self.kfupmID!]) { (dbStuJSON, status) in
+				NetworkManager.request(type: .getUser, params: ["KFUPMID" : self.kfupmID!]) { (dbStuJSON, status) in
 					completion(dbStuJSON)
 				}
 			}

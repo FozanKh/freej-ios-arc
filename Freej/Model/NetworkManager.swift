@@ -11,19 +11,19 @@ import SwiftyJSON
 import Alamofire
 
 enum RequestType: String {
-	case student = "http://freejapp.com/FreejAppRequest/GetStudent.php"
-	case announcement = "http://freejapp.com/FreejAppRequest/GetAnnouncements.php"
-	case activityType = "http://freejapp.com/FreejAppRequest/GetActivityTypes.php"
-	case activity = "http://freejapp.com/FreejAppRequest/GetActivities.php"
-	case updateUserInfo = "http://freejapp.com/FreejAppRequest/UpdateUserInfo.php"
+	case sessionData =	"http://freejapp.com/FreejAppRequest/GetSessionData.php"
+
+	case getUser =		"http://freejapp.com/FreejAppRequest/GetStudent.php"
+	case addUser =		"http://freejapp.com/FreejAppRequest/PostStudent.php"
+	case updateUser =	"http://freejapp.com/FreejAppRequest/UpdateUserInfo.php"
+	case deleteUser =	"http://freejapp.com/FreejAppRequest/DeleteStudent.php"
+	
+	case sendOTP =		"http://freejapp.com/FreejAppRequest/SendOTP.php"
+
+	case addActivity =	"http://freejapp.com/FreejAppRequest/PostActivity.php"
+	case deleteActivity =	"http://freejapp.com/FreejAppRequest/DeleteActivity.php"
+
 	case addAnnouncement = "http://freejapp.com/FreejAppRequest/PostAnnouncements.php"
-	case deleteStudent = "http://freejapp.com/FreejAppRequest/DeleteStudent.php"
-	case sendOTP = "http://freejapp.com/FreejAppRequest/SendOTP.php"
-	case addStudent = "http://freejapp.com/FreejAppRequest/PostStudent.php"
-    case whatsAppLink = "http://freejapp.com/FreejAppRequest/GetWhatsappURL.php"
-	case addActivity = "http://freejapp.com/FreejAppRequest/PostActivity.php"
-	case deleteActivity = "http://freejapp.com/FreejAppRequest/DeleteActivity.php"
-	case sessionData = "http://freejapp.com/FreejAppRequest/GetSessionData.php"
 }
 
 struct NetworkManager {
