@@ -12,13 +12,9 @@ import JGProgressHUD
 
 class ValidateVC: UIViewController {
 	@IBOutlet weak var validationCodeTF: UITextField!
-	let progressManager = JGProgressHUD()
-	var correctOtp: String! {
-		didSet {
-			validationCodeTF.text = correctOtp
-		}
-	}
 	
+	let progressManager = JGProgressHUD()
+	var correctOtp: String! {didSet {validationCodeTF.text = correctOtp}}
 	var otpGenerationTime: Date!
 	
 	override func loadView() {
@@ -33,20 +29,14 @@ class ValidateVC: UIViewController {
 		if(userEnteredOTP == correctOtp) {
 			DataModel.loadSessionData {
 				if(DataModel.currentUser?.isSignedUp() ?? false) {
-					DataModel.currentUser?.isLoggedIn = true
-					DataModel.currentUser = DataModel.currentUser
-					DataModel.saveSession()
-					self.progressManager.dismiss()
-					self.dismiss(animated: true)
+					DataModel.currentUser?.login()
+					self.finishLogInProcess()
 				}
 				else {
 					DataModel.currentUser?.signUp(completion: { (dbStuJSON) in
 						if(dbStuJSON != nil) {
-							let student = Student.createStudent(fromJSON: dbStuJSON![0], isLoggedIn: true)
-							DataModel.currentUser = student
-							DataModel.saveSession()
-							self.progressManager.dismiss()
-							self.dismiss(animated: true)
+							Student.createStudent(fromJSON: dbStuJSON![0], isLoggedIn: true).login()
+							self.finishLogInProcess()
 						}
 						else {
 							self.progressManager.dismiss()
@@ -61,7 +51,11 @@ class ValidateVC: UIViewController {
 		}
 	}
 	
-	//This method will randomly generate OTP, and send it to user.
+	func finishLogInProcess() {
+		self.progressManager.dismiss()
+		self.dismiss(animated: true)
+	}
+	
 	func generateOTP() {
 		correctOtp = "\(Int.random(in: 1000...9999))"
 		otpGenerationTime = Date()

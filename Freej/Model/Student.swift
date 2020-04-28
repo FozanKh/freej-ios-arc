@@ -35,6 +35,7 @@ class Student: NSManagedObject {
 		let managedContext = DataModel.managedContext
 		super.init(entity: NSEntityDescription.entity(forEntityName: "Student", in: managedContext)!, insertInto: managedContext)
 		self.isLoggedIn = isLoggedIn
+		self.kfupmID = kfupmID
 	}
 	
 	static func getStudentDB(kfupmID: String, completion: @escaping (Student?) -> ()) {
@@ -54,6 +55,12 @@ class Student: NSManagedObject {
 		var userIsSignedUp: Bool
 		userID == nil ? (userIsSignedUp = false) : (userIsSignedUp = true)
 		return userIsSignedUp
+	}
+	
+	func login() {
+		isLoggedIn = true
+		DataModel.currentUser = self
+		DataModel.saveSession()
 	}
 	
 	func signUp(completion: @escaping (JSON?) -> ()) {
