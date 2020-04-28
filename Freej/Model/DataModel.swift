@@ -14,9 +14,8 @@ protocol DataModelProtocol {
 	func userHasValidated()
 }
 
-
 enum Entity: String {
-	case student = "Student", activityType = "ActivityType"
+	case student = "Student", activityType = "ActivityType", announcement = "Announcement"
 }
 
 class DataModel {
@@ -28,11 +27,17 @@ class DataModel {
 		didSet {saveSession()}
 	}
 	
+	static var announcementsArray: [Announcement]? {
+		didSet {saveSession()}
+	}
+	
 	static var currentUser: Student? {
 		didSet {
 			if currentUser?.isLoggedIn ?? false && currentUser?.isSignedUp() ?? false {dataModelDelegate?.userHasValidated()}
 		}
 	}
+	
+	static var whatsAppGroup: String?
 	
 	static func fetch(entity: Entity) -> [NSManagedObject]? {
 		let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entity.rawValue)
@@ -57,25 +62,57 @@ class DataModel {
 	}
 	
 	static func loadSessionData(completion: @escaping () -> ()) {
-		ActivityType.refreshActivityTypesArray { activityTypesDidDownload in
-			if(activityTypesDidDownload) {
-				Activity.refreshActivitiesArray {
-					Announcement.refreshAnnouncementsArray {completion()}
-				}
+		let params = ["UserID" : currentUser?.userID ?? "NA",
+					  "BNo" : currentUser?.bno ?? "NA"]
+		NetworkManager.request(type: .sessionData, params: params) { (json, success) in
+			if success {
+				setActivitiesArrays(from: json)
+				setAnnoucementsArray(from: json)
+				whatsAppGroup = json?["GroupURL"][0].stringValue
+			} else {
+				activityTypesArray = fetch(entity: .activityType) as? [ActivityType]
+				announcementsArray = fetch(entity: .announcement) as? [Announcement]
 			}
-			else {
-				Announcement.refreshAnnouncementsArray {completion()}
-			}
+			completion()
 		}
 	}
 	
 	static func clear(entity: Entity) {
 		let DelAllReqVar = NSBatchDeleteRequest(fetchRequest: NSFetchRequest<NSFetchRequestResult>(entityName: entity.rawValue))
-		do {
-			try managedContext.execute(DelAllReqVar)
+		do {try managedContext.execute(DelAllReqVar)}
+		catch {print(error)}
+	}
+	
+	static func setAnnoucementsArray(from json: JSON?) {
+		clear(entity: .announcement)
+		var anArray = [Announcement]()
+		for an in json?["Announcement"].array ?? [JSON]() {
+			anArray.append(Announcement(json: an))
 		}
-		catch {
-			print(error)
+		announcementsArray = anArray
+	}
+	
+	static func setActivitiesArrays(from json: JSON?) {
+		clear(entity: .activityType)
+		
+		var tempActivityTypesArray = [ActivityType]()
+		var activitiesArray = json?["Activity"].array ?? [JSON]()
+		
+		for activityType in json?["ActivityType"].array ?? [JSON]() {
+			let at = ActivityType(json: activityType)
+			
+			for activity in activitiesArray {
+				if activity["AcTID"].int32Value == at.acTID {
+					at.addToBuildingActivities(Activity(json: activity))
+					
+					if activity["UserID"].stringValue == currentUser?.userID {
+						at.addToStudentActivities(Activity(json: activity))
+					}
+					activitiesArray.remove(at: activitiesArray.firstIndex(of: activity)!)
+				}
+			}
+			tempActivityTypesArray.append(at)
 		}
+		activityTypesArray = tempActivityTypesArray
 	}
 }

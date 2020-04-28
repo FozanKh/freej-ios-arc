@@ -19,7 +19,7 @@ class ActivityTypeCell: UITableViewCell, UICollectionViewDataSource, UICollectio
 	var activityTypeCellDelegate: ActivityTypeCellProtocol?
 	
 	func setupCell() {
-		speceficActivityArray = activityType?.relationship?.allObjects as? [Activity] as [Activity]? ?? [Activity]()
+		speceficActivityArray = activityType?.buildingActivities?.allObjects as? [Activity] ?? [Activity]()
 		configureCollectionView()
 	}
 	

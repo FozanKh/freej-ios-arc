@@ -9,14 +9,25 @@
         <attribute name="stat" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="userID" optional="YES" attributeType="String"/>
-        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ActivityType" inverseName="relationship" inverseEntity="ActivityType"/>
+        <relationship name="inverseBuilding" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ActivityType" inverseName="buildingActivities" inverseEntity="ActivityType"/>
+        <relationship name="inverseStudent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ActivityType" inverseName="studentActivities" inverseEntity="ActivityType"/>
     </entity>
     <entity name="ActivityType" representedClassName="ActivityType" syncable="YES" codeGenerationType="category">
         <attribute name="acTID" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="color1" optional="YES" attributeType="String"/>
         <attribute name="color2" optional="YES" attributeType="String"/>
         <attribute name="typeName" optional="YES" attributeType="String"/>
-        <relationship name="relationship" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Activity" inverseName="relationship" inverseEntity="Activity"/>
+        <relationship name="buildingActivities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Activity" inverseName="inverseBuilding" inverseEntity="Activity"/>
+        <relationship name="studentActivities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Activity" inverseName="inverseStudent" inverseEntity="Activity"/>
+    </entity>
+    <entity name="Announcement" representedClassName="Announcement" syncable="YES" codeGenerationType="category">
+        <attribute name="anID" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="anTID" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="descrp" optional="YES" attributeType="String"/>
+        <attribute name="sDate" optional="YES" attributeType="String"/>
+        <attribute name="stat" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="userID" optional="YES" attributeType="String"/>
     </entity>
     <entity name="Student" representedClassName="Student" syncable="YES" codeGenerationType="category">
         <attribute name="bno" optional="YES" attributeType="String"/>
@@ -30,8 +41,9 @@
         <attribute name="userID" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Activity" positionX="-27" positionY="81" width="128" height="178"/>
-        <element name="ActivityType" positionX="-45" positionY="72" width="128" height="118"/>
+        <element name="Activity" positionX="-27" positionY="81" width="128" height="193"/>
         <element name="Student" positionX="-54" positionY="-9" width="128" height="178"/>
+        <element name="ActivityType" positionX="-36" positionY="81" width="128" height="133"/>
+        <element name="Announcement" positionX="-27" positionY="126" width="128" height="148"/>
     </elements>
 </model>

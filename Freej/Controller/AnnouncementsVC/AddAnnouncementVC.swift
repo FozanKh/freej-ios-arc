@@ -12,7 +12,7 @@ import UIKit
 class AddAnnouncementVC : UIViewController, UITextViewDelegate {
     @IBOutlet weak var ancmtTypeTF: UITextField!
 	@IBOutlet weak var ancmtDescrp: UITextView!
-
+	
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTextView()
@@ -23,19 +23,20 @@ class AddAnnouncementVC : UIViewController, UITextViewDelegate {
 	}
 	
 	func addAnnouncement() {
-		var atID = ""
+		var anTID = -1
 		switch ancmtTypeTF.text! {
 		case "General":
-			atID = "1"
+			anTID = 1
 		case "Specific":
-			atID = "2"
+			anTID = 2
 		default:
-			atID = "3"
+			anTID = 3
 		}
 		
-		let ancmt = Announcement(type: atID, content: ancmtDescrp.text!, userid: DataModel.currentUser!.userID!)
-		ancmt.addToDatabase { (sucess) in
-			print(sucess)
+		let ancmt = Announcement(anTID: anTID, userID: DataModel.currentUser?.userID ?? "NA", title: "title", descrp: ancmtDescrp.text, sDate: "i")
+		
+		ancmt.addToDatabase { (success) in
+			print(success)
 		}
 		self.dismiss(animated: true, completion: nil)
 	}

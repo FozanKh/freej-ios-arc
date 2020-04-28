@@ -27,10 +27,9 @@ class AnnouncementsVC: UIViewController {
         //        announcements.remove(at: headerNumber)
 		configureTableView()
 		addRefreshControl()
-		Announcement.refreshAnnouncementsArray {
+		DataModel.loadSessionData {
 			self.displayAnnouncements()
 		}
-		
         setAmeenPrivileges()
     }
 	
@@ -45,7 +44,7 @@ class AnnouncementsVC: UIViewController {
     }
     
     @objc func refreshAncmtsList(){
-		Announcement.refreshAnnouncementsArray {
+		DataModel.loadSessionData {
 			self.displayAnnouncements()
 			self.refreshConroller.endRefreshing()
 		}
@@ -64,11 +63,11 @@ extension AnnouncementsVC: UITableViewDataSource, UITableViewDelegate {
 	}
 	
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return Announcement.ancmtsArray?.count ?? 0
+		return DataModel.announcementsArray?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let announcement = Announcement.ancmtsArray![indexPath.row]
+		let announcement = DataModel.announcementsArray?[indexPath.row] ?? Announcement()
         let cell = tableView.dequeueReusableCell(withIdentifier: "AnnouncementCell") as! AnnouncementCell
         cell.setAnnouncement(announcement: announcement)
         
@@ -76,15 +75,12 @@ extension AnnouncementsVC: UITableViewDataSource, UITableViewDelegate {
         case "General":
             cell.mainLabel.textColor = #colorLiteral(red: 1, green: 0.5960784314, blue: 0.02745098039, alpha: 1)
             cell.typeLabel.textColor = #colorLiteral(red: 1, green: 0.5960784314, blue: 0.02745098039, alpha: 1)
-            cell.icon.tintColor = #colorLiteral(red: 1, green: 0.5960784314, blue: 0.02745098039, alpha: 1)
         case "Specific":
             cell.mainLabel.textColor = #colorLiteral(red: 0.862745098, green: 0.3725490196, blue: 0.368627451, alpha: 1)
             cell.typeLabel.textColor = #colorLiteral(red: 0.862745098, green: 0.3725490196, blue: 0.368627451, alpha: 1)
-            cell.icon.tintColor = #colorLiteral(red: 0.862745098, green: 0.3725490196, blue: 0.368627451, alpha: 1)
         default:
             cell.mainLabel.textColor = #colorLiteral(red: 0.003921568627, green: 0.6392156863, blue: 0.8039215686, alpha: 1)
             cell.typeLabel.textColor = #colorLiteral(red: 0.003921568627, green: 0.6392156863, blue: 0.8039215686, alpha: 1)
-            cell.icon.tintColor = #colorLiteral(red: 0.003921568627, green: 0.6392156863, blue: 0.8039215686, alpha: 1)
         }
         return cell
     }
@@ -105,6 +101,4 @@ extension AnnouncementsVC: UITableViewDataSource, UITableViewDelegate {
     //
     //        return header
     //    }
-    
-    
 }

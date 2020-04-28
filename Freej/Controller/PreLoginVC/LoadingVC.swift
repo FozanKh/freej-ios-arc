@@ -16,7 +16,9 @@ class LoadingVC: UIViewController {
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		setViewControllerVariables()
+		
 		let fetchResult = DataModel.fetch(entity: .student)
+		
 		if(fetchResult != nil && fetchResult!.count > 0) {
 			let user = fetchResult![0] as! Student
 			if user.isLoggedIn {
