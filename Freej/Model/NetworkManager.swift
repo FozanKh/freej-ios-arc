@@ -11,19 +11,19 @@ import SwiftyJSON
 import Alamofire
 
 enum RequestType: String {
-	case sessionData =	"http://freejapp.com/FreejAppRequest/GetSessionData.php"
+	case sessionData =		"http://freejapp.com/FreejAppRequest/iOSApp/GetSessionData.php"
 
-	case getUser =		"http://freejapp.com/FreejAppRequest/GetStudent.php"
-	case addUser =		"http://freejapp.com/FreejAppRequest/PostStudent.php"
-	case updateUser =	"http://freejapp.com/FreejAppRequest/UpdateUserInfo.php"
-	case deleteUser =	"http://freejapp.com/FreejAppRequest/DeleteStudent.php"
+	case getUser =			"http://freejapp.com/FreejAppRequest/iOSApp/GetStudent.php"
+	case addUser =			"http://freejapp.com/FreejAppRequest/iOSApp/PostStudent.php"
+	case updateUser =		"http://freejapp.com/FreejAppRequest/iOSApp/UpdateUser.php"
+	case deleteUser =		"http://freejapp.com/FreejAppRequest/iOSApp/DeleteStudent.php"
 	
-	case sendOTP =		"http://freejapp.com/FreejAppRequest/SendOTP.php"
+	case sendOTP =			"http://freejapp.com/FreejAppRequest/iOSApp/SendOTP.php"
 
-	case addActivity =	"http://freejapp.com/FreejAppRequest/PostActivity.php"
-	case deleteActivity =	"http://freejapp.com/FreejAppRequest/DeleteActivity.php"
+	case addActivity =		"http://freejapp.com/FreejAppRequest/iOSApp/PostActivity.php"
+	case deleteActivity =	"http://freejapp.com/FreejAppRequest/iOSApp/DeleteActivity.php"
 
-	case addAnnouncement = "http://freejapp.com/FreejAppRequest/PostAnnouncements.php"
+	case addAnnouncement = 	"http://freejapp.com/FreejAppRequest/iOSApp/PostAnnouncements.php"
 }
 
 struct NetworkManager {
