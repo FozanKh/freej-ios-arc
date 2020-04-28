@@ -20,6 +20,15 @@
         <relationship name="buildingActivities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Activity" inverseName="inverseBuilding" inverseEntity="Activity"/>
         <relationship name="studentActivities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Activity" inverseName="inverseStudent" inverseEntity="Activity"/>
     </entity>
+    <entity name="Announcement" representedClassName="Announcement" syncable="YES" codeGenerationType="category">
+        <attribute name="anID" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="anTID" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="descrp" optional="YES" attributeType="String"/>
+        <attribute name="sDate" optional="YES" attributeType="String"/>
+        <attribute name="stat" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="userID" optional="YES" attributeType="String"/>
+    </entity>
     <entity name="Student" representedClassName="Student" syncable="YES" codeGenerationType="category">
         <attribute name="bno" optional="YES" attributeType="String"/>
         <attribute name="fName" optional="YES" attributeType="String"/>
@@ -35,5 +44,6 @@
         <element name="Activity" positionX="-27" positionY="81" width="128" height="193"/>
         <element name="Student" positionX="-54" positionY="-9" width="128" height="178"/>
         <element name="ActivityType" positionX="-36" positionY="81" width="128" height="133"/>
+        <element name="Announcement" positionX="-27" positionY="126" width="128" height="148"/>
     </elements>
 </model>

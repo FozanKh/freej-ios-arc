@@ -14,9 +14,8 @@ protocol DataModelProtocol {
 	func userHasValidated()
 }
 
-
 enum Entity: String {
-	case student = "Student", activityType = "ActivityType"
+	case student = "Student", activityType = "ActivityType", announcement = "Announcement"
 }
 
 class DataModel {
@@ -25,6 +24,10 @@ class DataModel {
 	static var dataModelDelegate: DataModelProtocol?
 	
 	static var activityTypesArray: [ActivityType]? {
+		didSet {saveSession()}
+	}
+	
+	static var announcementsArray: [Announcement]? {
 		didSet {saveSession()}
 	}
 	
@@ -57,8 +60,16 @@ class DataModel {
 	}
 	
 	static func loadSessionData(completion: @escaping () -> ()) {
-		NetworkManager.request(type: .sessionData, params: ["BNo" : currentUser!.bno!, "UserID" : currentUser!.userID!]) { (json, status) in
-			setActivitiesArrays(from: json)
+		let params = ["UserID" : currentUser?.userID ?? "NA",
+					  "BNo" : currentUser?.bno ?? "NA"]
+		NetworkManager.request(type: .sessionData, params: params) { (json, success) in
+			if success {
+				setActivitiesArrays(from: json)
+				setAnnoucementsArray(from: json)
+			} else {
+				activityTypesArray = fetch(entity: .activityType) as? [ActivityType]
+				announcementsArray = fetch(entity: .announcement) as? [Announcement]
+			}
 			completion()
 		}
 	}
@@ -67,6 +78,15 @@ class DataModel {
 		let DelAllReqVar = NSBatchDeleteRequest(fetchRequest: NSFetchRequest<NSFetchRequestResult>(entityName: entity.rawValue))
 		do {try managedContext.execute(DelAllReqVar)}
 		catch {print(error)}
+	}
+	
+	static func setAnnoucementsArray(from json: JSON?) {
+		clear(entity: .announcement)
+		var anArray = [Announcement]()
+		for an in json?["Announcement"].array ?? [JSON]() {
+			anArray.append(Announcement(json: an))
+		}
+		announcementsArray = anArray
 	}
 	
 	static func setActivitiesArrays(from json: JSON?) {

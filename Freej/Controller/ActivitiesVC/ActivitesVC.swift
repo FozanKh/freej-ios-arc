@@ -73,6 +73,7 @@ extension ActivitesVC: UITableViewDataSource, UITableViewDelegate {
 		DataModel.loadSessionData {
 			self.refreshConroller.endRefreshing()
 			self.tableView.reloadData()
+			print(DataModel.activityTypesArray)
 		}
 	}
 	

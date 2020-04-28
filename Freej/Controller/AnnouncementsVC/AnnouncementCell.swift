@@ -10,12 +10,10 @@ import UIKit
 
 class AnnouncementCell: UITableViewCell {
     @IBOutlet weak var mainLabel: UILabel!
-    @IBOutlet weak var icon: UIImageView!
     @IBOutlet weak var typeLabel: UILabel!
     
     func setAnnouncement(announcement : Announcement){
-        icon.image = announcement.icon
-        mainLabel.text = announcement.content
-        typeLabel.text = announcement.type
+		mainLabel.text = announcement.descrp
+		typeLabel.text = "\(announcement.anTID)"
     }
 }

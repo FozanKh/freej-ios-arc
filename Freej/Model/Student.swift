@@ -84,7 +84,6 @@ class Student: NSManagedObject {
 		student.setValue(fromJSON["Stat"].stringValue, forKeyPath: "stat")
 		student.setValue(fromJSON["IsAmeen"].boolValue, forKeyPath: "isAmeen")
 		student.setValue(isLoggedIn, forKeyPath: "isLoggedIn")
-		print(fromJSON)
 		return student as! Student
 	}
 }

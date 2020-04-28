@@ -8,65 +8,45 @@
 
 import UIKit
 import SwiftyJSON
+import CoreData
 
-struct Announcement {
-    var icon : UIImage
-    var type : String
-    var content : String
-    var atID : String
-	var userid: String
-    
-	static var ancmtsArray: [Announcement]?
+@objc(Announcement)
+public class Announcement: NSManagedObject {
 	
-	static func refreshAnnouncementsArray(completion: @escaping () -> ()) {
-		NetworkManager.request(type: .announcement, params: ["BNo" : DataModel.currentUser!.bno!]) { (ancmtsJSON, status) in
-			if (ancmtsJSON == nil) {
-				ancmtsArray = [Announcement]()
-				completion()
-			}
-			else {
-				ancmtsArray = announcementsArray(fromJSON: ancmtsJSON!)
-				completion()
-			}
-		}
+	init(anTID: Int, userID: String, title: String, descrp: String, sDate: String) {
+		let managedContext = DataModel.managedContext
+		super.init(entity: NSEntityDescription.entity(forEntityName: "Announcement", in: managedContext)!, insertInto: managedContext)
+		self.anTID = Int32(anTID)
+		self.userID = userID
+		self.title = title
+		self.descrp = descrp
+		self.sDate = sDate
+	}
+	
+	init(json: JSON) {
+		let managedContext = DataModel.managedContext
+		super.init(entity: NSEntityDescription.entity(forEntityName: "Announcement", in: managedContext)!, insertInto: managedContext)
+		anID =		Int32(json["AnID"].intValue)
+		anTID =		Int32(json["AnTID"].intValue)
+		userID =	json["UserID"].stringValue
+		title =		json["Title"].stringValue
+		descrp =	json["Descrp"].stringValue
+		sDate = 	json["SDate"].stringValue
+		stat = 		json["Stat"].stringValue
+	}
+	
+	override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
+		super.init(entity: entity, insertInto: context)
 	}
 	
 	func addToDatabase(completion: @escaping (Bool) -> ()) {
-		let params =   ["AnTID" : atID,
-						"UserID" : userid,
-						"Title" : atID,
-						"Descrp" : content,
-						"SDate" : "2020-20-02",
+		let params =   ["AnTID" : "\(anID)",
+						"UserID" : userID!,
+						"Title" : title!,
+						"Descrp" : descrp!,
+						"SDate" : sDate!,
 						"Stat" : "Activated"]
 		
 		NetworkManager.request(type: .addAnnouncement, params: params) { (json, success) in completion(success)}
-	}
-	
-	static func announcementsArray(fromJSON: JSON) -> [Announcement] {
-		var anArray = [Announcement]()
-		for an in fromJSON.array! {
-			let dbType = an["AnTID"].stringValue
-			let dbContent = an["Descrp"].stringValue
-			let dbUserID = an["UserID"].stringValue
-			anArray.append(Announcement(type: dbType, content: dbContent, userid: dbUserID))
-		}
-		return anArray
-	}
-	
-	init(type : String, content : String, userid: String) {
-		atID = type
-		switch type {
-		case "1":
-			self.icon = UIImage(systemName: "mic.fill")!
-			self.type = "General"
-		case "2":
-			self.icon = UIImage(systemName: "bubble.left.fill")!
-			self.type = "Specific"
-		default:
-			self.icon = UIImage(systemName: "person.fill")!
-			self.type = "Technical"
-		}
-		self.content = content
-		self.userid = userid
 	}
 }
