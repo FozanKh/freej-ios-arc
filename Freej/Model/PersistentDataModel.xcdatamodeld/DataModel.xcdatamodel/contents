@@ -14,8 +14,8 @@
     </entity>
     <entity name="ActivityType" representedClassName="ActivityType" syncable="YES" codeGenerationType="category">
         <attribute name="acTID" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="color1" optional="YES" attributeType="String"/>
-        <attribute name="color2" optional="YES" attributeType="String"/>
+        <attribute name="colorDark" optional="YES" attributeType="String"/>
+        <attribute name="colorLight" optional="YES" attributeType="String"/>
         <attribute name="typeName" optional="YES" attributeType="String"/>
         <relationship name="buildingActivities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Activity" inverseName="inverseBuilding" inverseEntity="Activity"/>
         <relationship name="studentActivities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Activity" inverseName="inverseStudent" inverseEntity="Activity"/>
@@ -42,8 +42,8 @@
     </entity>
     <elements>
         <element name="Activity" positionX="-27" positionY="81" width="128" height="193"/>
-        <element name="Student" positionX="-54" positionY="-9" width="128" height="178"/>
         <element name="ActivityType" positionX="-36" positionY="81" width="128" height="133"/>
         <element name="Announcement" positionX="-27" positionY="126" width="128" height="148"/>
+        <element name="Student" positionX="-54" positionY="-9" width="128" height="178"/>
     </elements>
 </model>

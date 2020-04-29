@@ -9,6 +9,7 @@
 import UIKit
 
 class ActivityCell: UITableViewCell {
+	@IBOutlet weak var cellBackground: UIView!
 	@IBOutlet weak var title: UILabel!
 	@IBOutlet weak var descrp: UILabel!
 	@IBOutlet weak var sDate: UILabel!
@@ -37,7 +38,20 @@ class ActivityCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+	
+	override func layoutSubviews() {
+		super.layoutSubviews()
+		setupCellBackground()
+	}
 
+	func setupCellBackground() {
+		cellBackground.layer.masksToBounds = true
+		cellBackground.layer.shadowOpacity = 0.75
+		cellBackground.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+		cellBackground.layer.shadowRadius = 3.5
+		cellBackground.layer.masksToBounds = false
+	}
+	
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
