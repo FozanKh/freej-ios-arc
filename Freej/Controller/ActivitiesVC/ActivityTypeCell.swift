@@ -17,10 +17,12 @@ class ActivityTypeCell: UITableViewCell, UICollectionViewDataSource, UICollectio
 	var activityType: ActivityType?
 	var speceficActivityArray = [Activity]()
 	var activityTypeCellDelegate: ActivityTypeCellProtocol?
+	@IBOutlet weak var activityTypeLabel: UILabel!
 	
 	func setupCell() {
 		speceficActivityArray = activityType?.buildingActivities?.allObjects as? [Activity] ?? [Activity]()
 		configureCollectionView()
+		activityTypeLabel.text = activityType?.typeName ?? "NA"
 	}
 	
 	func configureCollectionView() {

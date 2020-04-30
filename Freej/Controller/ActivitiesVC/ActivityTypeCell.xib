@@ -63,6 +63,7 @@
             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="activityTypeLabel" destination="heS-Sz-6ta" id="1a7-Xc-7cu"/>
                 <outlet property="collectionView" destination="Ntf-oC-jQe" id="cPd-PJ-3GT"/>
             </connections>
             <point key="canvasLocation" x="241.30434782608697" y="210.60267857142856"/>
