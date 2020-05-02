@@ -33,10 +33,10 @@ struct NetworkManager {
 		
     static func setUpInternetStatusNotification() {
         monitor = NetworkReachabilityManager()
+		monitor?.listener = { status in
+			NotificationCenter.default.post(name: Notification.Name("didChangeInternetStatus"), object: nil, userInfo: ["Status" : parseInternetStatus("\(status)")])
+		}
         monitor?.startListening()
-        monitor?.listener = { status in
-            NotificationCenter.default.post(name: Notification.Name("didChangeInternetStatus"), object: nil, userInfo: ["Status" : parseInternetStatus("\(status)")])
-        }
     }
 	
 	//MARK:- Request Methods
