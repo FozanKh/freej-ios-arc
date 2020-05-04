@@ -53,7 +53,7 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         } else if(segueID == "toWhatsAppGroup") {
 			showSafariVC(for: DataModel.whatsAppGroup)
         }
-		else {
+		else if(segueID.count > 0){
 			performSegue(withIdentifier: segueID, sender: self)
 		}
 		tableView.deselectRow(at: indexPath, animated: true)
